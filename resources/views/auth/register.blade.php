@@ -42,8 +42,8 @@
 
         <form class="form-signin" method="POST" action="{{ route('register') }}">
             @csrf
-            <a href="index.html" class="brand text-center">
-                <img src="assets/img/logo-dark.png" srcset="assets/img/logo-dark@2x.png 2x" alt=""/>
+            <a href="http://www.blinksgroup.net/" class="brand text-center">
+                <img src="assets/img/b-links-logo.png" alt=""/>
             </a>
             <h2 class="form-signin-heading">Please sign up</h2>
             <div class="form-group">
