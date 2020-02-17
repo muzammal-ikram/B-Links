@@ -12,10 +12,12 @@
 */
 
 Route::get('/', function () {
-    return view('auth.register');
+    return view('auth.login');
 });
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::post('/registerUser', 'Auth\RegisterController@registerUser')->name('registerUser');
+Route::get('/all-users', 'Auth\RegisterController@allUsers')->name('allUsers');
 
