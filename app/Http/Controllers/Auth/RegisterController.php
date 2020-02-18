@@ -7,6 +7,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\Request;
+// use Datatables;
+use DB;
 
 class RegisterController extends Controller
 {
@@ -37,7 +40,7 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest');
+        $this->middleware('admin')->except('registerUser');
     }
 
     /**
@@ -50,8 +53,9 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
+            'user_type'=>['required', 'integer'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'password' => ['required', 'string', 'min:6', 'confirmed'],
         ]);
     }
 
@@ -64,9 +68,36 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         return User::create([
+            'is_admin' => $data['user_type'],
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
     }
+    public function registerUser(Request $request)
+    {
+        $this->validator($request->all())->validate();
+
+        $create = User::create([
+            'is_admin' => $request->user_type,
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+        ]);
+        if($create){
+            return redirect()->back()->with('success', 'Assistant Register Successfully!');
+        }else{
+            return redirect()->back()->with('error', 'Assistant Register Failed!');
+        }
+    }
+    public function allUsers(Request $request)
+    {
+        if($request->ajax()){
+            $users = DB::table('users')->select('*');
+            return \Datatables::of($users)
+                ->make(true);
+        }
+        return view('users.all_users');
+    }
+    
 }
