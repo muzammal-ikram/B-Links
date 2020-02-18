@@ -256,7 +256,15 @@
                             </div>
                         </div>
                         <div class="card-body">
-                            <form class="container" id="needs-validation" novalidate>
+
+                            @if(session('success'))
+                                <div class="alert alert-success">
+                                    {{session('success')}}
+                                </div>
+                            @endif
+
+                            <form class="container" action="/create-contractor" method="POST" id="needs-validation" novalidate>
+                                @csrf
                                 <div class="row">
                                     <div class="col-md-6 mb-3">
                                         <label for="validationCustom01">Contractor Number</label>
@@ -378,20 +386,20 @@
                                         <label for="validationCustom05">Documents</label>
                                                 <br>
                                         <label class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input">
+                                            <input type="checkbox" name="sc" class="custom-control-input">
                                             <span class="custom-control-indicator"></span>
                                             <span class="custom-control-description">SC</span>
                                         </label>
 
                                         <br/>
                                         <label class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input">
+                                            <input type="checkbox" name="coo" class="custom-control-input">
                                             <span class="custom-control-indicator"></span>
                                             <span class="custom-control-description">COO</span>
                                         </label>
                                         <br/>
                                         <label class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input">
+                                            <input type="checkbox" name="B/L/packing-list" class="custom-control-input">
                                             <span class="custom-control-indicator"></span>
                                             <span class="custom-control-description">B/L/Packing List</span>
                                         </label>
