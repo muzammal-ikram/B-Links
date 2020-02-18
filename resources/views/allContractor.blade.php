@@ -13,8 +13,8 @@
                 </h4>
                 <ol class="breadcrumb mb-0 pl-0 pt-1 pb-0">
                     <li class="breadcrumb-item"><a href="{{ route('home') }}" class="default-color">Home</a></li>
-                    <li class="breadcrumb-item"><a href="{{ route('allUsers') }}" class="default-color">Users</a></li>
-                    <li class="breadcrumb-item active">All Users</li>
+                    <li class="breadcrumb-item"><a href="{{ route('allContractor') }}" class="default-color">Contractor</a></li>
+                    <li class="breadcrumb-item active">All Contractor</li>
                 </ol>
             </div>
             <!--page title end-->
@@ -25,18 +25,32 @@
                         <div class="card card-shadow mb-4">
                             <div class="card-header">
                                 <div class="card-title">
-                                    Select 2
+                                    All Contractor
                                 </div>
                             </div>
                             <div class="card-body">           
-                                <table id="users" class="table table-hover table-condensed" style="width:100%">
+                                <table id="contractors" class="table table-hover table-condensed table-responsive" style="width:100%">
                                     <thead>
                                         <tr>
                                             <th>Id</th>
-                                            <th>Name</th>
-                                            <th>Email</th>
-                                            <th>User Type</th>
-                                            <th>Created At</th>
+                                            <th>Contractor Number</th>
+                                            <th>Supplier</th>
+                                            <th>Buyer</th>
+                                            <th>ETD</th>
+                                            <th>ETA</th>
+                                            <th>Port</th>
+                                            <th>Quantity</th>
+                                            <th>Price Per KG</th>
+                                            <th>Amount</th>
+                                            <th>Containers</th>
+                                            <th>LC Number</th>
+                                            <th>Invoice Number</th>
+                                            <th>Commission %</th>
+                                            <th>BL Number</th>
+                                            <th>Contractor Status</th>
+                                            <th>Documents</th>
+                                            <th>Latest Shipment Date</th>
+                                            <th>Date</th>
                                             {{-- <th>Actions</th> --}}
                                         </tr>
                                     </thead>
@@ -64,24 +78,20 @@
 <script type="text/javascript">
 $(document).ready(function() {
 
-    Table = $('#users').DataTable({
+    Table = $('#contractors').DataTable({
         "processing": true,
         "serverSide": true,
-        "ajax": "{{ route('allUsers') }}",
+        "ajax": "{{ route('allContractor') }}",
         "columns": [
             {data: 'id', name: 'id'},
             {data: 'name', name: 'name'},
             {data: 'email', name: 'email'},
             {data: 'is_admin', name: 'is_admin',
               "render": function (data, type, row) {
-
                 if (data == 1) {
                     return 'Admin';}
-        
                     else {
-        
                     return 'Assistant';
-        
                 }
             }
         },

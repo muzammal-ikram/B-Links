@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use DB;
 class ContractorController extends Controller
 {
     /**
@@ -14,6 +14,18 @@ class ContractorController extends Controller
     public function index()
     {
         return view('add_contractor');
+    }
+    public function allContractor(Request $request)
+    {
+        $contractors = DB::table('contractors')->select('*')->get();
+        dd($contractors);
+        if($request->ajax()){
+            $contractors = DB::table('contractors')->select('*');
+            dd($contractors);
+            return \Datatables::of($contractors)
+                ->make(true);
+        }
+        return view('allContractor');
     }
 
     /**

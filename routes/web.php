@@ -18,7 +18,8 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/add-contractor', 'ContractorController@index');
+Route::get('/add-contractor', 'ContractorController@index')->name('addData');
+Route::get('/all-contractor', 'ContractorController@allContractor')->name('allContractor');
 Route::post('/register-user', 'Auth\RegisterController@registerUser')->name('registerUser');
 Route::get('/all-users', 'Auth\RegisterController@allUsers')->name('allUsers');
 
