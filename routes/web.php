@@ -19,4 +19,5 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/add-contractor', 'ContractorController@index');
+Route::post('/create-contractor', 'ContractorController@store')->name('create-contractor');
 
