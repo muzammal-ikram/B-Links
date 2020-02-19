@@ -2,8 +2,8 @@
 
     <!--brand start-->
     <div class="navbar-brand navbar-brand-dark">
-        <a class="" href="index.html">
-            <img src="assets/img/logo.png" srcset="assets/img/logo@2x.png 2x" alt="">
+        <a class="" href="">
+            <img src="assets/img/b-links-logo.png" alt="" height="40px" width="150px"/>
         </a>
     </div>
     <!--brand end-->
