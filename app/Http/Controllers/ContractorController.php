@@ -46,28 +46,27 @@ class ContractorController extends Controller
      */
     public function store(Request $request)
     {
-//        $request->validate([
-//            'contractor_number' => 'required',
-//            'date' => 'required',
-//            'port' => 'required',
-//            'supplier' => 'required',
-//            'etd' => 'required',
-//            'eta' => 'required',
-//            'buyer' => 'required',
-//            'latest_shipment_date' => 'required',
-//            'quantity' => 'required',
-//            'price_per_kg' => 'required',
-//            'total_amount' => 'required',
-//            'containers' => 'required',
-//            'lc_number' => 'required',
-//            'invoice_number' => 'required',
-//            'commission' => 'required',
-//            'bl_number' => 'required',
-//            'contractor_status' => 'required',
-//            'documents' => 'required',
-//        ]);
 
-//        dd($request->all());
+         $request->validate([
+            'contractor_number' => 'required|numeric',
+            'date' => 'required',
+            'port' => 'required',
+            'supplier' => 'required',
+            'etd' => 'required',
+            'eta' => 'required',
+            'buyer' => 'required',
+            'latest_shipment_date' => 'required',
+            'quantity' => 'required|numeric',
+            'price_per_kg' => 'required|numeric',
+            'total_amount' => 'required|numeric',
+            'containers' => 'required',
+            'lc_number' => 'required',
+            'invoice_number' => 'required',
+            'commission' => 'required|numeric',
+            'bl_number' => 'required',
+            'contractor_status' => 'required',
+            'documents' => 'required',
+        ]);
 
         $contractor = new Contractor;
 
@@ -88,12 +87,20 @@ class ContractorController extends Controller
         $contractor->commission = $request->get('commission');
         $contractor->bl_number = $request->get('bl_number');
         $contractor->contractor_status = $request->get('contractor_status');
-        $contractor->documents = 'test';
+
+        $get_documents[] = $request->get('documents');
+        foreach($get_documents as $get_document) {
+            $documents = [
+                $get_document
+            ];
+        }
+        $documents = json_encode($documents);
+
+        $contractor->documents = $documents;
 
         $contractor->save();
+
         return redirect()->back()->with('success' , 'Contract Added Successfully');
-
-
 
     }
 

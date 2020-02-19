@@ -7,9 +7,9 @@
     <meta name="author" content="MHS">
 
     <!--favicon icon-->
-    <link rel="icon" type="image/png" href="assets/img/favicon.png">
+    <link rel="icon" type="image/png" href="http://www.blinksgroup.net/wp-content/uploads/2017/05/links-new-logo-1.png">
 
-    <title>Basic Input Page</title>
+    <title>B-Links</title>
 
     <!--google font-->
     <link href="//fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
@@ -114,108 +114,9 @@
     <!--left side nav toggle end-->
 
     <!--right side nav start-->
-    <ul class="nav navbar-nav ml-auto">
 
 
-        <li class="nav-item dropdown dropdown-slide d-md-down-none">
-            <a class="nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                <i class="ti-bell"></i>
-                <span class="badge badge-danger notification-alarm"> </span>
-            </a>
-            <div class="dropdown-menu dropdown-menu-right">
-
-                <div class="dropdown-header pb-3">
-                    <strong>You have 6 Notifications</strong>
-                </div>
-
-                <a href="#" class="dropdown-item">
-                    <i class="icon-basket-loaded text-primary"></i> New order
-                </a>
-                <a href="#" class="dropdown-item">
-                    <i class="icon-user-follow text-success"></i> New registered member
-                </a>
-                <a href="#" class="dropdown-item">
-                    <i class=" icon-layers text-danger"></i> Server error report
-                </a>
-                <a href="#" class="dropdown-item">
-                    <i class=" icon-note text-warning"></i> Database report
-                </a>
-
-                <a href="#" class="dropdown-item">
-                    <i class=" icon-present text-info"></i> Order confirmation
-                </a>
-
-            </div>
-        </li>
-        <li class="nav-item dropdown dropdown-slide d-md-down-none">
-            <a class="nav-link nav-pill" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                <i class=" ti-view-grid"></i>
-            </a>
-            <div class="dropdown-menu dropdown-menu-right dropdown-menu-ql-gird">
-
-                <div class="dropdown-header pb-3">
-                    <strong>Quick Links</strong>
-                </div>
-
-                <div class="quick-links-grid">
-                    <a href="#" class="ql-grid-item">
-                        <i class="  ti-files text-primary"></i>
-                        <span class="ql-grid-title">New Task</span>
-                    </a>
-                    <a href="#" class="ql-grid-item">
-                        <i class="  ti-check-box text-success"></i>
-                        <span class="ql-grid-title">Assign Task</span>
-                    </a>
-                </div>
-                <div class="quick-links-grid">
-                    <a href="#" class="ql-grid-item">
-                        <i class="  ti-truck text-warning"></i>
-                        <span class="ql-grid-title">Create Orders</span>
-                    </a>
-                    <a href="#" class="ql-grid-item">
-                        <i class=" icon-layers text-info"></i>
-                        <span class="ql-grid-title">New Orders</span>
-                    </a>
-                </div>
-
-            </div>
-        </li>
-
-        <li class="nav-item dropdown dropdown-slide">
-            <a class="nav-link nav-pill user-avatar" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                <img src="assets/img/user.png" alt="John Doe">
-            </a>
-            <div class="dropdown-menu dropdown-menu-right dropdown-menu-accout">
-                <div class="dropdown-header pb-3">
-                    <div class="media d-user">
-                        <img class="align-self-center mr-3" src="assets/img/user.png" alt="John Doe">
-                        <div class="media-body">
-                            <h5 class="mt-0 mb-0">John Doe</h5>
-                            <span>john@gmail.com</span>
-                        </div>
-                    </div>
-                </div>
-
-                <a class="dropdown-item" href="#"><i class=" ti-reload"></i> Activity</a>
-                <a class="dropdown-item" href="#"><i class=" ti-email"></i> Message</a>
-                <a class="dropdown-item" href="#"><i class=" ti-user"></i> Profile</a>
-                <a class="dropdown-item" href="#"><i class=" ti-layers-alt"></i> Projects <span class="badge badge-primary">4</span> </a>
-
-                <div class="dropdown-divider"></div>
-
-                <a class="dropdown-item" href="#"><i class=" ti-lock"></i> Lock Account</a>
-                <a class="dropdown-item" href="#"><i class=" ti-unlock"></i> Logout</a>
-            </div>
-        </li>
-
-        <!--right side toggler-->
-        <li class="nav-item d-lg-none">
-            <button class="navbar-toggler mobile-rightside-toggler" type="button"><i class="icon-options-vertical"></i></button>
-        </li>
-        <li class="nav-item d-md-down-none">
-            <a class="nav-link navbar-toggler right-sidebar-toggler" href="#"><i class="icon-options-vertical"></i></a>
-        </li>
-    </ul>
+@include('_partials.navbar')
 
     <!--right side nav end-->
 </header>
@@ -257,6 +158,16 @@
                         </div>
                         <div class="card-body">
 
+                            @if ($errors->any())
+                                <div class="alert alert-danger">
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
+
                             @if(session('success'))
                                 <div class="alert alert-success">
                                     {{session('success')}}
@@ -268,18 +179,19 @@
                                 <div class="row">
                                     <div class="col-md-6 mb-3">
                                         <label for="validationCustom01">Contractor Number</label>
-                                        <input type="text" name="contractor_number" class="form-control" id="validationCustom01" placeholder="Contractor Number" required>
+                                        <input type="text" name="contractor_number" class="form-control {{ $errors->has('contractor_number') ? ' is-invalid' : '' }}" id="validationCustom01" placeholder="Contractor Number" value="{{old('contractor_number')}}" required>
                                     </div>
                                     <div class="col-md-3 mb-3">
                                         <label for="validationCustom04">Date</label>
-                                        <input type="text" name="date" class="form-control" id="validationCustom04" placeholder="Date" required>
+{{--                                        <input type="text" name="date" class="form-control" id="validationCustom04" placeholder="Date" required>--}}
+                                        <input type="date" name="date" class="form-control {{ $errors->has('date') ? ' is-invalid' : '' }}" id="validationCustom04" value="{{old('date')}}" required>
 {{--                                        <div class="invalid-feedback">--}}
 {{--                                            Please provide a valid state.--}}
 {{--                                        </div>--}}
                                     </div>
                                     <div class="col-md-3 mb-3">
                                         <label for="validationCustom05">Port</label>
-                                        <input type="text" name="port" class="form-control" id="validationCustom05" placeholder="Port" required>
+                                        <input type="text" name="port" class="form-control {{ $errors->has('port') ? ' is-invalid' : '' }}" id="validationCustom05" placeholder="Port" value="{{old('port')}}" required>
 {{--                                        <div class="invalid-feedback">--}}
 {{--                                            Please provide a valid zip.--}}
 {{--                                        </div>--}}
@@ -289,18 +201,18 @@
                                 <div class="row">
                                     <div class="col-md-6 mb-3">
                                         <label for="validationCustom01">Supplier</label>
-                                        <input type="text" name="supplier" class="form-control" id="validationCustom01" placeholder="Supplier" required>
+                                        <input type="text" name="supplier" class="form-control {{ $errors->has('supplier') ? ' is-invalid' : '' }}" id="validationCustom01" placeholder="Supplier" value="{{old('supplier')}}" required>
                                     </div>
                                     <div class="col-md-3 mb-3">
                                         <label for="validationCustom04">ETD</label>
-                                        <input type="text" name="etd" class="form-control" id="validationCustom04" placeholder="ETD" required>
+                                        <input type="text" name="etd" class="form-control {{ $errors->has('etd') ? ' is-invalid' : '' }}" id="validationCustom04" placeholder="ETD" value="{{old('etd')}}" required>
                                         {{--                                        <div class="invalid-feedback">--}}
                                         {{--                                            Please provide a valid state.--}}
                                         {{--                                        </div>--}}
                                     </div>
                                     <div class="col-md-3 mb-3">
                                         <label for="validationCustom05">ETA</label>
-                                        <input type="text" name="eta" class="form-control" id="validationCustom05" placeholder="ETA" required>
+                                        <input type="text" name="eta" class="form-control {{ $errors->has('eta') ? ' is-invalid' : '' }}" id="validationCustom05" placeholder="ETA" value="{{old('eta')}}" required>
                                         {{--                                        <div class="invalid-feedback">--}}
                                         {{--                                            Please provide a valid zip.--}}
                                         {{--                                        </div>--}}
@@ -310,18 +222,19 @@
                                 <div class="row">
                                     <div class="col-md-6 mb-3">
                                         <label for="validationCustom01">Buyer</label>
-                                        <input type="text" name="buyer" class="form-control" id="validationCustom01" placeholder="Buyer" required>
+                                        <input type="text" name="buyer" class="form-control {{ $errors->has('buyer') ? ' is-invalid' : '' }}" id="validationCustom01" placeholder="Buyer" value="{{old('buyer')}}" required>
                                     </div>
                                     <div class="col-md-3 mb-3">
                                         <label for="validationCustom04">Latest Shipment Date</label>
-                                        <input type="text" name="latest_shipment_date" class="form-control" id="validationCustom04" placeholder="Latest Shipment Date" required>
+                                        <input type="date" name="latest_shipment_date" class="form-control {{ $errors->has('latest_shipment_date') ? ' is-invalid' : '' }}" id="validationCustom04" value="{{old('latest_shipment_date')}}" required>
+{{--                                        <input type="text" name="latest_shipment_date" class="form-control" id="validationCustom04" placeholder="Latest Shipment Date" required>--}}
                                         {{--                                        <div class="invalid-feedback">--}}
                                         {{--                                            Please provide a valid state.--}}
                                         {{--                                        </div>--}}
                                     </div>
                                     <div class="col-md-3 mb-3">
                                         <label for="validationCustom05">Quantity</label>
-                                        <input type="text" name="quantity" class="form-control" id="validationCustom05" placeholder="Quantity" required>
+                                        <input type="text" name="quantity" class="form-control {{ $errors->has('quantity') ? ' is-invalid' : '' }}" id="validationCustom05" placeholder="Quantity" value="{{old('quantity')}}" required>
                                         {{--                                        <div class="invalid-feedback">--}}
                                         {{--                                            Please provide a valid zip.--}}
                                         {{--                                        </div>--}}
@@ -331,18 +244,18 @@
                                 <div class="row">
                                     <div class="col-md-4 mb-3">
                                         <label for="validationCustom01">Price Per KG</label>
-                                        <input type="text" name="price_per_kg" class="form-control" id="validationCustom01" placeholder="Price Per KG" required>
+                                        <input type="text" name="price_per_kg" class="form-control {{ $errors->has('price_per_kg') ? ' is-invalid' : '' }}" id="validationCustom01" placeholder="Price Per KG" value="{{old('price_per_kg')}}" required>
                                     </div>
                                     <div class="col-md-4 mb-3">
                                         <label for="validationCustom04">Total Amount</label>
-                                        <input type="text" name="total_amount" class="form-control" id="validationCustom04" placeholder="Total Amount" required>
+                                        <input type="text" name="total_amount" class="form-control {{ $errors->has('total_amount') ? ' is-invalid' : '' }}" id="validationCustom04" placeholder="Total Amount" value="{{old('total_amount')}}" required>
                                         {{--                                        <div class="invalid-feedback">--}}
                                         {{--                                            Please provide a valid state.--}}
                                         {{--                                        </div>--}}
                                     </div>
                                     <div class="col-md-4 mb-3">
                                         <label for="validationCustom05">Containers</label>
-                                        <input type="text" name="containers" class="form-control" id="validationCustom05" placeholder="Containers" required>
+                                        <input type="text" name="containers" class="form-control {{ $errors->has('containers') ? ' is-invalid' : '' }}" id="validationCustom05" placeholder="Containers" value="{{old('containers')}}" required>
                                         {{--                                        <div class="invalid-feedback">--}}
                                         {{--                                            Please provide a valid zip.--}}
                                         {{--                                        </div>--}}
@@ -352,18 +265,18 @@
                                 <div class="row">
                                     <div class="col-md-4 mb-3">
                                         <label for="validationCustom01">LC Number</label>
-                                        <input type="text" name="lc_number" class="form-control" id="validationCustom01" placeholder="LC Number" required>
+                                        <input type="text" name="lc_number" class="form-control {{ $errors->has('lc_number') ? ' is-invalid' : '' }}" id="validationCustom01" placeholder="LC Number" value="{{old('lc_number')}}" required>
                                     </div>
                                     <div class="col-md-4 mb-3">
                                         <label for="validationCustom04">Invoice Number</label>
-                                        <input type="text" name="invoice_number" class="form-control" id="validationCustom04" placeholder="Invoice Number" required>
+                                        <input type="text" name="invoice_number" class="form-control {{ $errors->has('invoice_number') ? ' is-invalid' : '' }}" id="validationCustom04" placeholder="Invoice Number" value="{{old('invoice_number')}}" required>
                                         {{--                                        <div class="invalid-feedback">--}}
                                         {{--                                            Please provide a valid state.--}}
                                         {{--                                        </div>--}}
                                     </div>
                                     <div class="col-md-4 mb-3">
                                         <label for="validationCustom05">Commission %</label>
-                                        <input type="text" name="commission" class="form-control" id="validationCustom05" placeholder="Commission %" required>
+                                        <input type="text" name="commission" class="form-control {{ $errors->has('commission') ? ' is-invalid' : '' }}" id="validationCustom05" placeholder="Commission %" value="{{old('commission')}}" required>
                                         {{--                                        <div class="invalid-feedback">--}}
                                         {{--                                            Please provide a valid zip.--}}
                                         {{--                                        </div>--}}
@@ -373,11 +286,11 @@
                                 <div class="row">
                                     <div class="col-md-4 mb-3">
                                         <label for="validationCustom01">BL Number</label>
-                                        <input type="text" name="bl_number" class="form-control" id="validationCustom01" placeholder="BL Number" required>
+                                        <input type="text" name="bl_number" class="form-control {{ $errors->has('bl_number') ? ' is-invalid' : '' }}" id="validationCustom01" placeholder="BL Number" value="{{old('bl_number')}}" required>
                                     </div>
                                     <div class="col-md-4 mb-3">
                                         <label for="validationCustom04">Contractor Status</label>
-                                        <input type="text" name="contractor_status" class="form-control" id="validationCustom04" placeholder="Contractor Status" required>
+                                        <input type="text" name="contractor_status" class="form-control {{ $errors->has('contractor_status') ? ' is-invalid' : '' }}" id="validationCustom04" placeholder="Contractor Status" value="{{old('contractor_status')}}" required>
                                         {{--                                        <div class="invalid-feedback">--}}
                                         {{--                                            Please provide a valid state.--}}
                                         {{--                                        </div>--}}
@@ -386,20 +299,20 @@
                                         <label for="validationCustom05">Documents</label>
                                                 <br>
                                         <label class="custom-control custom-checkbox">
-                                            <input type="checkbox" name="sc" class="custom-control-input">
+                                            <input type="checkbox" name="documents[]" value="sc" class="custom-control-input">
                                             <span class="custom-control-indicator"></span>
                                             <span class="custom-control-description">SC</span>
                                         </label>
 
                                         <br/>
                                         <label class="custom-control custom-checkbox">
-                                            <input type="checkbox" name="coo" class="custom-control-input">
+                                            <input type="checkbox" name="documents[]" value="coo" class="custom-control-input">
                                             <span class="custom-control-indicator"></span>
                                             <span class="custom-control-description">COO</span>
                                         </label>
                                         <br/>
                                         <label class="custom-control custom-checkbox">
-                                            <input type="checkbox" name="B/L/packing-list" class="custom-control-input">
+                                            <input type="checkbox" name="documents[]" value="b-l-packing-list" class="custom-control-input">
                                             <span class="custom-control-indicator"></span>
                                             <span class="custom-control-description">B/L/Packing List</span>
                                         </label>

@@ -20,7 +20,7 @@
             </li> --}}
               <li class="sub-menu">
                     <a href="javascript:;">
-                        <span>Contract</span>
+                        <span>Contractors</span>
                     </a>
                     <ul class="sub">
                         <li><a href="{{ route('allContractor') }}">All Data</a></li>
@@ -28,7 +28,7 @@
                     </ul>
                 </li>
              @if(auth()->user()->is_admin == 1)
-            
+
                 <li class="sub-menu">
                     <a href="javascript:;">
                         <span>Users</span>
