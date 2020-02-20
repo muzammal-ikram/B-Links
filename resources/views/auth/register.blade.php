@@ -9,6 +9,8 @@
         @include('_partials.sidebar')
         <main class="main-content">
             <div class="container">
+            
+                <form class="form-signin" style="margin-top: 5%; margin-bottom:5%;" method="POST" action="{{ route('registerUser') }}">
                 @if (session('success'))
                     <div class="alert alert-success" role="alert">
                         {{ session('success') }}
@@ -18,7 +20,6 @@
                         {{ session('error') }}
                     </div>
                 @endif
-                <form class="form-signin" style="margin-top: 5%; margin-bottom:5%;" method="POST" action="{{ route('registerUser') }}">
                     @csrf
                     <a href="http://www.blinksgroup.net/" class="brand text-center">
                         <img src="assets/img/b-links-logo.png" alt=""/>

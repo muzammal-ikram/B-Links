@@ -10,7 +10,6 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
 // use Datatables;
 use DB;
-
 class RegisterController extends Controller
 {
     /*
@@ -93,11 +92,31 @@ class RegisterController extends Controller
     public function allUsers(Request $request)
     {
         if($request->ajax()){
-            $users = DB::table('users')->select('*');
+
+            $users = User::where('id', '!=', auth()->user()->id)->get();
             return \Datatables::of($users)
+            ->addColumn('action', function($user) {
+                return view('_partials.user_datatable',['user'=>$user]);
+            })
+            ->addColumn('created_at', function ($user) {
+                    $created_at = $user->created_at->format('M-d-Y');
+                return $created_at;
+            })
+            ->rawColumns(['action' => 'action', 'created_at'=>'created_at'])
                 ->make(true);
         }
         return view('users.all_users');
+    }
+    public function deleteUser($id)
+    {
+        $user = User::findOrFail($id);
+        $userDelete = $user->delete();
+        if($userDelete){
+            return redirect()->back()->with('success', 'User Deleted Successfully!');
+        }else{
+            return redirect()->back()->with('error', 'User Deleted Failed!');
+        }
+
     }
     
 }

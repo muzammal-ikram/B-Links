@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('auth.login');
+    return redirect('/login');
 });
 
 Auth::routes();
@@ -25,4 +25,4 @@ Route::get('/all-contractor', 'ContractorController@allContractor')->name('allCo
 Route::post('/create-contractor', 'ContractorController@store')->name('create-contractor');
 Route::post('/register-user', 'Auth\RegisterController@registerUser')->name('registerUser');
 Route::get('/all-users', 'Auth\RegisterController@allUsers')->name('allUsers');
-
+Route::delete('/delete-user/{id}', 'Auth\RegisterController@deleteUser')->name('deleteUser');

@@ -28,8 +28,17 @@
                                     Select 2
                                 </div>
                             </div>
-                            <div class="card-body">           
-                                <table id="users" class="table table-hover table-condensed" style="width:100%">
+                            <div class="card-body">  
+            @if (session('success'))
+                    <div class="alert alert-success" role="alert">
+                        {{ session('success') }}
+                    </div>
+                @elseif(session('error'))
+                    <div class="alert alert-danger" role="alert">
+                        {{ session('error') }}
+                    </div>
+                @endif
+                                <table id="users" class="table table-striped table-bordered" style="width:100%">
                                     <thead>
                                         <tr>
                                             <th>Id</th>
@@ -37,10 +46,15 @@
                                             <th>Email</th>
                                             <th>User Type</th>
                                             <th>Created At</th>
-                                            {{-- <th>Actions</th> --}}
+                                            <th>Actions</th>
                                         </tr>
                                     </thead>
                                 </table>
+
+                                {{-- Model --}}
+
+
+                                    
                             </div>
                         </div>
                     </div>
@@ -86,6 +100,7 @@ $(document).ready(function() {
             }
         },
             {data: 'created_at', name: 'created_at'},
+             {data: 'action', name: 'action'}
         ]
     });
 });

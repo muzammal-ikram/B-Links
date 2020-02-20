@@ -18,9 +18,9 @@
         </li>
         <li class="nav-item d-md-down-none-">
             <!--search start-->
-            <a class="nav-link search-toggle" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+            {{-- <a class="nav-link search-toggle" href="#" role="button" aria-haspopup="true" aria-expanded="false">
                 <i class="ti-search"></i>
-            </a>
+            </a> --}}
             <div class="search-container">
                 <div class="outer-close search-toggle">
                     <a class="close"><span></span></a>
@@ -79,39 +79,7 @@
     <!--right side nav start-->
     <ul class="nav navbar-nav ml-auto">
 
-
-        <li class="nav-item dropdown dropdown-slide d-md-down-none">
-            <a class="nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                <i class="ti-bell"></i>
-                <span class="badge badge-danger notification-alarm"> </span>
-            </a>
-            <div class="dropdown-menu dropdown-menu-right">
-
-                <div class="dropdown-header pb-3">
-                    <strong>You have 6 Notifications</strong>
-                </div>
-
-                <a href="#" class="dropdown-item">
-                    <i class="icon-basket-loaded text-primary"></i> New order
-                </a>
-                <a href="#" class="dropdown-item">
-                    <i class="icon-user-follow text-success"></i> New registered member
-                </a>
-                <a href="#" class="dropdown-item">
-                    <i class=" icon-layers text-danger"></i> Server error report
-                </a>
-                <a href="#" class="dropdown-item">
-                    <i class=" icon-note text-warning"></i> Database report
-                </a>
-
-                <a href="#" class="dropdown-item">
-                    <i class=" icon-present text-info"></i> Order confirmation
-                </a>
-
-            </div>
-        </li>
-
-        <li class="nav-item dropdown dropdown-slide">
+        <li class="nav-item dropdown dropdown-slide" style="margin-right:30px;">
             <a class="nav-link nav-pill user-avatar" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
                 <img src="assets/img/user.png" alt="John Doe">
             </a>
@@ -120,33 +88,28 @@
                     <div class="media d-user">
                         <img class="align-self-center mr-3" src="assets/img/user.png" alt="John Doe">
                         <div class="media-body">
-                            <h5 class="mt-0 mb-0">John Doe</h5>
-                            <span>john@gmail.com</span>
+                            <h5 class="mt-0 mb-0">{{ auth()->user()->name }}</h5>
+                            <span>{{ auth()->user()->email }}</span>
                         </div>
                     </div>
                 </div>
 
-                <a class="dropdown-item" href="#"><i class=" ti-reload"></i> Activity</a>
-                <a class="dropdown-item" href="#"><i class=" ti-email"></i> Message</a>
-                <a class="dropdown-item" href="#"><i class=" ti-user"></i> Profile</a>
-                <a class="dropdown-item" href="#"><i class=" ti-layers-alt"></i> Projects <span class="badge badge-primary">4</span> </a>
+           
+                <a class="dropdown-item" href="#"><i class=" ti-lock"></i> Change Password</a>
 
                 <div class="dropdown-divider"></div>
-
-                <a class="dropdown-item" href="#"><i class=" ti-lock"></i> Lock Account</a>
 
                     <a class="dropdown-item" href="{{ route('logout') }}"
                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                        {{ __('Logout') }}
+                 <i class=" ti-unlock"></i>        {{ __('Logout') }}
                     </a>
 
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                         @csrf
                     </form>
 
-
-                <a class="dropdown-item" href="#"><i class=" ti-unlock"></i> Logout</a>
+ 
             </div>
         </li>
 

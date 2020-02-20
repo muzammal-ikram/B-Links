@@ -23,8 +23,7 @@
                         <span>Contractors</span>
                     </a>
                     <ul class="sub">
-                        <li><a href="{{ route('allContractor') }}">All Data</a></li>
-                        <li><a href="{{route('addData')}}">Add Data</a></li>
+                        <li><a href="{{route('addData')}}">Add Contract</a></li>
                     </ul>
                 </li>
              @if(auth()->user()->is_admin == 1)

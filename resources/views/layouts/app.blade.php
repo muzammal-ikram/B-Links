@@ -27,7 +27,12 @@
 
     <!--custom css-->
     <link href="assets/css/main.css" rel="stylesheet">
-
+<style>
+    .main_area_width{
+        width: 50%;
+        overflow-y: scroll;
+    }
+</style>
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
     <script src="assets/vendor/html5shiv.js"></script>
@@ -36,16 +41,17 @@
 </head>
 <body class="app header-fixed left-sidebar-fixed right-sidebar-fixed right-sidebar-overlay right-sidebar-hidden">
 
-
         {{-- <main class="py-4"> --}}
             @yield('content')
             @stack('scripts')
         {{-- </main> --}}
+        
+{{-- <script src="{{ asset('assets/vendor/jquery/jquery.min.js') }}"></script> --}}
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
 
-
-<!-- Placed js at the end of the page so the pages load faster -->
-<script src="{{ asset('assets/vendor/jquery/jquery.min.js') }}"></script>
-<script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+{{-- <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script> --}}
 <script src="{{ asset('assets/vendor/jquery-ui-1.12.1/jquery-ui.min.js') }}"></script>
 <script src="{{ asset('assets/vendor/popper.min.js') }}"></script>
 <script src="{{ asset('assets/vendor/bootstrap/js/bootstrap.min.js') }}"></script>
