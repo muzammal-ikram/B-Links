@@ -3,7 +3,7 @@
     <!--brand start-->
     <div class="navbar-brand navbar-brand-dark">
         <a class="" href="">
-            <img src="assets/img/b-links-logo.png" alt="" height="40px" width="150px"/>
+            <img src="{{ asset('assets/img/b-links-logo.png') }}" alt="" height="40px" width="150px"/>
         </a>
     </div>
     <!--brand end-->
@@ -30,7 +30,7 @@
                     <div class="row">
                         <div class="col text-left">
                             <a class="" href="#">
-                                <img src="assets/img/logo.png" srcset="assets/img/logo@2x.png 2x" alt="">
+                                <img src="{{ asset('assets/img/logo.png') }}" srcset="assets/img/logo@2x.png 2x" alt="">
                             </a>
                             <form class="mt-3">
                                 <div class="form-row align-items-center">
@@ -81,7 +81,7 @@
 
         <li class="nav-item dropdown dropdown-slide" style="margin-right:30px;">
             <a class="nav-link nav-pill user-avatar" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                <img src="assets/img/user.png" alt="John Doe">
+                <img src="{{ asset('assets/img/user.png') }}" alt="John Doe">
             </a>
             <div class="dropdown-menu dropdown-menu-right dropdown-menu-accout">
                 <div class="dropdown-header pb-3">

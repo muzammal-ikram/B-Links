@@ -118,5 +118,26 @@ class RegisterController extends Controller
         }
 
     }
+    public function editUser($id)
+    {
+        $data['user'] = User::findOrFail($id);
+        if($data['user']){
+            return view('auth.register', $data);
+        }
+        return redirect()->back()->with('error', 'Something Went Wrong!');
+    }
+    public function updateUser(Request $request, $id)
+    {
+        $user = User::findOrFail($id);
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->is_admin = $request->user_type;
+        $user->save();
+        if($user){
+            return redirect()->back()->with('success', 'User Updated Successfully!');
+        }else{
+            return redirect()->back()->with('error', 'User Updated Failed!');
+        }
+    }
     
 }

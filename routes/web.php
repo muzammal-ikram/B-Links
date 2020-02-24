@@ -26,3 +26,5 @@ Route::post('/create-contractor', 'ContractorController@store')->name('create-co
 Route::post('/register-user', 'Auth\RegisterController@registerUser')->name('registerUser');
 Route::get('/all-users', 'Auth\RegisterController@allUsers')->name('allUsers');
 Route::delete('/delete-user/{id}', 'Auth\RegisterController@deleteUser')->name('deleteUser');
+Route::get('user/{id}/edit', 'Auth\RegisterController@editUser')->name('userEdit');
+Route::put('user/{id}/update', 'Auth\RegisterController@updateUser')->name('UserUpdate');

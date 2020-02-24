@@ -17,7 +17,7 @@ class ContractorController extends Controller
     }
     public function allContractor(Request $request)
     {
-        $contractors = DB::table('contractors')->select('*')->get();
+        $contractors = Contractor::get();
         dd($contractors);
         if($request->ajax()){
             $contractors = DB::table('contractors')->select('*');
