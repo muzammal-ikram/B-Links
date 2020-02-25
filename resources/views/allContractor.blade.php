@@ -72,15 +72,19 @@
 
 @endsection
 @push('scripts')
-
-<script src="{{ asset('assets/vendor/jquery/jquery.min.js') }}"></script>
-
+<script src="https://cdn.datatables.net/buttons/1.6.1/js/dataTables.buttons.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.flash.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.print.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function() {
 
     Table = $('#contractors').DataTable({
         "processing": true,
         "serverSide": true,
+        buttons: [
+           'copy', 'csv', 'excel', 'pdf', 'print'
+        ],
+         dom: 'Bfrtip',
         "ajax": "{{ route('allContractor') }}",
         "columns": [
             {data: 'id', name: 'id'},

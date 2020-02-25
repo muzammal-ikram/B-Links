@@ -21,10 +21,6 @@
     <link href="{{ asset('assets/vendor/simple-line-icons/css/simple-line-icons.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/vendor/themify-icons/css/themify-icons.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/vendor/weather-icons/css/weather-icons.min.css') }}" rel="stylesheet">
-
-    <link href="{{asset('assets/vendor/data-tables/dataTables.bootstrap4.min.css')}}" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.6.0/css/buttons.dataTables.min.css">
-
     <!--custom css-->
     <link href="{{ asset('assets/css/main.css') }}" rel="stylesheet">
 <style>
@@ -46,20 +42,7 @@
             @stack('scripts')
         {{-- </main> --}}
         
-{{-- <script src="{{ asset('assets/vendor/jquery/jquery.min.js') }}"></script> --}}
-<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
-    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
-
-{{-- <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script> --}}
-<script src="{{ asset('assets/vendor/jquery-ui-1.12.1/jquery-ui.min.js') }}"></script>
-<script src="{{ asset('assets/vendor/popper.min.js') }}"></script>
-<script src="{{ asset('assets/vendor/bootstrap/js/bootstrap.min.js') }}"></script>
-<script src="{{ asset('assets/vendor/jquery-ui-touch/jquery.ui.touch-punch-improved.js') }}"></script>
-<script src="{{ asset('assets/vendor/lobicard/js/lobicard.js') }}"></script>
-<script class="include" type="text/javascript" src="{{ asset('assets/vendor/jquery.dcjqaccordion.2.7.js') }}"></script>
-<script src="{{ asset('assets/vendor/jquery.scrollTo.min.js') }}"></script>
-
+<script src="{{ asset('assets/vendor/jquery/jquery.min.js') }}"></script>
 <!--echarts-->
 <script type="text/javascript" src="{{ asset('assets/vendor/echarts/echarts-all-3.js') }}"></script>
 <!--init echarts-->

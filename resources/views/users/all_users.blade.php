@@ -38,7 +38,10 @@
                         {{ session('error') }}
                     </div>
                 @endif
-                                <table id="users" class="table table-striped table-bordered" style="width:100%">
+                  <div class="table-responsive">
+            {{-- {!! $dataTable->table(['class'=>'table']) !!} --}}
+                    </div>
+                                {{-- <table id="users" class="table table-striped table-bordered" style="width:100%">
                                     <thead>
                                         <tr>
                                             <th>Id</th>
@@ -49,8 +52,7 @@
                                             <th>Actions</th>
                                         </tr>
                                     </thead>
-                                </table>
-
+                                </table> --}}
                                 {{-- Model --}}
 
 
@@ -72,15 +74,22 @@
 
 @endsection
 @push('scripts')
-
-<script src="{{ asset('assets/vendor/jquery/jquery.min.js') }}"></script>
-
+{{--   buttons: [
+           'print'
+        ],
+         dom: 'Bfrtip', --}}
+         {{-- <script src="https://code.jquery.com/jquery-3.3.1.js"></script> --}}
+{{-- <script src="{{ asset('assets/vendor/jquery/jquery.min.js') }}"></script> --}}
+{{-- 
 <script type="text/javascript">
 $(document).ready(function() {
 
     Table = $('#users').DataTable({
         "processing": true,
         "serverSide": true,
+      buttons: [
+           'print'
+        ],
         "ajax": "{{ route('allUsers') }}",
         "columns": [
             {data: 'id', name: 'id'},
@@ -104,7 +113,7 @@ $(document).ready(function() {
         ]
     });
 });
-</script>
+</script> --}}
 
 
 @endpush

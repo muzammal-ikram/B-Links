@@ -24,7 +24,13 @@ Route::get('/all-contractor', 'ContractorController@allContractor')->name('allCo
 
 Route::post('/create-contractor', 'ContractorController@store')->name('create-contractor');
 Route::post('/register-user', 'Auth\RegisterController@registerUser')->name('registerUser');
-Route::get('/all-users', 'Auth\RegisterController@allUsers')->name('allUsers');
+Route::get('/all-users', 'UserController@allUsers')->name('allUsers');
 Route::delete('/delete-user/{id}', 'Auth\RegisterController@deleteUser')->name('deleteUser');
 Route::get('user/{id}/edit', 'Auth\RegisterController@editUser')->name('userEdit');
 Route::put('user/{id}/update', 'Auth\RegisterController@updateUser')->name('UserUpdate');
+Route::get('change-password', 'Auth\RegisterController@changePassword');
+Route::post('change-password', 'Auth\RegisterController@userPasswordChange');
+
+
+
+
