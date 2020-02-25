@@ -16,20 +16,20 @@
 
 
     <!--common style-->
-    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="assets/vendor/lobicard/css/lobicard.css" rel="stylesheet">
-    <link href="assets/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-    <link href="assets/vendor/simple-line-icons/css/simple-line-icons.css" rel="stylesheet">
-    <link href="assets/vendor/themify-icons/css/themify-icons.css" rel="stylesheet">
-    <link href="assets/vendor/weather-icons/css/weather-icons.min.css" rel="stylesheet">
+        <link href="{{url('assets/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{url('assets/vendor/lobicard/css/lobicard.css')}}" rel="stylesheet">
+    <link href="{{url('assets/vendor/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet">
+    <link href="{{url('assets/vendor/simple-line-icons/css/simple-line-icons.css')}}" rel="stylesheet">
+    <link href="{{url('assets/vendor/themify-icons/css/themify-icons.css')}}" rel="stylesheet">
+    <link href="{{url('assets/vendor/weather-icons/css/weather-icons.min.css')}}" rel="stylesheet">
 
     <!--custom css-->
-    <link href="assets/css/main.css" rel="stylesheet">
+    <link href="{{url('assets/css/main.css')}}" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
-    <script src="assets/vendor/html5shiv.js"></script>
-    <script src="assets/vendor/respond.min.js"></script>
+    <script src="{{url('assets/vendor/html5shiv.js')}}"></script>
+    <script src="{{url('assets/vendor/respond.min.js')}}"></script>
     <![endif]-->
 </head>
 <body class="app header-fixed left-sidebar-fixed right-sidebar-fixed right-sidebar-overlay right-sidebar-hidden">
@@ -40,7 +40,7 @@
     <!--brand start-->
     <div class="navbar-brand">
         <a class="" href="index.html">
-            <img src="assets/img/logo-dark.png" srcset="assets/img/logo-dark@2x.png 2x" alt="">
+            <img src="{{url('assets/img/logo-dark.png')}}" srcset="assets/img/logo-dark@2x.png 2x" alt="">
         </a>
     </div>
     <!--brand end-->
@@ -67,7 +67,7 @@
                     <div class="row">
                         <div class="col text-left">
                             <a class="" href="#">
-                                <img src="assets/img/logo.png" srcset="assets/img/logo@2x.png 2x" alt="">
+                                <img src="{{url('assets/img/logo.png')}}" srcset="assets/img/logo@2x.png 2x" alt="">
                             </a>
                             <form class="mt-3">
                                 <div class="form-row align-items-center">
@@ -118,7 +118,7 @@
 
 @include('_partials.navbar')
 
-    <!--right side nav end-->
+<!--right side nav end-->
 </header>
 <!--===========header end===========-->
 
@@ -127,18 +127,18 @@
 
     <!--left sidebar start-->
 @include('_partials.sidebar')
-    <!--left sidebar end-->
+<!--left sidebar end-->
 
     <!--main contents start-->
     <main class="main-content">
         <!--page title start-->
         <div class="page-title">
             <h4 class="mb-0"> Add Contractor
-{{--                <small>basic input examples</small>--}}
+                {{--                <small>basic input examples</small>--}}
             </h4>
             <ol class="breadcrumb mb-0 pl-0 pt-1 pb-0">
                 <li class="breadcrumb-item"><a href="#" class="default-color">Dashboard</a></li>
-                <li class="breadcrumb-item active">Add Contractor</li>
+                <li class="breadcrumb-item active">Edit Contractor</li>
             </ol>
         </div>
         <!--page title end-->
@@ -174,12 +174,12 @@
                                 </div>
                             @endif
 
-                            <form class="container" action="/create-contractor" method="POST" id="needs-validation" novalidate>
+                            <form class="container" action="{{url('/update-contractor/'.$contractor->id)}}" method="POST" id="needs-validation" novalidate>
                                 @csrf
                                 <div class="row">
                                     <div class="col-md-3 mb-3">
                                         <label for="validationCustom04">Date</label>
-                                        <input type="date" name="date" class="form-control {{ $errors->has('date') ? ' is-invalid' : '' }}" id="validationCustom04" value="{{old('date')}}" required>
+                                        <input type="date" name="date" class="form-control {{ $errors->has('date') ? ' is-invalid' : '' }}" id="validationCustom04" value="{{$contractor->date}}" required>
                                         <div class="invalid-feedback">
                                             Please provide a Date.
                                         </div>
@@ -187,7 +187,7 @@
 
                                     <div class="col-md-6 mb-3">
                                         <label for="validationCustom01">Contractor Number</label>
-                                        <input type="text" name="contractor_number" class="form-control {{ $errors->has('contractor_number') ? ' is-invalid' : '' }}" id="validationCustom01"  value="{{old('contractor_number')}}" required>
+                                        <input type="text" name="contractor_number" class="form-control {{ $errors->has('contractor_number') ? ' is-invalid' : '' }}" id="validationCustom01"  value="{{$contractor->contractor_number}}" required>
                                         <div class="invalid-feedback">
                                             Please provide a Contractor Number.
                                         </div>
@@ -195,7 +195,7 @@
 
                                     <div class="col-md-3 mb-3">
                                         <label for="validationCustom04">Count</label>
-                                        <input type="text" name="count" class="form-control {{ $errors->has('date') ? ' is-invalid' : '' }}" id="validationCustom04" value="{{old('count')}}" required>
+                                        <input type="text" name="count" class="form-control {{ $errors->has('date') ? ' is-invalid' : '' }}" id="validationCustom04" value="{{$contractor->count}}" required>
                                         <div class="invalid-feedback">
                                             Please provide a Count.
                                         </div>
@@ -205,21 +205,21 @@
                                 <div class="row">
                                     <div class="col-md-4 mb-3">
                                         <label for="validationCustom01">Seller Name</label>
-                                        <input type="text" name="seller_name" class="form-control {{ $errors->has('seller_name') ? ' is-invalid' : '' }}" id="validationCustom01"  value="{{old('seller_name')}}" required>
+                                        <input type="text" name="seller_name" class="form-control {{ $errors->has('seller_name') ? ' is-invalid' : '' }}" id="validationCustom01"  value="{{$contractor->seller_name}}" required>
                                         <div class="invalid-feedback">
                                             Please provide a Seller Name.
                                         </div>
                                     </div>
                                     <div class="col-md-4 mb-3">
                                         <label for="validationCustom01">Seller Address</label>
-                                        <input type="text" name="seller_address" class="form-control {{ $errors->has('seller_address') ? ' is-invalid' : '' }}" id="validationCustom01"  value="{{old('seller_address')}}" required>
+                                        <input type="text" name="seller_address" class="form-control {{ $errors->has('seller_address') ? ' is-invalid' : '' }}" id="validationCustom01"  value="{{$contractor->seller_address}}" required>
                                         <div class="invalid-feedback">
                                             Please provide a Seller Address.
                                         </div>
                                     </div>
                                     <div class="col-md-4 mb-3">
                                         <label for="validationCustom01">Seller Country</label>
-                                        <input type="text" name="seller_country" class="form-control {{ $errors->has('seller_country') ? ' is-invalid' : '' }}" id="validationCustom01"  value="{{old('seller_country')}}" required>
+                                        <input type="text" name="seller_country" class="form-control {{ $errors->has('seller_country') ? ' is-invalid' : '' }}" id="validationCustom01"  value="{{$contractor->seller_country}}" required>
                                         <div class="invalid-feedback">
                                             Please provide a Seller Country.
                                         </div>
@@ -232,21 +232,21 @@
 
                                     <div class="col-md-4 mb-3">
                                         <label for="validationCustom01">Buyer Name</label>
-                                        <input type="text" name="buyer_name" class="form-control {{ $errors->has('buyer_name') ? ' is-invalid' : '' }}" id="validationCustom01" value="{{old('buyer_name')}}" required>
+                                        <input type="text" name="buyer_name" class="form-control {{ $errors->has('buyer_name') ? ' is-invalid' : '' }}" id="validationCustom01" value="{{$contractor->buyer_name}}" required>
                                         <div class="invalid-feedback">
                                             Please provide a Buyer Name
                                         </div>
                                     </div>
                                     <div class="col-md-4 mb-3">
                                         <label for="validationCustom01">Buyer Address</label>
-                                        <input type="text" name="buyer_address" class="form-control {{ $errors->has('buyer_address') ? ' is-invalid' : '' }}" id="validationCustom01" value="{{old('buyer_address')}}" required>
+                                        <input type="text" name="buyer_address" class="form-control {{ $errors->has('buyer_address') ? ' is-invalid' : '' }}" id="validationCustom01" value="{{$contractor->buyer_address}}" required>
                                         <div class="invalid-feedback">
                                             Please provide a Buyer Address.
                                         </div>
                                     </div>
                                     <div class="col-md-4 mb-3">
                                         <label for="validationCustom01">Buyer Country</label>
-                                        <input type="text" name="buyer_country" class="form-control {{ $errors->has('buyer_country') ? ' is-invalid' : '' }}" id="validationCustom01" value="{{old('buyer_country')}}" required>
+                                        <input type="text" name="buyer_country" class="form-control {{ $errors->has('buyer_country') ? ' is-invalid' : '' }}" id="validationCustom01" value="{{$contractor->buyer_country}}" required>
                                         <div class="invalid-feedback">
                                             Please provide a Buyer Country.
                                         </div>
@@ -258,21 +258,21 @@
 
                                     <div class="col-md-4 mb-3">
                                         <label for="validationCustom01">LC Opener Name</label>
-                                        <input type="text" name="lc_opener_name" class="form-control {{ $errors->has('lc_opener_name') ? ' is-invalid' : '' }}" id="validationCustom01" value="{{old('lc_opener_name')}}" required>
+                                        <input type="text" name="lc_opener_name" class="form-control {{ $errors->has('lc_opener_name') ? ' is-invalid' : '' }}" id="validationCustom01" value="{{$contractor->lc_opener_name}}" required>
                                         <div class="invalid-feedback">
                                             Please provide a LC Opener Name.
                                         </div>
                                     </div>
                                     <div class="col-md-4 mb-3">
                                         <label for="validationCustom01">LC Opener Address</label>
-                                        <input type="text" name="lc_opener_address" class="form-control {{ $errors->has('lc_opener_address') ? ' is-invalid' : '' }}" id="validationCustom01" value="{{old('lc_opener_address')}}" required>
+                                        <input type="text" name="lc_opener_address" class="form-control {{ $errors->has('lc_opener_address') ? ' is-invalid' : '' }}" id="validationCustom01" value="{{$contractor->lc_opener_address}}" required>
                                         <div class="invalid-feedback">
                                             Please provide a LC Opener Address.
                                         </div>
                                     </div>
                                     <div class="col-md-4 mb-3">
                                         <label for="validationCustom01">LC Opener Country</label>
-                                        <input type="text" name="lc_opener_country" class="form-control {{ $errors->has('lc_opener_country') ? ' is-invalid' : '' }}" id="validationCustom01" value="{{old('lc_opener_country')}}" required>
+                                        <input type="text" name="lc_opener_country" class="form-control {{ $errors->has('lc_opener_country') ? ' is-invalid' : '' }}" id="validationCustom01" value="{{$contractor->lc_opener_country}}" required>
                                         <div class="invalid-feedback">
                                             Please provide a LC Opener Country.
                                         </div>
@@ -284,28 +284,28 @@
                                 <div class="row">
                                     <div class="col-md-3 mb-3">
                                         <label for="validationCustom01">FCLS</label>
-                                        <input type="text" name="fcls" class="form-control {{ $errors->has('fcls') ? ' is-invalid' : '' }}" id="validationCustom01" value="{{old('fcls')}}" required>
+                                        <input type="text" name="fcls" class="form-control {{ $errors->has('fcls') ? ' is-invalid' : '' }}" id="validationCustom01" value="{{$contractor->fcls}}" required>
                                         <div class="invalid-feedback">
                                             Please provide a FCLS.
                                         </div>
                                     </div>
                                     <div class="col-md-3 mb-3">
                                         <label for="validationCustom01">Price Per KG ($)</label>
-                                        <input type="text" name="price_per_kg" class="form-control {{ $errors->has('price_per_kg') ? ' is-invalid' : '' }}" id="validationCustom01" value="{{old('price_per_kg')}}" required>
+                                        <input type="text" name="price_per_kg" class="form-control {{ $errors->has('price_per_kg') ? ' is-invalid' : '' }}" id="validationCustom01" value="{{$contractor->price_per_kg}}" required>
                                         <div class="invalid-feedback">
                                             Please provide a Price Per Kg.
                                         </div>
                                     </div>
                                     <div class="col-md-3 mb-3">
                                         <label for="validationCustom01">KG's</label>
-                                        <input type="text" name="kg" class="form-control {{ $errors->has('kg') ? ' is-invalid' : '' }}" id="validationCustom01" value="{{old('kg')}}" required>
+                                        <input type="text" name="kg" class="form-control {{ $errors->has('kg') ? ' is-invalid' : '' }}" id="validationCustom01" value="{{$contractor->kg}}" required>
                                         <div class="invalid-feedback">
                                             Please provide a KG's.
                                         </div>
                                     </div>
                                     <div class="col-md-3 mb-3">
                                         <label for="validationCustom04">Total Amount</label>
-                                        <input type="text" name="total_amount" class="form-control {{ $errors->has('total_amount') ? ' is-invalid' : '' }}" id="validationCustom04" value="{{old('total_amount')}}" required>
+                                        <input type="text" name="total_amount" class="form-control {{ $errors->has('total_amount') ? ' is-invalid' : '' }}" id="validationCustom04" value="{{$contractor->total_amount}}" required>
                                         <div class="invalid-feedback">
                                             Please provide a Total Amount.
                                         </div>
@@ -316,7 +316,7 @@
                                 <div class="row">
                                     <div class="col-md-3 mb-3">
                                         <label for="validationCustom01">LSD</label>
-                                        <input type="text" name="lsd" class="form-control {{ $errors->has('lsd') ? ' is-invalid' : '' }}" id="validationCustom01"  value="{{old('lsd')}}" required>
+                                        <input type="text" name="lsd" class="form-control {{ $errors->has('lsd') ? ' is-invalid' : '' }}" id="validationCustom01"  value="{{$contractor->lsd}}" required>
                                         <div class="invalid-feedback">
                                             Please provide a LSD.
                                         </div>
@@ -333,14 +333,14 @@
                                     </div>
                                     <div class="col-md-3 mb-3">
                                         <label for="validationCustom01">LC Number</label>
-                                        <input type="text" name="lc_number" class="form-control {{ $errors->has('lc_number') ? ' is-invalid' : '' }}" id="validationCustom01"  value="{{old('lc_number')}}" required>
+                                        <input type="text" name="lc_number" class="form-control {{ $errors->has('lc_number') ? ' is-invalid' : '' }}" id="validationCustom01"  value="{{$contractor->lc_number}}" required>
                                         <div class="invalid-feedback">
                                             Please provide a LC Number.
                                         </div>
                                     </div>
                                     <div class="col-md-3 mb-3">
                                         <label for="validationCustom04">Invoice Number</label>
-                                        <input type="text" name="invoice_number" class="form-control {{ $errors->has('invoice_number') ? ' is-invalid' : '' }}" id="validationCustom04" value="{{old('invoice_number')}}" required>
+                                        <input type="text" name="invoice_number" class="form-control {{ $errors->has('invoice_number') ? ' is-invalid' : '' }}" id="validationCustom04" value="{{$contractor->invoice_number}}" required>
                                         <div class="invalid-feedback">
                                             Please provide a Invoice Number.
                                         </div>
@@ -353,7 +353,7 @@
 
                                     <div class="col-md-3 mb-3">
                                         <label for="validationCustom01">BL Number</label>
-                                        <input type="text" name="bl_number" class="form-control {{ $errors->has('bl_number') ? ' is-invalid' : '' }}" id="validationCustom01" value="{{old('bl_number')}}" required>
+                                        <input type="text" name="bl_number" class="form-control {{ $errors->has('bl_number') ? ' is-invalid' : '' }}" id="validationCustom01" value="{{$contractor->bl_number}}" required>
                                         <div class="invalid-feedback">
                                             Please provide a BL Number.
                                         </div>
@@ -361,21 +361,21 @@
 
                                     <div class="col-md-3 mb-3">
                                         <label for="validationCustom04">ETD</label>
-                                        <input type="date" name="etd" class="form-control {{ $errors->has('etd') ? ' is-invalid' : '' }}" id="validationCustom04" value="{{old('etd')}}" required>
+                                        <input type="date" name="etd" class="form-control {{ $errors->has('etd') ? ' is-invalid' : '' }}" id="validationCustom04" value="{{$contractor->etd}}" required>
                                         <div class="invalid-feedback">
                                             Please provide a ETD.
                                         </div>
                                     </div>
                                     <div class="col-md-3 mb-3">
                                         <label for="validationCustom05">ETA</label>
-                                        <input type="date" name="eta" class="form-control {{ $errors->has('eta') ? ' is-invalid' : '' }}" id="validationCustom05" value="{{old('eta')}}" required>
+                                        <input type="date" name="eta" class="form-control {{ $errors->has('eta') ? ' is-invalid' : '' }}" id="validationCustom05" value="{{$contractor->eta}}" required>
                                         <div class="invalid-feedback">
                                             Please provide a ETA.
                                         </div>
                                     </div>
                                     <div class="col-md-3 mb-3">
                                         <label for="validationCustom05">AWB</label>
-                                        <input type="text" name="awb" class="form-control {{ $errors->has('awb') ? ' is-invalid' : '' }}" id="validationCustom05" value="{{old('awb')}}" required>
+                                        <input type="text" name="awb" class="form-control {{ $errors->has('awb') ? ' is-invalid' : '' }}" id="validationCustom05" value="{{$contractor->awb}}" required>
                                         <div class="invalid-feedback">
                                             Please provide a AWB.
                                         </div>
@@ -389,25 +389,22 @@
 
                                     <div class="col-md-3 mb-3">
                                         <label for="validationCustom05">Document</label>
-                                        <input type="text" name="document" class="form-control {{ $errors->has('document') ? ' is-invalid' : '' }}" id="validationCustom05" value="{{old('document')}}" required>
+                                        <input type="text" name="document" class="form-control {{ $errors->has('document') ? ' is-invalid' : '' }}" id="validationCustom05" value="{{$contractor->document}}" required>
                                         <div class="invalid-feedback">
                                             Please provide a Document.
                                         </div>
                                     </div>
 
-                                    <div class="col-md-3 mb-3">
-                                        <label for="lc_type">Shipment Status</label>
-                                        <select class="form-control" id="sel1" name="shipment_status">
-                                            <option value="pending">Pending</option>
-                                            <option value="done">Done</option>
-                                        </select>
-                                        <div class="invalid-feedback">
-                                            Please provide a Shipment Status.
+                                        <div class="col-md-3 mb-3">
+                                            <label for="lc_type">Shipment Status</label>
+                                            <select class="form-control" id="sel1" name="shipment_status">
+                                                <option value="pending">Pending</option>
+                                                <option value="done">Done</option>
+                                            </select>
+                                            <div class="invalid-feedback">
+                                                Please provide a Shipment Status.
+                                            </div>
                                         </div>
-                                    </div>
-
-
-
                                     <div class="col-md-3 mb-3">
                                         <label for="commission">Commission</label>
                                         <select class="form-control" id="sel1" name="commission">
@@ -417,14 +414,13 @@
                                     </div>
                                     <div class="col-md-3 mb-3">
                                         <label for="validationCustom05">Commission Percent</label>
-                                        <input type="text" name="commission_percentage" class="form-control {{ $errors->has('commission_percentage') ? ' is-invalid' : '' }}" id="validationCustom05" value="{{old('commission_percentage')}}" required>
+                                        <input type="text" name="commission_percentage" class="form-control {{ $errors->has('commission_percentage') ? ' is-invalid' : '' }}" id="validationCustom05" value="{{$contractor->commission_percentage}}" required>
                                         <div class="invalid-feedback">
                                             Please provide a Commission Percent.
                                         </div>
                                     </div>
 
                                 </div>
-
 
                                 <button class="btn btn-primary" type="submit">Submit form</button>
                             </form>
@@ -626,23 +622,23 @@
 
 
 <!-- Placed js at the end of the page so the pages load faster -->
-<script src="assets/vendor/jquery/jquery.min.js"></script>
-<script src="assets/vendor/jquery-ui-1.12.1/jquery-ui.min.js"></script>
-<script src="assets/vendor/popper.min.js"></script>
-<script src="assets/vendor/bootstrap/js/bootstrap.min.js"></script>
-<script src="assets/vendor/jquery-ui-touch/jquery.ui.touch-punch-improved.js"></script>
-<script src="assets/vendor/lobicard/js/lobicard.js"></script>
-<script class="include" type="text/javascript" src="assets/vendor/jquery.dcjqaccordion.2.7.js"></script>
-<script src="assets/vendor/jquery.scrollTo.min.js"></script>
+<script src="{{url('assets/vendor/jquery/jquery.min.js')}}"></script>
+<script src="{{url('assets/vendor/jquery-ui-1.12.1/jquery-ui.min.js')}}"></script>
+<script src="{{url('assets/vendor/popper.min.js')}}"></script>
+<script src="{{url('assets/vendor/bootstrap/js/bootstrap.min.js')}}"></script>
+<script src="{{url('assets/vendor/jquery-ui-touch/jquery.ui.touch-punch-improved.js')}}"></script>
+<script src="{{url('assets/vendor/lobicard/js/lobicard.js')}}"></script>
+<script class="include" type="text/javascript" src="{{url('assets/vendor/jquery.dcjqaccordion.2.7.js')}}"></script>
+<script src="{{url('assets/vendor/jquery.scrollTo.min.js')}}"></script>
 
 
 
 <!--[if lt IE 9]>
-<script src="assets/vendor/modernizr.js"></script>
+<script src="{{url('assets/vendor/modernizr.js')}}"></script>
 <![endif]-->
 
 <!--init scripts-->
-<script src="assets/js/scripts.js"></script>
+<script src="{{url('assets/js/scripts.js')}}"></script>
 
 </body>
 </html>

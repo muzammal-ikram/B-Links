@@ -15,24 +15,48 @@ class CreateContractorsTable extends Migration
     {
         Schema::create('contractors', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('contractor_number');
-            $table->timestamp('date');
-            $table->string('port');
-            $table->string('supplier');
-            $table->string('etd');
-            $table->string('eta');
-            $table->string('buyer');
-            $table->string('latest_shipment_date');
-            $table->string('quantity');
+
+            $table->string('date');
+            $table->string('contractor_number');
+            $table->string('count');
+
+            $table->string('seller_name');
+            $table->string('seller_address');
+            $table->string('seller_country');
+
+            $table->string('buyer_name');
+            $table->string('buyer_address');
+            $table->string('buyer_country');
+
+            $table->string('lc_opener_name');
+            $table->string('lc_opener_address');
+            $table->string('lc_opener_country');
+
+            $table->string('fcls');
             $table->string('price_per_kg');
+            $table->string('kg');
+
             $table->string('total_amount');
-            $table->string('containers');
+            $table->string('lsd');
+            $table->string('lc_type');
             $table->string('lc_number');
+
             $table->string('invoice_number');
-            $table->float('commission');
             $table->string('bl_number');
-            $table->string('contractor_status');
-            $table->string('documents');
+            $table->string('etd');
+
+            $table->string('eta');
+            $table->string('awb');
+            $table->string('document');
+
+            $table->string('shipment_status');
+            $table->string('commission');
+            $table->string('commission_percentage');
+
+            $table->string('comm_dd');
+            $table->string('status');
+
+
             $table->softDeletes();
             $table->timestamps();
         });

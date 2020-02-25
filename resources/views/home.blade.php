@@ -91,6 +91,14 @@
                             <div class="card-header">
                                 <div class="card-title">
                                     All contractors
+
+                                    <form action="/contract-filter" method="get">
+                                        @csrf
+                                        <input type="text" name="supplier">
+                                        <input type="text" name="buyer">
+                                        <input type="submit" value="submit">
+
+                                    </form>
                                     <div class="btn-group float-right task-list-action">
                                         <div class="dropdown ">
                                             <a href="#" class="btn btn-transparent default-color dropdown-hover p-0" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -106,8 +114,12 @@
                                 </div>
                             </div>
                             <div class="table-responsive">
-                              
+
+
+                              <table id="contractors bs4-table1" class="table table-responsive-md">
+                 
                               <table id="myContractors" class="table table-striped table-bordered" style="width:100%">
+
                                     <thead>
                                         <tr>
                                             <th>Id</th>
