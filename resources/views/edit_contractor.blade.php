@@ -348,10 +348,60 @@
 
                                 </div>
 
+                                <div class="row">
+
+                                    <div class="col-md-4 mb-3">
+                                        <label for="validationCustom04">ETD</label>
+                                        <input type="date" name="etd" class="form-control {{ $errors->has('etd') ? ' is-invalid' : '' }}" id="validationCustom04" value="{{$contractor->etd}}" required>
+                                        <div class="invalid-feedback">
+                                            Please provide a ETD.
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 mb-3">
+                                        <label for="validationCustom05">ETD FCLS</label>
+                                        <input type="text" name="etd_fcls" class="form-control {{ $errors->has('etd_fcls') ? ' is-invalid' : '' }}" id="validationCustom05" value="{{$contractor->etd_fcls}}" required>
+                                        <div class="invalid-feedback">
+                                            Please provide a ETA.
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4 mb-3">
+                                        <label for="validationCustom05">ETD Rest</label>
+                                        <input type="text" name="etd_rest" class="form-control" value="Rest Value will appear later" disabled>
+                                    </div>
+
+
+                                </div>
 
                                 <div class="row">
 
-                                    <div class="col-md-3 mb-3">
+                                    <div class="col-md-4 mb-3">
+                                        <label for="validationCustom04">ETA</label>
+                                        <input type="date" name="eta" class="form-control {{ $errors->has('eta') ? ' is-invalid' : '' }}" id="validationCustom04" value="{{$contractor->eta}}" required>
+                                        <div class="invalid-feedback">
+                                            Please provide a ETD.
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 mb-3">
+                                        <label for="validationCustom05">ETA FCLS</label>
+                                        <input type="text" name="eta_fcls" class="form-control {{ $errors->has('eta_fcls') ? ' is-invalid' : '' }}" id="validationCustom05" value="{{$contractor->eta_fcls}}" required>
+                                        <div class="invalid-feedback">
+                                            Please provide a ETA.
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4 mb-3">
+                                        <label for="validationCustom05">ETA Rest</label>
+                                        <input type="text" name="eta_rest" class="form-control" value="Rest Value will appear later" disabled>
+                                    </div>
+
+
+                                </div>
+
+
+                                <div class="row">
+
+                                    <div class="col-md-4 mb-3">
                                         <label for="validationCustom01">BL Number</label>
                                         <input type="text" name="bl_number" class="form-control {{ $errors->has('bl_number') ? ' is-invalid' : '' }}" id="validationCustom01" value="{{$contractor->bl_number}}" required>
                                         <div class="invalid-feedback">
@@ -359,25 +409,19 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-md-3 mb-3">
-                                        <label for="validationCustom04">ETD</label>
-                                        <input type="date" name="etd" class="form-control {{ $errors->has('etd') ? ' is-invalid' : '' }}" id="validationCustom04" value="{{$contractor->etd}}" required>
-                                        <div class="invalid-feedback">
-                                            Please provide a ETD.
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3 mb-3">
-                                        <label for="validationCustom05">ETA</label>
-                                        <input type="date" name="eta" class="form-control {{ $errors->has('eta') ? ' is-invalid' : '' }}" id="validationCustom05" value="{{$contractor->eta}}" required>
-                                        <div class="invalid-feedback">
-                                            Please provide a ETA.
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3 mb-3">
+                                    <div class="col-md-4 mb-3">
                                         <label for="validationCustom05">AWB</label>
                                         <input type="text" name="awb" class="form-control {{ $errors->has('awb') ? ' is-invalid' : '' }}" id="validationCustom05" value="{{$contractor->awb}}" required>
                                         <div class="invalid-feedback">
                                             Please provide a AWB.
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4 mb-3">
+                                        <label for="validationCustom05">Document</label>
+                                        <input type="text" name="document" class="form-control {{ $errors->has('document') ? ' is-invalid' : '' }}" id="validationCustom05" value="{{$contractor->document}}" required>
+                                        <div class="invalid-feedback">
+                                            Please provide a Document.
                                         </div>
                                     </div>
 
@@ -387,32 +431,27 @@
 
                                 <div class="row">
 
-                                    <div class="col-md-3 mb-3">
-                                        <label for="validationCustom05">Document</label>
-                                        <input type="text" name="document" class="form-control {{ $errors->has('document') ? ' is-invalid' : '' }}" id="validationCustom05" value="{{$contractor->document}}" required>
+                                    <div class="col-md-4 mb-3">
+                                        <label for="lc_type">Shipment Status</label>
+                                        <select class="form-control" id="sel1" name="shipment_status">
+                                            <option value="pending">Pending</option>
+                                            <option value="done">Done</option>
+                                        </select>
                                         <div class="invalid-feedback">
-                                            Please provide a Document.
+                                            Please provide a Shipment Status.
                                         </div>
                                     </div>
 
-                                        <div class="col-md-3 mb-3">
-                                            <label for="lc_type">Shipment Status</label>
-                                            <select class="form-control" id="sel1" name="shipment_status">
-                                                <option value="pending">Pending</option>
-                                                <option value="done">Done</option>
-                                            </select>
-                                            <div class="invalid-feedback">
-                                                Please provide a Shipment Status.
-                                            </div>
-                                        </div>
-                                    <div class="col-md-3 mb-3">
+
+
+                                    <div class="col-md-4 mb-3">
                                         <label for="commission">Commission</label>
                                         <select class="form-control" id="sel1" name="commission">
                                             <option value="kg">kilogram kg</option>
                                             <option value="percentage">percentage %</option>
                                         </select>
                                     </div>
-                                    <div class="col-md-3 mb-3">
+                                    <div class="col-md-4 mb-3">
                                         <label for="validationCustom05">Commission Percent</label>
                                         <input type="text" name="commission_percentage" class="form-control {{ $errors->has('commission_percentage') ? ' is-invalid' : '' }}" id="validationCustom05" value="{{$contractor->commission_percentage}}" required>
                                         <div class="invalid-feedback">

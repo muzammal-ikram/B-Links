@@ -43,9 +43,15 @@ class CreateContractorsTable extends Migration
 
             $table->string('invoice_number');
             $table->string('bl_number');
+
             $table->string('etd');
+            $table->string('etd_fcls');
+            $table->string('etd_rest');
 
             $table->string('eta');
+            $table->string('eta_fcls');
+            $table->string('eta_rest');
+
             $table->string('awb');
             $table->string('document');
 
