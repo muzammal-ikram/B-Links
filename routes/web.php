@@ -23,6 +23,11 @@ Route::get('/add-contractor', 'ContractorController@index')->name('addData');
 Route::get('/all-contractor', 'ContractorController@allContractor')->name('allContractor');
 
 Route::post('/create-contractor', 'ContractorController@store')->name('create-contractor');
+Route::get('/edit-contractor/{id}', 'ContractorController@edit')->name('edit-contractor');
+Route::post('/update-contractor/{id}', 'ContractorController@update')->name('update-contractor');
+Route::get('/contractor/{id}', 'ContractorController@show')->name('show-contractor');
+Route::get('/delete-contractor/{id}', 'ContractorController@destroy')->name('delete-contractor');
 Route::post('/register-user', 'Auth\RegisterController@registerUser')->name('registerUser');
 Route::get('/all-users', 'Auth\RegisterController@allUsers')->name('allUsers');
 Route::delete('/delete-user/{id}', 'Auth\RegisterController@deleteUser')->name('deleteUser');
+Route::get('/contract-filter', 'ContractorController@filtered_contract')->name('filtered-contract');

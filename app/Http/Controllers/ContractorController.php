@@ -46,57 +46,73 @@ class ContractorController extends Controller
      */
     public function store(Request $request)
     {
-
          $request->validate([
-            'contractor_number' => 'required|numeric',
-            'date' => 'required',
-            'port' => 'required',
-            'supplier' => 'required',
+             'date' => 'required',
+            'contractor_number' => 'required',
+             'count' => 'required',
+             'seller_name' => 'required',
+             'seller_address' => 'required',
+             'seller_country' => 'required',
+             'buyer_name' => 'required',
+             'buyer_address' => 'required',
+             'buyer_country' => 'required',
+             'lc_opener_name' => 'required',
+             'lc_opener_address' => 'required',
+             'lc_opener_country' => 'required',
+            'fcls' => 'required',
+             'price_per_kg' => 'required',
+             'kg' => 'required',
+             'total_amount' => 'required',
+             'lsd' => 'required',
+             'lc_type' => 'required',
+             'lc_number' => 'required',
+             'invoice_number' => 'required',
+             'bl_number' => 'required',
             'etd' => 'required',
             'eta' => 'required',
-            'buyer' => 'required',
-            'latest_shipment_date' => 'required',
-            'quantity' => 'required|numeric',
-            'price_per_kg' => 'required|numeric',
-            'total_amount' => 'required|numeric',
-            'containers' => 'required',
-            'lc_number' => 'required',
-            'invoice_number' => 'required',
-            'commission' => 'required|numeric',
-            'bl_number' => 'required',
-            'contractor_status' => 'required',
-            'documents' => 'required',
+             'awb' => 'required',
+             'document' => 'required',
+             'shipment_status' => 'required',
+             'commission' => 'required',
+             'commission_percentage' => 'required',
+
+
         ]);
 
         $contractor = new Contractor;
 
-        $contractor->contractor_number = $request->get('contractor_number');
         $contractor->date = $request->get('date');
-        $contractor->port = $request->get('port');
-        $contractor->supplier = $request->get('supplier');
-        $contractor->etd = $request->get('etd');
-        $contractor->eta = $request->get('eta');
-        $contractor->buyer = $request->get('buyer');
-        $contractor->latest_shipment_date = $request->get('latest_shipment_date');
-        $contractor->quantity = $request->get('quantity');
+        $contractor->contractor_number = $request->get('contractor_number');
+        $contractor->count = $request->get('count');
+        $contractor->seller_name = $request->get('seller_name');
+        $contractor->seller_address = $request->get('seller_address');
+        $contractor->seller_country = $request->get('seller_country');
+        $contractor->buyer_name = $request->get('buyer_name');
+        $contractor->buyer_address = $request->get('buyer_address');
+        $contractor->buyer_country = $request->get('buyer_country');
+        $contractor->lc_opener_name = $request->get('lc_opener_name');
+        $contractor->lc_opener_address = $request->get('lc_opener_address');
+        $contractor->lc_opener_country = $request->get('lc_opener_country');
+        $contractor->fcls = $request->get('fcls');
         $contractor->price_per_kg = $request->get('price_per_kg');
+        $contractor->kg = $request->get('kg');
         $contractor->total_amount = $request->get('total_amount');
-        $contractor->containers = $request->get('containers');
+        $contractor->lsd = $request->get('lsd');
+        $contractor->lc_type = $request->get('lc_type');
         $contractor->lc_number = $request->get('lc_number');
         $contractor->invoice_number = $request->get('invoice_number');
-        $contractor->commission = $request->get('commission');
         $contractor->bl_number = $request->get('bl_number');
-        $contractor->contractor_status = $request->get('contractor_status');
+        $contractor->etd = $request->get('etd');
+        $contractor->eta = $request->get('eta');
+        $contractor->awb = $request->get('awb');
+        $contractor->document = $request->get('document');
+        $contractor->shipment_status = $request->get('shipment_status');
+        $contractor->commission = $request->get('commission');
+        $contractor->commission_percentage = $request->get('commission_percentage');
 
-        $get_documents[] = $request->get('documents');
-        foreach($get_documents as $get_document) {
-            $documents = [
-                $get_document
-            ];
-        }
-        $documents = json_encode($documents);
+        $contractor->comm_dd = 'comm_dd';
+        $contractor->status = 'status';
 
-        $contractor->documents = $documents;
 
         $contractor->save();
 
@@ -112,7 +128,8 @@ class ContractorController extends Controller
      */
     public function show($id)
     {
-        //
+       $contractor = Contractor::findOrFail($id);
+       return view('show_contractor', compact('contractor'));
     }
 
     /**
@@ -123,7 +140,8 @@ class ContractorController extends Controller
      */
     public function edit($id)
     {
-        //
+        $contractor = Contractor::findOrFail($id);
+        return view('edit_contractor', compact('contractor'));
     }
 
     /**
@@ -135,7 +153,81 @@ class ContractorController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
+        $contractor = Contractor::findOrFail($id);
+
+        $request->validate([
+            'date' => 'required',
+            'contractor_number' => 'required',
+            'count' => 'required',
+            'seller_name' => 'required',
+            'seller_address' => 'required',
+            'seller_country' => 'required',
+            'buyer_name' => 'required',
+            'buyer_address' => 'required',
+            'buyer_country' => 'required',
+            'lc_opener_name' => 'required',
+            'lc_opener_address' => 'required',
+            'lc_opener_country' => 'required',
+            'fcls' => 'required',
+            'price_per_kg' => 'required',
+            'kg' => 'required',
+            'total_amount' => 'required',
+            'lsd' => 'required',
+            'lc_type' => 'required',
+            'lc_number' => 'required',
+            'invoice_number' => 'required',
+            'bl_number' => 'required',
+            'etd' => 'required',
+            'eta' => 'required',
+            'awb' => 'required',
+            'document' => 'required',
+            'shipment_status' => 'required',
+            'commission' => 'required',
+            'commission_percentage' => 'required',
+
+
+        ]);
+
+        $contractor->date = $request->get('date');
+        $contractor->contractor_number = $request->get('contractor_number');
+        $contractor->count = $request->get('count');
+        $contractor->seller_name = $request->get('seller_name');
+        $contractor->seller_address = $request->get('seller_address');
+        $contractor->seller_country = $request->get('seller_country');
+        $contractor->buyer_name = $request->get('buyer_name');
+        $contractor->buyer_address = $request->get('buyer_address');
+        $contractor->buyer_country = $request->get('buyer_country');
+        $contractor->lc_opener_name = $request->get('lc_opener_name');
+        $contractor->lc_opener_address = $request->get('lc_opener_address');
+        $contractor->lc_opener_country = $request->get('lc_opener_country');
+        $contractor->fcls = $request->get('fcls');
+        $contractor->price_per_kg = $request->get('price_per_kg');
+        $contractor->kg = $request->get('kg');
+        $contractor->total_amount = $request->get('total_amount');
+        $contractor->lsd = $request->get('lsd');
+        $contractor->lc_type = $request->get('lc_type');
+        $contractor->lc_number = $request->get('lc_number');
+        $contractor->invoice_number = $request->get('invoice_number');
+        $contractor->bl_number = $request->get('bl_number');
+        $contractor->etd = $request->get('etd');
+        $contractor->eta = $request->get('eta');
+        $contractor->awb = $request->get('awb');
+        $contractor->document = $request->get('document');
+        $contractor->shipment_status = $request->get('shipment_status');
+        $contractor->commission = $request->get('commission');
+        $contractor->commission_percentage = $request->get('commission_percentage');
+
+        $contractor->comm_dd = 'comm_dd';
+        $contractor->status = 'status';
+
+
+        $contractor->save();
+
+
+        return redirect()->back()->with('success' , 'Contract Updated Successfully');
+
+
     }
 
     /**
@@ -146,6 +238,17 @@ class ContractorController extends Controller
      */
     public function destroy($id)
     {
-        //
+       $contractor = Contractor::findOrFail($id);
+       $contractor->delete();
+       return redirect('/add-contractor')->with('success', 'contract deleted successfully');
     }
+
+
+    public function filtered_contract(Request $request){
+
+        $contracts = Contractor::where('supplier' , 'like' , '%'.$request->get('supplier').'%')->orWhere('buyer' , 'like' , '%'.$request->get('buyer').'%')->get();
+        dd($contracts);
+
+    }
+
 }
