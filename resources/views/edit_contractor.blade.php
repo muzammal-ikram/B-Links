@@ -395,13 +395,16 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-md-3 mb-3">
-                                        <label for="validationCustom01">Shipment Status</label>
-                                        <input type="text" name="shipment_status" class="form-control {{ $errors->has('shipment_status') ? ' is-invalid' : '' }}" id="validationCustom01" value="{{$contractor->shipment_status}}" required>
-                                        <div class="invalid-feedback">
-                                            Please provide a Shipment Status.
+                                        <div class="col-md-3 mb-3">
+                                            <label for="lc_type">Shipment Status</label>
+                                            <select class="form-control" id="sel1" name="shipment_status">
+                                                <option value="pending">Pending</option>
+                                                <option value="done">Done</option>
+                                            </select>
+                                            <div class="invalid-feedback">
+                                                Please provide a Shipment Status.
+                                            </div>
                                         </div>
-                                    </div>
                                     <div class="col-md-3 mb-3">
                                         <label for="commission">Commission</label>
                                         <select class="form-control" id="sel1" name="commission">
