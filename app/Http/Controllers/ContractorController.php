@@ -68,8 +68,10 @@ class ContractorController extends Controller
              'lc_number' => 'required',
              'invoice_number' => 'required',
              'bl_number' => 'required',
-            'etd' => 'required',
-            'eta' => 'required',
+             'etd' => 'required',
+             'etd_fcls' => 'required',
+             'eta' => 'required',
+             'eta_fcls' => 'required',
              'awb' => 'required',
              'document' => 'required',
              'shipment_status' => 'required',
@@ -103,7 +105,15 @@ class ContractorController extends Controller
         $contractor->invoice_number = $request->get('invoice_number');
         $contractor->bl_number = $request->get('bl_number');
         $contractor->etd = $request->get('etd');
+        $contractor->etd_fcls = $request->get('etd_fcls');
+
+        $contractor->etd_rest = 'etd_rest';
+
         $contractor->eta = $request->get('eta');
+        $contractor->eta_fcls = $request->get('eta_fcls');
+
+        $contractor->eta_rest = 'eta_rest';
+
         $contractor->awb = $request->get('awb');
         $contractor->document = $request->get('document');
         $contractor->shipment_status = $request->get('shipment_status');
@@ -179,7 +189,9 @@ class ContractorController extends Controller
             'invoice_number' => 'required',
             'bl_number' => 'required',
             'etd' => 'required',
+            'etd_fcls' => 'required',
             'eta' => 'required',
+            'eta_fcls' => 'required',
             'awb' => 'required',
             'document' => 'required',
             'shipment_status' => 'required',
@@ -211,7 +223,15 @@ class ContractorController extends Controller
         $contractor->invoice_number = $request->get('invoice_number');
         $contractor->bl_number = $request->get('bl_number');
         $contractor->etd = $request->get('etd');
+        $contractor->etd_fcls = $request->get('etd_fcls');
+
+        $contractor->etd_rest = 'etd_rest';
+
         $contractor->eta = $request->get('eta');
+        $contractor->eta_fcls = $request->get('eta_fcls');
+
+        $contractor->eta_rest = 'eta_rest';
+
         $contractor->awb = $request->get('awb');
         $contractor->document = $request->get('document');
         $contractor->shipment_status = $request->get('shipment_status');
