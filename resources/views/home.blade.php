@@ -115,14 +115,18 @@
                             </div>
                             <div class="table-responsive">
 
+
                               <table id="contractors bs4-table1" class="table table-responsive-md">
+                 
+                              <table id="myContractors" class="table table-striped table-bordered" style="width:100%">
+
                                     <thead>
                                         <tr>
                                             <th>Id</th>
                                             <th>Contractor Number</th>
                                             <th>Supplier</th>
                                             <th>Buyer</th>
-                                            <th>ETD</th>
+                                            <th>ETD</th> 
                                             <th>ETA</th>
                                             <th>Port</th>
                                             <th>Quantity</th>
@@ -136,11 +140,11 @@
                                             <th>Contractor Status</th>
                                             <th>Documents</th>
                                             <th>Latest Shipment Date</th>
-                                            <th>Date</th>
+                                             <th>Date</th>
                                             {{-- <th>Actions</th> --}}
                                         </tr>
                                     </thead>
-                                    <tbody>
+                                    {{-- <tbody>
                                         <tr>
                                             <td>Id</td>
                                             <td>Contractor Number</td>
@@ -161,9 +165,9 @@
                                             <td>Documents</td>
                                             <td>Latest Shipment Date</td>
                                             <td>Date</td>
-                                            {{-- <th>Actions</th> --}}
+                                            <th>Actions</th>
                                         </tr>
-                                    </tbody>
+                                    </tbody> --}}
                                 </table>
                             </div>
                         </div>
@@ -180,3 +184,51 @@
     <!--===========app body end===========-->
     @include('_partials.footer')
 @endsection
+@push('scripts')
+
+<script src="{{ asset('assets/vendor/jquery/jquery.min.js') }}"></script>
+
+
+<script type="text/javascript">
+$(document).ready(function() {
+    Table = $('#myContractors').DataTable({
+        "processing": true,
+        "serverSide": true,
+        "ajax": "{{ route('home') }}",
+        "columns": [
+            {data: 'id', name: 'id'},
+            {data: 'contractor_number', name: 'contractor_number'},
+
+
+            {data: 'supplier', name: 'supplier'},
+            {data: 'buyer', name: 'buyer'},
+            {data: 'etd', name: 'etd'},
+            {data: 'eta', name: 'eta'},
+
+
+            {data: 'port', name: 'port'},
+            {data: 'quantity', name: 'quantity'},
+             {data: 'price_per_kg', name: 'price_per_kg'},
+            {data: 'total_amount', name: 'total_amount'},
+
+
+
+            {data: 'containers', name: 'containers'},
+            {data: 'lc_number', name: 'lc_number'},
+            {data: 'invoice_number', name: 'invoice_number'},
+            {data: 'commission', name: 'commission'},
+
+
+
+            {data: 'bl_number', name: 'bl_number'},
+            {data: 'contractor_status', name: 'contractor_status'},
+            {data: 'documents', name: 'documents'},
+
+            {data: 'latest_shipment_date', name: 'latest_shipment_date'},
+            {data: 'date', name: 'date'}
+        ]
+    });
+});
+</script>
+
+@endpush

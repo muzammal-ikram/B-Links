@@ -8,4 +8,5 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Contractor extends Model
 {
     use SoftDeletes;
+    protected $dates = ['date'];
 }
