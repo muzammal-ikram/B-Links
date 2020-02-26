@@ -28,8 +28,11 @@
                                     All Contractor
                                 </div>
                             </div>
-                            <div class="card-body">           
-                                <table id="contractors" class="table table-hover table-condensed table-responsive" style="width:100%">
+                            <div class="card-body">   
+                             <div class="table-responsive">
+                                {!! $dataTable->table(['class'=>'table']) !!}
+                            </div>        
+                                {{-- <table id="contractors" class="table table-hover table-condensed table-responsive" style="width:100%">
                                     <thead>
                                         <tr>
                                             <th>Id</th>
@@ -54,7 +57,7 @@
                                             {{-- <th>Actions</th> --}}
                                         </tr>
                                     </thead>
-                                </table>
+                                </table> --}}
                             </div>
                         </div>
                     </div>
@@ -72,10 +75,10 @@
 
 @endsection
 @push('scripts')
-
-<script src="{{ asset('assets/vendor/jquery/jquery.min.js') }}"></script>
-
-<script type="text/javascript">
+{{-- <script src="https://cdn.datatables.net/buttons/1.6.1/js/dataTables.buttons.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.flash.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.print.min.js"></script> --}}
+{{-- <script type="text/javascript">
 $(document).ready(function() {
 
     Table = $('#contractors').DataTable({
@@ -100,6 +103,9 @@ $(document).ready(function() {
     });
 });
 </script>
+--}}
 
 
-@endpush
+        {!! $dataTable->scripts() !!}
+
+@endpush 

@@ -96,7 +96,7 @@
                                         @csrf
                                         <input type="text" name="supplier">
                                         <input type="text" name="buyer">
-                                        <input type="submit" value="submit">
+                                        <app/DataTables/UsersDataTable.phpinput type="submit" value="submit">
 
                                     </form>
                                     <div class="btn-group float-right task-list-action">
@@ -114,12 +114,8 @@
                                 </div>
                             </div>
                             <div class="table-responsive">
-
-
-                              <table id="contractors bs4-table1" class="table table-responsive-md">
-                 
-                              <table id="myContractors" class="table table-striped table-bordered" style="width:100%">
-
+                                {!! $dataTable->table(['class'=>'table']) !!}
+                              {{-- <table id="myContractors" class="table table-striped table-bordered" style="width:100%">
                                     <thead>
                                         <tr>
                                             <th>Id</th>
@@ -141,34 +137,11 @@
                                             <th>Documents</th>
                                             <th>Latest Shipment Date</th>
                                              <th>Date</th>
-                                            {{-- <th>Actions</th> --}}
+                                             <th>Actions</th> 
                                         </tr>
                                     </thead>
-                                    {{-- <tbody>
-                                        <tr>
-                                            <td>Id</td>
-                                            <td>Contractor Number</td>
-                                            <td>Supplier</td>
-                                            <td>Buyer</td>
-                                            <td>ETD</td>
-                                            <td>ETA</td>
-                                            <td>Port</td>
-                                            <td>Quantity</td>
-                                            <td>Price Per KG</td>
-                                            <td>Amount</td>
-                                            <td>Containers</td>
-                                            <td>LC Number</td>
-                                            <td>Invoice Number</td>
-                                            <td>Commission %</td>
-                                            <td>BL Number</td>
-                                            <td>Contractor Status</td>
-                                            <td>Documents</td>
-                                            <td>Latest Shipment Date</td>
-                                            <td>Date</td>
-                                            <th>Actions</th>
-                                        </tr>
-                                    </tbody> --}}
-                                </table>
+                                  
+                                </table> --}}
                             </div>
                         </div>
                     </div>
@@ -185,7 +158,7 @@
     @include('_partials.footer')
 @endsection
 @push('scripts')
-
+{{-- 
 <script src="{{ asset('assets/vendor/jquery/jquery.min.js') }}"></script>
 
 
@@ -229,6 +202,8 @@ $(document).ready(function() {
         ]
     });
 });
-</script>
+</script> --}}
+
+        {!! $dataTable->scripts() !!}
 
 @endpush
