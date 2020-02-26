@@ -38,7 +38,10 @@
                         {{ session('error') }}
                     </div>
                 @endif
-                                <table id="users" class="table table-striped table-bordered" style="width:100%">
+                  <div class="table-responsive">
+            {!! $dataTable->table(['class'=>'table']) !!}
+                    </div>
+                                {{-- <table id="users" class="table table-striped table-bordered" style="width:100%">
                                     <thead>
                                         <tr>
                                             <th>Id</th>
@@ -73,8 +76,17 @@
 @endsection
 @push('scripts')
 
-<script src="{{ asset('assets/vendor/jquery/jquery.min.js') }}"></script>
+        {!! $dataTable->scripts() !!}
+@endpush
 
+{{-- @push('scripts') --}}
+{{--   buttons: [
+           'print'
+        ],
+         dom: 'Bfrtip', --}}
+         {{-- <script src="https://code.jquery.com/jquery-3.3.1.js"></script> --}}
+{{-- <script src="{{ asset('assets/vendor/jquery/jquery.min.js') }}"></script> --}}
+{{-- 
 <script type="text/javascript">
 $(document).ready(function() {
 
@@ -107,4 +119,4 @@ $(document).ready(function() {
 </script>
 
 
-@endpush
+{{-- @endpush --}}

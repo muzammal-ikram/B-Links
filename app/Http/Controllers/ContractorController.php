@@ -16,19 +16,7 @@ class ContractorController extends Controller
     {
         return view('add_contractor');
     }
-    public function allContractor(Request $request)
-    {
-        $contractors = Contractor::get();
-        dd($contractors);
-        if($request->ajax()){
-            $contractors = DB::table('contractors')->select('*');
-            dd($contractors);
-            return \Datatables::of($contractors)
-                ->make(true);
-        }
-        return view('allContractor');
-    }
-
+   
     /**
      * Show the form for creating a new resource.
      *

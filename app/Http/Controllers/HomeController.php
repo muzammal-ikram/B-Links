@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Contractor;
+use App\DataTables\ContractorsDataTable;
 class HomeController extends Controller
 {
     /**
@@ -21,10 +22,11 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index(Request $request)
+    public function index(ContractorsDataTable $dataTable)
     {
         // $contractors = Contractor::get();
         // dd($contractors);
+        return $dataTable->render('home');
         if($request->ajax()){
             $contractors = Contractor::get();
             return \Datatables::of($contractors)
