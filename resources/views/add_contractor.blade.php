@@ -361,7 +361,7 @@
                                         <label for="validationCustom05">ETD FCLS</label>
                                         <input type="text" name="etd_fcls" class="form-control {{ $errors->has('etd_fcls') ? ' is-invalid' : '' }}" id="validationCustom05" value="{{old('etd_fcls')}}" required>
                                         <div class="invalid-feedback">
-                                            Please provide a ETA.
+                                            Please provide a ETD Fcls.
                                         </div>
                                     </div>
 
@@ -379,14 +379,14 @@
                                         <label for="validationCustom04">ETA</label>
                                         <input type="date" name="eta" class="form-control {{ $errors->has('eta') ? ' is-invalid' : '' }}" id="validationCustom04" value="{{old('eta')}}" required>
                                         <div class="invalid-feedback">
-                                            Please provide a ETD.
+                                            Please provide a ETA.
                                         </div>
                                     </div>
                                     <div class="col-md-4 mb-3">
                                         <label for="validationCustom05">ETA FCLS</label>
                                         <input type="text" name="eta_fcls" class="form-control {{ $errors->has('eta_fcls') ? ' is-invalid' : '' }}" id="validationCustom05" value="{{old('eta_fcls')}}" required>
                                         <div class="invalid-feedback">
-                                            Please provide a ETA.
+                                            Please provide a ETA Fcls.
                                         </div>
                                     </div>
 

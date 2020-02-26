@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Contractor;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use DB;
 class ContractorController extends Controller
@@ -106,13 +107,11 @@ class ContractorController extends Controller
         $contractor->bl_number = $request->get('bl_number');
         $contractor->etd = $request->get('etd');
         $contractor->etd_fcls = $request->get('etd_fcls');
-
-        $contractor->etd_rest = 'etd_rest';
+        $contractor->etd_rest = $request->get('fcls') - $request->get('etd_fcls');
 
         $contractor->eta = $request->get('eta');
         $contractor->eta_fcls = $request->get('eta_fcls');
-
-        $contractor->eta_rest = 'eta_rest';
+        $contractor->eta_rest = $request->get('fcls') - $request->get('eta_fcls');
 
         $contractor->awb = $request->get('awb');
         $contractor->document = $request->get('document');
@@ -120,7 +119,10 @@ class ContractorController extends Controller
         $contractor->commission = $request->get('commission');
         $contractor->commission_percentage = $request->get('commission_percentage');
 
-        $contractor->comm_dd = 'comm_dd';
+        $make_contractor_comm_dd = new \Carbon\Carbon($request->get('etd'));
+        $make_contractor_comm_dd = $make_contractor_comm_dd->addDays(60);
+        $contractor->comm_dd = $make_contractor_comm_dd;
+
         $contractor->status = 'status';
 
 
@@ -224,13 +226,11 @@ class ContractorController extends Controller
         $contractor->bl_number = $request->get('bl_number');
         $contractor->etd = $request->get('etd');
         $contractor->etd_fcls = $request->get('etd_fcls');
-
-        $contractor->etd_rest = 'etd_rest';
+        $contractor->etd_rest = $request->get('fcls') - $request->get('etd_fcls');
 
         $contractor->eta = $request->get('eta');
         $contractor->eta_fcls = $request->get('eta_fcls');
-
-        $contractor->eta_rest = 'eta_rest';
+        $contractor->eta_rest = $request->get('fcls') - $request->get('eta_fcls');
 
         $contractor->awb = $request->get('awb');
         $contractor->document = $request->get('document');
@@ -238,7 +238,10 @@ class ContractorController extends Controller
         $contractor->commission = $request->get('commission');
         $contractor->commission_percentage = $request->get('commission_percentage');
 
-        $contractor->comm_dd = 'comm_dd';
+        $make_contractor_comm_dd = new \Carbon\Carbon($request->get('etd'));
+        $make_contractor_comm_dd = $make_contractor_comm_dd->addDays(60);
+        $contractor->comm_dd = $make_contractor_comm_dd;
+
         $contractor->status = 'status';
 
 
