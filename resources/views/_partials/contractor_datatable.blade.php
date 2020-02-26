@@ -11,7 +11,7 @@
                             style="position: absolute; transform: translate3d(0px, 39px, 0px); top: 0px; left: 0px; will-change: transform;">
                             
                         <a class="dropdown-item"
-                            href="{{ route('userEdit', $con->id) }}"> <i
+                            href="{{ route('edit-contractor', $con->id) }}"> <i
                                 class="ti-zip text-success pr-2"></i> Edit </a>
 
 
@@ -45,11 +45,11 @@
                     <div class="modal-body">
                         <h6>Are you sure?</h6><br>
                         <form
-                            action="{{ route('deleteUser', $con->id) }}"
-                            method="post">
+                            action="{{ route('delete-contractor', $con->id) }}"
+                            method="get">
                             @csrf
-                            <input name="_method" type="hidden"
-                                value="DELETE">
+                            {{-- <input name="_method" type="hidden"
+                                value="DELETE"> --}}
                             <div class="float-right">
                                 <button type="submit"
                                         class="btn btn-primary mx-a">Yes

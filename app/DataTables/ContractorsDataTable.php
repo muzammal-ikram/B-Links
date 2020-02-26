@@ -8,6 +8,7 @@ use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Services\DataTable;
 use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Html\Editor\Editor;
+use Carbon\Carbon;
 
 class ContractorsDataTable extends DataTable
 {
@@ -23,11 +24,33 @@ class ContractorsDataTable extends DataTable
         ->addColumn('action', function($con) {
             return view('_partials.contractor_datatable',['con'=>$con]);
         })
+        ->addColumn('status', function($con) {
+            // if(Carbon::parse($con->comm_dd)->diffInDays(Carbon::now() == 1)){
+            //         return "red";
+            // }
+            // else if($con->comm_dd > Carbon::now()){
+            //     return "yellow";
+            // }else{
+            //     return "green";
+            // }
+            $date = new Carbon;
+                 if($date < $con->comm_dd){
+                    return "yellow";
+                }elseif($date == $con->comm_dd){
+                    return "on date";
+                }else{
+                    return "green";
+                }
+            // return Carbon::parse($con->comm_dd)->diffInDays(Carbon::now());
+            // return $con->comm_dd;
+            // return Carbon::now()->subDays(1);
+        })
+        
         // ->addColumn('created_at', function ($user) {
         //         $created_at = $user->created_at->format('M-d-Y');
         //     return $created_at;
         // })
-        ->rawColumns(['action']);
+        ->rawColumns(['action', 'status']);
     }
 
     /**
