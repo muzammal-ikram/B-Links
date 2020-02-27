@@ -24,33 +24,39 @@ class ContractorsDataTable extends DataTable
         ->addColumn('action', function($con) {
             return view('_partials.contractor_datatable',['con'=>$con]);
         })
-        ->addColumn('status', function($con) {
-            // if(Carbon::parse($con->comm_dd)->diffInDays(Carbon::now() == 1)){
-            //         return "red";
-            // }
-            // else if($con->comm_dd > Carbon::now()){
-            //     return "yellow";
-            // }else{
-            //     return "green";
-            // }
-            $date = new Carbon;
-                 if($date < $con->comm_dd){
-                    return "yellow";
-                }elseif($date == $con->comm_dd){
-                    return "on date";
-                }else{
-                    return "green";
-                }
-            // return Carbon::parse($con->comm_dd)->diffInDays(Carbon::now());
-            // return $con->comm_dd;
-            // return Carbon::now()->subDays(1);
+        ->addColumn('comm_dd', function($con) {
+            return $con->comm_dd->format('M-d-Y');
         })
-        
-        // ->addColumn('created_at', function ($user) {
-        //         $created_at = $user->created_at->format('M-d-Y');
-        //     return $created_at;
-        // })
-        ->rawColumns(['action', 'status']);
+        ->addColumn('date', function($con) {
+            return $con->date->format('M-d-Y');
+        })
+        ->addColumn('etd', function($con) {
+            return $con->etd->format('M-d-Y');
+        })
+        ->addColumn('eta', function($con) {
+            return $con->eta->format('M-d-Y');
+        })
+        ->addColumn('status', function($con) {
+            if(Carbon::now()->addDays(1)->isSameDay($con->comm_dd)){
+                return "One Day Before";
+            }elseif(Carbon::now() < $con->comm_dd){
+                return "Pending";
+            }else{
+                return "Completed";
+            }
+        })
+        ->setRowAttr([
+            'style' => function($con){
+                if(Carbon::now()->addDays(1)->isSameDay($con->comm_dd)){
+                    return 'background-color: #ff0000;';
+                }elseif(Carbon::now() < $con->comm_dd){
+                    return 'background-color: yellow;';
+                }else{
+                    // return "greater";
+                }
+            }
+        ])
+        ->rawColumns(['action', 'status', 'comm_dd', 'date', 'etd', 'eta']);
     }
 
     /**
