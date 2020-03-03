@@ -24,6 +24,7 @@ class HomeController extends Controller
      */
     public function index(ContractorsDataTable $dataTable)
     {
+        dd("dd");
         // $contractors = Contractor::get();
         // dd($contractors);
         return $dataTable->render('home');

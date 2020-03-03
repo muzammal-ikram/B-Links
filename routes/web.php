@@ -36,3 +36,4 @@ Route::get('/contract-filter', 'ContractorController@filtered_contract')->name('
 Route::get('user/{id}/edit', 'Auth\RegisterController@editUser')->name('userEdit');
 Route::put('user/{id}/update', 'Auth\RegisterController@updateUser')->name('UserUpdate');
 
+Route::get('dollar-rate', 'DollarRateController@getDollarRate');
