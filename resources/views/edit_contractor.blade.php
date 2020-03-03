@@ -297,13 +297,6 @@
                                         </div>
                                     </div>
                                     <div class="col-md-3 mb-3">
-                                        <label for="validationCustom01">KG's</label>
-                                        <input type="text" name="kg" class="form-control {{ $errors->has('kg') ? ' is-invalid' : '' }}" id="validationCustom01" value="{{$contractor->kg}}" required>
-                                        <div class="invalid-feedback">
-                                            Please provide a KG's.
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3 mb-3">
                                         <label for="validationCustom04">Total Amount</label>
                                         <input type="text" name="total_amount" class="form-control {{ $errors->has('total_amount') ? ' is-invalid' : '' }}" id="validationCustom04" value="{{$contractor->total_amount}}" required>
                                         <div class="invalid-feedback">
@@ -446,16 +439,25 @@
 
                                     <div class="col-md-4 mb-3">
                                         <label for="commission">Commission</label>
-                                        <select class="form-control" id="sel1" name="commission">
+                                        <select class="form-control" id="select-commission" name="commission">
                                             <option value="kg">kilogram kg</option>
                                             <option value="percentage">percentage %</option>
                                         </select>
                                     </div>
-                                    <div class="col-md-4 mb-3">
-                                        <label for="validationCustom05">Commission Percent</label>
-                                        <input type="text" name="commission_percentage" class="form-control {{ $errors->has('commission_percentage') ? ' is-invalid' : '' }}" id="validationCustom05" value="{{$contractor->commission_percentage}}" required>
+
+                                    <div class="col-md-4 mb-3" id="kg-input" style="display: none">
+                                        <label for="validationCustom01">KG's</label>
+                                        <input type="text" name="kg" class="form-control {{ $errors->has('kg') ? ' is-invalid' : '' }}" id="validationCustom01" value="{{old('kg')}}">
                                         <div class="invalid-feedback">
-                                            Please provide a Commission Percent.
+                                            Please provide a KG's.
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4 mb-3" id="percent-input" style="display: none">
+                                        <label for="validationCustom01">Percent</label>
+                                        <input type="text" name="percent" class="form-control {{ $errors->has('percent') ? ' is-invalid' : '' }}" id="validationCustom01" value="{{old('percent')}}">
+                                        <div class="invalid-feedback">
+                                            Please provide a KG's.
                                         </div>
                                     </div>
 
@@ -678,6 +680,23 @@
 
 <!--init scripts-->
 <script src="{{url('assets/js/scripts.js')}}"></script>
+
+<script>
+    $(document).ready(function(){
+        $('#select-commission').click(function(){
+            let select_commission =  document.getElementById("select-commission").value;
+            if(select_commission == 'kg'){
+                document.getElementById("kg-input").style.display = "inline";
+                document.getElementById("percent-input").style.display = "none";
+            }
+            else{
+                document.getElementById("percent-input").style.display = "inline";
+                document.getElementById("kg-input").style.display = "none";
+            }
+        });
+
+    });
+</script>
 
 </body>
 </html>

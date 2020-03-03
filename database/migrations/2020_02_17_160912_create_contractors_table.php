@@ -34,7 +34,7 @@ class CreateContractorsTable extends Migration
 
             $table->string('fcls');
             $table->string('price_per_kg');
-            $table->string('kg');
+
 
             $table->string('total_amount');
             $table->string('lsd');
@@ -58,6 +58,9 @@ class CreateContractorsTable extends Migration
             $table->string('shipment_status');
             $table->string('commission');
             $table->string('commission_percentage');
+
+            $table->string('kg')->nullable();
+            $table->string('percent')->nullable();
 
             $table->string('comm_dd');
             $table->string('status');

@@ -282,28 +282,22 @@
 
 
                                 <div class="row">
-                                    <div class="col-md-3 mb-3">
+                                    <div class="col-md-4 mb-3">
                                         <label for="validationCustom01">FCLS</label>
                                         <input type="text" name="fcls" class="form-control {{ $errors->has('fcls') ? ' is-invalid' : '' }}" id="validationCustom01" value="{{old('fcls')}}" required>
                                         <div class="invalid-feedback">
                                             Please provide a FCLS.
                                         </div>
                                     </div>
-                                    <div class="col-md-3 mb-3">
+                                    <div class="col-md-4 mb-3">
                                         <label for="validationCustom01">Price Per KG ($)</label>
                                         <input type="text" name="price_per_kg" class="form-control {{ $errors->has('price_per_kg') ? ' is-invalid' : '' }}" id="validationCustom01" value="{{old('price_per_kg')}}" required>
                                         <div class="invalid-feedback">
                                             Please provide a Price Per Kg.
                                         </div>
                                     </div>
-                                    <div class="col-md-3 mb-3">
-                                        <label for="validationCustom01">KG's</label>
-                                        <input type="text" name="kg" class="form-control {{ $errors->has('kg') ? ' is-invalid' : '' }}" id="validationCustom01" value="{{old('kg')}}" required>
-                                        <div class="invalid-feedback">
-                                            Please provide a KG's.
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3 mb-3">
+
+                                    <div class="col-md-4 mb-3">
                                         <label for="validationCustom04">Total Amount</label>
                                         <input type="text" name="total_amount" class="form-control {{ $errors->has('total_amount') ? ' is-invalid' : '' }}" id="validationCustom04" value="{{old('total_amount')}}" required>
                                         <div class="invalid-feedback">
@@ -316,7 +310,7 @@
                                 <div class="row">
                                     <div class="col-md-3 mb-3">
                                         <label for="validationCustom01">LSD</label>
-                                        <input type="text" name="lsd" class="form-control {{ $errors->has('lsd') ? ' is-invalid' : '' }}" id="validationCustom01"  value="{{old('lsd')}}" required>
+                                        <input type="date" name="lsd" class="form-control {{ $errors->has('lsd') ? ' is-invalid' : '' }}" id="validationCustom04" value="{{old('lsd')}}" required>
                                         <div class="invalid-feedback">
                                             Please provide a LSD.
                                         </div>
@@ -446,16 +440,25 @@
 
                                     <div class="col-md-4 mb-3">
                                         <label for="commission">Commission</label>
-                                        <select class="form-control" id="sel1" name="commission">
+                                        <select class="form-control" id="select-commission" name="commission">
                                             <option value="kg">kilogram kg</option>
                                             <option value="percentage">percentage %</option>
                                         </select>
                                     </div>
-                                    <div class="col-md-4 mb-3">
-                                        <label for="validationCustom05">Commission Percent</label>
-                                        <input type="text" name="commission_percentage" class="form-control {{ $errors->has('commission_percentage') ? ' is-invalid' : '' }}" id="validationCustom05" value="{{old('commission_percentage')}}" required>
+
+                                    <div class="col-md-4 mb-3" id="kg-input" style="display: none">
+                                        <label for="validationCustom01">KG's</label>
+                                        <input type="text" name="kg" class="form-control {{ $errors->has('kg') ? ' is-invalid' : '' }}" id="validationCustom01" value="{{old('kg')}}">
                                         <div class="invalid-feedback">
-                                            Please provide a Commission Percent.
+                                            Please provide a KG's.
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4 mb-3" id="percent-input" style="display: none">
+                                        <label for="validationCustom01">Percent</label>
+                                        <input type="text" name="percent" class="form-control {{ $errors->has('percent') ? ' is-invalid' : '' }}" id="validationCustom01" value="{{old('percent')}}">
+                                        <div class="invalid-feedback">
+                                            Please provide a KG's.
                                         </div>
                                     </div>
 
@@ -679,6 +682,23 @@
 
 <!--init scripts-->
 <script src="assets/js/scripts.js"></script>
+
+<script>
+    $(document).ready(function(){
+        $('#select-commission').click(function(){
+            let select_commission =  document.getElementById("select-commission").value;
+            if(select_commission == 'kg'){
+                document.getElementById("kg-input").style.display = "inline";
+                document.getElementById("percent-input").style.display = "none";
+            }
+            else{
+                document.getElementById("percent-input").style.display = "inline";
+                document.getElementById("kg-input").style.display = "none";
+            }
+        });
+
+    });
+</script>
 
 </body>
 </html>
