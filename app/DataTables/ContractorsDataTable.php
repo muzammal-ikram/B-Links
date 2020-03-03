@@ -93,7 +93,7 @@ class ContractorsDataTable extends DataTable
      */
     protected function getColumns()
     {
-       
+
         return [
             'Id'=> [
                 'data'=>'id'

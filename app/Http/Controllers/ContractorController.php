@@ -16,7 +16,7 @@ class ContractorController extends Controller
     {
         return view('add_contractor');
     }
-   
+
     /**
      * Show the form for creating a new resource.
      *
@@ -50,7 +50,6 @@ class ContractorController extends Controller
              'lc_opener_country' => 'required',
             'fcls' => 'required',
              'price_per_kg' => 'required',
-             'kg' => 'required',
              'total_amount' => 'required',
              'lsd' => 'required',
              'lc_type' => 'required',
@@ -65,7 +64,6 @@ class ContractorController extends Controller
              'document' => 'required',
              'shipment_status' => 'required',
              'commission' => 'required',
-             'commission_percentage' => 'required',
 
 
         ]);
@@ -86,7 +84,6 @@ class ContractorController extends Controller
         $contractor->lc_opener_country = $request->get('lc_opener_country');
         $contractor->fcls = $request->get('fcls');
         $contractor->price_per_kg = $request->get('price_per_kg');
-        $contractor->kg = $request->get('kg');
         $contractor->total_amount = $request->get('total_amount');
         $contractor->lsd = $request->get('lsd');
         $contractor->lc_type = $request->get('lc_type');
@@ -105,7 +102,19 @@ class ContractorController extends Controller
         $contractor->document = $request->get('document');
         $contractor->shipment_status = $request->get('shipment_status');
         $contractor->commission = $request->get('commission');
-        $contractor->commission_percentage = $request->get('commission_percentage');
+        $contractor->kg = $request->get('kg');
+        $contractor->percent = $request->get('percent');
+
+        if($contractor->commission == 'kg'){
+            $contractor_kg_comm = $contractor->total_amount / 100;
+            $contractor->commission_percentage = $contractor_kg_comm * $contractor->kg;
+        }
+        else{
+            $contractor_percent_comm = $contractor->total_amount / 100;
+            $contractor->commission_percentage = $contractor_percent_comm * $contractor->percent;
+        }
+
+
 
         $make_contractor_comm_dd = new \Carbon\Carbon($request->get('etd'));
         $make_contractor_comm_dd = $make_contractor_comm_dd->addDays(60);
@@ -171,7 +180,6 @@ class ContractorController extends Controller
             'lc_opener_country' => 'required',
             'fcls' => 'required',
             'price_per_kg' => 'required',
-            'kg' => 'required',
             'total_amount' => 'required',
             'lsd' => 'required',
             'lc_type' => 'required',
@@ -186,7 +194,6 @@ class ContractorController extends Controller
             'document' => 'required',
             'shipment_status' => 'required',
             'commission' => 'required',
-            'commission_percentage' => 'required',
 
 
         ]);
@@ -205,7 +212,6 @@ class ContractorController extends Controller
         $contractor->lc_opener_country = $request->get('lc_opener_country');
         $contractor->fcls = $request->get('fcls');
         $contractor->price_per_kg = $request->get('price_per_kg');
-        $contractor->kg = $request->get('kg');
         $contractor->total_amount = $request->get('total_amount');
         $contractor->lsd = $request->get('lsd');
         $contractor->lc_type = $request->get('lc_type');
@@ -224,7 +230,17 @@ class ContractorController extends Controller
         $contractor->document = $request->get('document');
         $contractor->shipment_status = $request->get('shipment_status');
         $contractor->commission = $request->get('commission');
-        $contractor->commission_percentage = $request->get('commission_percentage');
+        $contractor->kg = $request->get('kg');
+        $contractor->percent = $request->get('percent');
+
+        if($contractor->commission == 'kg'){
+            $contractor_kg_comm = $contractor->total_amount / 100;
+            $contractor->commission_percentage = $contractor_kg_comm * $contractor->kg;
+        }
+        else{
+            $contractor_percent_comm = $contractor->total_amount / 100;
+            $contractor->commission_percentage = $contractor_percent_comm * $contractor->percent;
+        }
 
         $make_contractor_comm_dd = new \Carbon\Carbon($request->get('etd'));
         $make_contractor_comm_dd = $make_contractor_comm_dd->addDays(60);

@@ -92,13 +92,13 @@
                                 <div class="card-title">
                                     All contractors
 
-                                    <form action="/contract-filter" method="get">
-                                        @csrf
-                                        <input type="text" name="supplier">
-                                        <input type="text" name="buyer">
-                                        <app/DataTables/UsersDataTable.phpinput type="submit" value="submit">
+{{--                                    <form action="/contract-filter" method="get">--}}
+{{--                                        @csrf--}}
+{{--                                        <input type="text" name="supplier">--}}
+{{--                                        <input type="text" name="buyer">--}}
+{{--                                        <input type="submit" value="submit">--}}
 
-                                    </form>
+{{--                                    </form>--}}
                                     <div class="btn-group float-right task-list-action">
                                         <div class="dropdown ">
                                             <a href="#" class="btn btn-transparent default-color dropdown-hover p-0" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -122,7 +122,7 @@
                                             <th>Contractor Number</th>
                                             <th>Supplier</th>
                                             <th>Buyer</th>
-                                            <th>ETD</th> 
+                                            <th>ETD</th>
                                             <th>ETA</th>
                                             <th>Port</th>
                                             <th>Quantity</th>
@@ -137,10 +137,10 @@
                                             <th>Documents</th>
                                             <th>Latest Shipment Date</th>
                                              <th>Date</th>
-                                             <th>Actions</th> 
+                                             <th>Actions</th>
                                         </tr>
                                     </thead>
-                                  
+
                                 </table> --}}
                             </div>
                         </div>
@@ -158,7 +158,7 @@
     @include('_partials.footer')
 @endsection
 @push('scripts')
-{{-- 
+{{--
 <script src="{{ asset('assets/vendor/jquery/jquery.min.js') }}"></script>
 
 
