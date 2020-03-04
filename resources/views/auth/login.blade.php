@@ -51,12 +51,6 @@
             </div>
             <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
 
-            <div class="mt-4">
-                <span>
-                    Don't have an account yet ?
-                </span>
-                <a href="signup.html" class="text-primary">Sign Up</a>
-            </div>
         </form>
 
     </div>

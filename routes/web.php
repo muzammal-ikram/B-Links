@@ -28,7 +28,7 @@ Route::post('/update-contractor/{id}', 'ContractorController@update')->name('upd
 Route::get('/contractor/{id}', 'ContractorController@show')->name('show-contractor');
 Route::get('/delete-contractor/{id}', 'ContractorController@destroy')->name('delete-contractor');
 Route::post('/register-user', 'Auth\RegisterController@registerUser')->name('registerUser');
-Route::get('/all-users', 'Auth\RegisterController@allUsers')->name('allUsers');
+Route::get('/all-users', 'UserController@allUsers')->name('allUsers');
 Route::delete('/delete-user/{id}', 'Auth\RegisterController@deleteUser')->name('deleteUser');
 
 Route::get('/contract-filter', 'ContractorController@filtered_contract')->name('filtered-contract');
@@ -37,3 +37,9 @@ Route::get('user/{id}/edit', 'Auth\RegisterController@editUser')->name('userEdit
 Route::put('user/{id}/update', 'Auth\RegisterController@updateUser')->name('UserUpdate');
 
 Route::get('dollar-rate', 'DollarRateController@getDollarRate');
+Route::get('change-password', 'Auth\RegisterController@changePassword');
+Route::post('change-password', 'Auth\RegisterController@userPasswordChange');
+
+
+
+

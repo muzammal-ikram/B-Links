@@ -21,20 +21,7 @@
     <link href="{{ asset('assets/vendor/simple-line-icons/css/simple-line-icons.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/vendor/themify-icons/css/themify-icons.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/vendor/weather-icons/css/weather-icons.min.css') }}" rel="stylesheet">
-
-    <link href="{{asset('assets/vendor/data-tables/dataTables.bootstrap4.min.css')}}" rel="stylesheet">
-
-<link href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
-<link href="https://cdn.datatables.net/buttons/1.6.1/css/buttons.dataTables.min.css">  
-    <script src="{{ asset('assets/vendor/jquery/jquery.min.js') }}"></script>
-     {{-- <script
-  src="https://code.jquery.com/jquery-3.4.1.js"
-  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
-  crossorigin="anonymous"></script> --}}
-  <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
-  <script src="https://cdn.datatables.net/buttons/1.6.1/js/dataTables.buttons.min.js"></script>
-<script src='https://cdn.datatables.net/buttons/1.6.1/js/buttons.html5.min.js'></script>
-      <!--custom css-->
+    <!--custom css-->
     <link href="{{ asset('assets/css/main.css') }}" rel="stylesheet">
 <style>
     .main_area_width{
