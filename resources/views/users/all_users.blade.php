@@ -52,8 +52,7 @@
                                             <th>Actions</th>
                                         </tr>
                                     </thead>
-                                </table>
-
+                                </table> --}}
                                 {{-- Model --}}
 
 
@@ -93,6 +92,9 @@ $(document).ready(function() {
     Table = $('#users').DataTable({
         "processing": true,
         "serverSide": true,
+      buttons: [
+           'print'
+        ],
         "ajax": "{{ route('allUsers') }}",
         "columns": [
             {data: 'id', name: 'id'},
@@ -116,7 +118,7 @@ $(document).ready(function() {
         ]
     });
 });
-</script>
+</script> --}}
 
 
 {{-- @endpush --}}

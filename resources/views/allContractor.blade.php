@@ -84,6 +84,10 @@ $(document).ready(function() {
     Table = $('#contractors').DataTable({
         "processing": true,
         "serverSide": true,
+        buttons: [
+           'copy', 'csv', 'excel', 'pdf', 'print'
+        ],
+         dom: 'Bfrtip',
         "ajax": "{{ route('allContractor') }}",
         "columns": [
             {data: 'id', name: 'id'},

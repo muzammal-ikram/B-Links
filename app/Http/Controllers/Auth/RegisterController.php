@@ -9,7 +9,11 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
 // use Datatables;
+use Hash as PassHash;
 use DB;
+use App\DataTables\UsersDataTable;
+// use DataTables;
+// use Yajra\DataTables\Contracts\DataTable;
 class RegisterController extends Controller
 {
     /*
@@ -89,8 +93,9 @@ class RegisterController extends Controller
             return redirect()->back()->with('error', 'Assistant Register Failed!');
         }
     }
-    public function allUsers(Request $request)
-    {
+    public function allUsers(UsersDataTable $dataTable)
+    { 
+        return $dataTable->render('users.all_users');
         if($request->ajax()){
 
             $users = User::where('id', '!=', auth()->user()->id)->get();
@@ -139,5 +144,26 @@ class RegisterController extends Controller
             return redirect()->back()->with('error', 'User Updated Failed!');
         }
     }
-    
+    public function changePassword()
+    {
+        return view('users.change_password');
+    }
+    public function userPasswordChange(Request $request)
+    {
+        
+        $validatedData = $request->validate([
+            'current_password' => 'required|min:6',
+            'password' => 'required|min:6|confirmed',
+        ]);
+        if (!(PassHash::check($request->get('current_password'), \Auth::user()->password))) {
+            return redirect()->back()->with("error","Your current password does not matches with the password you provided. Please try again.");
+        }
+        //Change Password
+        $user = \Auth::user();
+        $user->password = bcrypt($request->get('password'));
+        $user->save();
+
+        return redirect()->back()->with("success","Password changed successfully !");
+
+    }
 }

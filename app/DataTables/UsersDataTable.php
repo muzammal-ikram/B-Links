@@ -54,7 +54,6 @@ class UsersDataTable extends DataTable
      */
     public function html()
     {
-        
         return $this->builder()
                     ->setTableId('users-table')
                     ->columns($this->getColumns())

@@ -86,7 +86,7 @@
             <div class="dropdown-menu dropdown-menu-right dropdown-menu-accout">
                 <div class="dropdown-header pb-3">
                     <div class="media d-user">
-                        <img class="align-self-center mr-3" src="assets/img/user.png" alt="John Doe">
+                        <img class="align-self-center mr-3" src="{{ asset('assets/img/user.png') }}" alt="John Doe">
                         <div class="media-body">
                             <h5 class="mt-0 mb-0">{{ auth()->user()->name }}</h5>
                             <span>{{ auth()->user()->email }}</span>
@@ -95,7 +95,7 @@
                 </div>
 
            
-                <a class="dropdown-item" href="#"><i class=" ti-lock"></i> Change Password</a>
+                <a class="dropdown-item" href="{{ url('change-password') }}"><i class=" ti-lock"></i> Change Password</a>
 
                 <div class="dropdown-divider"></div>
 
