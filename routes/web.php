@@ -40,6 +40,16 @@ Route::get('dollar-rate', 'DollarRateController@getDollarRate');
 Route::get('change-password', 'Auth\RegisterController@changePassword');
 Route::post('change-password', 'Auth\RegisterController@userPasswordChange');
 
+Route::get('seller-names', 'ContractorController@getSeller')->name('seller-names');
+Route::get('seller-info', 'ContractorController@getSellerInfo')->name('seller-info');
+
+
+Route::get('buyer-names', 'ContractorController@getbuyer')->name('buyer-names');
+Route::get('buyer-info', 'ContractorController@getbuyerInfo')->name('buyer-info');
+
+
+Route::get('lc-opener-names', 'ContractorController@getLcOpener')->name('lc-opener-names');
+Route::get('opener-info', 'ContractorController@getOpenerInfo')->name('opener-info');
 
 
 

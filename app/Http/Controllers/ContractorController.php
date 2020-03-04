@@ -268,14 +268,65 @@ class ContractorController extends Controller
        $contractor = Contractor::findOrFail($id);
        $contractor->delete();
        return redirect('/add-contractor')->with('success', 'contract deleted successfully');
+    } 
+    public function getSeller(Request $request){
+
+        \DB::statement("SET SQL_MODE=''");
+        $data = Contractor::where('seller_name', 'like', $request->get('seller').'%')->groupBy('seller_name')->get();
+        
+        $output = '<ul class="dropdown-menu" style="display: block;cursor:pointer;  width: 100%; margin-top: -5px;">';
+        foreach ($data as $row) {
+            $output .= '<li style="margin-left: 10px; border-bottom: 1px solid lightgrey;">' . $row->seller_name . '<input style="display: none" value="' . $row->id . '" class="userId"></input></li>';
+
+        }
+        $output .= '</ul>';
+
+        echo $output;
     }
+    public function getSellerInfo(Request $request){
+        $sellerInfo = Contractor::where('id', $request->seller_id)->first();
+        return $sellerInfo;
+    }
+    public function getBuyer(Request $request){
 
+        \DB::statement("SET SQL_MODE=''");
+        $data = Contractor::where('buyer_name', 'like', $request->get('buyer').'%')->groupBy('buyer_name')->get();
+        $output = '';
+       if(count($data) > 0){
+            $output = '<ul class="dropdown-menu" style="display: block;cursor:pointer;  width: 100%; margin-top: -5px;">';
+            foreach ($data as $row) {
+                $output .= '<li style="margin-left: 10px; border-bottom: 1px solid lightgrey;">' . $row->buyer_name . '<input style="display: none" value="' . $row->id . '" class="userId"></input></li>';
+            }
+        
+            $output .= '</ul>';
+       }
 
-    public function filtered_contract(Request $request){
+        echo $output;
+    }
+    public function getBuyerInfo(Request $request){
+        $buyerInfo = Contractor::where('id', $request->buyer_id)->first();
+        return $buyerInfo;
+    }
+    public function getLcOpener(Request $request){
 
-        $contracts = Contractor::where('supplier' , 'like' , '%'.$request->get('supplier').'%')->orWhere('buyer' , 'like' , '%'.$request->get('buyer').'%')->get();
-        dd($contracts);
+        \DB::statement("SET SQL_MODE=''");
+        $data = Contractor::where('lc_opener_name', 'like', $request->get('opener').'%')->groupBy('buyer_name')->get();
+        $output = '';
+       if(count($data) > 0){
+            $output = '<ul class="dropdown-menu" style="display: block;cursor:pointer;  width: 100%; margin-top: -5px;">';
+            foreach ($data as $row) {
+                $output .= '<li style="margin-left: 10px; border-bottom: 1px solid lightgrey;">' . $row->lc_opener_name . '<input style="display: none" value="' . $row->id . '" class="userId"></input></li>';
+            }
+        
+            $output .= '</ul>';
+       }
 
+        echo $output;
+    }
+    
+    public function getOpenerInfo(Request $request){
+        $openerInfo = Contractor::where('id', $request->opener_id)->first();
+        return $openerInfo;
     }
 
 }

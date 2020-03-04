@@ -41,8 +41,7 @@
             @yield('content')
             @stack('scripts')
         {{-- </main> --}}
-
-
+<script src="{{ asset('assets/vendor/jquery/jquery.min.js') }}"></script> 
 <script src="{{ asset('assets/vendor/jquery-ui-1.12.1/jquery-ui.min.js') }}"></script>
 <script src="{{ asset('assets/vendor/popper.min.js') }}"></script>
 <script src="{{ asset('assets/vendor/bootstrap/js/bootstrap.min.js') }}"></script>

@@ -205,21 +205,23 @@
                                 <div class="row">
                                     <div class="col-md-4 mb-3">
                                         <label for="validationCustom01">Seller Name</label>
-                                        <input type="text" name="seller_name" class="form-control {{ $errors->has('seller_name') ? ' is-invalid' : '' }}" id="validationCustom01"  value="{{old('seller_name')}}" required>
+                                        <input type="text" name="seller_name" class="form-control {{ $errors->has('seller_name') ? ' is-invalid' : '' }}" id="sellers_name"  value="{{old('seller_name')}}" autocomplete="off" required>
+                                        <input type="hidden" name="seller_id" id="seller-id">
+                                        <div id='sellersSuggestion'></div>
                                         <div class="invalid-feedback">
                                             Please provide a Seller Name.
                                         </div>
                                     </div>
                                     <div class="col-md-4 mb-3">
                                         <label for="validationCustom01">Seller Address</label>
-                                        <input type="text" name="seller_address" class="form-control {{ $errors->has('seller_address') ? ' is-invalid' : '' }}" id="validationCustom01"  value="{{old('seller_address')}}" required>
+                                        <input type="text" name="seller_address" class="form-control {{ $errors->has('seller_address') ? ' is-invalid' : '' }}" id="seller_address"  value="{{old('seller_address')}}" required>
                                         <div class="invalid-feedback">
                                             Please provide a Seller Address.
                                         </div>
                                     </div>
                                     <div class="col-md-4 mb-3">
                                         <label for="validationCustom01">Seller Country</label>
-                                        <input type="text" name="seller_country" class="form-control {{ $errors->has('seller_country') ? ' is-invalid' : '' }}" id="validationCustom01"  value="{{old('seller_country')}}" required>
+                                        <input type="text" name="seller_country" class="form-control {{ $errors->has('seller_country') ? ' is-invalid' : '' }}" id="seller_country"  value="{{old('seller_country')}}" required>
                                         <div class="invalid-feedback">
                                             Please provide a Seller Country.
                                         </div>
@@ -232,21 +234,23 @@
 
                                     <div class="col-md-4 mb-3">
                                         <label for="validationCustom01">Buyer Name</label>
-                                        <input type="text" name="buyer_name" class="form-control {{ $errors->has('buyer_name') ? ' is-invalid' : '' }}" id="validationCustom01" value="{{old('buyer_name')}}" required>
+                                        <input type="text" name="buyer_name" class="form-control {{ $errors->has('buyer_name') ? ' is-invalid' : '' }}" id="buyer_name" value="{{old('buyer_name')}}" autocomplete="off" required>
+                                        <input type="hidden" name="buyer_id" id="buyer-id">
+                                        <div id='buyerSuggestion'></div>
                                         <div class="invalid-feedback">
                                             Please provide a Buyer Name
                                         </div>
                                     </div>
                                     <div class="col-md-4 mb-3">
                                         <label for="validationCustom01">Buyer Address</label>
-                                        <input type="text" name="buyer_address" class="form-control {{ $errors->has('buyer_address') ? ' is-invalid' : '' }}" id="validationCustom01" value="{{old('buyer_address')}}" required>
+                                        <input type="text" name="buyer_address" class="form-control {{ $errors->has('buyer_address') ? ' is-invalid' : '' }}" id="buyer_address" value="{{old('buyer_address')}}" autocomplete="off" required>
                                         <div class="invalid-feedback">
                                             Please provide a Buyer Address.
                                         </div>
                                     </div>
                                     <div class="col-md-4 mb-3">
                                         <label for="validationCustom01">Buyer Country</label>
-                                        <input type="text" name="buyer_country" class="form-control {{ $errors->has('buyer_country') ? ' is-invalid' : '' }}" id="validationCustom01" value="{{old('buyer_country')}}" required>
+                                        <input type="text" name="buyer_country" class="form-control {{ $errors->has('buyer_country') ? ' is-invalid' : '' }}" id="buyer_country" value="{{old('buyer_country')}}" autocomplete="off" required>
                                         <div class="invalid-feedback">
                                             Please provide a Buyer Country.
                                         </div>
@@ -258,21 +262,23 @@
 
                                     <div class="col-md-4 mb-3">
                                         <label for="validationCustom01">LC Opener Name</label>
-                                        <input type="text" name="lc_opener_name" class="form-control {{ $errors->has('lc_opener_name') ? ' is-invalid' : '' }}" id="validationCustom01" value="{{old('lc_opener_name')}}" required>
+                                        <input type="text" name="lc_opener_name" class="form-control {{ $errors->has('lc_opener_name') ? ' is-invalid' : '' }}" id="lc_opener_name" value="{{old('lc_opener_name')}}" autocomplete="off" required>
+                                        <input type="hidden" name="opener_id" id="opener-id">
+                                        <div id='openerSuggestion'></div>
                                         <div class="invalid-feedback">
                                             Please provide a LC Opener Name.
                                         </div>
                                     </div>
                                     <div class="col-md-4 mb-3">
                                         <label for="validationCustom01">LC Opener Address</label>
-                                        <input type="text" name="lc_opener_address" class="form-control {{ $errors->has('lc_opener_address') ? ' is-invalid' : '' }}" id="validationCustom01" value="{{old('lc_opener_address')}}" required>
+                                        <input type="text" name="lc_opener_address" class="form-control {{ $errors->has('lc_opener_address') ? ' is-invalid' : '' }}" id="lc_opener_address" value="{{old('lc_opener_address')}}" autocomplete="off" required>
                                         <div class="invalid-feedback">
                                             Please provide a LC Opener Address.
                                         </div>
                                     </div>
                                     <div class="col-md-4 mb-3">
                                         <label for="validationCustom01">LC Opener Country</label>
-                                        <input type="text" name="lc_opener_country" class="form-control {{ $errors->has('lc_opener_country') ? ' is-invalid' : '' }}" id="validationCustom01" value="{{old('lc_opener_country')}}" required>
+                                        <input type="text" name="lc_opener_country" class="form-control {{ $errors->has('lc_opener_country') ? ' is-invalid' : '' }}" id="lc_opener_country" value="{{old('lc_opener_country')}}" autocomplete="off" required>
                                         <div class="invalid-feedback">
                                             Please provide a LC Opener Country.
                                         </div>
@@ -696,8 +702,172 @@
                 document.getElementById("kg-input").style.display = "none";
             }
         });
+        // ******* SELLER NAME **************
+        $('#sellers_name').keyup(function () {
+            var query = $(this).val();
+            var usersList = {};
+            if (query !== '')
+            {
+                var _token = $('input[name="_token"]').val();
+                $.ajax({
+                    url: "{{ route('seller-names') }}",
+                    method: 'GET',
+                    data: {seller:query, _token:_token},
+                    success:function (data) {
+                        $('#sellersSuggestion').fadeIn();
+                        $('#sellersSuggestion').html(data);
+                        usersList = data;
+                    }
+                });
+            }
+            else
+            {
+                $('#sellersSuggestion').fadeOut();
+            }
+        });
+        // **********SELLER SUGGESTIONS**************
+        $("#sellersSuggestion").on('click', 'li', function() {
+
+        $('#sellers_name').val($(this).text());
+        $('#sellers_name').attr('value', $(this).text());
+        $("#seller-id").attr({"value":$(this).children("input").attr('value')});//.val($(this).text());
+        var seller_id = $("#seller-id").val();
+        if(seller_id){
+            getSellerInfo(seller_id);
+        }
+        $('#sellersSuggestion').fadeOut();
+        });
+
+        // *****BUYER Name***************
+
+        $('#buyer_name').keyup(function () {
+            var query = $(this).val();
+            if (query !== '')
+            {
+                var _token = $('input[name="_token"]').val();
+                $.ajax({
+                    url: "{{ route('buyer-names') }}",
+                    method: 'GET',
+                    data: {buyer:query, _token:_token},
+                    success:function (data) {
+                        $('#buyerSuggestion').fadeIn();
+                        $('#buyerSuggestion').html(data);
+                    }
+                });
+            }
+            else
+            {
+                $('#buyerSuggestion').fadeOut();
+            }
+        });
+
+        // **********Buyer SUGGESTIONS**************
+        $("#buyerSuggestion").on('click', 'li', function() {
+
+            $('#buyer_name').val($(this).text());
+            $('#buyer_name').attr('value', $(this).text());
+            $("#buyer-id").attr({"value":$(this).children("input").attr('value')});//.val($(this).text());
+            var buyer_id = $("#buyer-id").val();
+            if(buyer_id){
+                getBuyerInfo(buyer_id);
+            }
+            $('#buyerSuggestion').fadeOut();
+        });
+
+        $('#lc_opener_name').keyup(function () {
+            var query = $(this).val();
+            var usersList = {};
+            if (query !== '')
+            {
+                var _token = $('input[name="_token"]').val();
+                $.ajax({
+                    url: "{{ route('lc-opener-names') }}",
+                    method: 'GET',
+                    data: {opener:query, _token:_token},
+                    success:function (data) {
+                        $('#openerSuggestion').fadeIn();
+                        $('#openerSuggestion').html(data);
+                        usersList = data;
+                    }
+                });
+            }
+            else
+            {
+                $('#openerSuggestion').fadeOut();
+            }
+        });
+
+          // **********Opener SUGGESTIONS**************
+          $("#openerSuggestion").on('click', 'li', function() {
+
+                $('#lc_opener_name').val($(this).text());
+                $('#lc_opener_name').attr('value', $(this).text());
+                $("#opener-id").attr({"value":$(this).children("input").attr('value')});//.val($(this).text());
+                var opener_id = $("#opener-id").val();
+                if(opener_id){
+                    getOpenerInfo(opener_id);
+                }
+                $('#openerSuggestion').fadeOut();
+            });
 
     });
+    
+    function getSellerInfo(seller_id){
+        var _token = $('input[name="_token"]').val();
+                $.ajax({
+                    url: "{{ route('seller-info') }}",
+                    method: 'GET',
+                    data: {seller_id:seller_id, _token:_token},
+                    success:function (data) {
+                        document.getElementById("seller_address").value = data.seller_address;
+                        document.getElementById("seller_country").value = data.seller_country; 
+                      
+                        document.getElementById("seller_address").disabled = true;
+                        document.getElementById("seller_country").disabled = true;
+                  
+                    }
+                });
+    }
+
+    function getBuyerInfo(buyer_id){
+        var _token = $('input[name="_token"]').val();
+                $.ajax({
+                    url: "{{ route('buyer-info') }}",
+                    method: 'GET',
+                    data: {buyer_id:buyer_id, _token:_token},
+                    success:function (data) {
+                        document.getElementById("buyer_address").value = data.buyer_address;
+                        document.getElementById("buyer_country").value = data.buyer_country; 
+                      
+                        document.getElementById("buyer_address").disabled = true;
+                        document.getElementById("buyer_country").disabled = true;
+                    }
+                });
+    }
+
+
+    function getOpenerInfo(opener_id){
+        var _token = $('input[name="_token"]').val();
+                $.ajax({
+                    url: "{{ route('opener-info') }}",
+                    method: 'GET',
+                    data: {opener_id:opener_id, _token:_token},
+                    success:function (data) {
+                        document.getElementById("lc_opener_address").value = data.lc_opener_address;
+                        document.getElementById("lc_opener_country").value = data.lc_opener_country; 
+                      
+                        document.getElementById("lc_opener_address").disabled = true;
+                        document.getElementById("lc_opener_country").disabled = true;
+                    }
+                });
+    }
+    
+
+    $(document).on('click', function() {
+        $('#sellersSuggestion').fadeOut();
+        $('#buyerSuggestion').fadeOut();
+        $('#openerSuggestion').fadeOut();
+    })
 </script>
 
 </body>
