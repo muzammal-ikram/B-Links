@@ -16,54 +16,58 @@ class CreateContractorsTable extends Migration
         Schema::create('contractors', function (Blueprint $table) {
             $table->bigIncrements('id');
 
-            $table->string('date');
-            $table->string('contractor_number');
-            $table->string('count');
+            $table->string('date')->nullable();
+            $table->string('contractor_number')->nullable();
+            $table->string('item')->nullable();
 
-            $table->string('seller_name');
-            $table->string('seller_address');
-            $table->string('seller_country');
+            $table->string('seller_name')->nullable();
+            $table->string('seller_address')->nullable();
+            $table->string('seller_country')->nullable();
 
-            $table->string('buyer_name');
-            $table->string('buyer_address');
-            $table->string('buyer_country');
+            $table->string('buyer_name')->nullable();
+            $table->string('buyer_address')->nullable();
+            $table->string('buyer_country')->nullable();
 
-            $table->string('lc_opener_name');
-            $table->string('lc_opener_address');
-            $table->string('lc_opener_country');
+            $table->string('lc_opener_name')->nullable();
+            $table->string('lc_opener_address')->nullable();
+            $table->string('lc_opener_country')->nullable();
 
-            $table->string('fcls');
-            $table->string('price_per_kg');
+            $table->string('fcls')->nullable();
+            $table->string('lsd')->nullable();
+            $table->string('lc_type')->nullable();
+            $table->string('lc_number')->nullable();
 
 
-            $table->string('total_amount');
-            $table->string('lsd');
-            $table->string('lc_type');
-            $table->string('lc_number');
+            $table->string('price_per_dollar')->nullable();
+            $table->string('qty')->nullable();
+            $table->string('total_amount')->nullable();
 
-            $table->string('invoice_number');
-            $table->string('bl_number');
 
-            $table->string('etd');
-            $table->string('etd_fcls');
-            $table->string('etd_rest');
-
-            $table->string('eta');
-            $table->string('eta_fcls');
-            $table->string('eta_rest');
-
-            $table->string('awb');
-            $table->string('document');
-
-            $table->string('shipment_status');
-            $table->string('commission');
-            $table->string('commission_percentage');
-
+            $table->string('commission_type')->nullable();
             $table->string('kg')->nullable();
             $table->string('percent')->nullable();
+            $table->string('commission_amount')->nullable();
 
-            $table->string('comm_dd');
-            $table->string('status');
+            $table->string('invoice_number')->nullable();
+            $table->string('bl_number')->nullable();
+
+
+
+            $table->string('etd')->nullable();
+            $table->string('etd_fcls')->nullable();
+            $table->string('etd_rest')->nullable();
+
+            $table->string('eta')->nullable();
+            $table->string('eta_fcls')->nullable();
+            $table->string('eta_rest')->nullable();
+
+            $table->string('awb')->nullable();
+            $table->string('document')->nullable();
+            $table->string('shipment_status')->nullable(); 
+
+
+            $table->string('comm_deadline')->nullable();
+            $table->string('status')->nullable();
 
 
             $table->softDeletes();

@@ -35,99 +35,103 @@ class ContractorController extends Controller
      */
     public function store(Request $request)
     {
-         $request->validate([
-             'date' => 'required',
-            'contractor_number' => 'required',
-             'count' => 'required',
-             'seller_name' => 'required',
-             'seller_address' => 'required',
-             'seller_country' => 'required',
-             'buyer_name' => 'required',
-             'buyer_address' => 'required',
-             'buyer_country' => 'required',
-             'lc_opener_name' => 'required',
-             'lc_opener_address' => 'required',
-             'lc_opener_country' => 'required',
-            'fcls' => 'required',
-             'price_per_kg' => 'required',
-             'total_amount' => 'required',
-             'lsd' => 'required',
-             'lc_type' => 'required',
-             'lc_number' => 'required',
-             'invoice_number' => 'required',
-             'bl_number' => 'required',
-             'etd' => 'required',
-             'etd_fcls' => 'required',
-             'eta' => 'required',
-             'eta_fcls' => 'required',
-             'awb' => 'required',
-             'document' => 'required',
-             'shipment_status' => 'required',
-             'commission' => 'required',
+        dd($request->all());
 
+        // find total amount
+        $price_per_dollar   = $request->get('price_per_dollar');
+        $qty                = $request->get('qty');
+        $total_amount       = $price_per_dollar * $qty;
 
-        ]);
+        // find commission in kg's
+        $commission_type    = $request->get('commission_type');
+        $kg                 = $request->get('kg');
+        $percent            = $request->get('percent');
+        if($commission_type == 'kg'){
+            $commission_amount =  $qty * $kg;
+        }
+        if($commission_type == 'percent'){
+            $commission_amount =  $total_amount * $percent; 
+        }
 
+        // find etd rest
+        $fcls               = $request->get('fcls');
+        $etd_fcls           = $request->get('etd_fcls');
+        $etd_rest           = $fcls - $etd_fcls;
+
+        // find eta rest
+        $eta_fcls           = $request->get('eta_fcls');
+        $eta_rest           = $fcls - $eta_fcls;
+
+        // find commission deadline
+        $commission_deadline                = new \Carbon\Carbon($request->get('etd'));
+        $commission_deadline                = $commission_deadline->addDays(60);
+
+        // insert Data
         $contractor = new Contractor;
+        // Basic Details
+        $contractor->date                   = $request->get('date');
+        $contractor->contractor_number      = $request->get('contract_number');
+        $contractor->item                  = $request->get('item');
+        
+        // Seller
+        $contractor->seller_name            = $request->get('seller_name');
+        $contractor->seller_address         = $request->get('seller_address');
+        $contractor->seller_country         = $request->get('seller_country');
+        
+        // Buyer
+        $contractor->buyer_name             = $request->get('buyer_name');
+        $contractor->buyer_address          = $request->get('buyer_address');
+        $contractor->buyer_country          = $request->get('buyer_country');
+        
+        // Lc Opener
+        $contractor->lc_opener_name         = $request->get('lc_opener_name');
+        $contractor->lc_opener_address      = $request->get('lc_opener_address');
+        $contractor->lc_opener_country      = $request->get('lc_opener_country');
+        
+        // Contract Details
+        $contractor->fcls                   = $fcls;
+        $contractor->lsd                    = $request->get('lsd');
+        $contractor->lc_type                = $request->get('lc_type');
+        $contractor->lc_number              = $request->get('lc_number');
+    
+        // Payment Details
+        $contractor->price_per_dollar       = $price_per_dollar;
+        $contractor->qty                    = $qty;
+        $contractor->total_amount           = $total_amount;        
+        $contractor->commission_type        = $commission_type;
+        $contractor->percent                = $percent;
+        $contractor->kg                     = $kg;
+        $contractor->commission_amount      = $commission_amount;
 
-        $contractor->date = $request->get('date');
-        $contractor->contractor_number = $request->get('contractor_number');
-        $contractor->count = $request->get('count');
-        $contractor->seller_name = $request->get('seller_name');
-        $contractor->seller_address = $request->get('seller_address');
-        $contractor->seller_country = $request->get('seller_country');
-        $contractor->buyer_name = $request->get('buyer_name');
-        $contractor->buyer_address = $request->get('buyer_address');
-        $contractor->buyer_country = $request->get('buyer_country');
-        $contractor->lc_opener_name = $request->get('lc_opener_name');
-        $contractor->lc_opener_address = $request->get('lc_opener_address');
-        $contractor->lc_opener_country = $request->get('lc_opener_country');
-        $contractor->fcls = $request->get('fcls');
-        $contractor->price_per_kg = $request->get('price_per_kg');
-        $contractor->total_amount = $request->get('total_amount');
-        $contractor->lsd = $request->get('lsd');
-        $contractor->lc_type = $request->get('lc_type');
-        $contractor->lc_number = $request->get('lc_number');
-        $contractor->invoice_number = $request->get('invoice_number');
-        $contractor->bl_number = $request->get('bl_number');
-        $contractor->etd = $request->get('etd');
-        $contractor->etd_fcls = $request->get('etd_fcls');
-        $contractor->etd_rest = $request->get('fcls') - $request->get('etd_fcls');
+        // Invoice Details
+        $contractor->invoice_number         = $request->get('invoice_number');
+        $contractor->bl_number              = $request->get('bl_number');
 
-        $contractor->eta = $request->get('eta');
-        $contractor->eta_fcls = $request->get('eta_fcls');
-        $contractor->eta_rest = $request->get('fcls') - $request->get('eta_fcls');
+        // invoice more data here
+       
+        // ETD/ETA Details
+        $contractor->etd                    = $request->get('etd');
+        $contractor->etd_fcls               = $etd_fcls;
+        $contractor->etd_rest               = $etd_rest;
 
-        $contractor->awb = $request->get('awb');
-        $contractor->document = $request->get('document');
-        $contractor->shipment_status = $request->get('shipment_status');
-        $contractor->commission = $request->get('commission');
-        $contractor->kg = $request->get('kg');
-        $contractor->percent = $request->get('percent');
+        $contractor->eta                    = $request->get('eta');
+        $contractor->eta_fcls               = $eta_fcls;
+        $contractor->eta_rest               = $eta_rest;
 
-        if($contractor->commission == 'kg'){
-            $contractor_kg_comm = $contractor->total_amount / 100;
-            $contractor->commission_percentage = $contractor_kg_comm * $contractor->kg;
-        }
-        else{
-            $contractor_percent_comm = $contractor->total_amount / 100;
-            $contractor->commission_percentage = $contractor_percent_comm * $contractor->percent;
-        }
+        // Documents Details
+        $contractor->awb                    = $request->get('awb');
+        $contractor->document               = $request->get('document');
+        $contractor->shipment_status        = $request->get('shipment_status');
 
-
-
-        $make_contractor_comm_dd = new \Carbon\Carbon($request->get('etd'));
-        $make_contractor_comm_dd = $make_contractor_comm_dd->addDays(60);
-        $contractor->comm_dd = $make_contractor_comm_dd;
-
-        $contractor->status = 'status';
-
+        $contractor->comm_deadline          = $commission_deadline;
+        $contractor->status                 = 'status';
 
         $contractor->save();
 
         return redirect()->back()->with('success' , 'Contract Added Successfully');
 
     }
+
 
     /**
      * Display the specified resource.
@@ -166,35 +170,6 @@ class ContractorController extends Controller
         $contractor = Contractor::findOrFail($id);
 
         $request->validate([
-            'date' => 'required',
-            'contractor_number' => 'required',
-            'count' => 'required',
-            'seller_name' => 'required',
-            'seller_address' => 'required',
-            'seller_country' => 'required',
-            'buyer_name' => 'required',
-            'buyer_address' => 'required',
-            'buyer_country' => 'required',
-            'lc_opener_name' => 'required',
-            'lc_opener_address' => 'required',
-            'lc_opener_country' => 'required',
-            'fcls' => 'required',
-            'price_per_kg' => 'required',
-            'total_amount' => 'required',
-            'lsd' => 'required',
-            'lc_type' => 'required',
-            'lc_number' => 'required',
-            'invoice_number' => 'required',
-            'bl_number' => 'required',
-            'etd' => 'required',
-            'etd_fcls' => 'required',
-            'eta' => 'required',
-            'eta_fcls' => 'required',
-            'awb' => 'required',
-            'document' => 'required',
-            'shipment_status' => 'required',
-            'commission' => 'required',
-
 
         ]);
 

@@ -39,7 +39,6 @@
 
         {{-- <main class="py-4"> --}}
             @yield('content')
-            @stack('scripts')
         {{-- </main> --}}
 <script src="{{ asset('assets/vendor/jquery/jquery.min.js') }}"></script> 
 <script src="{{ asset('assets/vendor/jquery-ui-1.12.1/jquery-ui.min.js') }}"></script>
@@ -64,6 +63,7 @@
 <!--init scripts-->
 <script src="{{ asset('assets/js/scripts.js') }}"></script>
 
+@stack('scripts')
 </body>
 </html>
 
