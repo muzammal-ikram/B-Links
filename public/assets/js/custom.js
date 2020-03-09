@@ -213,10 +213,19 @@ $(document).ready(function() {
         var html = $(".copy").html();
         $("#add-more-invoice").after(html);
     });
+    var editCount = 0;
+    $(".edit-more").click(function(){ 
+        editCount++; 
+        if(count === 1){
+            document.getElementById("copy-area").style.display = "block";
+            return;
+        }
+        var html = $("#copy-area").html();
+        $("#add-more-invoice").after(html);
+    });
 
 
     $("body").on("click",".remove",function(){ 
-        
         $(this).parents(".control-group").remove();
     });
 
