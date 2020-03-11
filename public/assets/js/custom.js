@@ -4,10 +4,12 @@ $(document).ready(function(){
         if(select_commission == 'kg'){
             document.getElementById("kg-input").style.display = "inline";
             document.getElementById("percent-input").style.display = "none";
+            document.getElementById("percent_commission").value = ""
         }
         else{
             document.getElementById("percent-input").style.display = "inline";
             document.getElementById("kg-input").style.display = "none";
+            document.getElementById("kgs_commission").value = ""
         }
     });
     // ******* SELLER NAME **************
