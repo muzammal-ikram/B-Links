@@ -440,14 +440,15 @@ class ContractorController extends Controller
         return $openerInfo;
     }
 
-    public function debitNote (){
+    public function debitNote ($id){
 
-        $contract = Contractor::where('id', 2)->first();
+        $contract = Contractor::where('id', $id)->first();
+        $loops = ['name'=>'muzammal', 'class'=>'bs', 'sname'=>'smuzammal', 'sclass'=>'bss', ];
+       
+        return view('debit_note', compact('contract', 'loops'));
 
-        return view('debit_note', compact('contract'));
-
-//        $pdf = PDF::loadView('debit_note',compact('contract'));
-//        return $pdf->download('debit_note.pdf');
+       $pdf = PDF::loadView('debit_note',compact('contract'));
+       return $pdf->download('debit_note.pdf');
     }
 
 }

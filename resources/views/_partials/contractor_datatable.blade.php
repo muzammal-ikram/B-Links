@@ -7,9 +7,20 @@
                         aria-expanded="false">
                         <i class=" icon-options"></i>
                     </a>
+
                 <div class="dropdown-menu" x-placement="bottom-start"
                             style="position: absolute; transform: translate3d(0px, 39px, 0px); top: 0px; left: 0px; will-change: transform;">
                             
+                        @php
+                            $nowDate        =  Carbon\Carbon::now();
+                            $last7Days      = $con->comm_deadline->subDays(7);
+                            $comm_deadline  = $con->comm_deadline;
+                        @endphp
+                        @if($nowDate >= $last7Days && $nowDate <= $comm_deadline)
+                            <a class="dropdown-item"
+                            href="{{ url('/debit-note', $con->id) }}"> <i
+                                class="ti-zip text-success pr-2"></i> Debit Note</a>
+                        @endif
                         <a class="dropdown-item"
                             href="{{ route('edit-contractor', $con->id) }}"> <i
                                 class="ti-zip text-success pr-2"></i> Edit </a>

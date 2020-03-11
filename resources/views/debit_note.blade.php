@@ -74,6 +74,7 @@
     <COL WIDTH=156>
     <COL WIDTH=102>
     <COL WIDTH=121>
+    <COL WIDTH=121>
     <TR VALIGN=TOP>
         <TD WIDTH=167 HEIGHT=19 STYLE="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding: 0in">
             <P STYLE="margin-left: 0.11in; margin-top: 0in"><FONT SIZE=4><I><B>Buyer
@@ -82,6 +83,10 @@
         <TD WIDTH=138 STYLE="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding: 0in">
             <P STYLE="margin-left: 0.07in; margin-top: 0in"><FONT SIZE=4><I><B>Contract
                             #</B></I></FONT></P>
+        </TD>
+        <TD WIDTH=156 STYLE="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding: 0in">
+            <P STYLE="margin-left: 0.07in; margin-top: 0in"><FONT SIZE=4><I><B>Bl #.
+            </B></I></FONT></P>
         </TD>
         <TD WIDTH=156 STYLE="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding: 0in">
             <P STYLE="margin-left: 0.07in; margin-top: 0in"><FONT SIZE=4><I><B>Inv.
@@ -97,7 +102,7 @@
     <TR VALIGN=TOP>
         <TD ROWSPAN=2 WIDTH=167 HEIGHT=65 STYLE="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding: 0in">
             <P CLASS="western" STYLE="margin-bottom: 0.14in; widows: 2; orphans: 2">
-                <FONT SIZE=3><I><B>{{$contract->buyer_name}}.</B></I></FONT></P>
+                <FONT SIZE=3><I><B>{{$contract->buyer_name}}</B></I></FONT></P>
             <P STYLE="margin-left: 0.07in; margin-right: 0.41in"><BR>
             </P>
         </TD>
@@ -107,38 +112,38 @@
             <P ALIGN=CENTER STYLE="margin-left: 0.07in; margin-top: 0in"><BR>
             </P>
             <P ALIGN=CENTER STYLE="margin-left: 0.07in; margin-top: 0in"><A NAME="_GoBack"></A>
-                <FONT SIZE=4><I><B>{{$contract->bl_number}}</B></I></FONT></P>
+                <FONT SIZE=4><I><B>{{$contract->contractor_number}}</B></I></FONT></P>
         </TD>
-        <TD WIDTH=156 STYLE="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding: 0in">
-            <P ALIGN=CENTER STYLE="margin-left: 0.07in; margin-top: 0in"><FONT SIZE=4><I>{{$contract->invoice_number}}</I></FONT></P>
-            <P CLASS="western" ALIGN=RIGHT STYLE="widows: 2; orphans: 2"><BR>
-            </P>
-        </TD>
-        <TD WIDTH=102 STYLE="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding: 0in">
-            <P STYLE="margin-left: 0.07in; margin-top: 0in"><FONT SIZE=4><I>08/11/2019</I></FONT></P>
-        </TD>
-        <TD WIDTH=121 STYLE="border: 1px solid #000000; padding: 0in">
-            <P STYLE="margin-left: 0.08in; margin-top: 0in; font-style: normal">
-                <FONT SIZE=2 STYLE="font-size: 11pt"><FONT SIZE=4><I>$133.48</I></FONT></FONT></P>
-        </TD>
+         
+
+            @php 
+                $count = 0;
+            @php 
+          @foreach($loops as $test)
+        
+                <TD WIDTH=156 STYLE="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding: 0in">
+                    <P ALIGN=CENTER STYLE="margin-left: 0.07in; margin-top: 0in"><FONT SIZE=4><I>22</I></FONT></P>
+                    <P CLASS="western" ALIGN=RIGHT STYLE="widows: 2; orphans: 2"><BR>
+                    </P>
+                </TD>
+                <TD WIDTH=156 STYLE="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding: 0in">
+                    <P ALIGN=CENTER STYLE="margin-left: 0.07in; margin-top: 0in"><FONT SIZE=4><I>23</I></FONT></P>
+                    <P CLASS="western" ALIGN=RIGHT STYLE="widows: 2; orphans: 2"><BR>
+                    </P>
+                </TD>
+                <TD WIDTH=102 STYLE="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding: 0in">
+                    <P STYLE="margin-left: 0.07in; margin-top: 0in"><FONT SIZE=4><I>08/11/2019</I></FONT></P>
+                </TD>
+                <TD WIDTH=121 STYLE="border: 1px solid #000000; padding: 0in">
+                    <P STYLE="margin-left: 0.08in; margin-top: 0in; font-style: normal">
+                        <FONT SIZE=2 STYLE="font-size: 11pt"><FONT SIZE=4><I>$133.48</I></FONT></FONT></P>
+                </TD>
+                <TR VALIGN=TOP>
+        @endforeach  
     </TR>
+   
     <TR VALIGN=TOP>
-        <TD WIDTH=156 STYLE="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding: 0in">
-            <P ALIGN=CENTER STYLE="margin-left: 0.07in; margin-top: 0in; font-style: normal">
-                <FONT SIZE=2 STYLE="font-size: 11pt"><FONT SIZE=4><I>NSM/512/20</I></FONT></FONT></P>
-            <P CLASS="western" ALIGN=RIGHT STYLE="widows: 2; orphans: 2"><BR>
-            </P>
-        </TD>
-        <TD WIDTH=102 STYLE="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding: 0in">
-            <P STYLE="margin-left: 0.07in; margin-top: 0in"><FONT SIZE=4><I>08/11/2019</I></FONT></P>
-        </TD>
-        <TD WIDTH=121 STYLE="border: 1px solid #000000; padding: 0in">
-            <P STYLE="margin-left: 0.08in; margin-top: 0in; font-style: normal">
-                <FONT SIZE=2 STYLE="font-size: 11pt"><FONT SIZE=4><I>$138.48</I></FONT></FONT></P>
-        </TD>
-    </TR>
-    <TR VALIGN=TOP>
-        <TD COLSPAN=4 WIDTH=563 HEIGHT=20 BGCOLOR="#e3e3e3" STYLE="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding: 0in">
+        <TD COLSPAN=5 WIDTH=563 HEIGHT=20 BGCOLOR="#e3e3e3" STYLE="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding: 0in">
             <P ALIGN=RIGHT STYLE="margin-left: 0.07in; margin-top: 0in"><FONT COLOR="#ff0000"><FONT SIZE=4><I><B>Total
                                 Amount</B></I></FONT></FONT></P>
         </TD>
@@ -147,7 +152,7 @@
         </TD>
     </TR>
     <TR VALIGN=TOP>
-        <TD COLSPAN=4 WIDTH=563 HEIGHT=19 BGCOLOR="#e3e3e3" STYLE="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding: 0in">
+        <TD COLSPAN=5 WIDTH=563 HEIGHT=19 BGCOLOR="#e3e3e3" STYLE="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding: 0in">
             <P STYLE="margin-left: 0.07in; margin-top: 0in"><FONT COLOR="#ff0000"><FONT SIZE=4><I><B>COMMISSION
                                 @ {{$contract->commission_percent}}%</B></I></FONT></FONT></P>
         </TD>

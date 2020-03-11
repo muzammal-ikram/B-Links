@@ -37,12 +37,11 @@ class ContractorsDataTable extends DataTable
             return $con->eta ? $con->eta->format('M-d-Y') : Null;
         })
         ->addColumn('status', function($con) {
-            if(Carbon::now()->addDays(1)->isSameDay($con->comm_dd)){
-                return "One Day Before";
-            }elseif(Carbon::now() < $con->comm_dd){
-                return "Pending";
-            }else{
-                return "Completed";
+            $nowDate        = Carbon::now();
+            $last7Days      = $con->comm_deadline->subDays(7);
+            $comm_deadline  = $con->comm_deadline;
+            if($nowDate >= $last7Days && $nowDate <= $comm_deadline){
+                return "last 7 days";
             }
         })
         ->setRowAttr([

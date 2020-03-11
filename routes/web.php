@@ -52,5 +52,5 @@ Route::get('buyer-info', 'ContractorController@getbuyerInfo')->name('buyer-info'
 Route::get('lc-opener-names', 'ContractorController@getLcOpener')->name('lc-opener-names');
 Route::get('opener-info', 'ContractorController@getOpenerInfo')->name('opener-info');
 
-Route::get('/debit-note', 'ContractorController@debitNote');
+Route::get('/debit-note/{id}', 'ContractorController@debitNote');
 
