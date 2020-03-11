@@ -5,6 +5,7 @@ use App\Contractor;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use DB;
+use Barryvdh\DomPDF\Facade as PDF;
 class ContractorController extends Controller
 {
     /**
@@ -68,7 +69,7 @@ class ContractorController extends Controller
             $commission_amount =  $qty * $kg;
         }
         if($commission_type == 'percent'){
-            $commission_amount =  $total_amount * $percent; 
+            $commission_amount =  $total_amount * $percent;
         }
 
         // find etd rest
@@ -90,32 +91,32 @@ class ContractorController extends Controller
         $contractor->date                   = $request->get('date');
         $contractor->contractor_number      = $request->get('contract_number');
         $contractor->item                  = $request->get('item');
-        
+
         // Seller
         $contractor->seller_name            = $request->get('seller_name');
         $contractor->seller_address         = $request->get('seller_address');
         $contractor->seller_country         = $request->get('seller_country');
-        
+
         // Buyer
         $contractor->buyer_name             = $request->get('buyer_name');
         $contractor->buyer_address          = $request->get('buyer_address');
         $contractor->buyer_country          = $request->get('buyer_country');
-        
+
         // Lc Opener
         $contractor->lc_opener_name         = $request->get('lc_opener_name');
         $contractor->lc_opener_address      = $request->get('lc_opener_address');
         $contractor->lc_opener_country      = $request->get('lc_opener_country');
-        
+
         // Contract Details
         $contractor->fcls                   = $fcls;
         $contractor->lsd                    = $request->get('lsd');
         $contractor->lc_type                = $request->get('lc_type');
         $contractor->lc_number              = $request->get('lc_number');
-    
+
         // Payment Details
         $contractor->price_per_dollar       = $price_per_dollar;
         $contractor->qty                    = $qty;
-        $contractor->total_amount           = $total_amount;        
+        $contractor->total_amount           = $total_amount;
         $contractor->commission_type        = $commission_type;
         $contractor->percent                = $percent;
         $contractor->kg                     = $kg;
@@ -127,6 +128,7 @@ class ContractorController extends Controller
 
         // invoice more data here
         $contractor->invoice_details        = json_encode($invoice_details);
+ 
 
         // ETD/ETA Details
         $contractor->etd                    = $request->get('etd');
@@ -377,12 +379,12 @@ class ContractorController extends Controller
        $contractor = Contractor::findOrFail($id);
        $contractor->delete();
        return redirect('/add-contractor')->with('success', 'contract deleted successfully');
-    } 
+    }
     public function getSeller(Request $request){
 
         \DB::statement("SET SQL_MODE=''");
         $data = Contractor::where('seller_name', 'like', $request->get('seller').'%')->groupBy('seller_name')->get();
-        
+
         $output = '<ul class="dropdown-menu" style="display: block;cursor:pointer;  width: 100%; margin-top: -5px;">';
         foreach ($data as $row) {
             $output .= '<li style="margin-left: 10px; border-bottom: 1px solid lightgrey;">' . $row->seller_name . '<input style="display: none" value="' . $row->id . '" class="userId"></input></li>';
@@ -406,7 +408,7 @@ class ContractorController extends Controller
             foreach ($data as $row) {
                 $output .= '<li style="margin-left: 10px; border-bottom: 1px solid lightgrey;">' . $row->buyer_name . '<input style="display: none" value="' . $row->id . '" class="userId"></input></li>';
             }
-        
+
             $output .= '</ul>';
        }
 
@@ -426,16 +428,26 @@ class ContractorController extends Controller
             foreach ($data as $row) {
                 $output .= '<li style="margin-left: 10px; border-bottom: 1px solid lightgrey;">' . $row->lc_opener_name . '<input style="display: none" value="' . $row->id . '" class="userId"></input></li>';
             }
-        
+
             $output .= '</ul>';
        }
 
         echo $output;
     }
-    
+
     public function getOpenerInfo(Request $request){
         $openerInfo = Contractor::where('id', $request->opener_id)->first();
         return $openerInfo;
+    }
+
+    public function debitNote (){
+
+        $contract = Contractor::where('id', 2)->first();
+
+        return view('debit_note', compact('contract'));
+
+//        $pdf = PDF::loadView('debit_note',compact('contract'));
+//        return $pdf->download('debit_note.pdf');
     }
 
 }
