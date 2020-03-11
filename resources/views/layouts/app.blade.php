@@ -40,7 +40,7 @@
         {{-- <main class="py-4"> --}}
             @yield('content')
         {{-- </main> --}}
-<script src="{{ asset('assets/vendor/jquery/jquery.min.js') }}"></script> 
+<script src="{{ asset('assets/vendor/jquery/jquery.min.js') }}"></script>
 <script src="{{ asset('assets/vendor/jquery-ui-1.12.1/jquery-ui.min.js') }}"></script>
 <script src="{{ asset('assets/vendor/popper.min.js') }}"></script>
 <script src="{{ asset('assets/vendor/bootstrap/js/bootstrap.min.js') }}"></script>
@@ -49,8 +49,13 @@
 <script class="include" type="text/javascript" src="{{ asset('assets/vendor/jquery.dcjqaccordion.2.7.js') }}"></script>
 <script src="{{ asset('assets/vendor/jquery.scrollTo.min.js') }}"></script>
 
-<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css"></script>
+        <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
+        <script src="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css"></script>
+
+{{--<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>--}}
+{{--<script src="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css"></script>--}}
+
 {{-- <script src="{{asset('assets/vendor/data-tables/jquery.dataTables.min.js')}}"></script> --}}
 {{-- <script src="{{asset('assets/vendor/data-tables/dataTables.bootstrap4.min.js')}}"></script> --}}
 
