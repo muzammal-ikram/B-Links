@@ -338,7 +338,7 @@
 
                                                             <div class="col-md-3 mb-3">
                                                                 <label for="validationCustom04">Invoice Number</label>
-                                                                <input type="text" name="invoice_number" class="form-control {{ $errors->has('invoice_number') ? ' is-invalid' : '' }}" id="validationCustom04" value="{{old('invoice_number')}}" autocomplete="off">
+                                                                <input type="text" name="invoice_number_add[]" class="form-control {{ $errors->has('invoice_number') ? ' is-invalid' : '' }}" id="validationCustom04" value="{{old('invoice_number')}}" autocomplete="off">
                                                                 <div class="invalid-feedback">
                                                                     Please provide a Invoice Number.
                                                                 </div>
@@ -346,7 +346,7 @@
 
                                                             <div class="col-md-2 mb-3">
                                                                 <label for="validationCustom01">BL Number</label>
-                                                                <input type="text" name="bl_number" class="form-control {{ $errors->has('bl_number') ? ' is-invalid' : '' }}" id="validationCustom01" value="{{old('bl_number')}}" autocomplete="off">
+                                                                <input type="text" name="bl_number_add[]" class="form-control {{ $errors->has('bl_number') ? ' is-invalid' : '' }}" id="validationCustom01" value="{{old('bl_number')}}" autocomplete="off">
                                                                 <div class="invalid-feedback">
                                                                     Please provide a BL Number.
                                                                 </div>
@@ -354,12 +354,12 @@
 
                                                             <div class="col-md-3 mb-3">
                                                                 <label for="validationCustom04">Date</label>
-                                                                <input type="date" name="invoice_more_date[]" class="form-control" value="" autocomplete="off">
+                                                                <input type="date" name="invoice_date_add[]" class="form-control" value="" autocomplete="off">
                                                             </div>
 
                                                             <div class="col-md-2 mb-3">
                                                                 <label for="validationCustom01">Amount</label>
-                                                                <input type="number" name="more_invoice_ammount[]" class="form-control" value="" autocomplete="off">
+                                                                <input type="number" name="invoice_ammount_add[]" class="form-control" value="" autocomplete="off">
                                                                 
                                                             </div>
                                                             <div class="col-md-2 mb-3">
@@ -678,4 +678,9 @@
  
  @push('scripts')
 <script src="{{ asset('assets/js/custom.js') }}"></script>
+
+
+{{-- <script src="/vendor/datatables/buttons.server-side.js"></script> --}}
+<!--init-->
+
  @endpush

@@ -114,7 +114,7 @@
                                 </div>
                             </div>
                             <div class="table-responsive">
-                                {!! $dataTable->table(['class'=>'table']) !!}
+                                {!! $dataTable->table(['class'=>'table', 'id'=>'bs-4']) !!}
                               {{-- <table id="myContractors" class="table table-striped table-bordered" style="width:100%">
                                     <thead>
                                         <tr>

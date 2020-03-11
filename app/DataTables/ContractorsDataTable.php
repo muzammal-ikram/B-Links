@@ -24,17 +24,17 @@ class ContractorsDataTable extends DataTable
         ->addColumn('action', function($con) {
             return view('_partials.contractor_datatable',['con'=>$con]);
         })
-        ->addColumn('comm_dd', function($con) {
-            return $con->comm_dd->format('M-d-Y');
+        ->addColumn('comm_deadline', function($con) {
+            return $con->comm_deadline ? $con->comm_deadline->format('M-d-Y') : Null;
         })
         ->addColumn('date', function($con) {
-            return $con->date->format('M-d-Y');
+            return $con->date ? $con->date->format('M-d-Y') : Null;
         })
         ->addColumn('etd', function($con) {
-            return $con->etd->format('M-d-Y');
+            return $con->etd ? $con->etd->format('M-d-Y') : Null;
         })
         ->addColumn('eta', function($con) {
-            return $con->eta->format('M-d-Y');
+            return $con->eta ? $con->eta->format('M-d-Y') : Null;
         })
         ->addColumn('status', function($con) {
             if(Carbon::now()->addDays(1)->isSameDay($con->comm_dd)){
@@ -56,7 +56,7 @@ class ContractorsDataTable extends DataTable
                 }
             }
         ])
-        ->rawColumns(['action', 'status', 'comm_dd', 'date', 'etd', 'eta']);
+        ->rawColumns(['action', 'status', 'comm_deadline', 'date', 'etd', 'eta']);
     }
 
     /**
@@ -98,21 +98,21 @@ class ContractorsDataTable extends DataTable
             'Id'=> [
                 'data'=>'id'
             ],
-            'Date'=>[
+            'C_Name'=>[
                 'data'=>'date'
             ],
-            'Contractor Number'=>[
+            'Contract #'=>[
                 'data'=> 'contractor_number'
             ],
-            'Count'=>[
-                'data' => 'count'
+            'Item'=>[
+                'data' => 'item'
             ],
 
-            'Seller Name'=>[
-                'data' => 'seller_name'
+            'sName'=>[
+                'data' => 'seller_name',
             ],
-            'Seller Address'=>[
-                'data' => 'seller_address'
+            'SAddress'=>[
+                'data' => 'seller_address',
             ],
             'Seller Country'=>[
                 'data' => 'seller_country'
@@ -141,16 +141,6 @@ class ContractorsDataTable extends DataTable
             'Fcls'=>[
                 'data' => 'fcls'
             ],
-            'Price/kg'=>[
-                'data' => 'price_per_kg'
-            ],
-            'Kg'=>[
-                'data' => 'kg'
-            ],
-
-            'Total Amount'=>[
-                'data'=>'total_amount'
-            ],
             'Lsd'=>[
                 'data'=>'lsd'
             ],
@@ -161,13 +151,36 @@ class ContractorsDataTable extends DataTable
             'Lc Number'=>[
                 'data'=>'lc_number'
             ],
+            'Price/$'=>[
+                'data' => 'price_per_dollar'
+            ],
+            'Quantity'=>[
+                'data'=>'qty'
+            ],
+            'Total Amount'=>[
+                'data'=>'total_amount'
+            ],
+            'Commission Type'=>[
+                'data'=>'commission_type'
+            ],
+            'Kg'=>[
+                'data' => 'kg'
+            ],
+            'Percentage'=>[
+                'data' => 'percent'
+            ],
+            'Commission Amount'=>[
+                'data' => 'commission_amount'
+            ],
             'Invoice Number'=>[
                 'data'=>'invoice_number'
             ],
             'BL Number'=>[
                 'data'=>'bl_number'
             ],
-
+            // 'More Invoices'=>[
+            //     'data'=>'invoice_details'
+            // ],
             'Etd'=>[
                 'data'=>'etd'
             ],
@@ -197,15 +210,8 @@ class ContractorsDataTable extends DataTable
             'Shipment Status'=>[
                 'data'=>'shipment_status'
             ],
-
-            'Commission'=>[
-                'data'=>'commission'
-            ],
-            'Commission %'=>[
-                'data'=>'commission_percentage'
-            ],
             'Com deadline'=>[
-                'data'=>'comm_dd'
+                'data'=>'comm_deadline'
             ],
             'Status'=>[
                 'data'=>'status'

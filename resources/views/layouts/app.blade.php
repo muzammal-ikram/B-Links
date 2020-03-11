@@ -49,10 +49,19 @@
 <script class="include" type="text/javascript" src="{{ asset('assets/vendor/jquery.dcjqaccordion.2.7.js') }}"></script>
 <script src="{{ asset('assets/vendor/jquery.scrollTo.min.js') }}"></script>
 
+<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css"></script>
+{{-- <script src="{{asset('assets/vendor/data-tables/jquery.dataTables.min.js')}}"></script> --}}
+{{-- <script src="{{asset('assets/vendor/data-tables/dataTables.bootstrap4.min.js')}}"></script> --}}
+
+{{-- <script src="https://cdn.datatables.net/buttons/1.6.0/js/dataTables.buttons.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.6.0/js/buttons.html5.min.js"></script>
+
 <!--echarts-->
 <script type="text/javascript" src="{{ asset('assets/vendor/echarts/echarts-all-3.js') }}"></script>
 <!--init echarts-->
-<script type="text/javascript" src="{{ asset('assets/vendor/dashboard4-echarts-init.js') }}"></script>
+<script type="text/javascript" src="{{ asset('assets/vendor/dashboard4-echarts-init.js') }}"></script> --}}
 
 
 
