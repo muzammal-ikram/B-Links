@@ -39,7 +39,7 @@
                                     </div>
                                     <div class="col-9">
                                         <h6 class="mt-1 mb-0">Total Contracts</h6>
-                                        <p class="f12 mb-0">32 </p>
+                                        <p class="f12 mb-0">{{$contractors->count()}}</p>
                                     </div>
                                 </div>
                             </div>
@@ -56,7 +56,7 @@
                                     </div>
                                     <div class="col-9">
                                         <h6 class="mt-1 mb-0">Total Buyers</h6>
-                                        <p class="f12 mb-0">123</p>
+                                        <p class="f12 mb-0">{{$total_buyers}}</p>
                                     </div>
                                 </div>
                             </div>
@@ -72,8 +72,8 @@
                                             </span>
                                     </div>
                                     <div class="col-9">
-                                        <h6 class="mt-1 mb-0">Total Suppliers</h6>
-                                        <p class="f12 mb-0">988
+                                        <h6 class="mt-1 mb-0">Total Sellers</h6>
+                                        <p class="f12 mb-0">{{$total_sellers}}
                                             <span class="float-right text-success"> </span>
                                         </p>
                                     </div>

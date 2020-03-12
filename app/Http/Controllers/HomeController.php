@@ -23,10 +23,11 @@ class HomeController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index(ContractorsDataTable $dataTable)
-    { 
-        // $contractors = Contractor::get();
-        // dd($contractors);
-        return $dataTable->render('home');
+    {
+         $contractors = Contractor::all();
+         $total_buyers = Contractor::all()->groupBy('buyer_name')->count();
+        $total_sellers = Contractor::all()->groupBy('seller_name')->count();
+        return $dataTable->render('home', compact('contractors' , 'total_buyers' , 'total_sellers'));
         if($request->ajax()){
             $contractors = Contractor::get();
             return \Datatables::of($contractors)

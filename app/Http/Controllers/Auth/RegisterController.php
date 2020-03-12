@@ -88,13 +88,13 @@ class RegisterController extends Controller
             'password' => Hash::make($request->password),
         ]);
         if($create){
-            return redirect()->back()->with('success', 'Assistant Register Successfully!');
+            return redirect()->back()->with('success', 'User Register Successfully!');
         }else{
-            return redirect()->back()->with('error', 'Assistant Register Failed!');
+            return redirect()->back()->with('error', 'User Register Failed!');
         }
     }
     public function allUsers(UsersDataTable $dataTable)
-    { 
+    {
         return $dataTable->render('users.all_users');
         if($request->ajax()){
 
