@@ -442,10 +442,18 @@ class ContractorController extends Controller
 
     public function debitNote ($id){
 
-        $contract = Contractor::where('id', $id)->first();
-        $loops = ['name'=>'muzammal', 'class'=>'bs', 'sname'=>'smuzammal', 'sclass'=>'bss', ];
-       
-        return view('debit_note', compact('contract', 'loops'));
+        $contract           = Contractor::where('id', $id)->first();
+        
+        $date               = $contract->date;
+        $invoice_number     = $contract->invoice_number;
+        $bl_number          = $contract->bl_number;
+        $total_amount       = $contract->total_amount;
+
+        // invoice More details
+        $invoice_details    = json_decode($contract->invoice_details); 
+        $invoice_count      = count($invoice_details)+1;
+
+        return view('debit_note', compact('contract', 'invoice_details', 'invoice_count', 'date', 'invoice_number', 'bl_number', 'total_amount'));
 
        $pdf = PDF::loadView('debit_note',compact('contract'));
        return $pdf->download('debit_note.pdf');

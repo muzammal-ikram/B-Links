@@ -100,13 +100,13 @@
         </TD>
     </TR>
     <TR VALIGN=TOP>
-        <TD ROWSPAN=2 WIDTH=167 HEIGHT=65 STYLE="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding: 0in">
+        <TD ROWSPAN={{$invoice_count}} WIDTH=167 HEIGHT=65 STYLE="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding: 0in">
             <P CLASS="western" STYLE="margin-bottom: 0.14in; widows: 2; orphans: 2">
                 <FONT SIZE=3><I><B>{{$contract->buyer_name}}</B></I></FONT></P>
             <P STYLE="margin-left: 0.07in; margin-right: 0.41in"><BR>
             </P>
         </TD>
-        <TD ROWSPAN=2 WIDTH=138 STYLE="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding: 0in">
+        <TD ROWSPAN={{$invoice_count}} WIDTH=138 STYLE="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding: 0in">
             <P STYLE="margin-left: 0.07in; margin-top: 0in"><BR>
             </P>
             <P ALIGN=CENTER STYLE="margin-left: 0.07in; margin-top: 0in"><BR>
@@ -114,34 +114,76 @@
             <P ALIGN=CENTER STYLE="margin-left: 0.07in; margin-top: 0in"><A NAME="_GoBack"></A>
                 <FONT SIZE=4><I><B>{{$contract->contractor_number}}</B></I></FONT></P>
         </TD>
-         
 
-            @php 
-                $count = 0;
-            @php 
-          @foreach($loops as $test)
-        
-                <TD WIDTH=156 STYLE="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding: 0in">
-                    <P ALIGN=CENTER STYLE="margin-left: 0.07in; margin-top: 0in"><FONT SIZE=4><I>22</I></FONT></P>
-                    <P CLASS="western" ALIGN=RIGHT STYLE="widows: 2; orphans: 2"><BR>
-                    </P>
-                </TD>
-                <TD WIDTH=156 STYLE="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding: 0in">
-                    <P ALIGN=CENTER STYLE="margin-left: 0.07in; margin-top: 0in"><FONT SIZE=4><I>23</I></FONT></P>
-                    <P CLASS="western" ALIGN=RIGHT STYLE="widows: 2; orphans: 2"><BR>
-                    </P>
-                </TD>
-                <TD WIDTH=102 STYLE="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding: 0in">
-                    <P STYLE="margin-left: 0.07in; margin-top: 0in"><FONT SIZE=4><I>08/11/2019</I></FONT></P>
-                </TD>
-                <TD WIDTH=121 STYLE="border: 1px solid #000000; padding: 0in">
-                    <P STYLE="margin-left: 0.08in; margin-top: 0in; font-style: normal">
-                        <FONT SIZE=2 STYLE="font-size: 11pt"><FONT SIZE=4><I>$133.48</I></FONT></FONT></P>
-                </TD>
-                <TR VALIGN=TOP>
-        @endforeach  
-    </TR>
-   
+        <TD WIDTH=156 STYLE="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding: 0in">
+                        <P ALIGN=CENTER STYLE="margin-left: 0.07in; margin-top: 0in"><FONT SIZE=4><I>{{ $bl_number }}</I></FONT></P>
+                        <P CLASS="western" ALIGN=RIGHT STYLE="widows: 2; orphans: 2"><BR>
+                        </P>
+                    </TD>
+                    <TD WIDTH=156 STYLE="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding: 0in">
+                        <P ALIGN=CENTER STYLE="margin-left: 0.07in; margin-top: 0in"><FONT SIZE=4><I>{{ $invoice_number }}</I></FONT></P>
+                        <P CLASS="western" ALIGN=RIGHT STYLE="widows: 2; orphans: 2"><BR>
+                        </P>
+                    </TD>
+                    <TD WIDTH=102 STYLE="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding: 0in">
+                        <P STYLE="margin-left: 0.07in; margin-top: 0in"><FONT SIZE=4><I>{{ $date }}</I></FONT></P>
+                    </TD>
+                    <TD WIDTH=121 STYLE="border: 1px solid #000000; padding: 0in">
+                        <P STYLE="margin-left: 0.08in; margin-top: 0in; font-style: normal">
+                            <FONT SIZE=2 STYLE="font-size: 11pt"><FONT SIZE=4><I>{{ $total_amount }}</I></FONT></FONT></P>
+                    </TD>
+        @if($invoice_count > 0)
+            @foreach($invoice_details as $detail)
+            
+                @if($loop->first)
+                    
+                    <TR>
+                    <TD WIDTH=156 STYLE="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding: 0in">
+                        <P ALIGN=CENTER STYLE="margin-left: 0.07in; margin-top: 0in"><FONT SIZE=4><I>{{ isset($detail->bl_no) ? $detail->bl_no : "" }}</I></FONT></P>
+                        <P CLASS="western" ALIGN=RIGHT STYLE="widows: 2; orphans: 2"><BR>
+                        </P>
+                    </TD>
+                    <TD WIDTH=156 STYLE="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding: 0in">
+                        <P ALIGN=CENTER STYLE="margin-left: 0.07in; margin-top: 0in"><FONT SIZE=4><I>{{ isset($detail->invoice) ? $detail->invoice : "" }}</I></FONT></P>
+                        <P CLASS="western" ALIGN=RIGHT STYLE="widows: 2; orphans: 2"><BR>
+                        </P>
+                    </TD>
+                    <TD WIDTH=102 STYLE="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding: 0in">
+                        <P STYLE="margin-left: 0.07in; margin-top: 0in"><FONT SIZE=4><I>{{ isset($detail->date) ? $detail->date : "" }}</I></FONT></P>
+                    </TD>
+                    <TD WIDTH=121 STYLE="border: 1px solid #000000; padding: 0in">
+                        <P STYLE="margin-left: 0.08in; margin-top: 0in; font-style: normal">
+                            <FONT SIZE=2 STYLE="font-size: 11pt"><FONT SIZE=4><I>{{ isset($detail->amount) ? $detail->amount : "" }}</I></FONT></FONT></P>
+                    </TD>
+                    </TR>
+                @else
+                    <TR>
+                    
+                    <TD WIDTH=156 STYLE="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding: 0in">
+                        <P ALIGN=CENTER STYLE="margin-left: 0.07in; margin-top: 0in"><FONT SIZE=4><I>{{ isset($detail->bl_number) ? $detail->bl_number : "" }}</I></FONT></P>
+                        <P CLASS="western" ALIGN=RIGHT STYLE="widows: 2; orphans: 2"><BR>
+                        </P>
+                    </TD>
+                    <TD WIDTH=156 STYLE="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding: 0in">
+                        <P ALIGN=CENTER STYLE="margin-left: 0.07in; margin-top: 0in"><FONT SIZE=4><I>{{ isset($detail->invoice) ? $detail->invoice : "" }}</I></FONT></P>
+                        <P CLASS="western" ALIGN=RIGHT STYLE="widows: 2; orphans: 2"><BR>
+                        </P>
+                    </TD>
+                    <TD WIDTH=102 STYLE="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding: 0in">
+                        <P STYLE="margin-left: 0.07in; margin-top: 0in"><FONT SIZE=4><I>{{ isset($detail->date) ? $detail->date : "" }}</I></FONT></P>
+                    </TD>
+                    <TD WIDTH=121 STYLE="border: 1px solid #000000; padding: 0in">
+                        <P STYLE="margin-left: 0.08in; margin-top: 0in; font-style: normal">
+                            <FONT SIZE=2 STYLE="font-size: 11pt"><FONT SIZE=4><I>{{ isset($detail->amount) ? $detail->amount : "" }}</I></FONT></FONT></P>
+                    </TD>
+                    
+                    </TR>
+
+                @endif
+                
+            @endforeach 
+        @endif
+
     <TR VALIGN=TOP>
         <TD COLSPAN=5 WIDTH=563 HEIGHT=20 BGCOLOR="#e3e3e3" STYLE="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding: 0in">
             <P ALIGN=RIGHT STYLE="margin-left: 0.07in; margin-top: 0in"><FONT COLOR="#ff0000"><FONT SIZE=4><I><B>Total
