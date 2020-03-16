@@ -38,15 +38,15 @@ class ContractorsDataTable extends DataTable
         })
         ->addColumn('status', function($con) {
             $nowDate        = Carbon::now();
-            $last7Days      = $con->comm_deadline->subDays(7);
+            $last7Days      = $nowDate->subDays(7);
             $comm_deadline  = $con->comm_deadline;
-            if($nowDate >= $last7Days && $nowDate <= $comm_deadline){
+            if($comm_deadline->isPast() && $comm_deadline >= $last7Days){
                 return "last 7 days";
             }
-            elseif($nowDate < $comm_deadline){
+            if($comm_deadline->isPast()){
                 return "Pending";
             }
-            elseif($nowDate > $comm_deadline){
+            else{
                 return "Completed";
             }
         })
