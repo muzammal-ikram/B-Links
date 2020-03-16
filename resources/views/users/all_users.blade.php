@@ -41,21 +41,6 @@
                   <div class="table-responsive">
             {!! $dataTable->table(['class'=>'table']) !!}
                     </div>
-                                {{-- <table id="users" class="table table-striped table-bordered" style="width:100%">
-                                    <thead>
-                                        <tr>
-                                            <th>Id</th>
-                                            <th>Name</th>
-                                            <th>Email</th>
-                                            <th>User Type</th>
-                                            <th>Created At</th>
-                                            <th>Actions</th>
-                                        </tr>
-                                    </thead>
-                                </table> --}}
-                                {{-- Model --}}
-
-
                                     
                             </div>
                         </div>
@@ -77,48 +62,3 @@
 
         {!! $dataTable->scripts() !!}
 @endpush
-
-{{-- @push('scripts') --}}
-{{--   buttons: [
-           'print'
-        ],
-         dom: 'Bfrtip', --}}
-         {{-- <script src="https://code.jquery.com/jquery-3.3.1.js"></script> --}}
-{{-- <script src="{{ asset('assets/vendor/jquery/jquery.min.js') }}"></script> --}}
-{{-- 
-<script type="text/javascript">
-$(document).ready(function() {
-
-    Table = $('#users').DataTable({
-        "processing": true,
-        "serverSide": true,
-      buttons: [
-           'print'
-        ],
-        "ajax": "{{ route('allUsers') }}",
-        "columns": [
-            {data: 'id', name: 'id'},
-            {data: 'name', name: 'name'},
-            {data: 'email', name: 'email'},
-            {data: 'is_admin', name: 'is_admin',
-              "render": function (data, type, row) {
-
-                if (data == 1) {
-                    return 'Admin';}
-        
-                    else {
-        
-                    return 'Assistant';
-        
-                }
-            }
-        },
-            {data: 'created_at', name: 'created_at'},
-             {data: 'action', name: 'action'}
-        ]
-    });
-});
-</script> --}}
-
-
-{{-- @endpush --}}

@@ -43,6 +43,12 @@ class ContractorsDataTable extends DataTable
             if($nowDate >= $last7Days && $nowDate <= $comm_deadline){
                 return "last 7 days";
             }
+            elseif($nowDate < $comm_deadline){
+                return "Pending";
+            }
+            elseif($nowDate > $comm_deadline){
+                return "Completed";
+            }
         })
         ->setRowAttr([
             'style' => function($con){
@@ -97,7 +103,7 @@ class ContractorsDataTable extends DataTable
             'Id'=> [
                 'data'=>'id'
             ],
-            'C_Name'=>[
+            'Date'=>[
                 'data'=>'date'
             ],
             'Contract #'=>[
@@ -107,10 +113,10 @@ class ContractorsDataTable extends DataTable
                 'data' => 'item'
             ],
 
-            'sName'=>[
+            'Seller Name'=>[
                 'data' => 'seller_name',
             ],
-            'SAddress'=>[
+            'Seller Address'=>[
                 'data' => 'seller_address',
             ],
             'Seller Country'=>[
