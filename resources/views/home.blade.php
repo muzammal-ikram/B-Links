@@ -28,6 +28,41 @@
 
                 <!--state widget start-->
                 <div class="row">
+                 <div class="col-lg-4 col-md-6">
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-4">                                        
+                                            <h6>USD Rate:</h6>                        
+                                            <p class="mt-1 mb-0">Last Updated:</p>
+                                    </div>
+                                    <div class="col-8">
+                                         <h5 id="latest-usd-rate">
+                                            @if($latest_db_dollar_rate)
+                                            {{$latest_db_dollar_rate->dollar_rate}}
+                                            @else
+                                            Press Refresh
+                                            @endif
+                                        </h5>                               
+                                
+                                        <p class="mt-1 mb-0" id="last-updated-time"></p>
+                                        <!-- <h6 class="f12 mb-0"></p> -->
+                                        <button class="btn btn-primary btn-sm" id="refresh">Refresh</button>
+                                        @if($latest_db_dollar_rate)
+                                          <p class="mt-1 mb-0" id="last-updated">
+                                            {{$latest_db_dollar_rate->created_at}}
+                                        </p>
+                                        @else
+                                         <p class="mt-1 mb-0" id="last-updated">
+                                        
+                                        </p>
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="col-lg-4 col-md-6">
                         <div class="card mb-4">
                             <div class="card-body">
@@ -55,27 +90,8 @@
                                             </span>
                                     </div>
                                     <div class="col-9">
-                                        <h6 class="mt-1 mb-0">Total Buyers</h6>
-                                        <p class="f12 mb-0">{{$total_buyers}}</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6">
-                        <div class="card mb-4">
-                            <div class="card-body ">
-                                <div class="row">
-                                    <div class="col-3">
-                                            <span class="bg-danger rounded-circle text-center wb-icon-box">
-                                                <i class="icon-badge text-light f24"></i>
-                                            </span>
-                                    </div>
-                                    <div class="col-9">
-                                        <h6 class="mt-1 mb-0">Total Sellers</h6>
-                                        <p class="f12 mb-0">{{$total_sellers}}
-                                            <span class="float-right text-success"> </span>
-                                        </p>
+                                        <h6 class="mt-1 mb-0">Total Buyers/Sellers</h6>
+                                        <p class="f12 mb-0">{{$total_buyers}}/{{$total_sellers}}</p>
                                     </div>
                                 </div>
                             </div>
@@ -138,3 +154,62 @@
         {!! $dataTable->scripts() !!}
 
 @endpush
+
+
+<script
+  src="https://code.jquery.com/jquery-3.4.1.slim.min.js"integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8="crossorigin="anonymous"></script>
+
+<script type="text/javascript">
+
+$(document).ready(function() {
+
+$('#refresh').click(function() {
+
+ $.ajax({
+    url: "http://apilayer.net/api/live?access_key=264a557583b2812cbcc9945735959246&currencies=PKR&source=USD&format=1",
+    type: 'GET',
+    success: function(res) {
+        var dollar_rate = res.quotes.USDPKR;
+    $.ajax({
+    url: "/save-dollar-rate/"+dollar_rate,
+    type: 'GET',
+    success: function(res) {
+
+        document.getElementById('latest-usd-rate').innerHTML = res.dollar_rate;
+       document.getElementById('last-updated').innerHTML = res.created_at;
+    },
+    error: function(err) {
+        console.log(err);
+    }
+});
+
+    },
+
+    error: function(err) {
+         console.log(err);
+    }
+
+});
+
+
+})
+
+})
+</script>
+
+<!-- Request to get usd rate in pkr-->
+
+<!-- http://apilayer.net/api/live?access_key=264a557583b2812cbcc9945735959246&currencies=PKR&source=USD&format=1 -->
+
+<!-- response -->
+
+<!-- {
+  "success":true,
+  "terms":"https:\/\/currencylayer.com\/terms",
+  "privacy":"https:\/\/currencylayer.com\/privacy",
+  "timestamp":1586363706,
+  "source":"USD",
+  "quotes":{
+    "USDPKR":167.529774
+  }
+} -->

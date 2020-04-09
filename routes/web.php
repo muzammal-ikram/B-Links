@@ -54,3 +54,5 @@ Route::get('opener-info', 'ContractorController@getOpenerInfo')->name('opener-in
 
 Route::get('/debit-note/{id}', 'ContractorController@debitNote');
 
+Route::get('/save-dollar-rate/{dollar_rate}', 'DollarRateController@saveDollarRate');
+
