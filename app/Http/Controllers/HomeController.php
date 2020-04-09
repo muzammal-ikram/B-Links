@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Contractor;
 use App\DataTables\ContractorsDataTable;
+use Illuminate\Support\Facades\DB;
 class HomeController extends Controller
 {
     /**
@@ -25,9 +26,10 @@ class HomeController extends Controller
     public function index(ContractorsDataTable $dataTable)
     {
          $contractors = Contractor::all();
+         $latest_db_dollar_rate =  DB::table('dollar_rate')->latest()->first();
          $total_buyers = Contractor::all()->groupBy('buyer_name')->count();
         $total_sellers = Contractor::all()->groupBy('seller_name')->count();
-        return $dataTable->render('home', compact('contractors' , 'total_buyers' , 'total_sellers'));
+        return $dataTable->render('home', compact('contractors' , 'total_buyers' , 'total_sellers' ,'latest_db_dollar_rate'));
         if($request->ajax()){
             $contractors = Contractor::get();
             return \Datatables::of($contractors)
