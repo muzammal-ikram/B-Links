@@ -93,9 +93,9 @@
                                             <div class="row">
                                                 <div class="col-md-4 mb-3">
                                                     <label for="validationCustom01">Name</label>
-                                                    <input type="text" name="seller_name" class="form-control {{ $errors->has('seller_name') ? ' is-invalid' : '' }}" id="seller_name" value="{{old('seller_name')}}" autocomplete="off">
+                                                    <input type="text" name="seller_name" class="form-control {{ $errors->has('seller_name') ? ' is-invalid' : '' }}" id="sellers_name" value="{{old('seller_name')}}" autocomplete="off">
                                                     <input type="hidden" name="seller_id" id="seller-id">
-                                                    <div id='sellerSuggestion'></div>
+                                                    <div id='sellersSuggestion'></div>
                                                     <div class="invalid-feedback">
                                                         Please provide a Seller Name
                                                     </div>
@@ -677,8 +677,8 @@
 @endsection
  
  @push('scripts')
-<script src="{{ asset('assets/js/custom.js') }}"></script>
-
+ 
+ @include('_partials.scripts')
 
 {{-- <script src="/vendor/datatables/buttons.server-side.js"></script> --}}
 <!--init-->
