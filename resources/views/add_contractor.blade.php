@@ -491,7 +491,6 @@
                                 <br>
 
                                 <button class="btn btn-success" type="submit" >Submit form</button>
-                                <button class="btn btn-primary" type="submit" style="float:right;">Validate Form</button>
                             </form>
 
                             <script>

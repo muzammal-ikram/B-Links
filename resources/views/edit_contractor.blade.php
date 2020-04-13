@@ -101,9 +101,9 @@
                                             <div class="row">
                                                 <div class="col-md-4 mb-3">
                                                     <label for="validationCustom01">Name</label>
-                                                    <input type="text" name="seller_name" class="form-control" value="{{ $contractor->seller_name }}" autocomplete="off">
+                                                    <input type="text" name="seller_name" class="form-control" value="{{ $contractor->seller_name }}" autocomplete="off" id="sellers_name">
                                                     <input type="hidden" name="seller_id" id="seller-id">
-                                                    <div id='sellerSuggestion'></div>
+                                                    <div id='sellersSuggestion'></div>
                                                     <div class="invalid-feedback">
                                                         Please provide a Seller Name
                                                     </div>
@@ -135,7 +135,7 @@
                                             <div class="row">
                                                 <div class="col-md-4 mb-3">
                                                     <label for="validationCustom01">Name</label>
-                                                    <input type="text" name="buyer_name" class="form-control" value="{{ $contractor->buyer_number}}" autocomplete="off">
+                                                    <input type="text" name="buyer_name" class="form-control" value="{{ $contractor->buyer_number}}" autocomplete="off" id="buyer_name">
                                                     <input type="hidden" id="buyer-id">
                                                     <div id='buyerSuggestion'></div>
                                                     <div class="invalid-feedback">
@@ -168,7 +168,7 @@
 
                                                 <div class="col-md-4 mb-3">
                                                     <label for="validationCustom01">Name</label>
-                                                    <input type="text" name="lc_opener_name" class="form-control" value="{{ $contractor->lc_opener_name}}" autocomplete="off">
+                                                    <input type="text" name="lc_opener_name" class="form-control" value="{{ $contractor->lc_opener_name}}" autocomplete="off" id="lc_opener_name">
                                                     <input type="hidden" id="opener-id">
                                                     <div id='openerSuggestion'></div>
                                                     <div class="invalid-feedback">
@@ -545,7 +545,7 @@
                                 <br>
 
                                 <button class="btn btn-success" type="submit" >Submit form</button>
-                                <button class="btn btn-primary" type="submit" style="float:right;">Validate Form</button>
+                                
                             </form>
 
                             <script>
@@ -731,9 +731,10 @@
 @endsection
  
  @push('scripts')
-<script src="{{ asset('assets/js/custom.js') }}"></script>
+{{-- <script src="{{ asset('assets/js/custom.js') }}"></script> --}}
 
 
+@include('_partials.scripts')
 {{-- <script src="/vendor/datatables/buttons.server-side.js"></script> --}}
 <!--init-->
 

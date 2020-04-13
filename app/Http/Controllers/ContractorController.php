@@ -378,7 +378,7 @@ class ContractorController extends Controller
     {
        $contractor = Contractor::findOrFail($id);
        $contractor->delete();
-       return redirect('/add-contractor')->with('success', 'contract deleted successfully');
+       return redirect('/home')->with('success', 'contract deleted successfully');
     }
     public function getSeller(Request $request){
 
