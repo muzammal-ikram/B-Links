@@ -115,21 +115,21 @@
 {{--                                        <input type="submit" value="submit">--}}
 
 {{--                                    </form>--}}
-                                    <div class="btn-group float-right task-list-action">
-                                        <div class="dropdown ">
-                                            <a href="#" class="btn btn-transparent default-color dropdown-hover p-0" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                <i class=" icon-options"></i>
-                                            </a>
-                                            <div class="dropdown-menu dropdown-menu-right ">
-                                                <a class="dropdown-item" href="#"> <i class="fa fa-calendar-o text-info pr-2"></i> Daily</a>
-                                                <a class="dropdown-item" href="#"><i class="fa fa-calendar-check-o text-danger pr-2"></i> Weekly</a>
-                                                <a class="dropdown-item" href="#"><i class="fa fa-calculator text-warning pr-2"></i> Monthly</a>
-                                            </div>
-                                        </div>
-                                    </div>
+{{--                                    <div class="btn-group float-right task-list-action">--}}
+{{--                                        <div class="dropdown ">--}}
+{{--                                            <a href="#" class="btn btn-transparent default-color dropdown-hover p-0" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">--}}
+{{--                                                <i class=" icon-options"></i>--}}
+{{--                                            </a>--}}
+{{--                                            <div class="dropdown-menu dropdown-menu-right ">--}}
+{{--                                                <a class="dropdown-item" href="#"> <i class="fa fa-calendar-o text-info pr-2"></i> Daily</a>--}}
+{{--                                                <a class="dropdown-item" href="#"><i class="fa fa-calendar-check-o text-danger pr-2"></i> Weekly</a>--}}
+{{--                                                <a class="dropdown-item" href="#"><i class="fa fa-calculator text-warning pr-2"></i> Monthly</a>--}}
+{{--                                            </div>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
                                 </div>
                             </div>
-                            
+
                             <div class="table-responsive">
                                 <div class="container-fluid">
 
