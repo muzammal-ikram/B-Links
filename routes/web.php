@@ -25,6 +25,7 @@ Route::get('/all-contractor', 'ContractorController@allContractor')->name('allCo
 
 Route::post('/create-contractor', 'ContractorController@store')->name('create-contractor');
 Route::get('/edit-contractor/{id}', 'ContractorController@edit')->name('edit-contractor');
+Route::get('/show-contractor/{id}', 'ContractorController@show')->name('show-contractor');
 Route::post('/update-contractor/{id}', 'ContractorController@update')->name('update-contractor');
 Route::get('/contractor/{id}', 'ContractorController@show')->name('show-contractor');
 Route::get('/delete-contractor/{id}', 'ContractorController@destroy')->name('delete-contractor');
@@ -53,6 +54,7 @@ Route::get('lc-opener-names', 'ContractorController@getLcOpener')->name('lc-open
 Route::get('opener-info', 'ContractorController@getOpenerInfo')->name('opener-info');
 
 Route::get('/debit-note/{id}', 'ContractorController@debitNote');
+Route::get('/download-debit-note/{id}', 'ContractorController@downloadDebitNote');
 
 Route::get('/save-dollar-rate/{dollar_rate}', 'DollarRateController@saveDollarRate');
 

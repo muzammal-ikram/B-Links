@@ -10,7 +10,11 @@
 
                 <div class="dropdown-menu" x-placement="bottom-start"
                             style="position: absolute; transform: translate3d(0px, 39px, 0px); top: 0px; left: 0px; will-change: transform;">
-                            
+
+                    <a class="dropdown-item"
+                       href="{{ route('show-contractor', $con->id) }}"> <i
+                            class="ti-eye text-primary pr-2"></i> Show </a>
+
                         @php
                             $nowDate        =  Carbon\Carbon::now();
                             $last7Days      = $con->comm_deadline->subDays(7);
@@ -19,21 +23,20 @@
                         @if($nowDate >= $last7Days && $nowDate <= $comm_deadline)
                             <a class="dropdown-item"
                             href="{{ url('/debit-note', $con->id) }}"> <i
-                                class="ti-zip text-success pr-2"></i> Debit Note</a>
+                                class="glyphicon glyphicon-pencil"></i> Debit Note</a>
                         @endif
                         <a class="dropdown-item"
                             href="{{ route('edit-contractor', $con->id) }}"> <i
-                                class="ti-zip text-success pr-2"></i> Edit </a>
+                                class="ti-pencil-alt text-warning pr-2"></i> Edit </a>
 
 
                         <a class="dropdown-item"
                         href="javascript:void(0)"
                         data-toggle="modal"
                         data-target="#attach-export-modal-{{ $con->id }}" > <i
-                                class="ti-zip text-success pr-2"></i> Delete </a>
+                                class="icon-close text-danger pr-2"></i> Delete </a>
                     </div>
-                    
-                    
+
                 </div>
             </div>
     </div>
@@ -46,7 +49,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h6 class="modal-title" id="mySmallModalLabel">
-                            Delete User: 
+                            Delete User:
                             <strong>Name</strong></h6>
                         <button type="button" class="close"
                                 data-dismiss="modal" aria-label="Close">

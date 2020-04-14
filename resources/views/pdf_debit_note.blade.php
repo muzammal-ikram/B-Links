@@ -10,7 +10,7 @@
     <META NAME="CHANGED" CONTENT="20200305;112100000000000">
     <STYLE TYPE="text/css">
         <!--
-        @page { size: 10.5in 18in; margin-right: 0.52in; margin-top: 0.38in; margin-bottom: 0.06in }
+        @page { size: 13.5in 18in; margin-right: 0.52in; margin-top: 0.38in; margin-bottom: 0.06in }
         P { margin-bottom: 0in; direction: ltr; color: #000000; line-height: 100%; widows: 0; orphans: 0 }
         P.western { font-family: "Calibri", sans-serif; font-size: 12pt; so-language: en-US; font-style: italic }
         P.cjk { font-family: "Calibri", sans-serif; font-size: 12pt; font-style: italic }
@@ -21,7 +21,7 @@
 </HEAD>
 <BODY LANG="en-US" TEXT="#000000" LINK="#0000ff" DIR="LTR">
 <P LANG="en-US" ALIGN=RIGHT STYLE="line-height: 100%; widows: 2; orphans: 2">
-    <IMG SRC="{{ asset('assets/img/b-links-logo.png') }}" NAME="graphics1" ALIGN=LEFT HSPACE=12 WIDTH=372 HEIGHT=79 BORDER=0><BR>
+    <IMG SRC="{{ public_path('assets/img/b-links-logo.png') }}" NAME="graphics1" ALIGN=LEFT HSPACE=12 WIDTH=372 HEIGHT=79 BORDER=0><BR>
 </P>
 <P STYLE="margin-left: 0.5in; text-indent: 0.5in; font-style: normal; line-height: 100%; widows: 2; orphans: 2">
     <FONT FACE="Times New Roman, serif"><FONT FACE="Calibri, sans-serif"><FONT SIZE=2><I>House
@@ -86,7 +86,7 @@
         </TD>
         <TD WIDTH=156 STYLE="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding: 0in">
             <P STYLE="margin-left: 0.07in; margin-top: 0in"><FONT SIZE=4><I><B>Bl #.
-            </B></I></FONT></P>
+                        </B></I></FONT></P>
         </TD>
         <TD WIDTH=156 STYLE="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding: 0in">
             <P STYLE="margin-left: 0.07in; margin-top: 0in"><FONT SIZE=4><I><B>Inv.
@@ -116,28 +116,28 @@
         </TD>
 
         <TD WIDTH=156 STYLE="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding: 0in">
-                        <P ALIGN=CENTER STYLE="margin-left: 0.07in; margin-top: 0in"><FONT SIZE=4><I>{{ $bl_number }}</I></FONT></P>
-                        <P CLASS="western" ALIGN=RIGHT STYLE="widows: 2; orphans: 2"><BR>
-                        </P>
-                    </TD>
-                    <TD WIDTH=156 STYLE="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding: 0in">
-                        <P ALIGN=CENTER STYLE="margin-left: 0.07in; margin-top: 0in"><FONT SIZE=4><I>{{ $invoice_number }}</I></FONT></P>
-                        <P CLASS="western" ALIGN=RIGHT STYLE="widows: 2; orphans: 2"><BR>
-                        </P>
-                    </TD>
-                    <TD WIDTH=102 STYLE="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding: 0in">
-                        <P STYLE="margin-left: 0.07in; margin-top: 0in"><FONT SIZE=4><I>{{ $date }}</I></FONT></P>
-                    </TD>
-                    <TD WIDTH=121 STYLE="border: 1px solid #000000; padding: 0in">
-                        <P STYLE="margin-left: 0.08in; margin-top: 0in; font-style: normal">
-                            <FONT SIZE=2 STYLE="font-size: 11pt"><FONT SIZE=4><I>{{ $total_amount }}</I></FONT></FONT></P>
-                    </TD>
-        @if($invoice_count > 0)
-            @foreach($invoice_details as $detail)
+            <P ALIGN=CENTER STYLE="margin-left: 0.07in; margin-top: 0in"><FONT SIZE=4><I>{{ $bl_number }}</I></FONT></P>
+            <P CLASS="western" ALIGN=RIGHT STYLE="widows: 2; orphans: 2"><BR>
+            </P>
+        </TD>
+        <TD WIDTH=156 STYLE="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding: 0in">
+            <P ALIGN=CENTER STYLE="margin-left: 0.07in; margin-top: 0in"><FONT SIZE=4><I>{{ $invoice_number }}</I></FONT></P>
+            <P CLASS="western" ALIGN=RIGHT STYLE="widows: 2; orphans: 2"><BR>
+            </P>
+        </TD>
+        <TD WIDTH=102 STYLE="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding: 0in">
+            <P STYLE="margin-left: 0.07in; margin-top: 0in"><FONT SIZE=4><I>{{ $date }}</I></FONT></P>
+        </TD>
+        <TD WIDTH=121 STYLE="border: 1px solid #000000; padding: 0in">
+            <P STYLE="margin-left: 0.08in; margin-top: 0in; font-style: normal">
+                <FONT SIZE=2 STYLE="font-size: 11pt"><FONT SIZE=4><I>{{ $total_amount }}</I></FONT></FONT></P>
+        </TD>
+    @if($invoice_count > 0)
+        @foreach($invoice_details as $detail)
 
-                @if($loop->first)
+            @if($loop->first)
 
-                    <TR>
+                <TR>
                     <TD WIDTH=156 STYLE="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding: 0in">
                         <P ALIGN=CENTER STYLE="margin-left: 0.07in; margin-top: 0in"><FONT SIZE=4><I>{{ isset($detail->bl_no) ? $detail->bl_no : "" }}</I></FONT></P>
                         <P CLASS="western" ALIGN=RIGHT STYLE="widows: 2; orphans: 2"><BR>
@@ -155,9 +155,9 @@
                         <P STYLE="margin-left: 0.08in; margin-top: 0in; font-style: normal">
                             <FONT SIZE=2 STYLE="font-size: 11pt"><FONT SIZE=4><I>{{ isset($detail->amount) ? $detail->amount : "" }}</I></FONT></FONT></P>
                     </TD>
-                    </TR>
-                @else
-                    <TR>
+                </TR>
+            @else
+                <TR>
 
                     <TD WIDTH=156 STYLE="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding: 0in">
                         <P ALIGN=CENTER STYLE="margin-left: 0.07in; margin-top: 0in"><FONT SIZE=4><I>{{ isset($detail->bl_number) ? $detail->bl_number : "" }}</I></FONT></P>
@@ -177,12 +177,12 @@
                             <FONT SIZE=2 STYLE="font-size: 11pt"><FONT SIZE=4><I>{{ isset($detail->amount) ? $detail->amount : "" }}</I></FONT></FONT></P>
                     </TD>
 
-                    </TR>
+                </TR>
 
-                @endif
+            @endif
 
-            @endforeach
-        @endif
+        @endforeach
+    @endif
 
     <TR VALIGN=TOP>
         <TD COLSPAN=5 WIDTH=563 HEIGHT=20 BGCOLOR="#e3e3e3" STYLE="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding: 0in">
@@ -254,7 +254,7 @@
 <P CLASS="western" STYLE="line-height: 100%; widows: 2; orphans: 2"><BR>
 </P>
 <P LANG="en-US" CLASS="western" STYLE="line-height: 100%; widows: 2; orphans: 2">
-    <IMG SRC="{{ asset('assets/img/debit-note-stamp.png') }}" NAME="Picture 1" ALIGN=LEFT HSPACE=12 WIDTH=220 HEIGHT=104 BORDER=0><BR>
+    <IMG SRC="{{ public_path('assets/img/debit-note-stamp.png') }}" NAME="Picture 1" ALIGN=LEFT HSPACE=12 WIDTH=220 HEIGHT=104 BORDER=0><BR>
 </P>
 <P CLASS="western" STYLE="font-style: normal; line-height: 100%; widows: 2; orphans: 2">
     <BR>
