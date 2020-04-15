@@ -25,10 +25,10 @@
                         <div class="card card-shadow mb-4">
                             <div class="card-header">
                                 <div class="card-title">
-                                    Select 2
+                                   Users
                                 </div>
                             </div>
-                            <div class="card-body">  
+                            <div class="card-body">
             @if (session('success'))
                     <div class="alert alert-success" role="alert">
                         {{ session('success') }}

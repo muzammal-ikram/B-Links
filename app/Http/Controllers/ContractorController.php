@@ -133,7 +133,7 @@ class ContractorController extends Controller
 
         // invoice more data here
         $contractor->invoice_details        = json_encode($invoice_details);
- 
+
 
         // ETD/ETA Details
         $contractor->etd                    = $request->get('etd');
@@ -214,7 +214,7 @@ class ContractorController extends Controller
             }
             array_push($invoice_details, $arr);
         }
-         
+
 
         // find total amount
         $price_per_dollar   = $request->get('price_per_dollar');
@@ -229,7 +229,7 @@ class ContractorController extends Controller
             $commission_amount =  $qty * $kg;
         }
         if($commission_type == 'percent'){
-            $commission_amount =  $total_amount * $percent; 
+            $commission_amount =  $total_amount * $percent;
         }
 
         // find etd rest
@@ -251,7 +251,7 @@ class ContractorController extends Controller
         $contractor->date                   = $request->get('date');
         $contractor->contractor_number      = $request->get('contract_number');
         $contractor->item                  = $request->get('item');
-        
+
         // Seller
         $contractor->seller_name            = $request->get('seller_name');
         // $contractor->seller_address         = $request->get('seller_address');
@@ -272,11 +272,11 @@ class ContractorController extends Controller
         $contractor->lsd                    = $request->get('lsd');
         $contractor->lc_type                = $request->get('lc_type');
         $contractor->lc_number              = $request->get('lc_number');
-    
+
         // Payment Details
         $contractor->price_per_dollar       = $price_per_dollar;
         $contractor->qty                    = $qty;
-        $contractor->total_amount           = $total_amount;        
+        $contractor->total_amount           = $total_amount;
         $contractor->commission_type        = $commission_type;
         $contractor->percent                = $percent;
         $contractor->kg                     = $kg;
@@ -391,20 +391,34 @@ class ContractorController extends Controller
     public function debitNote ($id){
 
         $contract           = Contractor::where('id', $id)->first();
-        
+
         $date               = $contract->date;
         $invoice_number     = $contract->invoice_number;
         $bl_number          = $contract->bl_number;
         $total_amount       = $contract->total_amount;
 
         // invoice More details
-        $invoice_details    = json_decode($contract->invoice_details); 
+        $invoice_details    = json_decode($contract->invoice_details);
         $invoice_count      = count($invoice_details)+1;
 
         return view('debit_note', compact('contract', 'invoice_details', 'invoice_count', 'date', 'invoice_number', 'bl_number', 'total_amount'));
+    }
 
-       $pdf = PDF::loadView('debit_note',compact('contract'));
-       return $pdf->download('debit_note.pdf');
+    public function downloadDebitNote ($id){
+
+        $contract           = Contractor::where('id', $id)->first();
+
+        $date               = $contract->date;
+        $invoice_number     = $contract->invoice_number;
+        $bl_number          = $contract->bl_number;
+        $total_amount       = $contract->total_amount;
+
+        // invoice More details
+        $invoice_details    = json_decode($contract->invoice_details);
+        $invoice_count      = count($invoice_details)+1;
+
+        $pdf = PDF::loadView('pdf_debit_note', compact('contract', 'invoice_details', 'invoice_count', 'date', 'invoice_number', 'bl_number', 'total_amount'));
+        return $pdf->download($contract->contractor_number.'-debit_note.pdf');
     }
 
 }
