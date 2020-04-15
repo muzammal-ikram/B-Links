@@ -213,7 +213,7 @@
                                                 <div class="row">
                                                     <div class="col-md-3 mb-3">
                                                         <label for="validationCustom01">FCLS</label>
-                                                        <input type="number" step="any" name="fcls" class="form-control {{ $errors->has('fcls') ? ' is-invalid' : '' }}" id="fcls" value="{{old('fcls')}}" autocomplete="off">
+                                                        <input type="number" step="any" name="fcls" class="form-control {{ $errors->has('fcls') ? ' is-invalid' : '' }}" value="{{old('fcls')}}" autocomplete="off">
                                                         <div class="invalid-feedback">
                                                             Please provide a FCLS.
                                                         </div>
@@ -346,7 +346,7 @@
 
                                                     <div class="col-md-2 mb-3">
                                                         <label for="validationCustom01">No Of FCLS:</label>
-                                                        <input type="number" step="any" name="invoice_fcls" class="form-control" value="" autocomplete="off">
+                                                        <input type="number" step="any" name="invoice_fcls" id="fcls" class="form-control" value="" autocomplete="off">
                                                         
                                                     </div>
                                                    
@@ -361,11 +361,21 @@
                                                     </div>
  
                                                   </div>
-                                                  <div id="add-more-invoice">
+                                                 
+                                                 
+                                              </div>
+                                            </div>
+<br>
+                                    <div id="add-more-invoice">
+                                        <div class="copy" id="copy-area" style="display:none;" >
+                                           <div class="card control-group " >
+                                            <h5 class="card-header h5">Extra invoice</h5>
+                                            <div class="card-body">
+                                                <div >
 
-                                                    <div class="copy" id="copy-area" style="display:none;">
-                                                        <div class="row control-group">
-
+                                                    <div >
+                                                        <div class="row ">
+    
                                                             <div class="col-md-3 mb-3">
                                                                 <label for="validationCustom04">Invoice Number</label>
                                                                 <input type="text" name="invoice_number_add[]" class="form-control {{ $errors->has('invoice_number') ? ' is-invalid' : '' }}" id="validationCustom04" value="{{old('invoice_number')}}" autocomplete="off">
@@ -373,7 +383,7 @@
                                                                     Please provide a Invoice Number.
                                                                 </div>
                                                             </div>
-
+    
                                                             <div class="col-md-3 mb-3">
                                                                 <label for="validationCustom01">BL Number</label>
                                                                 <input type="text" name="bl_number_add[]" class="form-control {{ $errors->has('bl_number') ? ' is-invalid' : '' }}" id="validationCustom01" value="{{old('bl_number')}}" autocomplete="off">
@@ -385,7 +395,7 @@
                                                                 <label for="validationCustom04">Date</label>
                                                                 <input type="date" name="invoice_date_add[]" class="form-control" value="" autocomplete="off">
                                                             </div>
- 
+    
                                                             <div class="col-md-3 mb-3">
                                                                 <label for="validationCustom01">Amount</label>
                                                                 <input type="number" step="any" name="invoice_ammount_add[]" class="form-control" value="" autocomplete="off">
@@ -396,12 +406,49 @@
                                                                 <input type="number" step="any" name="invoice_container_add[]" class="form-control" value="" autocomplete="off">
                                                                 
                                                             </div>
-
+    
                                                             <div class="col-md-3 mb-3">
                                                                 <label for="validationCustom01">No Of FCLS:</label>
                                                                 <input type="number" step="any" name="invoice_fcls_add[]" class="form-control" value="" autocomplete="off">
                                                                 
                                                             </div>
+                                                            {{-- eta/etd --}}
+                                                        </div>
+                                                                    <div class="row">
+                                                                        
+                                                                            <div class="col-md-4 mb-3">
+                                                                                <label for="validationCustom04">ETD</label>
+                                                                                <input type="date" name="etd_date_add[]" class="form-control {{ $errors->has('etd') ? ' is-invalid' : '' }}" id="validationCustom04" value="" autocomplete="off">
+                                                                                <div class="invalid-feedback">
+                                                                                    Please provide a ETD.
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-4 mb-3">
+                                                                                <label for="validationCustom05">ETD FCLS</label>
+                                                                                <input type="number" step="any" name="etd_fcls_add[]" class="form-control "  value="{{old('etd_fcls')}}" autocomplete="off">
+                                                                                <div class="invalid-feedback">
+                                                                                    Please provide a ETD Fcls.
+                                                                                </div>
+                                                                            </div>
+                     
+                     
+                    
+                                                                    <div class="col-md-4 mb-3">
+                                                                        <label for="validationCustom04">ETA</label>
+                                                                        <input type="date" name="eta_date_add[]" class="form-control {{ $errors->has('eta') ? ' is-invalid' : '' }}" id="validationCustom04" value="{{old('eta')}}" autocomplete="off">
+                                                                        <div class="invalid-feedback">
+                                                                            Please provide a ETA.
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-4 mb-3">
+                                                                        <label for="validationCustom05">ETA FCLS</label>
+                                                                        <input type="number" step="any" name="eta_fcls_add[]" class="form-control"   value="{{old('eta_fcls')}}" autocomplete="off">
+                                                                        <div class="invalid-feedback">
+                                                                            Please provide a ETA Fcls.
+                                                                        </div>
+                                                                    </div>
+                      
+                                                            {{-- eta/etd end --}}
                                                             <div class="col-md-2 mb-3">
                                                                 <div class="copy hide">
                                                                     <label for="validationCustom01"></label>
@@ -415,13 +462,11 @@
                                                         </div>
                                                     </div>
                                                    
-                                                  </div>
-                                              </div>
+                                                  </div>    
+                                                </div>
                                             </div>
-
-
-                                         
-
+                                        </div>
+                                        </div>
                                               <br>
                                               <div class="card">
                                                   <h5 class="card-header h5">ETD/ETA Details</h5>
@@ -479,14 +524,10 @@
 
 
                                             </div>
-                                            <div class="copy"  style="display:none;">
-                                                <div class="row control-group">
-                                                    <h1>hello</h1>
-                                                </div>
-                                            <div> 
+                                             
 
-                                                  </div>
-                                                </div>
+                                            </div>
+                                        </div>
 
 
                                                 <br>

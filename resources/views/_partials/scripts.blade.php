@@ -214,10 +214,13 @@ $(document).ready(function() {
         console.log(count)
         if(count === 1){
             document.getElementById("copy-area").style.display = "block";
+            // document.getElementById("copy-area2").style.display = "block";
             return;
         }
         var html = $(".copy").html();
+        // var html2 = $(".copy2").html();
         $("#add-more-invoice").after(html);
+        // $("#etd_details").after(html2);
     });
     var editCount = 0;
     $(".edit-more").click(function(){ 
@@ -234,16 +237,19 @@ $(document).ready(function() {
 
     $("body").on("click",".remove",function(){ 
       
-        if(count === 0){
-            return;
-        } 
-         count--; 
-        console.log(count);
+        // if(count === 0){
+        //     return;
+        // } 
+        //  count--; 
+        // console.log(count);
         if(count === 1){
             document.getElementById("copy-area").style.display = "none";
+            // document.getElementById("copy-area2").style.display = "block";
             return;
         }
         $(this).parents(".control-group").remove();
+      
+        
     });
 
     $(document).keypress(function(event){
