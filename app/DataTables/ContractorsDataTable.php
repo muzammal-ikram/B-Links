@@ -115,104 +115,11 @@ class ContractorsDataTable extends DataTable
             'Seller Name'=>[
                 'data' => 'seller_name',
             ],
-            'Seller Address'=>[
-                'data' => 'seller_address',
-            ],
-            'Seller Country'=>[
-                'data' => 'seller_country'
-            ],
-
             'Buyer Name'=>[
                 'data' => 'buyer_name'
             ],
-            'Buyer Address'=>[
-                'data' => 'buyer_address'
-            ],
-            'Buyer Country'=>[
-                'data' => 'buyer_country'
-            ],
-
             'Lc Opener Name'=>[
                 'data' => 'lc_opener_name'
-            ],
-            'Lc Opener Address'=>[
-                'data' => 'lc_opener_country'
-            ],
-            'Lc Opener Country'=>[
-                'data' => 'lc_opener_country'
-            ],
-
-            'Fcls'=>[
-                'data' => 'fcls'
-            ],
-            'Lsd'=>[
-                'data'=>'lsd'
-            ],
-            'Lc Type'=>[
-                'data'=>'lc_type'
-            ],
-
-            'Lc Number'=>[
-                'data'=>'lc_number'
-            ],
-            'Price/$'=>[
-                'data' => 'price_per_dollar'
-            ],
-            'Quantity'=>[
-                'data'=>'qty'
-            ],
-            'Total Amount'=>[
-                'data'=>'total_amount'
-            ],
-            'Commission Type'=>[
-                'data'=>'commission_type'
-            ],
-            'Kg'=>[
-                'data' => 'kg'
-            ],
-            'Percentage'=>[
-                'data' => 'percent'
-            ],
-            'Commission Amount'=>[
-                'data' => 'commission_amount'
-            ],
-            'Invoice Number'=>[
-                'data'=>'invoice_number'
-            ],
-            'BL Number'=>[
-                'data'=>'bl_number'
-            ],
-            // 'More Invoices'=>[
-            //     'data'=>'invoice_details'
-            // ],
-            'Etd'=>[
-                'data'=>'etd'
-            ],
-            'Etd_fcls'=>[
-                'data'=>'etd_fcls'
-            ],
-            'Etd_rest'=>[
-                'data'=>'etd_rest'
-            ],
-
-            'Eta'=>[
-                'data'=>'eta'
-            ],
-            'Eta_fcls'=>[
-                'data'=>'eta_fcls'
-            ],
-            'Eta_rest'=>[
-                'data'=>'eta_rest'
-            ],
-
-            'Awb'=>[
-                'data'=>'document'
-            ],
-            'Document'=>[
-                'data'=>'document'
-            ],
-            'Shipment Status'=>[
-                'data'=>'shipment_status'
             ],
             'Com deadline'=>[
                 'data'=>'comm_deadline'

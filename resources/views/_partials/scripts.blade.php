@@ -43,9 +43,9 @@
     $('#sellers_name').attr('value', $(this).text());
     $("#seller-id").attr({"value":$(this).children("input").attr('value')});//.val($(this).text());
     var seller_id = $("#seller-id").val();
-    if(seller_id){
-        getSellerInfo(seller_id);
-    }
+    // if(seller_id){
+    //     getSellerInfo(seller_id);
+    // }
     $('#sellersSuggestion').fadeOut();
     });
 
@@ -79,9 +79,9 @@
         $('#buyer_name').attr('value', $(this).text());
         $("#buyer-id").attr({"value":$(this).children("input").attr('value')});//.val($(this).text());
         var buyer_id = $("#buyer-id").val();
-        if(buyer_id){
-            getBuyerInfo(buyer_id);
-        }
+        // if(buyer_id){
+        //     getBuyerInfo(buyer_id);
+        // }
         $('#buyerSuggestion').fadeOut();
     });
 
@@ -116,6 +116,7 @@
             return;
         }
        var etd_rest = fcls - etd_fcls;
+       etd_rest = etd_rest.toFixed(2)
        document.getElementById("etd_rest_hide").value = etd_rest;
        document.getElementById("etd_rest_show").value = etd_rest;
     });
@@ -127,6 +128,7 @@
             return;
         }
        var eta_rest = fcls - eta_fcls;
+       eta_rest = eta_rest.toFixed(2)
        document.getElementById("eta_rest_show").value = eta_rest;
        document.getElementById("eta_rest_hide").value = eta_rest;
     });
@@ -139,9 +141,9 @@
             $('#lc_opener_name').attr('value', $(this).text());
             $("#opener-id").attr({"value":$(this).children("input").attr('value')});//.val($(this).text());
             var opener_id = $("#opener-id").val();
-            if(opener_id){
-                getOpenerInfo(opener_id);
-            }
+            // if(opener_id){
+            //     getOpenerInfo(opener_id);
+            // }
             $('#openerSuggestion').fadeOut();
         });
 
@@ -209,6 +211,7 @@ $(document).ready(function() {
     var count = 0;
     $(".add-more").click(function(){ 
         count++; 
+        console.log(count)
         if(count === 1){
             document.getElementById("copy-area").style.display = "block";
             return;
@@ -218,6 +221,7 @@ $(document).ready(function() {
     });
     var editCount = 0;
     $(".edit-more").click(function(){ 
+        
         editCount++; 
         if(count === 1){
             document.getElementById("copy-area").style.display = "block";
@@ -229,6 +233,16 @@ $(document).ready(function() {
 
 
     $("body").on("click",".remove",function(){ 
+      
+        if(count === 0){
+            return;
+        } 
+         count--; 
+        console.log(count);
+        if(count === 1){
+            document.getElementById("copy-area").style.display = "none";
+            return;
+        }
         $(this).parents(".control-group").remove();
     });
 
@@ -251,6 +265,7 @@ function totalAmount(){
         return;
     }
     var total =  price_dollar * qty; 
+    total = total.toFixed(2)
     document.getElementById('total_amount_show').value = total;
     document.getElementById('total_amount_hide').value = total;
 }
@@ -273,6 +288,7 @@ function CommissionPerKg(){
         return;
     }
     var commission =  qty * kgs; 
+    commission = commission.toFixed(2)
     document.getElementById('commission_amount_show').value = commission;
     document.getElementById('commission_amount_hide').value = commission;
 }
@@ -287,6 +303,7 @@ function CommissionPercentage(){
         return;
     } 
     var commission =  total_amount * percent_commission; 
+    commission = commission.toFixed(2)
     document.getElementById('commission_amount_show').value = commission;
     document.getElementById('commission_amount_hide').value = commission;
 }

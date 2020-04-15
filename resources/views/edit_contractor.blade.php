@@ -67,11 +67,11 @@
                                     <div class="card">
                                         <h5 class="card-header h5">Basic Details</h5>
                                         <div class="card-body">
-                                      
+                                            {{-- {{ dd($contractor->date)}} --}}
                                             <div class="row">
                                                 <div class="col-md-3 mb-3">
                                                     <label for="Date">Date</label>
-                                                    <input type="date" name="date" class="form-control" id="Date" value="{{ $contractor->date}}" autocomplete="off">
+                                                    <input type="date" name="date" class="form-control" id="Date" value="{{ $contractor->date ? $contractor->date->format('Y-m-d') : null}}" autocomplete="off">
                                                   </div>
 
                                                 <div class="col-md-6 mb-3">
@@ -96,11 +96,11 @@
 
                                     <br>
                                     <div class="card">
-                                        <h5 class="card-header h5">Seller</h5>
+                                        <h5 class="card-header h5">Names</h5>
                                         <div class="card-body">
                                             <div class="row">
                                                 <div class="col-md-4 mb-3">
-                                                    <label for="validationCustom01">Name</label>
+                                                    <label for="validationCustom01">Seller Name</label>
                                                     <input type="text" name="seller_name" class="form-control" value="{{ $contractor->seller_name }}" autocomplete="off" id="sellers_name">
                                                     <input type="hidden" name="seller_id" id="seller-id">
                                                     <div id='sellersSuggestion'></div>
@@ -109,6 +109,24 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-md-4 mb-3">
+                                                    <label for="validationCustom01">Buyer Name</label>
+                                                    <input type="text" name="buyer_name" class="form-control" value="{{ $contractor->buyer_number}}" autocomplete="off" id="buyer_name">
+                                                    <input type="hidden" id="buyer-id">
+                                                    <div id='buyerSuggestion'></div>
+                                                    <div class="invalid-feedback">
+                                                        Please provide a Buyer Name
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4 mb-3">
+                                                    <label for="validationCustom01">LC Opener Name</label>
+                                                    <input type="text" name="lc_opener_name" class="form-control" value="{{ $contractor->lc_opener_name}}" autocomplete="off" id="lc_opener_name">
+                                                    <input type="hidden" id="opener-id">
+                                                    <div id='openerSuggestion'></div>
+                                                    <div class="invalid-feedback">
+                                                        Please provide a LC Opener Name.
+                                                    </div>
+                                                </div>
+                                                {{-- <div class="col-md-4 mb-3">
                                                     <label for="validationCustom01">Address</label>
                                                     <input type="text" name="seller_address" class="form-control" value="{{ $contractor->seller_address }}" autocomplete="off">
                                                     <div class="invalid-feedback">
@@ -121,7 +139,7 @@
                                                     <div class="invalid-feedback">
                                                         Please provide a Seller Country.
                                                     </div>
-                                                </div>
+                                                </div> --}}
             
                                             </div>
                                         </div>
@@ -129,7 +147,7 @@
 
 
                                     <br>
-                                    <div class="card">
+                                    {{-- <div class="card">
                                         <h5 class="card-header h5">Buyer</h5>
                                         <div class="card-body">
                                             <div class="row">
@@ -194,21 +212,21 @@
                                           </div>
                                         </div>
 
-                                        <br>
+                                        <br> --}}
                                         <div class="card">
                                             <h5 class="card-header h5">Contract Details</h5>
                                             <div class="card-body">
                                                 <div class="row">
                                                     <div class="col-md-3 mb-3">
                                                         <label for="validationCustom01">FCLS</label>
-                                                        <input type="number" name="fcls" class="form-control" id="fcls" value="{{ $contractor->fcls }}" autocomplete="off">
+                                                        <input type="number" step="any" name="fcls" class="form-control" id="fcls" value="{{ $contractor->fcls }}" autocomplete="off">
                                                         <div class="invalid-feedback">
                                                             Please provide a FCLS.
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3 mb-3">
                                                         <label for="validationCustom01">LSD</label>
-                                                        <input type="date" name="lsd" class="form-control" value="{{ $contractor->lsd }}" autocomplete="off">
+                                                        <input type="date" name="lsd" class="form-control" value="{{ $contractor->lsd ? $contractor->lsd->format('Y-m-d') : null }}" autocomplete="off">
                                                         <div class="invalid-feedback">
                                                             Please provide a LSD.
                                                         </div>
@@ -241,7 +259,7 @@
 
                                                       <div class="col-md-3 mb-3">
                                                           <label for="price_per_dollar">Price Per $</label>
-                                                          <input type="number" name="price_per_dollar" class="form-control" value="{{$contractor->price_per_dollar}}" autocomplete="off">
+                                                          <input type="number" step="any" name="price_per_dollar" class="form-control" value="{{$contractor->price_per_dollar}}" autocomplete="off">
                                                           <div class="invalid-feedback">
                                                               Please provide a Price Per Kg.
                                                           </div>
@@ -249,7 +267,7 @@
 
                                                       <div class="col-md-3 mb-3">
                                                         <label for="qty_show">Qty</label>
-                                                        <input type="number" class="form-control" name="qty" id="qty_show" value="{{$contractor->qty}}" autocomplete="off" >
+                                                        <input type="number" step="any" class="form-control" name="qty" id="qty_show" value="{{$contractor->qty}}" autocomplete="off" >
                                                         
                                                       </div>
                                                       <div class="col-md-1 mb-3">
@@ -279,7 +297,7 @@
                                                       
                                                       <div class="col-md-3 mb-3 {{ ($contractor->commission_type == 'kg') ? 'display_block' : 'display_none'}}" id="kg-input">
                                                           <label for="validationCustom01">KG's</label>
-                                                          <input type="number" class="form-control" name="kg" id="kgs_commission" value="{{ $contractor->kg }}" autocomplete="off">
+                                                          <input type="number" step="any" class="form-control" name="kg" id="kgs_commission" value="{{ $contractor->kg }}" autocomplete="off">
                                                           <div class="invalid-feedback">
                                                               Please provide a KG's.
                                                           </div>
@@ -287,7 +305,7 @@
 
                                                       <div class="col-md-3 mb-3 {{ ($contractor->commission_type == 'percent') ? 'display_block' : 'display_none'}}" id="percent-input">
                                                           <label for="validationCustom01">Percent %</label>
-                                                          <input type="number" name="percent" class="form-control" id="percent_commission" value="{{ $contractor->percent }}" autocomplete="off">
+                                                          <input type="number" step="any" name="percent" class="form-control" id="percent_commission" value="{{ $contractor->percent }}" autocomplete="off">
                                                           <div class="invalid-feedback">
                                                               Please provide a Percent.
                                                           </div>
@@ -328,7 +346,17 @@
                                                         </div>
                                                     </div>
                                                     
-                                                   
+                                                    <div class="col-md-2 mb-3">
+                                                        <label for="validationCustom01">Containers:</label>
+                                                        <input type="number" step="any" name="invoice_container" class="form-control" value="{{ $contractor->invoice_container }}" autocomplete="off">
+                                                        
+                                                    </div>
+
+                                                    <div class="col-md-2 mb-3">
+                                                        <label for="validationCustom01">No Of FCLS:</label>
+                                                        <input type="number" step="any" name="invoice_fcls" class="form-control" value="{{ $contractor->invoice_fcls }}" autocomplete="off">
+                                                        
+                                                    </div>
 
                                                     <div class="col-md-2 mb-3">
                                                         <label for="validationCustom01">Add</label>
@@ -353,7 +381,7 @@
                                                                     </div>
                                                                 </div>
 
-                                                                <div class="col-md-2 mb-3">
+                                                                <div class="col-md-3 mb-3">
                                                                     <label for="validationCustom01">BL Number</label>
                                                                     <input type="text" name="bl_number_add[]" class="form-control" value="{{ $invoice_detail->bl_number }}" autocomplete="off">
                                                                     <div class="invalid-feedback">
@@ -363,17 +391,30 @@
 
                                                                 <div class="col-md-3 mb-3">
                                                                     <label for="validationCustom04">Date</label>
-                                                                    <input type="date" name="invoice_date_add[]" class="form-control" value="" autocomplete="off">
+                                                                    <input type="date" name="invoice_date_add[]" class="form-control" value="{{ $invoice_detail->date }}" autocomplete="off">
+                                                                </div>
+
+                                                                <div class="col-md-3 mb-3">
+                                                                    <label for="validationCustom01">Amount</label>
+                                                                    <input type="number" step="any" name="invoice_ammount_add[]" class="form-control" value="{{ $invoice_detail->amount }}" autocomplete="off">
+                                                                    
+                                                                </div>
+
+                                                                <div class="col-md-3 mb-3">
+                                                                    <label for="validationCustom01">No Of Containers:</label>
+                                                                    <input type="number" step="any" name="invoice_container_add[]" class="form-control" value="{{isset($invoice_detail->containers) ? $invoice_detail->containers : null}}" autocomplete="off">
+                                                                    
+                                                                </div>
+    
+                                                                <div class="col-md-3 mb-3">
+                                                                    <label for="validationCustom01">No Of FCLS:</label>
+                                                                    <input type="number" step="any" name="invoice_fcls_add[]" class="form-control" value="{{isset($invoice_detail->fcls) ? $invoice_detail->fcls : null}}" autocomplete="off">
+                                                                    
                                                                 </div>
 
                                                                 <div class="col-md-2 mb-3">
-                                                                    <label for="validationCustom01">Amount</label>
-                                                                    <input type="number" name="invoice_ammount_add[]" class="form-control" value="{{ $invoice_detail->amount }}" autocomplete="off">
-                                                                    
-                                                                </div>
-                                                                <div class="col-md-2 mb-3">
                                                                     <div class="copy hide">
-                                                                        <label for="validationCustom01">Remove</label>
+                                                                        <label for="validationCustom01"></label>
                                                                         <div class="input-group"  >
                                                                             <div class="input-group-btn"> 
                                                                             <button class="btn btn-danger remove" type="button"><i class="glyphicon glyphicon-remove"></i> Remove</button>
@@ -391,15 +432,15 @@
 
                                                         <div class="col-md-3 mb-3">
                                                             <label for="validationCustom04">Invoice Number</label>
-                                                            <input type="text" name="invoice_number_add[]" class="form-control {{ $errors->has('invoice_number') ? ' is-invalid' : '' }}" id="validationCustom04" value="{{old('invoice_number')}}" autocomplete="off">
+                                                            <input type="text" name="invoice_number_add[]" class="form-control {{ $errors->has('invoice_number') ? ' is-invalid' : '' }}" id="validationCustom04" value="{{$contractor->invoice_number}}" autocomplete="off">
                                                             <div class="invalid-feedback">
                                                                 Please provide a Invoice Number.
                                                             </div>
                                                         </div>
 
-                                                        <div class="col-md-2 mb-3">
+                                                        <div class="col-md-3 mb-3">
                                                             <label for="validationCustom01">BL Number</label>
-                                                            <input type="text" name="bl_number_add[]" class="form-control {{ $errors->has('bl_number') ? ' is-invalid' : '' }}" id="validationCustom01" value="{{old('bl_number')}}" autocomplete="off">
+                                                            <input type="text" name="bl_number_add[]" class="form-control {{ $errors->has('bl_number') ? ' is-invalid' : '' }}" id="validationCustom01" value="{{$contractor->bl_number}}" autocomplete="off">
                                                             <div class="invalid-feedback">
                                                                 Please provide a BL Number.
                                                             </div>
@@ -410,14 +451,27 @@
                                                             <input type="date" name="invoice_date_add[]" class="form-control" value="" autocomplete="off">
                                                         </div>
 
-                                                        <div class="col-md-2 mb-3">
+                                                        <div class="col-md-3 mb-3">
                                                             <label for="validationCustom01">Amount</label>
-                                                            <input type="number" name="invoice_ammount_add[]" class="form-control" value="" autocomplete="off">
+                                                            <input type="number" step="any" name="invoice_ammount_add[]" class="form-control" value="" autocomplete="off">
                                                             
                                                         </div>
+
+                                                        <div class="col-md-3 mb-3">
+                                                            <label for="validationCustom01">No Of Containers:</label>
+                                                            <input type="number" step="any" name="invoice_container_add[]" class="form-control" value="" autocomplete="off">
+                                                            
+                                                        </div>
+
+                                                        <div class="col-md-3 mb-3">
+                                                            <label for="validationCustom01">No Of FCLS:</label>
+                                                            <input type="number" step="any" name="invoice_fcls_add[]" class="form-control" value="" autocomplete="off">
+                                                            
+                                                        </div>
+
                                                         <div class="col-md-2 mb-3">
                                                             <div class="copy hide">
-                                                                <label for="validationCustom01">Remove</label>
+                                                                <label for="validationCustom01"></label>
                                                                 <div class="input-group"  >
                                                                   <div class="input-group-btn"> 
                                                                     <button class="btn btn-danger remove" type="button"><i class="glyphicon glyphicon-remove"></i> Remove</button>
@@ -445,14 +499,14 @@
                             
                                                         <div class="col-md-4 mb-3">
                                                             <label for="validationCustom04">ETD</label>
-                                                            <input type="date" name="etd" class="form-control {{ $errors->has('etd') ? ' is-invalid' : '' }}" id="validationCustom04" value="{{old('etd')}}" autocomplete="off">
+                                                            <input type="date" name="etd" class="form-control {{ $errors->has('etd') ? ' is-invalid' : '' }}" id="validationCustom04" value="{{$contractor->etd ? $contractor->etd->format('Y-m-d') : null}}" autocomplete="off">
                                                             <div class="invalid-feedback">
                                                                 Please provide a ETD.
                                                             </div>
                                                         </div>
                                                         <div class="col-md-4 mb-3">
                                                             <label for="validationCustom05">ETD FCLS</label>
-                                                            <input type="number" name="etd_fcls" class="form-control" id="etd_fcls" value="{{ $contractor->etd_fcls }}" autocomplete="off">
+                                                            <input type="number" step="any" name="etd_fcls" class="form-control" id="etd_fcls" value="{{ $contractor->etd_fcls }}" autocomplete="off">
                                                             <div class="invalid-feedback">
                                                                 Please provide a ETD Fcls.
                                                             </div>
@@ -472,14 +526,14 @@
 
                                                 <div class="col-md-4 mb-3">
                                                     <label for="validationCustom04">ETA</label>
-                                                    <input type="date" name="eta" class="form-control {{ $errors->has('eta') ? ' is-invalid' : '' }}" id="validationCustom04" value="{{old('eta')}}" autocomplete="off">
+                                                    <input type="date" name="eta" class="form-control {{ $errors->has('eta') ? ' is-invalid' : '' }}" id="validationCustom04" value="{{$contractor->eta ? $contractor->eta->format('Y-m-d') : null}}" autocomplete="off">
                                                     <div class="invalid-feedback">
                                                         Please provide a ETA.
                                                     </div>
                                                 </div>
                                                 <div class="col-md-4 mb-3">
                                                     <label for="validationCustom05">ETA FCLS</label>
-                                                    <input type="number" name="eta_fcls" class="form-control" id="eta_fcls" value="{{ $contractor->eta_fcls }}" autocomplete="off">
+                                                    <input type="number" step="any" name="eta_fcls" class="form-control" id="eta_fcls" value="{{ $contractor->eta_fcls }}" autocomplete="off">
                                                     <div class="invalid-feedback">
                                                         Please provide a ETA Fcls.
                                                     </div>
@@ -588,7 +642,7 @@
                 <ul class="list-unstyled">
                     <li>
                         <div class="nt-thumb mr-3">
-                            <img src="assets/img/n1.png" alt=""/>
+                            <img src="{{ asset('assets/img/n1.png') }}" alt=""/>
                         </div>
                         <div class="nt-info">
                             <a href="#"  class="nt-title">Diverse Ltd.</a>
@@ -598,7 +652,7 @@
                     </li>
                     <li>
                         <div class="nt-thumb mr-3">
-                            <img src="assets/img/n3.png" alt=""/>
+                            <img src="{{ asset('assets/img/n3.png') }}" alt=""/>
                         </div>
                         <div class="nt-info">
                             <a href="#"  class="nt-title">Black Friday Discount Offer</a>
@@ -609,7 +663,7 @@
 
                     <li>
                         <div class="nt-thumb mr-3">
-                            <img src="assets/img/n2.png" alt=""/>
+                            <img src="{{ asset('assets/img/n2.png') }}" alt=""/>
                         </div>
                         <div class="nt-info">
                             <a href="#"  class="nt-title">Task Failed</a>
@@ -620,7 +674,7 @@
 
                     <li>
                         <div class="nt-thumb mr-3">
-                            <img src="assets/img/n4.png" alt=""/>
+                            <img src="{{ asset('assets/img/n4.png') }}" alt=""/>
                         </div>
                         <div class="nt-info">
                             <a href="#"  class="nt-title">John Doe</a>
