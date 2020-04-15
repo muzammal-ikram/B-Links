@@ -13,7 +13,7 @@
 
                     <a class="dropdown-item"
                        href="{{ route('show-contractor', $con->id) }}"> <i
-                            class="ti-eye text-primary pr-2"></i> Show </a>
+                            class="ti-eye text-primary pr-2"></i> View </a>
 
                         @php
                             $nowDate        =  Carbon\Carbon::now();
