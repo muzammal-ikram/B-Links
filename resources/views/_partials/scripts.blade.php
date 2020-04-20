@@ -271,7 +271,7 @@ function totalAmount(){
         return;
     }
     var total =  price_dollar * qty;
-    total = total.toFixed(2)
+    total = total.toFixed(2);
     document.getElementById('total_amount_show').value = total;
     document.getElementById('total_amount_hide').value = total;
 }
@@ -294,6 +294,7 @@ function CommissionPerKg(){
         return;
     }
     var commission =  qty * kgs;
+    commission = commission / 100;
     commission = commission.toFixed(2);
     document.getElementById('commission_amount_show').value = commission;
     document.getElementById('commission_amount_hide').value = commission;
