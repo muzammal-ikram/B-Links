@@ -338,11 +338,7 @@
                                                             Please provide a BL Number.
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-2 mb-3">
-                                                        <label for="validationCustom01">Containers:</label>
-                                                        <input type="number" step="any" name="invoice_container" class="form-control" value="" autocomplete="off">
-                                                        
-                                                    </div>
+                                                  
 
                                                     <div class="col-md-2 mb-3">
                                                         <label for="validationCustom01">No Of FCLS:</label>
@@ -401,11 +397,7 @@
                                                                 <input type="number" step="any" name="invoice_ammount_add[]" class="form-control" value="" autocomplete="off">
                                                                 
                                                             </div>
-                                                            <div class="col-md-3 mb-3">
-                                                                <label for="validationCustom01">No Of Containers:</label>
-                                                                <input type="number" step="any" name="invoice_container_add[]" class="form-control" value="" autocomplete="off">
-                                                                
-                                                            </div>
+                                                            
     
                                                             <div class="col-md-3 mb-3">
                                                                 <label for="validationCustom01">No Of FCLS:</label>

@@ -60,8 +60,7 @@ class ContractorController extends Controller
                 $arr['invoice']     = $invoice_number_add[$key];
                 $arr['bl_number']   = $bl_number_add[$key];
                 $arr['date']        = $invoice_date_add[$key];
-                $arr['amount']      = $invoice_ammount_add[$key];
-                $arr['containers']  = $invoice_container_add[$key];
+                $arr['amount']      = $invoice_ammount_add[$key]; 
                 $arr['fcls']        = $invoice_fcls_add[$key];
 
                 $arr['etd_date']     = $etd_date_add[$key];
@@ -71,7 +70,7 @@ class ContractorController extends Controller
                 $arr['eta_fcls']  = $eta_fcls_add[$key];
                 $arr['eta_rest']        = number_format($invoice_fcls_add[$key] - $eta_fcls_add[$key], 2);
 
-                if(is_null($arr['invoice']) && is_null($arr['bl_number']) && is_null($arr['date']) && is_null($arr['amount']) && is_null($arr['containers']) && is_null($arr['fcls'])){
+                if(is_null($arr['invoice']) && is_null($arr['bl_number']) && is_null($arr['date']) && is_null($arr['amount']) && is_null($arr['fcls'])){
                     continue;
                 }
             
@@ -240,8 +239,7 @@ class ContractorController extends Controller
                 $arr['invoice']     = $invoice_number_add[$key];
                 $arr['bl_number']   = $bl_number_add[$key];
                 $arr['date']        = $invoice_date_add[$key];
-                $arr['amount']      = $invoice_ammount_add[$key];
-                $arr['containers']  = $invoice_container_add[$key];
+                $arr['amount']      = $invoice_ammount_add[$key]; 
                 $arr['fcls']        = $invoice_fcls_add[$key];
 
                 $arr['etd_date']     = $etd_date_add[$key];
@@ -251,7 +249,7 @@ class ContractorController extends Controller
                 $arr['eta_fcls']  = $eta_fcls_add[$key];
                 $arr['eta_rest']        = number_format($invoice_fcls_add[$key] - $eta_fcls_add[$key], 2);
 
-                if(is_null($arr['invoice']) && is_null($arr['bl_number']) && is_null($arr['date']) && is_null($arr['amount']) && is_null($arr['containers']) && is_null($arr['fcls'])){
+                if(is_null($arr['invoice']) && is_null($arr['bl_number']) && is_null($arr['date']) && is_null($arr['amount']) && is_null($arr['fcls'])){
                     continue;
                 }
             
