@@ -111,7 +111,7 @@
     $('#etd_fcls').keyup(function () {
         var etd_fcls = $(this).val();
         var fcls = $("#fcls").val();
-        
+
         if(etd_fcls == '' || fcls == ''){
             return;
         }
@@ -132,8 +132,8 @@
        document.getElementById("eta_rest_show").value = eta_rest;
        document.getElementById("eta_rest_hide").value = eta_rest;
     });
-    
-    
+
+
       // **********Opener SUGGESTIONS**************
       $("#openerSuggestion").on('click', 'li', function() {
 
@@ -157,11 +157,11 @@ function getSellerInfo(seller_id){
                 data: {seller_id:seller_id, _token:_token},
                 success:function (data) {
                     document.getElementById("seller_address").value = data.seller_address;
-                    document.getElementById("seller_country").value = data.seller_country; 
-                  
+                    document.getElementById("seller_country").value = data.seller_country;
+
                     document.getElementById("seller_address").disabled = true;
                     document.getElementById("seller_country").disabled = true;
-              
+
                 }
             });
 }
@@ -174,8 +174,8 @@ function getBuyerInfo(buyer_id){
                 data: {buyer_id:buyer_id, _token:_token},
                 success:function (data) {
                     document.getElementById("buyer_address").value = data.buyer_address;
-                    document.getElementById("buyer_country").value = data.buyer_country; 
-                  
+                    document.getElementById("buyer_country").value = data.buyer_country;
+
                     document.getElementById("buyer_address").disabled = true;
                     document.getElementById("buyer_country").disabled = true;
                 }
@@ -191,8 +191,8 @@ function getOpenerInfo(opener_id){
                 data: {opener_id:opener_id, _token:_token},
                 success:function (data) {
                     document.getElementById("lc_opener_address").value = data.lc_opener_address;
-                    document.getElementById("lc_opener_country").value = data.lc_opener_country; 
-                  
+                    document.getElementById("lc_opener_country").value = data.lc_opener_country;
+
                     document.getElementById("lc_opener_address").disabled = true;
                     document.getElementById("lc_opener_country").disabled = true;
                 }
@@ -209,8 +209,8 @@ $(document).on('click', function() {
 $(document).ready(function() {
 
     var count = 0;
-    $(".add-more").click(function(){ 
-        count++; 
+    $(".add-more").click(function(){
+        count++;
         console.log(count)
         if(count === 1){
             document.getElementById("copy-area").style.display = "block";
@@ -223,9 +223,9 @@ $(document).ready(function() {
         // $("#etd_details").after(html2);
     });
     var editCount = 0;
-    $(".edit-more").click(function(){ 
-        
-        editCount++; 
+    $(".edit-more").click(function(){
+
+        editCount++;
         if(count === 1){
             document.getElementById("copy-area").style.display = "block";
             return;
@@ -235,12 +235,12 @@ $(document).ready(function() {
     });
 
 
-    $("body").on("click",".remove",function(){ 
-      
+    $("body").on("click",".remove",function(){
+
         // if(count === 0){
         //     return;
-        // } 
-        //  count--; 
+        // }
+        //  count--;
         // console.log(count);
         if(count === 1){
             document.getElementById("copy-area").style.display = "none";
@@ -248,8 +248,8 @@ $(document).ready(function() {
             return;
         }
         $(this).parents(".control-group").remove();
-      
-        
+
+
     });
 
     $(document).keypress(function(event){
@@ -270,14 +270,14 @@ function totalAmount(){
     document.getElementById('total_amount_hide').value = '';
         return;
     }
-    var total =  price_dollar * qty; 
-    total = total.toFixed(2)
+    var total =  price_dollar * qty;
+    total = total.toFixed(2);
     document.getElementById('total_amount_show').value = total;
     document.getElementById('total_amount_hide').value = total;
 }
 function totalCommission(){
     var commission_type = $("#select-commission").val();
-   
+
     if(commission_type == 'kg'){
         CommissionPerKg();
     }
@@ -293,8 +293,9 @@ function CommissionPerKg(){
         document.getElementById('commission_amount_hide').value = '';
         return;
     }
-    var commission =  qty * kgs; 
-    commission = commission.toFixed(2)
+    var commission =  qty * kgs;
+    commission = commission / 100;
+    commission = commission.toFixed(2);
     document.getElementById('commission_amount_show').value = commission;
     document.getElementById('commission_amount_hide').value = commission;
 }
@@ -307,9 +308,10 @@ function CommissionPercentage(){
         document.getElementById('commission_amount_show').value = '';
         document.getElementById('commission_amount_hide').value = '';
         return;
-    } 
-    var commission =  total_amount * percent_commission; 
-    commission = commission.toFixed(2)
+    }
+    var commission =  total_amount * percent_commission;
+    commission = commission / 100;
+    commission = commission.toFixed(2);
     document.getElementById('commission_amount_show').value = commission;
     document.getElementById('commission_amount_hide').value = commission;
 }

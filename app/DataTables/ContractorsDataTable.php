@@ -37,7 +37,7 @@ class ContractorsDataTable extends DataTable
             return $con->eta ? $con->eta->format('M-d-Y') : Null;
         })
         ->addColumn('status', function($con) {
-        
+
             $nowDate        =  Carbon::now();
             $last7Days      = $con->comm_deadline->subDays(7);
             $comm_deadline  = $con->comm_deadline;
@@ -112,16 +112,16 @@ class ContractorsDataTable extends DataTable
                 'data' => 'item'
             ],
 
-            'Seller Name'=>[
+            'Seller'=>[
                 'data' => 'seller_name',
             ],
-            'Buyer Name'=>[
+            'Buyer'=>[
                 'data' => 'buyer_name'
             ],
-            'Lc Opener Name'=>[
+            'Lc Opener'=>[
                 'data' => 'lc_opener_name'
             ],
-            'Com deadline'=>[
+            'Commission Due'=>[
                 'data'=>'comm_deadline'
             ],
             'Status'=>[

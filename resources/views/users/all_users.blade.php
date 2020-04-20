@@ -41,7 +41,7 @@
                   <div class="table-responsive">
             {!! $dataTable->table(['class'=>'table']) !!}
                     </div>
-                                    
+
                             </div>
                         </div>
                     </div>
@@ -54,7 +54,7 @@
         <!--main contents end-->
     </div>
     <!--===========app body end===========-->
- 
+
     @include('_partials.footer')
 
 @endsection

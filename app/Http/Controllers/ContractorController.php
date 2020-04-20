@@ -35,7 +35,7 @@ class ContractorController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {   
+    {
         $invoice_details = [];
         $invoice_number_add     = $request->invoice_number_add;
         $bl_number_add          = $request->bl_number_add;
@@ -43,7 +43,7 @@ class ContractorController extends Controller
         $invoice_ammount_add    = $request->invoice_ammount_add;
         $invoice_container_add  = $request->invoice_container_add;
         $invoice_fcls_add       = $request->invoice_fcls_add;
-        
+
         $etd_details = [];
         $etd_date_add     = $request->etd_date_add;
         $etd_fcls_add          = $request->etd_fcls_add;
@@ -53,7 +53,7 @@ class ContractorController extends Controller
         $eta_rest_add       = $request->eta_rest_add;
 
         if(isset($request->invoice_number_add)){
-                
+
             foreach($request->invoice_number_add as $key => $details){
                 $arr = [];
                 $etd_arr = [];
@@ -73,13 +73,13 @@ class ContractorController extends Controller
                 if(is_null($arr['invoice']) && is_null($arr['bl_number']) && is_null($arr['date']) && is_null($arr['amount']) && is_null($arr['fcls'])){
                     continue;
                 }
-            
+
                 if(is_null($arr['etd_date']) && is_null($arr['etd_fcls']) && is_null($arr['etd_rest']) && is_null($arr['eta_date']) && is_null($arr['eta_fcls']) && is_null($arr['eta_rest'])){
                     continue;
                 }
-                array_push($invoice_details, $arr);            
+                array_push($invoice_details, $arr);
             }
-        
+
         }
         // find total amount
         $price_per_dollar   = $request->get('price_per_dollar');
@@ -108,7 +108,7 @@ class ContractorController extends Controller
 
         // find commission deadline
         $commission_deadline                = new \Carbon\Carbon($request->get('etd'));
-        $commission_deadline                = $commission_deadline->addDays(60);
+        $commission_deadline                = $commission_deadline->addDays($request->get('lc_type'));
 
         // insert Data
         $contractor = new Contractor;
@@ -165,7 +165,7 @@ class ContractorController extends Controller
         $contractor->eta                    = $request->get('eta');
         $contractor->eta_fcls               = $eta_fcls;
         $contractor->eta_rest               = $eta_rest;
- 
+
 
 
         // Documents Details
@@ -215,7 +215,7 @@ class ContractorController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {  
+    {
         $invoice_details = [];
         $invoice_number_add     = $request->invoice_number_add;
         $bl_number_add          = $request->bl_number_add;
@@ -223,7 +223,7 @@ class ContractorController extends Controller
         $invoice_ammount_add    = $request->invoice_ammount_add;
         $invoice_container_add  = $request->invoice_container_add;
         $invoice_fcls_add       = $request->invoice_fcls_add;
-        
+
         $etd_details = [];
         $etd_date_add     = $request->etd_date_add;
         $etd_fcls_add          = $request->etd_fcls_add;
@@ -232,7 +232,7 @@ class ContractorController extends Controller
         $eta_fcls_add  = $request->eta_fcls_add;
         $eta_rest_add       = $request->eta_rest_add;
         if(isset($request->invoice_number_add)){
-                
+
             foreach($request->invoice_number_add as $key => $details){
                 $arr = [];
                 $etd_arr = [];
@@ -252,14 +252,14 @@ class ContractorController extends Controller
                 if(is_null($arr['invoice']) && is_null($arr['bl_number']) && is_null($arr['date']) && is_null($arr['amount']) && is_null($arr['fcls'])){
                     continue;
                 }
-            
+
                 if(is_null($arr['etd_date']) && is_null($arr['etd_fcls']) && is_null($arr['etd_rest']) && is_null($arr['eta_date']) && is_null($arr['eta_fcls']) && is_null($arr['eta_rest'])){
                     continue;
                 }
-                array_push($invoice_details, $arr);            
+                array_push($invoice_details, $arr);
             }
 
-        } 
+        }
         // find total amount
         $price_per_dollar   = $request->get('price_per_dollar');
         $qty                = $request->get('qty');
@@ -287,7 +287,7 @@ class ContractorController extends Controller
 
         // find commission deadline
         $commission_deadline                = new \Carbon\Carbon($request->get('etd'));
-        $commission_deadline                = $commission_deadline->addDays(60);
+        $commission_deadline                = $commission_deadline->addDays($request->get('lc_type'));
 
         // update Data
         $contractor = Contractor::find($id);
@@ -300,17 +300,17 @@ class ContractorController extends Controller
         $contractor->seller_name            = $request->get('seller_name');
         // $contractor->seller_address         = $request->get('seller_address');
         // $contractor->seller_country         = $request->get('seller_country');
-        
+
         // Buyer
         $contractor->buyer_name             = $request->get('buyer_name');
         // $contractor->buyer_address          = $request->get('buyer_address');
         // $contractor->buyer_country          = $request->get('buyer_country');
-        
+
         // Lc Opener
         $contractor->lc_opener_name         = $request->get('lc_opener_name');
         // $contractor->lc_opener_address      = $request->get('lc_opener_address');
         // $contractor->lc_opener_country      = $request->get('lc_opener_country');
-        
+
         // Contract Details
         $contractor->fcls                   = $fcls;
         $contractor->lsd                    = $request->get('lsd');

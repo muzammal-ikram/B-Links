@@ -32,8 +32,8 @@
                         <div class="card mb-4">
                             <div class="card-body">
                                 <div class="row">
-                                    <div class="col-4">                                        
-                                            <h6>USD Rate:</h6>                        
+                                    <div class="col-4">
+                                            <h6>USD Rate:</h6>
                                             <p class="mt-1 mb-0">Last Updated:</p>
                                     </div>
                                     <div class="col-8">
@@ -43,8 +43,8 @@
                                             @else
                                             Press Refresh
                                             @endif
-                                        </h5>                               
-                                
+                                        </h5>
+
                                         <p class="mt-1 mb-0" id="last-updated-time"></p>
                                         <!-- <h6 class="f12 mb-0"></p> -->
                                         <button class="btn btn-primary btn-sm" id="refresh">Refresh</button>
@@ -54,7 +54,7 @@
                                         </p>
                                         @else
                                          <p class="mt-1 mb-0" id="last-updated">
-                                        
+
                                         </p>
                                         @endif
                                     </div>
