@@ -23,7 +23,7 @@
                             </div>
                             <div class="card-body">
                                 <table id="bs4-table" class="table table-bordered table-striped table-responsive-sm">
-                                    <tbody>
+                                    <tr>
                                     <tr>
                                         <th class="text-nowrap" scope="row">Contract No</th>
                                         <td>{{$contractor->contractor_number}}</td>
@@ -33,13 +33,13 @@
                                     <tr>
                                         <th class="text-nowrap" scope="row">Item</th>
                                         <td>{{$contractor->item}}</td>
-                                        <th class="text-nowrap" scope="row">Seller Name</th>
+                                        <th class="text-nowrap" scope="row">Seller</th>
                                         <td>{{$contractor->seller_name}}</td>
                                     </tr>
                                     <tr>
-                                        <th class="text-nowrap" scope="row">Buyer Name</th>
+                                        <th class="text-nowrap" scope="row">Buyer</th>
                                         <td>{{$contractor->buyer_name}}</td>
-                                        <th class="text-nowrap" scope="row">Lc Opener Name</th>
+                                        <th class="text-nowrap" scope="row">Lc Opener</th>
                                         <td>{{$contractor->lc_opener_name}}</td>
                                     </tr>
                                     <tr>
@@ -74,48 +74,49 @@
                                         <th class="text-nowrap" scope="row">Percent</th>
                                         <td>{{$contractor->percent}}</td>
                                         @endif
-                                        <th class="text-nowrap" scope="row">Quantity</th>
-                                        <td>{{$contractor->qty}}</td>
-                                    </tr>
-                                    <tr>
                                         <th class="text-nowrap" scope="row">Commission Amount</th>
                                         <td>{{$contractor->commission_amount}}</td>
+                                    </tr>
+                                    <tr>
                                         <th class="text-nowrap" scope="row">Invoice Number</th>
                                         <td>{{$contractor->invoice_number}}</td>
-                                    </tr>
-                                    <tr>
                                         <th class="text-nowrap" scope="row">BL Number</th>
                                         <td>{{$contractor->bl_number}}</td>
+                                    </tr>
+                                    <tr>
                                         <th class="text-nowrap" scope="row">ETD</th>
                                         <td>{{$contractor->etd}}</td>
-                                    </tr>
-                                    <tr>
-                                        <th class="text-nowrap" scope="row">ETD FCLS</th>
-                                        <td>{{$contractor->etd_fcls}}</td>
-                                        <th class="text-nowrap" scope="row">ETD Rest</th>
-                                        <td>{{$contractor->etd_rest}}</td>
-                                    </tr>
-                                    <tr>
                                         <th class="text-nowrap" scope="row">ETA</th>
                                         <td>{{$contractor->eta}}</td>
-                                        <th class="text-nowrap" scope="row">ETA FCLS</th>
-                                        <td>{{$contractor->eta_fcls}}</td>
                                     </tr>
+
+{{--                                    <tr>--}}
+{{--                                        <th class="text-nowrap" scope="row">ETD FCLS</th>--}}
+{{--                                        <td>{{$contractor->etd_fcls}}</td>--}}
+{{--                                        <th class="text-nowrap" scope="row">ETD Rest</th>--}}
+{{--                                        <td>{{$contractor->etd_rest}}</td>--}}
+{{--                                    </tr>--}}
+{{--                                    <tr>--}}
+{{--                                        <th class="text-nowrap" scope="row">ETA</th>--}}
+{{--                                        <td>{{$contractor->eta}}</td>--}}
+{{--                                        <th class="text-nowrap" scope="row">ETA FCLS</th>--}}
+{{--                                        <td>{{$contractor->eta_fcls}}</td>--}}
+{{--                                    </tr>--}}
                                     <tr>
-                                        <th class="text-nowrap" scope="row">ETA Rest</th>
-                                        <td>{{$contractor->eta_rest}}</td>
+{{--                                        <th class="text-nowrap" scope="row">ETA Rest</th>--}}
+{{--                                        <td>{{$contractor->eta_rest}}</td>--}}
                                         <th class="text-nowrap" scope="row">AWB</th>
                                         <td>{{$contractor->awb}}</td>
-                                    </tr>
-                                    <tr>
                                         <th class="text-nowrap" scope="row">Document</th>
                                         <td>{{$contractor->document}}</td>
-                                        <th class="text-nowrap" scope="row">Shipment Status</th>
-                                        <td>{{$contractor->shipment_status}}</td>
                                     </tr>
                                     <tr>
+                                        <th class="text-nowrap" scope="row">Shipment Status</th>
+                                        <td>{{$contractor->shipment_status}}</td>
                                         <th class="text-nowrap" scope="row">Commission Deadline</th>
                                         <td>{{$contractor->comm_deadline}}</td>
+                                    </tr>
+                                    <tr>
                                         <th class="text-nowrap" scope="row">Status</th>
                                         <td>
                                             @php
@@ -136,6 +137,38 @@
 
                                     </tbody>
                                 </table>
+
+                                    @if($contractor->invoice_details)
+
+                                        <h3 class="text-center">
+                                            Extra Invoice Details
+                                        </h3>
+
+                                    <table class="table table-bordered table-striped table-responsive-sm">
+
+                                        @foreach(json_decode($contractor->invoice_details) as $key=>$invoice_detail)
+                                            <tr>
+                                                <th class="text-nowrap" scope="row">Invoice Number</th>
+                                                <td>{{$invoice_detail->invoice}}</td>
+                                                <th class="text-nowrap" scope="row">BL Number</th>
+                                                <td>{{$invoice_detail->bl_number}}</td>
+                                            </tr>
+                                            <tr>
+                                                <th class="text-nowrap" scope="row">Fcls</th>
+                                                <td>{{$invoice_detail->fcls}}</td>
+                                            </tr>
+                                            <tr>
+                                                <th class="text-nowrap" scope="row">ETD</th>
+                                                <td>{{$invoice_detail->etd_date}}</td>
+                                                <th class="text-nowrap" scope="row">ETA</th>
+                                                <td>{{$invoice_detail->eta_date}}</td>
+                                            </tr>
+                                        @endforeach
+                                    </table>
+                                    @endif
+
+
+
                                 <br>
                                 <br>
                                 <div class="btn-demo">
