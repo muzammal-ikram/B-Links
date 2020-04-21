@@ -139,7 +139,7 @@
 
                     <TR>
                     <TD WIDTH=156 STYLE="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding: 0in">
-                        <P ALIGN=CENTER STYLE="margin-left: 0.07in; margin-top: 0in"><FONT SIZE=4><I>{{ isset($detail->bl_no) ? $detail->bl_no : "" }}</I></FONT></P>
+                        <P ALIGN=CENTER STYLE="margin-left: 0.07in; margin-top: 0in"><FONT SIZE=4><I>{{ isset($detail->bl_number) ? $detail->bl_number : "" }}</I></FONT></P>
                         <P CLASS="western" ALIGN=RIGHT STYLE="widows: 2; orphans: 2"><BR>
                         </P>
                     </TD>
@@ -149,11 +149,11 @@
                         </P>
                     </TD>
                     <TD WIDTH=102 STYLE="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding: 0in">
-                        <P STYLE="margin-left: 0.07in; margin-top: 0in"><FONT SIZE=4><I>{{ isset($detail->date) ? $detail->date : "" }}</I></FONT></P>
+                        <P STYLE="margin-left: 0.07in; margin-top: 0in"><FONT SIZE=4><I>{{ isset($detail->etd_date) ? $detail->etd_date : "" }}</I></FONT></P>
                     </TD>
                     <TD WIDTH=121 STYLE="border: 1px solid #000000; padding: 0in">
                         <P STYLE="margin-left: 0.08in; margin-top: 0in; font-style: normal">
-                            <FONT SIZE=2 STYLE="font-size: 11pt"><FONT SIZE=4><I>{{ isset($detail->amount) ? $detail->amount : "" }}</I></FONT></FONT></P>
+                            <FONT SIZE=2 STYLE="font-size: 11pt"><FONT SIZE=4><I></I></FONT></FONT></P>
                     </TD>
                     </TR>
                 @else
