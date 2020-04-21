@@ -37,20 +37,12 @@ class ContractorController extends Controller
     public function store(Request $request)
     {
         $invoice_details = [];
+        
         $invoice_number_add     = $request->invoice_number_add;
         $bl_number_add          = $request->bl_number_add;
-        $invoice_date_add       = $request->invoice_date_add;
-        $invoice_ammount_add    = $request->invoice_ammount_add;
-        $invoice_container_add  = $request->invoice_container_add;
         $invoice_fcls_add       = $request->invoice_fcls_add;
-
-        $etd_details = [];
-        $etd_date_add     = $request->etd_date_add;
-        $etd_fcls_add          = $request->etd_fcls_add;
-        $etd_rest_add       = $request->etd_rest_add;
-        $eta_date_add    = $request->eta_date_add;
-        $eta_fcls_add  = $request->eta_fcls_add;
-        $eta_rest_add       = $request->eta_rest_add;
+        $etd_date_add           = $request->etd_date_add;
+        $eta_date_add           = $request->eta_date_add;
 
         if(isset($request->invoice_number_add)){
 
@@ -59,24 +51,14 @@ class ContractorController extends Controller
                 $etd_arr = [];
                 $arr['invoice']     = $invoice_number_add[$key];
                 $arr['bl_number']   = $bl_number_add[$key];
-                $arr['date']        = $invoice_date_add[$key];
-                $arr['amount']      = $invoice_ammount_add[$key]; 
                 $arr['fcls']        = $invoice_fcls_add[$key];
+                $arr['etd_date']     = $etd_date_add[$key];  
+                $arr['eta_date']      = $eta_date_add[$key]; 
 
-                $arr['etd_date']     = $etd_date_add[$key];
-                $arr['etd_fcls']   = $etd_fcls_add[$key];
-                $arr['etd_rest']        = number_format($invoice_fcls_add[$key] - $etd_fcls_add[$key], 2);
-                $arr['eta_date']      = $eta_date_add[$key];
-                $arr['eta_fcls']  = $eta_fcls_add[$key];
-                $arr['eta_rest']        = number_format($invoice_fcls_add[$key] - $eta_fcls_add[$key], 2);
-
-                if(is_null($arr['invoice']) && is_null($arr['bl_number']) && is_null($arr['date']) && is_null($arr['amount']) && is_null($arr['fcls'])){
+                if(is_null($arr['invoice']) && is_null($arr['bl_number']) && is_null($arr['etd_date']) && is_null($arr['eta_date']) && is_null($arr['fcls'])){
                     continue;
                 }
 
-                if(is_null($arr['etd_date']) && is_null($arr['etd_fcls']) && is_null($arr['etd_rest']) && is_null($arr['eta_date']) && is_null($arr['eta_fcls']) && is_null($arr['eta_rest'])){
-                    continue;
-                }
                 array_push($invoice_details, $arr);
             }
 
@@ -99,13 +81,6 @@ class ContractorController extends Controller
 
         // find etd rest
         $fcls               = $request->get('fcls');
-        $etd_fcls           = $request->get('etd_fcls');
-        $etd_rest           = $fcls - $etd_fcls;
-
-        // find eta rest
-        $eta_fcls           = $request->get('eta_fcls');
-        $eta_rest           = $fcls - $eta_fcls;
-
         // find commission deadline
         $commission_deadline                = new \Carbon\Carbon($request->get('etd'));
         $commission_deadline                = $commission_deadline->addDays($request->get('lc_type'));
@@ -119,18 +94,11 @@ class ContractorController extends Controller
 
         // Seller
         $contractor->seller_name            = $request->get('seller_name');
-        // $contractor->seller_address         = $request->get('seller_address');
-        // $contractor->seller_country         = $request->get('seller_country');
 
         // Buyer
         $contractor->buyer_name             = $request->get('buyer_name');
-        // $contractor->buyer_address          = $request->get('buyer_address');
-        // $contractor->buyer_country          = $request->get('buyer_country');
-
         // Lc Opener
         $contractor->lc_opener_name         = $request->get('lc_opener_name');
-        // $contractor->lc_opener_address      = $request->get('lc_opener_address');
-        // $contractor->lc_opener_country      = $request->get('lc_opener_country');
 
         // Contract Details
         $contractor->fcls                   = $fcls;
@@ -159,12 +127,7 @@ class ContractorController extends Controller
 
         // ETD/ETA Details
         $contractor->etd                    = $request->get('etd');
-        $contractor->etd_fcls               = $etd_fcls;
-        $contractor->etd_rest               = $etd_rest;
-
         $contractor->eta                    = $request->get('eta');
-        $contractor->eta_fcls               = $eta_fcls;
-        $contractor->eta_rest               = $eta_rest;
 
 
 
@@ -217,20 +180,13 @@ class ContractorController extends Controller
     public function update(Request $request, $id)
     {
         $invoice_details = [];
+        
         $invoice_number_add     = $request->invoice_number_add;
         $bl_number_add          = $request->bl_number_add;
-        $invoice_date_add       = $request->invoice_date_add;
-        $invoice_ammount_add    = $request->invoice_ammount_add;
-        $invoice_container_add  = $request->invoice_container_add;
         $invoice_fcls_add       = $request->invoice_fcls_add;
+        $etd_date_add           = $request->etd_date_add;
+        $eta_date_add           = $request->eta_date_add;
 
-        $etd_details = [];
-        $etd_date_add     = $request->etd_date_add;
-        $etd_fcls_add          = $request->etd_fcls_add;
-        $etd_rest_add       = $request->etd_rest_add;
-        $eta_date_add    = $request->eta_date_add;
-        $eta_fcls_add  = $request->eta_fcls_add;
-        $eta_rest_add       = $request->eta_rest_add;
         if(isset($request->invoice_number_add)){
 
             foreach($request->invoice_number_add as $key => $details){
@@ -238,28 +194,19 @@ class ContractorController extends Controller
                 $etd_arr = [];
                 $arr['invoice']     = $invoice_number_add[$key];
                 $arr['bl_number']   = $bl_number_add[$key];
-                $arr['date']        = $invoice_date_add[$key];
-                $arr['amount']      = $invoice_ammount_add[$key]; 
                 $arr['fcls']        = $invoice_fcls_add[$key];
+                $arr['etd_date']     = $etd_date_add[$key];  
+                $arr['eta_date']      = $eta_date_add[$key]; 
 
-                $arr['etd_date']     = $etd_date_add[$key];
-                $arr['etd_fcls']   = $etd_fcls_add[$key];
-                $arr['etd_rest']        = number_format($invoice_fcls_add[$key] - $etd_fcls_add[$key], 2);
-                $arr['eta_date']      = $eta_date_add[$key];
-                $arr['eta_fcls']  = $eta_fcls_add[$key];
-                $arr['eta_rest']        = number_format($invoice_fcls_add[$key] - $eta_fcls_add[$key], 2);
-
-                if(is_null($arr['invoice']) && is_null($arr['bl_number']) && is_null($arr['date']) && is_null($arr['amount']) && is_null($arr['fcls'])){
+                if(is_null($arr['invoice']) && is_null($arr['bl_number']) && is_null($arr['etd_date']) && is_null($arr['eta_date']) && is_null($arr['fcls'])){
                     continue;
                 }
 
-                if(is_null($arr['etd_date']) && is_null($arr['etd_fcls']) && is_null($arr['etd_rest']) && is_null($arr['eta_date']) && is_null($arr['eta_fcls']) && is_null($arr['eta_rest'])){
-                    continue;
-                }
                 array_push($invoice_details, $arr);
             }
 
         }
+        // dd($invoice_details);
         // find total amount
         $price_per_dollar   = $request->get('price_per_dollar');
         $qty                = $request->get('qty');
@@ -297,20 +244,9 @@ class ContractorController extends Controller
         $contractor->item                  = $request->get('item');
 
         // Seller
-        $contractor->seller_name            = $request->get('seller_name');
-        // $contractor->seller_address         = $request->get('seller_address');
-        // $contractor->seller_country         = $request->get('seller_country');
-
-        // Buyer
-        $contractor->buyer_name             = $request->get('buyer_name');
-        // $contractor->buyer_address          = $request->get('buyer_address');
-        // $contractor->buyer_country          = $request->get('buyer_country');
-
-        // Lc Opener
+        $contractor->seller_name            = $request->get('seller_name'); 
+        $contractor->buyer_name             = $request->get('buyer_name'); 
         $contractor->lc_opener_name         = $request->get('lc_opener_name');
-        // $contractor->lc_opener_address      = $request->get('lc_opener_address');
-        // $contractor->lc_opener_country      = $request->get('lc_opener_country');
-
         // Contract Details
         $contractor->fcls                   = $fcls;
         $contractor->lsd                    = $request->get('lsd');

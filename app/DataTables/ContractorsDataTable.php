@@ -24,6 +24,15 @@ class ContractorsDataTable extends DataTable
         ->addColumn('action', function($con) {
             return view('_partials.contractor_datatable',['con'=>$con]);
         })
+        ->addColumn('seller_name', function ($contractor) {
+            return view('_partials.contractor_title',compact('contractor'));
+        })
+        ->addColumn('buyer_name', function ($contractor) {
+            return view('_partials.contractor_buyer',compact('contractor'));
+        })
+        ->addColumn('lc_opener_name', function ($contractor) {
+            return view('_partials.contractor_opener',compact('contractor'));
+        })
         ->addColumn('comm_deadline', function($con) {
             return $con->comm_deadline ? $con->comm_deadline->format('M-d-Y') : Null;
         })
@@ -71,7 +80,7 @@ class ContractorsDataTable extends DataTable
      */
     public function query(Contractor $model)
     {
-        return $model->newQuery();
+        return $model->orderBy('id', 'desc')->newQuery();
     }
 
     /**

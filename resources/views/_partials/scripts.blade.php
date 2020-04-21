@@ -205,23 +205,33 @@ $(document).on('click', function() {
     $('#buyerSuggestion').fadeOut();
     $('#openerSuggestion').fadeOut();
 })
+var c = 2;
+function Clone() {
 
+    var clone = document.getElementById('thediv').cloneNode(true); // "deep" clone
+    $(clone). attr("id", "thediv"+c);
+    document.getElementById("showHere").appendChild(clone);
+    c++;
+}
+function Delete(button) {
+  var parent = button.parentNode;
+  var grand_father = parent.parentNode;
+  grand_father.removeChild(parent);
+}
 $(document).ready(function() {
 
     var count = 0;
-    $(".add-more").click(function(){
-        count++;
-        console.log(count)
-        if(count === 1){
-            document.getElementById("copy-area").style.display = "block";
-            // document.getElementById("copy-area2").style.display = "block";
-            return;
-        }
-        var html = $(".copy").html();
-        // var html2 = $(".copy2").html();
-        $("#add-more-invoice").after(html);
-        // $("#etd_details").after(html2);
-    });
+  
+    // $(".add-more").click(function(){ 
+    //       if(count == 0){
+    //           document.getElementById("clone1").style.display = "block";
+    //           return;
+    //       }
+    //       var html = $(".clone").html();
+    //       $(".add-more-invoice").after(html);
+    //       count++;
+    //   });
+
     var editCount = 0;
     $(".edit-more").click(function(){
 
@@ -231,26 +241,26 @@ $(document).ready(function() {
             return;
         }
         var html = $("#copy-area").html();
-        $("#add-more-invoice").after(html);
+        $("#copy-area:last").after(html);
     });
 
+    r_count = 0;
+//     $("body").on("click",".remove",function(){
 
-    $("body").on("click",".remove",function(){
+//         var numItems = $('.clone_divs').length;
+//         if(numItems === 1){
+//             return;
+//         }
+// // alert(numItems)
+//         $(this).parents(".control-group").remove();
 
-        // if(count === 0){
-        //     return;
-        // }
-        //  count--;
-        // console.log(count);
-        if(count === 1){
-            document.getElementById("copy-area").style.display = "none";
-            // document.getElementById("copy-area2").style.display = "block";
-            return;
-        }
-        $(this).parents(".control-group").remove();
+//         // count--;
+//         console.log(count)
+//     });
 
-
-    });
+      $("body").on("click",".remove",function(){ 
+          $(this).parents(".control-group").remove();
+      });
 
     $(document).keypress(function(event){
         var keycode = (event.keyCode ? event.keyCode : event.which);
@@ -315,4 +325,74 @@ function CommissionPercentage(){
     document.getElementById('commission_amount_show').value = commission;
     document.getElementById('commission_amount_hide').value = commission;
 }
+
+
+
+
+
+
+// $(document).ready(function(){
+//         $(".add-more").click(function(){
+//             $("#add-more-invoice").append('<div class="card control-group clone">'+
+//                 '<h5 class="card-header h5">Extra invoice</h5>'+
+//                     '<div class="card-body">'+
+//                                                 '<div >'+
+
+//                                                     '<div >'+
+//                                                         '<div class="row ">'+
+
+//                                                             '<div class="col-md-2 mb-3">'+
+//                                                                 '<label for="validationCustom04">Invoice Number</label>'+
+//                                                                 '<input type="text" name="invoice_number_add[]" class="form-control {{ $errors->has('invoice_number') ? ' is-invalid' : '' }}" id="validationCustom04" value="{{old('invoice_number')}}" autocomplete="off">'+
+//                                                                 '<div class="invalid-feedback">Please provide a Invoice Number'+
+//                                                                 '</div>'+
+//                                                             '</div>'+
+
+//                                                             '<div class="col-md-2 mb-3">'+
+//                                                                 '<label for="validationCustom01">BL Number</label>'+
+//                                                                 '<input type="text" name="bl_number_add[]" class="form-control {{ $errors->has('bl_number') ? ' is-invalid' : '' }}" id="validationCustom01" value="{{old('bl_number')}}" autocomplete="off">'+
+//                                                                 '<div class="invalid-feedback">\Please provide a BL Number'+
+//                                                                 '</div>'+
+//                                                             '</div>'+
+//                                                             '<div class="col-md-2 mb-3">'+
+//                                                                 '<label for="validationCustom01">No Of FCLS:</label>'+
+//                                                                 '<input type="number" step="any" name="invoice_fcls_add[]" class="form-control" value="" autocomplete="off">'+
+
+//                                                             '</div>'+
+ 
+//                                                             '<div class="col-md-2 mb-3">'+
+//                                                                 '<label for="validationCustom04">ETD</label>'+
+//                                                                 '<input type="date" name="etd_date_add[]" class="form-control {{ $errors->has('etd') ? ' is-invalid' : '' }}" id="validationCustom04" value="" autocomplete="off">'+
+//                                                                 '<div class="invalid-feedback">Please provide a ETD.'+
+//                                                                 '</div>'+
+//                                                             '</div>'+
+
+//                                                             '<div class="col-md-2 mb-3">'+
+//                                                                 '<label for="validationCustom04">ETA</label>'+
+//                                                                 '<input type="date" name="eta_date_add[]" class="form-control {{ $errors->has('eta') ? ' is-invalid' : '' }}" id="validationCustom04" value="{{old('eta')}}" autocomplete="off">'+
+//                                                                 '<div class="invalid-feedback">Please provide a ETA.'+
+//                                                                 '</div>'+
+//                                                             '</div>'+
+//                                                             '<div class="col-md-2 mb-3">'+
+//                                                                 '<div class="copy hide">'+
+//                                                                     '<label for="validationCustom01"></label>'+
+//                                                                     '<div class="input-group">'+
+//                                                                         '<div class="input-group-btn">'+
+//                                                                             '<button class="btn btn-danger remove" type="button"><i class="glyphicon glyphicon-remove"></i> Remove</button>'+
+//                                                                         '</div>'+
+//                                                                     '</div>'+
+//                                                                 '</div>'+
+//                                                             '</div>'+ 
+//                                                         '</div>'+ 
+//                                                     '</div>'+
+
+//                                                   '</div>'+
+//                                                 '</div>'+
+//                                             '</div>'); 
+//         });
+//         $(document).on("click", "a.remove" , function() {
+//             $(this).parent().remove();
+//         });
+//     });
+
 </script>

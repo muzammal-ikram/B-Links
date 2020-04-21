@@ -21,16 +21,8 @@ class CreateContractorsTable extends Migration
             $table->string('item')->nullable();
 
             $table->string('seller_name')->nullable();
-            $table->string('seller_address')->nullable();
-            $table->string('seller_country')->nullable();
-
             $table->string('buyer_name')->nullable();
-            $table->string('buyer_address')->nullable();
-            $table->string('buyer_country')->nullable();
-
             $table->string('lc_opener_name')->nullable();
-            $table->string('lc_opener_address')->nullable();
-            $table->string('lc_opener_country')->nullable();
 
             $table->string('fcls')->nullable();
             $table->string('lsd')->nullable();
@@ -53,13 +45,8 @@ class CreateContractorsTable extends Migration
             $table->text('invoice_details')->nullable();
 
             $table->string('etd')->nullable();
-            $table->string('etd_fcls')->nullable();
-            $table->string('etd_rest')->nullable();
-
             $table->string('eta')->nullable();
-            $table->string('eta_fcls')->nullable();
-            $table->string('eta_rest')->nullable();
-
+            
             $table->string('awb')->nullable();
             $table->string('document')->nullable();
             $table->string('shipment_status')->nullable(); 

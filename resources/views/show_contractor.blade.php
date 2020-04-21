@@ -117,7 +117,20 @@
                                         <th class="text-nowrap" scope="row">Commission Deadline</th>
                                         <td>{{$contractor->comm_deadline}}</td>
                                         <th class="text-nowrap" scope="row">Status</th>
-                                        <td>{{$contractor->status}}</td>
+                                        <td>
+                                            @php
+                                                $nowDate        =  Carbon\Carbon::now();
+                                                $last7Days      = $contractor->comm_deadline->subDays(7);
+                                                $comm_deadline  = $contractor->comm_deadline;
+                                            @endphp
+                                            @if($nowDate >= $last7Days && $nowDate <= $comm_deadline){
+                                                 last 7 days
+                                            @elseif($nowDate > $comm_deadline)
+                                                 Completed
+                                            @else
+                                                 Pending
+                                            @endif
+                                        </td>
                                     </tr>
 
 
