@@ -272,7 +272,7 @@
                                                       <div class="col-md-4 mb-3">
                                                         <label for="validationCustom04">Total Amount</label>
                                                         <input type="text" class="form-control {{ $errors->has('total_amount') ? ' is-invalid' : '' }}" id="total_amount_show" value="" autocomplete="off" disabled>
-                                                        <input type="text" name="total_amount" id="total_amount_hide" value="" autocomplete="off" style="display:none;">
+                                                        <input type="text" name="total_amount" id="total_amount_hide" value="" autocomplete="off" style="display:none;" >
 
                                                         <div class="invalid-feedback">
                                                             Please provide a Total Amount.
@@ -310,7 +310,7 @@
                                                       <div class="col-md-4  mb-3">
                                                         <label for="commission_amount">Commission</label>
                                                         <input type="text" class="form-control {{ $errors->has('commission_amount') ? ' is-invalid' : '' }}" id="commission_amount_show" value="{{old('commission_amount')}}" autocomplete="off" disabled>
-                                                        <input type="text" name="commission_amount" id="commission_amount_hide" value="" autocomplete="off" style="display:none;">
+                                                        <input type="text" name="commission_amount" id="commission_amount_hide" value="" autocomplete="off"  style="display:none;">
                                                     </div>
 
                                                   </div>

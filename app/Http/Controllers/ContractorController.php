@@ -66,18 +66,20 @@ class ContractorController extends Controller
         // find total amount
         $price_per_dollar   = $request->get('price_per_dollar');
         $qty                = $request->get('qty');
-        $total_amount       = $price_per_dollar * $qty;
+        $total_amount       = $request->get('total_amount');
 
         // find commission in kg's
         $commission_type    = $request->get('commission_type');
         $kg                 = $request->get('kg');
         $percent            = $request->get('percent');
-        if($commission_type == 'kg'){
-            $commission_amount =  $qty * $kg;
-        }
-        if($commission_type == 'percent'){
-            $commission_amount =  $total_amount * $percent;
-        }
+        $commission_amount  = $request->get('commission_amount');
+ 
+        // if($commission_type == 'kg'){
+        //     $commission_amount =  $qty * $kg;
+        // }
+        // if($commission_type == 'percent'){
+        //     $commission_amount =  $total_amount * $percent;
+        // }
 
         // find etd rest
         $fcls               = $request->get('fcls');
@@ -167,6 +169,7 @@ class ContractorController extends Controller
     public function edit($id)
     {
         $contractor = Contractor::findOrFail($id);
+         
         return view('edit_contractor', compact('contractor'));
     }
 
@@ -210,27 +213,24 @@ class ContractorController extends Controller
         // find total amount
         $price_per_dollar   = $request->get('price_per_dollar');
         $qty                = $request->get('qty');
-        $total_amount       = $price_per_dollar * $qty;
+        $total_amount       = $request->get('total_amount');
 
         // find commission in kg's
         $commission_type    = $request->get('commission_type');
         $kg                 = $request->get('kg');
         $percent            = $request->get('percent');
-        if($commission_type == 'kg'){
-            $commission_amount =  $qty * $kg;
-        }
-        if($commission_type == 'percent'){
-            $commission_amount =  $total_amount * $percent;
-        }
+        $commission_amount  = $request->get('commission_amount');
+
+        // if($commission_type == 'kg'){
+        //     $commission_amount =  $qty * $kg;
+        // }
+        // if($commission_type == 'percent'){
+        //     $commission_amount =  $total_amount * $percent;
+        // }
 
         // find etd rest
-        $fcls               = $request->get('fcls');
-        $etd_fcls           = $request->get('etd_fcls');
-        $etd_rest           = $fcls - $etd_fcls;
-
-        // find eta rest
-        $eta_fcls           = $request->get('eta_fcls');
-        $eta_rest           = $fcls - $eta_fcls;
+        $fcls               = $request->get('fcls'); 
+ 
 
         // find commission deadline
         $commission_deadline                = new \Carbon\Carbon($request->get('etd'));
@@ -272,14 +272,8 @@ class ContractorController extends Controller
         $contractor->invoice_details        = json_encode($invoice_details);
 
         // ETD/ETA Details
-        $contractor->etd                    = $request->get('etd');
-        $contractor->etd_fcls               = $etd_fcls;
-        $contractor->etd_rest               = $etd_rest;
-
-        $contractor->eta                    = $request->get('eta');
-        $contractor->eta_fcls               = $eta_fcls;
-        $contractor->eta_rest               = $eta_rest;
-
+        $contractor->etd                    = $request->get('etd'); 
+        $contractor->eta                    = $request->get('eta'); 
         // Documents Details
         $contractor->awb                    = $request->get('awb');
         $contractor->document               = $request->get('document');

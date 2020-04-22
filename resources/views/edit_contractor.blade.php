@@ -71,7 +71,7 @@
                                             <div class="row">
                                                 <div class="col-md-3 mb-3">
                                                     <label for="Date">Date</label>
-                                                    <input type="date" name="date" class="form-control" id="Date" value="{{ $contractor->date ? $contractor->date->format('Y-m-d') : "my"}}" autocomplete="off">
+                                                    <input type="date" name="date" class="form-control" id="Date" value="{{ $contractor->date ? $contractor->date->format('Y-m-d') : ""}}" autocomplete="off">
                                                   </div>
 
                                                 <div class="col-md-6 mb-3">
@@ -226,7 +226,7 @@
                                                     </div>
                                                     <div class="col-md-3 mb-3">
                                                         <label for="validationCustom01">LSD</label>
-                                                        <input type="date" name="lsd" class="form-control" value="{{ $contractor->lsd ? $contractor->lsd : null }}" autocomplete="off">
+                                                        <input type="date" name="lsd" class="form-control" value="{{ $contractor->lsd ? $contractor->lsd->format('Y-m-d') : null }}" autocomplete="off">
                                                         <div class="invalid-feedback">
                                                             Please provide a LSD.
                                                         </div>
@@ -277,8 +277,8 @@
 
                                                       <div class="col-md-4 mb-3">
                                                         <label for="validationCustom04">Total Amount</label>
-                                                        <input type="text" class="form-control {{ $errors->has('total_amount') ? ' is-invalid' : '' }}" id="total_amount_show" value="" autocomplete="off" disabled>
-                                                        <input type="text" name="total_amount" id="total_amount_hide" value="" autocomplete="off" style="display:none;">
+                                                      <input type="text" class="form-control {{ $errors->has('total_amount') ? ' is-invalid' : '' }}" id="total_amount_show" value="{{$contractor->total_amount}}" autocomplete="off" disabled>
+                                                        <input type="text" name="total_amount" id="total_amount_hide" value="{{$contractor->total_amount}}" autocomplete="off" style="display:none;"  >
 
                                                         <div class="invalid-feedback">
                                                             Please provide a Total Amount.
@@ -317,7 +317,7 @@
                                                       <div class="col-md-4  mb-3">
                                                         <label for="commission_amount">Commission</label>
                                                         <input type="text" class="form-control {{ $errors->has('commission_amount') ? ' is-invalid' : '' }}" id="commission_amount_show" value="{{ $contractor->commission_amount }}" autocomplete="off" disabled>
-                                                        <input type="text" name="commission_amount" id="commission_amount_hide" value="{{ $contractor->commission_amount }}" autocomplete="off" style="display:none;">
+                                                        <input type="text" name="commission_amount" id="commission_amount_hide" value="{{ $contractor->commission_amount }}" autocomplete="off" style="display:none;" >
                                                     </div>
 
                                                   </div>
