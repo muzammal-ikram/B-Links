@@ -35,7 +35,7 @@ class ContractorController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+    { 
         // dd($request->all());
         $invoice_details = [];
         
@@ -77,6 +77,7 @@ class ContractorController extends Controller
         $kg                 = $request->get('kg');
         $percent            = $request->get('percent');
         $commission_amount  = $request->get('commission_amount');
+        $invoice_amount     = number_format($request->get('invoice_amount'), 2);
  
         // if($commission_type == 'kg'){
         //     $commission_amount =  $qty * $kg;
@@ -126,7 +127,7 @@ class ContractorController extends Controller
         $contractor->bl_number              = $request->get('bl_number');
         $contractor->invoice_container         = $request->get('invoice_container');
         $contractor->invoice_fcls              = $request->get('invoice_fcls');
-        $contractor->invoice_amount              = $request->get('invoice_amount');
+        $contractor->invoice_amount              = $invoice_amount;
 
         // invoice more data here
         $contractor->invoice_details        = json_encode($invoice_details);
@@ -186,7 +187,7 @@ class ContractorController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {
+    { 
         $invoice_details = [];
         
         $invoice_number_add     = $request->invoice_number_add;
@@ -229,7 +230,7 @@ class ContractorController extends Controller
         $kg                 = $request->get('kg');
         $percent            = $request->get('percent');
         $commission_amount  = $request->get('commission_amount');
-
+        $invoice_amount     = number_format($request->get('invoice_amount'), 2);
         // if($commission_type == 'kg'){
         //     $commission_amount =  $qty * $kg;
         // }
@@ -276,7 +277,7 @@ class ContractorController extends Controller
         $contractor->bl_number              = $request->get('bl_number');
         $contractor->invoice_container         = $request->get('invoice_container');
         $contractor->invoice_fcls              = $request->get('invoice_fcls');
-        $contractor->invoice_amount              = $request->get('invoice_amount');
+        $contractor->invoice_amount              = $invoice_amount;
 
         // invoice more data here
         $contractor->invoice_details        = json_encode($invoice_details);
@@ -380,12 +381,24 @@ class ContractorController extends Controller
         $invoice_number     = $contract->invoice_number;
         $bl_number          = $contract->bl_number;
         $total_amount       = $contract->total_amount;
+        $invoice_details    = json_decode($contract->invoice_details);
+        $invoice_amount     = $contract->invoice_amount;
+
+        // dd($invoice_details);
+        $calculate_amount = 0;
+        foreach($invoice_details as $detail){
+
+            $calculate_amount += $detail->invoice_amount;         
+            $calculate_amount = number_format($calculate_amount, 2);
+        }
+        $calculate_amount += $invoice_amount;
+        $calculate_amount = number_format($calculate_amount, 2);
 
         // invoice More details
         $invoice_details    = json_decode($contract->invoice_details);
         $invoice_count      = count($invoice_details)+1;
 
-        return view('debit_note', compact('contract', 'invoice_details', 'invoice_count', 'date', 'invoice_number', 'bl_number', 'total_amount'));
+        return view('debit_note', compact('contract', 'invoice_details', 'invoice_count', 'date', 'invoice_number', 'bl_number', 'total_amount', 'calculate_amount'));
     }
 
     public function downloadDebitNote ($id){
@@ -396,12 +409,22 @@ class ContractorController extends Controller
         $invoice_number     = $contract->invoice_number;
         $bl_number          = $contract->bl_number;
         $total_amount       = $contract->total_amount;
+        $invoice_amount     = $contract->invoice_amount;
+        $invoice_details    = json_decode($contract->invoice_details);
+        $calculate_amount = 0;
+        foreach($invoice_details as $detail){
+
+            $calculate_amount += $detail->invoice_amount;         
+            $calculate_amount = number_format($calculate_amount, 2);
+        }
+        $calculate_amount += $invoice_amount;
+        $calculate_amount = number_format($calculate_amount, 2);
+
 
         // invoice More details
-        $invoice_details    = json_decode($contract->invoice_details);
         $invoice_count      = count($invoice_details)+1;
 
-        $pdf = PDF::loadView('pdf_debit_note', compact('contract', 'invoice_details', 'invoice_count', 'date', 'invoice_number', 'bl_number', 'total_amount'));
+        $pdf = PDF::loadView('pdf_debit_note', compact('contract', 'invoice_details', 'invoice_count', 'date', 'invoice_number', 'bl_number', 'total_amount', 'calculate_amount'));
         return $pdf->download($contract->contractor_number.'-debit_note.pdf');
     }
 

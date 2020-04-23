@@ -13,16 +13,14 @@
                     <h4 class="mb-0 mr-auto ml-3">Contract No: {{$contractor->contractor_number}}</h4>
                 </div>
             </div>
-            <div class="container-fluid">
-
-                <div class="row">
-                    <div class="col-md-12 mb-4 ui-sortable">
+            <div class="container">
+ 
                         <div class="card ">
                             <div class="card-header">
                                 <div class="card-title">Contract Details</div>
                             </div>
                             <div class="card-body">
-                                <table id="bs4-table" class="table table-bordered table-striped table-responsive-sm">
+                                <table id="bs4-table" class="table table-bordered table-striped table-responsive" style="overflow:scroll;">
                                     <tr>
                                         <th class="text-nowrap" scope="row">Contract No</th>
                                         <th class="text-nowrap" scope="row">Contract Date</th>
@@ -57,13 +55,13 @@
                                     </tr>
                                     <tr>
                                         <td>{{$contractor->contractor_number}}</td>
-                                        <td>{{$contractor->date->format('d/m/y')}}</td>
+                                        <td>{{$contractor->date ? $contractor->date->format('d/m/y') : ''}}</td>
                                         <td>{{$contractor->item}}</td>
                                         <td>{{$contractor->seller_name}}</td>
                                         <td>{{$contractor->buyer_name}}</td>
                                         <td>{{$contractor->lc_opener_name}}</td>
                                         <td>{{$contractor->fcls}}</td>
-                                        <td>{{$contractor->lsd->format('d/m/y')}}</td>
+                                        <td>{{$contractor->lsd ? $contractor->lsd->format('d/m/y'): ''}}</td>
                                         <td>{{$contractor->lc_type}}</td>
                                         <td>{{$contractor->lc_number}}</td>
                                         <td>{{$contractor->price_per_dollar}}</td>
@@ -79,12 +77,12 @@
                                         <td>{{$contractor->invoice_number}}</td>
                                         <td>{{$contractor->bl_number}}</td>
                                         <td>{{$contractor->invoice_fcls}}</td>
-                                        <td>{{$contractor->etd->format('d/m/y')}}</td>
-                                        <td>{{$contractor->eta->format('d/m/y')}}</td>
+                                        <td>{{$contractor->etd? $contractor->etd->format('d/m/y'): ''}}</td>
+                                        <td>{{$contractor->eta ? $contractor->eta->format('d/m/y'): ''}}</td>
                                         <td>{{$contractor->awb}}</td>
                                         <td>{{$contractor->document}}</td>
                                         <td>{{$contractor->shipment_status}}</td>
-                                        <td>{{$contractor->comm_deadline->format('d/m/y')}}</td>
+                                        <td>{{$contractor->comm_deadline ? $contractor->comm_deadline->format('d/m/y') : ''}}</td>
                                         <td>
                                             @php
                                                 $nowDate        =  Carbon\Carbon::now();
@@ -149,8 +147,7 @@
                             </div>
 
                         </div>
-                    </div>
-                </div>
+                  
             </div>
         </main>
 

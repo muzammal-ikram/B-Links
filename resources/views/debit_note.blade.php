@@ -61,15 +61,7 @@
             </I></FONT><FONT FACE="Calibri, sans-serif"><I><B>{{ $contract->seller_name}}</B></I></FONT></FONT></P>
 <P STYLE="line-height: 100%; widows: 2; orphans: 2"><BR>
 </P>
-@if($invoice_count > 0)
-    @foreach($invoice_details as $detail)
-            @php
 
-                $calculate_amount = $detail->invoice_amount + $total_amount;
-                $calculate_amount = number_format($calculate_amount, 2);
-            @endphp
-    @endforeach
-@endif
 <P CLASS="western" STYLE="margin-bottom: 0.14in; font-style: normal; line-height: 100%; widows: 2; orphans: 2">
     <FONT SIZE=2 STYLE="font-size: 11pt"><I>Dear Sir ,</I></FONT></P>
 <P CLASS="western" STYLE="margin-bottom: 0.14in; font-style: normal; line-height: 100%; widows: 2; orphans: 2">
@@ -138,7 +130,7 @@
                     </TD>
                     <TD WIDTH=121 STYLE="border: 1px solid #000000; padding: 0in">
                         <P STYLE="margin-left: 0.08in; margin-top: 0in; font-style: normal">
-                            <FONT SIZE=2 STYLE="font-size: 11pt"><FONT SIZE=4><I>{{ $total_amount }}</I></FONT></FONT></P>
+                            <FONT SIZE=2 STYLE="font-size: 11pt"><FONT SIZE=4><I>{{ $contract->invoice_amount }}</I></FONT></FONT></P>
                     </TD>
         @if($invoice_count > 0)
             @foreach($invoice_details as $detail)
