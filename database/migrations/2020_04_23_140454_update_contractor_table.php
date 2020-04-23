@@ -14,8 +14,7 @@ class UpdateContractorTable extends Migration
     public function up()
     {
         Schema::table('contractors', function (Blueprint $table) {
-            $table->integer('invoice_amount')->after('invoice_fcls')->nullable(); 
-            $table->string('invoice_amount')->change();
+            $table->string('invoice_amount')->after('invoice_fcls')->nullable(); 
         });
     }
 
