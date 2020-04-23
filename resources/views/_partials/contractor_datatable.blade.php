@@ -15,7 +15,7 @@
                        href="{{ route('show-contractor', $con->id) }}"> <i
                             class="ti-eye text-primary pr-2"></i> View </a>
 
-                        @php
+                        {{-- @php
                             $nowDate        =  Carbon\Carbon::now();
                             $last7Days      = $con->comm_deadline->subDays(7);
                             $comm_deadline  = $con->comm_deadline;
@@ -23,8 +23,8 @@
                         @if($nowDate >= $last7Days && $nowDate <= $comm_deadline)
                             <a class="dropdown-item"
                             href="{{ url('/debit-note', $con->id) }}"> <i
-                                class="glyphicon glyphicon-pencil"></i> Debit Note</a>
-                        @endif
+                                class="ti-eye text-primary pr-2"></i> Debit Note</a>
+                        @endif --}}
                         <a class="dropdown-item"
                             href="{{ route('edit-contractor', $con->id) }}"> <i
                                 class="ti-pencil-alt text-warning pr-2"></i> Edit </a>

@@ -42,6 +42,7 @@ class CreateContractorsTable extends Migration
 
             $table->string('invoice_number')->nullable();
             $table->string('bl_number')->nullable();
+            
             $table->text('invoice_details')->nullable();
 
             $table->string('etd')->nullable();

@@ -358,20 +358,27 @@
 
                                                     </div>
 
-                                                      <div class="col-md-2 mb-3">
+                                                      <div class="col-md-3 mb-3">
                                                           <label for="validationCustom04">ETD</label>
                                                           <input type="date" name="etd" class="form-control {{ $errors->has('etd') ? ' is-invalid' : '' }}" id="validationCustom04" value="{{$contractor->etd ? $contractor->etd->format('Y-m-d') : null}}" autocomplete="off">
                                                           <div class="invalid-feedback">
                                                               Please provide a ETD.
                                                           </div>
                                                       </div>
-                                                      <div class="col-md-2 mb-3">
+                                                      <div class="col-md-3 mb-3">
                                                           <label for="validationCustom04">ETA</label>
                                                           <input type="date" name="eta" class="form-control {{ $errors->has('eta') ? ' is-invalid' : '' }}" id="validationCustom04" value="{{$contractor->eta ? $contractor->eta->format('Y-m-d') : null}}" autocomplete="off">
                                                           <div class="invalid-feedback">
                                                               Please provide a ETA.
                                                           </div>
                                                       </div>
+                                                      <div class="col-md-3 mb-3">
+                                                        <label for="validationCustom04">Amount</label>
+                                                      <input type="number" step="any" name="invoice_amount" class="form-control " value="{{ $contractor->invoice_amount }}" autocomplete="off">
+                                                        <div class="invalid-feedback">
+                                                            Please provide a ETA.
+                                                        </div>
+                                                    </div>
 
                                                     <div class="col-md-2 mb-3">
                                                         <label for="validationCustom01">Add</label>
@@ -404,7 +411,7 @@
 
                                                                     <div class="col-md-2 mb-3">
                                                                         <label for="validationCustom04">Invoice Number</label>
-                                                                        <input type="text" name="invoice_number_add[]" class="form-control {{ $errors->has('invoice_number') ? ' is-invalid' : '' }}" value="{{ $invoice_detail->invoice ? $invoice_detail->invoice : null }}" autocomplete="off">
+                                                                        <input type="text" name="invoice_number_add[]" class="form-control {{ $errors->has('invoice_number') ? ' is-invalid' : '' }}" value="{{ isset($invoice_detail->invoice) ? $invoice_detail->invoice : null }}" autocomplete="off">
                                                                         <div class="invalid-feedback">
                                                                             Please provide a Invoice Number.
                                                                         </div>
@@ -412,7 +419,7 @@
 
                                                                     <div class="col-md-2 mb-3">
                                                                         <label for="validationCustom01">BL Number</label>
-                                                                        <input type="text" name="bl_number_add[]" class="form-control {{ $errors->has('bl_number') ? ' is-invalid' : '' }}" value="{{ $invoice_detail->bl_number ? $invoice_detail->bl_number : null}}" autocomplete="off">
+                                                                        <input type="text" name="bl_number_add[]" class="form-control {{ $errors->has('bl_number') ? ' is-invalid' : '' }}" value="{{ isset($invoice_detail->bl_number) ? $invoice_detail->bl_number : null}}" autocomplete="off">
                                                                         <div class="invalid-feedback">
                                                                             Please provide a BL Number.
                                                                         </div>
@@ -420,20 +427,34 @@
  
                                                                     <div class="col-md-2 mb-3">
                                                                         <label for="validationCustom01">No Of FCLS:</label>
-                                                                        <input type="number" step="any" name="invoice_fcls_add[]" class="form-control" value="{{  $invoice_detail->fcls }}" autocomplete="off">
+                                                                        <input type="number" step="any" name="invoice_fcls_add[]" class="form-control" value="{{  isset($invoice_detail->fcls) ? $invoice_detail->fcls : null  }}" autocomplete="off">
 
                                                                     </div>
 
-                                                                    <div class="col-md-2 mb-3">
+                                                                    <div class="col-md-3 mb-3">
                                                                         <label for="validationCustom04">ETD</label>
-                                                                        <input type="date" name="etd_date_add[]" class="form-control {{ $errors->has('etd') ? ' is-invalid' : '' }}" id="validationCustom04" value="{{  $invoice_detail->etd_date ? $invoice_detail->etd_date  : null  }}" autocomplete="off">
+                                                                        <input type="date" name="etd_date_add[]" class="form-control {{ $errors->has('etd') ? ' is-invalid' : '' }}" id="validationCustom04" value="{{  isset($invoice_detail->etd_date) ? $invoice_detail->etd_date  : null  }}" autocomplete="off">
                                                                         <div class="invalid-feedback">
                                                                             Please provide a ETD.
                                                                         </div>
                                                                     </div>
-                                                                    <div class="col-md-2 mb-3">
+                                                                    <div class="col-md-3 mb-3">
                                                                         <label for="validationCustom04">ETA</label>
-                                                                        <input type="date" name="eta_date_add[]" class="form-control {{ $errors->has('eta') ? ' is-invalid' : '' }}" id="validationCustom04" value="{{  $invoice_detail->eta_date ? $invoice_detail->eta_date : null }}" autocomplete="off">
+                                                                        <input type="date" name="eta_date_add[]" class="form-control {{ $errors->has('eta') ? ' is-invalid' : '' }}" id="validationCustom04" value="{{  isset($invoice_detail->eta_date) ? $invoice_detail->eta_date : null }}" autocomplete="off">
+                                                                        <div class="invalid-feedback">
+                                                                            Please provide a ETA.
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-3 mb-3">
+                                                                        <label for="validationCustom04">Date</label>
+                                                                        <input type="date" name="invoice_date_add[]" class="form-control " value="{{  isset($invoice_detail->invoice_date) ? $invoice_detail->invoice_date : null }}" autocomplete="off">
+                                                                        <div class="invalid-feedback">
+                                                                            Please provide a ETA.
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-3 mb-3">
+                                                                        <label for="validationCustom04">Amount</label>
+                                                                        <input type="number" step="any" name="invoice_amount_add[]" class="form-control " value="{{  isset($invoice_detail->invoice_amount) ? $invoice_detail->invoice_amount : null }}" autocomplete="off">
                                                                         <div class="invalid-feedback">
                                                                             Please provide a ETA.
                                                                         </div>
@@ -485,7 +506,7 @@
 
                                                             </div>
  
-                                                            <div class="col-md-2 mb-3">
+                                                            <div class="col-md-3 mb-3">
                                                                 <label for="validationCustom04">ETD</label>
                                                                 <input type="date" name="etd_date_add[]" class="form-control {{ $errors->has('etd') ? ' is-invalid' : '' }}" id="validationCustom04" value="" autocomplete="off">
                                                                 <div class="invalid-feedback">
@@ -493,9 +514,23 @@
                                                                 </div>
                                                             </div>
 
-                                                            <div class="col-md-2 mb-3">
+                                                            <div class="col-md-3 mb-3">
                                                                 <label for="validationCustom04">ETA</label>
                                                                 <input type="date" name="eta_date_add[]" class="form-control {{ $errors->has('eta') ? ' is-invalid' : '' }}" id="validationCustom04" value="{{old('eta')}}" autocomplete="off">
+                                                                <div class="invalid-feedback">
+                                                                    Please provide a ETA.
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-3 mb-3">
+                                                                <label for="validationCustom04">Date</label>
+                                                                <input type="date" name="invoice_date_add[]" class="form-control " value="{{old('invoice_date')}}" autocomplete="off">
+                                                                <div class="invalid-feedback">
+                                                                    Please provide a ETA.
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-3 mb-3">
+                                                                <label for="validationCustom04">Amount</label>
+                                                                <input type="number" step="any" name="invoice_amount_add[]" class="form-control " autocomplete="off">
                                                                 <div class="invalid-feedback">
                                                                     Please provide a ETA.
                                                                 </div>

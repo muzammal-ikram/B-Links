@@ -145,23 +145,29 @@
                                         </h3>
 
                                     <table class="table table-bordered table-striped table-responsive-sm">
+                                        <tr>
+                                            <th class="text-nowrap" scope="row">Invoice Number</th>
+                                            {{-- <td>{{$invoice_detail->invoice}}</td> --}}
+                                            <th class="text-nowrap" scope="row">BL Number</th>
+                                            {{-- <td>{{$invoice_detail->bl_number}}</td> --}}
+
+                                            <th class="text-nowrap" scope="row">Fcls</th>
+                                            <th class="text-nowrap" scope="row">ETD</th>
+                                            <th class="text-nowrap" scope="row">ETA</th>
+                                            <th class="text-nowrap" scope="row">Date</th>
+                                            <th class="text-nowrap" scope="row">Amount</th>
+                                        </tr>
 
                                         @foreach(json_decode($contractor->invoice_details) as $key=>$invoice_detail)
+                         
                                             <tr>
-                                                <th class="text-nowrap" scope="row">Invoice Number</th>
-                                                <td>{{$invoice_detail->invoice}}</td>
-                                                <th class="text-nowrap" scope="row">BL Number</th>
-                                                <td>{{$invoice_detail->bl_number}}</td>
-                                            </tr>
-                                            <tr>
-                                                <th class="text-nowrap" scope="row">Fcls</th>
-                                                <td>{{$invoice_detail->fcls}}</td>
-                                            </tr>
-                                            <tr>
-                                                <th class="text-nowrap" scope="row">ETD</th>
-                                                <td>{{$invoice_detail->etd_date}}</td>
-                                                <th class="text-nowrap" scope="row">ETA</th>
-                                                <td>{{$invoice_detail->eta_date}}</td>
+                                                 <td>{{isset($invoice_detail->invoice) ? $invoice_detail->invoice : null }}</td> 
+                                                 <td>{{isset($invoice_detail->bl_number) ? $invoice_detail->bl_number : null }}</td> 
+                                                <td>{{isset($invoice_detail->fcls) ? $invoice_detail->fcls : null }}</td>
+                                                <td>{{isset($invoice_detail->etd_date) ? $invoice_detail->etd_date : null }}</td>
+                                                <td>{{isset($invoice_detail->eta_date) ? $invoice_detail->eta_date : null }}</td>
+                                                <td>{{isset($invoice_detail->invoice_date) ? $invoice_detail->invoice_date : null }}</td>
+                                                <td>{{isset($invoice_detail->invoice_amount) ? $invoice_detail->invoice_amount : null }}</td>
                                             </tr>
                                         @endforeach
                                     </table>

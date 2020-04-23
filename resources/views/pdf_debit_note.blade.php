@@ -196,7 +196,7 @@
     <TR VALIGN=TOP>
         <TD COLSPAN=5 WIDTH=563 HEIGHT=19 BGCOLOR="#e3e3e3" STYLE="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding: 0in">
             <P STYLE="margin-left: 0.07in; margin-top: 0in"><FONT COLOR="#ff0000"><FONT SIZE=4><I><B>COMMISSION
-                                @ {{$contract->commission_percent}}%</B></I></FONT></FONT></P>
+                                @ {{$contract->commission_amount}}%</B></I></FONT></FONT></P>
         </TD>
         <TD WIDTH=121 BGCOLOR="#e3e3e3" STYLE="border: 1px solid #000000; padding: 0in">
             <P STYLE="margin-left: 0.08in; margin-top: 0in"><FONT COLOR="#ff0000"><FONT SIZE=4><I><B>${{$contract->total_amount}}</B></I></FONT></FONT></P>

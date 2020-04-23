@@ -58,16 +58,24 @@
                             NOTE</B></U></I></FONT></FONT></FONT></P>
 <P STYLE="font-style: normal; line-height: 100%; widows: 2; orphans: 2">
     <FONT FACE="Times New Roman, serif"><FONT FACE="Calibri, sans-serif"><I><B>M/S</B></I></FONT><FONT FACE="Calibri, sans-serif"><I>
-            </I></FONT><FONT FACE="Calibri, sans-serif"><I><B>DONG YING HONG
-                    YUAN TEXTILE CO., LTD.</B></I></FONT></FONT></P>
+            </I></FONT><FONT FACE="Calibri, sans-serif"><I><B>{{ $contract->seller_name}}</B></I></FONT></FONT></P>
 <P STYLE="line-height: 100%; widows: 2; orphans: 2"><BR>
 </P>
+@if($invoice_count > 0)
+    @foreach($invoice_details as $detail)
+            @php
+
+                $calculate_amount = $detail->invoice_amount + $total_amount;
+                $calculate_amount = number_format($calculate_amount, 2);
+            @endphp
+    @endforeach
+@endif
 <P CLASS="western" STYLE="margin-bottom: 0.14in; font-style: normal; line-height: 100%; widows: 2; orphans: 2">
     <FONT SIZE=2 STYLE="font-size: 11pt"><I>Dear Sir ,</I></FONT></P>
 <P CLASS="western" STYLE="margin-bottom: 0.14in; font-style: normal; line-height: 100%; widows: 2; orphans: 2">
     <FONT SIZE=2 STYLE="font-size: 11pt"><I>Being the amount of
             commission towards sales of your yarn as per detail given below and
-            debited to your account with us amounting to  </I><FONT COLOR="#ff0000"><I><B>US${{$contract->total_amount}}/-</B></I></FONT></FONT></P>
+            debited to your account with us amounting to  </I><FONT COLOR="#ff0000"><I><B>US${{$calculate_amount}}/-</B></I></FONT></FONT></P>
 <TABLE WIDTH=686 CELLPADDING=0 CELLSPACING=0>
     <COL WIDTH=167>
     <COL WIDTH=138>
@@ -77,7 +85,7 @@
     <COL WIDTH=121>
     <TR VALIGN=TOP>
         <TD WIDTH=167 HEIGHT=19 STYLE="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding: 0in">
-            <P STYLE="margin-left: 0.11in; margin-top: 0in"><FONT SIZE=4><I><B>Buyer
+            <P STYLE="margin-left: 0.11in; margin-top: 0in"><FONT SIZE=4><I><B>LC Opener
                             Name</B></I></FONT></P>
         </TD>
         <TD WIDTH=138 STYLE="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding: 0in">
@@ -101,8 +109,8 @@
     </TR>
     <TR VALIGN=TOP>
         <TD ROWSPAN={{$invoice_count}} WIDTH=167 HEIGHT=65 STYLE="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding: 0in">
-            <P CLASS="western" STYLE="margin-bottom: 0.14in; widows: 2; orphans: 2">
-                <FONT SIZE=3><I><B>{{$contract->buyer_name}}</B></I></FONT></P>
+            <P CLASS="western" STYLE="margin-bottom: 0.14in; widows: 2; orphans: 2; padding: 10px;">
+                <FONT SIZE=3><I><B>{{$contract->lc_opener_name}}</B></I></FONT></P>
             <P STYLE="margin-left: 0.07in; margin-right: 0.41in"><BR>
             </P>
         </TD>
@@ -114,7 +122,7 @@
             <P ALIGN=CENTER STYLE="margin-left: 0.07in; margin-top: 0in"><A NAME="_GoBack"></A>
                 <FONT SIZE=4><I><B>{{$contract->contractor_number}}</B></I></FONT></P>
         </TD>
-
+       
         <TD WIDTH=156 STYLE="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding: 0in">
                         <P ALIGN=CENTER STYLE="margin-left: 0.07in; margin-top: 0in"><FONT SIZE=4><I>{{ $bl_number }}</I></FONT></P>
                         <P CLASS="western" ALIGN=RIGHT STYLE="widows: 2; orphans: 2"><BR>
@@ -134,7 +142,7 @@
                     </TD>
         @if($invoice_count > 0)
             @foreach($invoice_details as $detail)
-
+            
                 @if($loop->first)
 
                     <TR>
@@ -149,11 +157,10 @@
                         </P>
                     </TD>
                     <TD WIDTH=102 STYLE="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding: 0in">
-                        <P STYLE="margin-left: 0.07in; margin-top: 0in"><FONT SIZE=4><I>{{ isset($detail->etd_date) ? $detail->etd_date : "" }}</I></FONT></P>
+                        <P STYLE="margin-left: 0.07in; margin-top: 0in"><FONT SIZE=4><I>{{ isset($detail->invoice_date) ? $detail->invoice_date : "" }}</I></FONT></P>
                     </TD>
-                    <TD WIDTH=121 STYLE="border: 1px solid #000000; padding: 0in">
-                        <P STYLE="margin-left: 0.08in; margin-top: 0in; font-style: normal">
-                            <FONT SIZE=2 STYLE="font-size: 11pt"><FONT SIZE=4><I></I></FONT></FONT></P>
+                    <TD WIDTH=102 STYLE="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding: 0in">
+                        <P STYLE="margin-left: 0.07in; margin-top: 0in"><FONT SIZE=4><I>{{ isset($detail->invoice_amount) ? $detail->invoice_amount : "" }}</I></FONT></P>
                     </TD>
                     </TR>
                 @else
@@ -170,11 +177,11 @@
                         </P>
                     </TD>
                     <TD WIDTH=102 STYLE="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding: 0in">
-                        <P STYLE="margin-left: 0.07in; margin-top: 0in"><FONT SIZE=4><I>{{ isset($detail->date) ? $detail->date : "" }}</I></FONT></P>
+                        <P STYLE="margin-left: 0.07in; margin-top: 0in"><FONT SIZE=4><I>{{ isset($detail->invoice_date) ? $detail->invoice_date : "" }}</I></FONT></P>
                     </TD>
                     <TD WIDTH=121 STYLE="border: 1px solid #000000; padding: 0in">
                         <P STYLE="margin-left: 0.08in; margin-top: 0in; font-style: normal">
-                            <FONT SIZE=2 STYLE="font-size: 11pt"><FONT SIZE=4><I>{{ isset($detail->amount) ? $detail->amount : "" }}</I></FONT></FONT></P>
+                            <FONT SIZE=2 STYLE="font-size: 11pt"><FONT SIZE=4><I>{{ isset($detail->invoice_amount) ? $detail->invoice_amount : "" }}</I></FONT></FONT></P>
                     </TD>
 
                     </TR>
@@ -190,16 +197,16 @@
                                 Amount</B></I></FONT></FONT></P>
         </TD>
         <TD WIDTH=121 BGCOLOR="#e3e3e3" STYLE="border: 1px solid #000000; padding: 0in">
-            <P STYLE="margin-left: 0.08in; margin-top: 0in"><FONT COLOR="#ff0000"><FONT SIZE=4><I><B>${{$contract->total_amount}}</B></I></FONT></FONT></P>
+            <P STYLE="margin-left: 0.08in; margin-top: 0in"><FONT COLOR="#ff0000"><FONT SIZE=4><I><B>${{$calculate_amount}}</B></I></FONT></FONT></P>
         </TD>
     </TR>
     <TR VALIGN=TOP>
         <TD COLSPAN=5 WIDTH=563 HEIGHT=19 BGCOLOR="#e3e3e3" STYLE="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding: 0in">
             <P STYLE="margin-left: 0.07in; margin-top: 0in"><FONT COLOR="#ff0000"><FONT SIZE=4><I><B>COMMISSION
-                                @ {{$contract->commission_percent}}%</B></I></FONT></FONT></P>
+                                @ {{$contract->commission_amount}}%</B></I></FONT></FONT></P>
         </TD>
         <TD WIDTH=121 BGCOLOR="#e3e3e3" STYLE="border: 1px solid #000000; padding: 0in">
-            <P STYLE="margin-left: 0.08in; margin-top: 0in"><FONT COLOR="#ff0000"><FONT SIZE=4><I><B>${{$contract->total_amount}}</B></I></FONT></FONT></P>
+            <P STYLE="margin-left: 0.08in; margin-top: 0in"><FONT COLOR="#ff0000"><FONT SIZE=4><I><B>${{$calculate_amount}}</B></I></FONT></FONT></P>
         </TD>
     </TR>
 </TABLE>
