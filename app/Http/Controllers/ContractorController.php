@@ -388,7 +388,7 @@ class ContractorController extends Controller
         $calculate_amount = 0;
         foreach($invoice_details as $detail){
 
-            $calculate_amount += $detail->invoice_amount;         
+            $calculate_amount += isset($detail->invoice_amount) ? $detail->invoice_amount : 0;    
             $calculate_amount = number_format($calculate_amount, 2);
         }
         $calculate_amount += $invoice_amount;
@@ -414,7 +414,7 @@ class ContractorController extends Controller
         $calculate_amount = 0;
         foreach($invoice_details as $detail){
 
-            $calculate_amount += $detail->invoice_amount;         
+            $calculate_amount += isset($detail->invoice_amount) ? $detail->invoice_amount : 0;         
             $calculate_amount = number_format($calculate_amount, 2);
         }
         $calculate_amount += $invoice_amount;

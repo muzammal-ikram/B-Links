@@ -57,9 +57,60 @@
                                         <td>{{$contractor->contractor_number}}</td>
                                         <td>{{$contractor->date ? $contractor->date->format('d/m/y') : ''}}</td>
                                         <td>{{$contractor->item}}</td>
-                                        <td>{{$contractor->seller_name}}</td>
-                                        <td>{{$contractor->buyer_name}}</td>
-                                        <td>{{$contractor->lc_opener_name}}</td>
+                                        <td>
+                                            @if($contractor->seller_name != Null)
+                                                @if(strlen($contractor->seller_name) > 20)
+                                                        <div id="more{{$contractor->id}}" name = "more">
+                                                            {{ \Illuminate\Support\Str::limit($contractor->seller_name, 20, '...') }}
+                                                            <p href = "" onclick="showmore({{$contractor->id}});" style="cursor: pointer;color: lightblue;">more</p>
+                                                        </div>
+                                                        <div id="less{{$contractor->id}}" name = "less" style="display:none;">
+                                                            {{$contractor->seller_name}}
+                                                            <p href = "" onclick="showless({{$contractor->id}});" style="cursor: pointer; color: lightblue;">less</p>
+                                                        </div>
+                                                @else
+                                                    <div>
+                                                        {{$contractor->seller_name}}
+                                                    </div>
+                                                @endif
+                                            @endif
+                                        </td>
+                                        <td>
+                                            @if($contractor->buyer_name != Null)
+                                                @if(strlen($contractor->buyer_name) > 20)
+                                                        <div id="buyer_more{{$contractor->id}}" name = "buyer_more">
+                                                            {{ \Illuminate\Support\Str::limit($contractor->buyer_name, 20, '...') }}
+                                                            <p href = "" onclick="showBuyermore({{$contractor->id}});" style="cursor: pointer;color: lightblue;">more</p>
+                                                        </div>
+                                                        <div id="buyer_less{{$contractor->id}}" name = "buyer_less" style="display:none;">
+                                                            {{$contractor->buyer_name}}
+                                                            <p href = "" onclick="showBuyerless({{$contractor->id}});" style="cursor: pointer; color: lightblue;">less</p>
+                                                        </div>
+                                                @else
+                                                    <div>
+                                                        {{$contractor->buyer_name}}
+                                                    </div>
+                                                @endif
+                                            @endif
+                                        </td>
+                                        <td>
+                                            @if($contractor->lc_opener_name != Null)
+                                                @if(strlen($contractor->lc_opener_name) > 20)
+                                                        <div id="opener_more{{$contractor->id}}" name = "opener_more">
+                                                            {{ \Illuminate\Support\Str::limit($contractor->lc_opener_name, 20, '...') }}
+                                                            <p href = "" onclick="showOpenermore({{$contractor->id}});" style="cursor: pointer;color: lightblue;">more</p>
+                                                        </div>
+                                                        <div id="opener_less{{$contractor->id}}" name = "opener_less" style="display:none;">
+                                                            {{$contractor->lc_opener_name}}
+                                                            <p href = "" onclick="showOpenerless({{$contractor->id}});" style="cursor: pointer; color: lightblue;">less</p>
+                                                        </div>
+                                                @else
+                                                    <div>
+                                                        {{$contractor->lc_opener_name}}
+                                                    </div>
+                                                @endif
+                                            @endif
+                                        </td>
                                         <td>{{$contractor->fcls}}</td>
                                         <td>{{$contractor->lsd ? $contractor->lsd->format('d/m/y'): ''}}</td>
                                         <td>{{$contractor->lc_type}}</td>
@@ -157,6 +208,38 @@
 @push('scripts')
 
     @include('_partials.scripts')
+
+    <script>
+
+    function showmore($getId){
+        document.getElementById("more"+$getId).style.display = 'none';
+        document.getElementById("less"+$getId).style.display = 'inline';
+    }
+    function showless($getId){
+        document.getElementById("less"+$getId).style.display = 'none';
+        document.getElementById("more"+$getId).style.display = 'inline';
+    }
+
+
+    function showBuyermore($getId){
+        document.getElementById("buyer_more"+$getId).style.display = 'none';
+        document.getElementById("buyer_less"+$getId).style.display = 'inline';
+    }
+    function showBuyerless($getId){
+        document.getElementById("buyer_less"+$getId).style.display = 'none';
+        document.getElementById("buyer_more"+$getId).style.display = 'inline';
+    }
+
+    function showOpenermore($getId){
+        document.getElementById("opener_more"+$getId).style.display = 'none';
+        document.getElementById("opener_less"+$getId).style.display = 'inline';
+    }
+    function showOpenerless($getId){
+        document.getElementById("opener_less"+$getId).style.display = 'none';
+        document.getElementById("opener_more"+$getId).style.display = 'inline';
+    }
+
+    </script>
 
 @endpush
 
