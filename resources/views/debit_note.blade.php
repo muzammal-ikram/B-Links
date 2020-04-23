@@ -126,7 +126,7 @@
                         </P>
                     </TD>
                     <TD WIDTH=102 STYLE="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding: 0in">
-                        <P STYLE="margin-left: 0.07in; margin-top: 0in"><FONT SIZE=4><I>{{ $date->format('d/m/y') }}</I></FONT></P>
+                        <P STYLE="margin-left: 0.07in; margin-top: 0in"><FONT SIZE=4><I>{{ $date ? $date->format('d/m/y') : "" }}</I></FONT></P>
                     </TD>
                     <TD WIDTH=121 STYLE="border: 1px solid #000000; padding: 0in">
                         <P STYLE="margin-left: 0.08in; margin-top: 0in; font-style: normal">
