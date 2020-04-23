@@ -46,6 +46,7 @@
                                         <th class="text-nowrap" scope="row">Commission Amount</th>
                                         <th class="text-nowrap" scope="row">Invoice Number</th>
                                         <th class="text-nowrap" scope="row">BL Number</th>
+                                        <th class="text-nowrap" scope="row">Invoice FCLS</th>
                                         <th class="text-nowrap" scope="row">ETD</th>
                                         <th class="text-nowrap" scope="row">ETA</th>
                                         <th class="text-nowrap" scope="row">AWB</th>
@@ -77,6 +78,7 @@
                                         <td>{{$contractor->commission_amount}}</td>
                                         <td>{{$contractor->invoice_number}}</td>
                                         <td>{{$contractor->bl_number}}</td>
+                                        <td>{{$contractor->invoice_fcls}}</td>
                                         <td>{{$contractor->etd->format('d/m/y')}}</td>
                                         <td>{{$contractor->eta->format('d/m/y')}}</td>
                                         <td>{{$contractor->awb}}</td>
