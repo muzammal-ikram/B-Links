@@ -130,7 +130,7 @@ class ContractorsDataTable extends DataTable
             'Lc Opener'=>[
                 'data' => 'lc_opener_name'
             ],
-            'Commission Due'=>[
+            'Commission'=>[
                 'data'=>'comm_deadline'
             ],
             'Status'=>[
