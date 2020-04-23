@@ -45,7 +45,7 @@
     <BR>
 </P>
 <P LANG="en-US" CLASS="western"><FONT COLOR="#000000"> </FONT>Debit
-    #: 0403-20	DATE: 04<SUP>th</SUP> March, 2020</P>
+    #: 04-03-20	DATE: 04<SUP>th</SUP> March, 2020</P>
 <P LANG="en-US" CLASS="western" STYLE="margin-left: 0.49in"><BR>
 </P>
 
@@ -122,7 +122,7 @@
             <P ALIGN=CENTER STYLE="margin-left: 0.07in; margin-top: 0in"><A NAME="_GoBack"></A>
                 <FONT SIZE=4><I><B>{{$contract->contractor_number}}</B></I></FONT></P>
         </TD>
-       
+
         <TD WIDTH=156 STYLE="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding: 0in">
                         <P ALIGN=CENTER STYLE="margin-left: 0.07in; margin-top: 0in"><FONT SIZE=4><I>{{ $bl_number }}</I></FONT></P>
                         <P CLASS="western" ALIGN=RIGHT STYLE="widows: 2; orphans: 2"><BR>
@@ -134,7 +134,7 @@
                         </P>
                     </TD>
                     <TD WIDTH=102 STYLE="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding: 0in">
-                        <P STYLE="margin-left: 0.07in; margin-top: 0in"><FONT SIZE=4><I>{{ $date }}</I></FONT></P>
+                        <P STYLE="margin-left: 0.07in; margin-top: 0in"><FONT SIZE=4><I>{{ $date->format('d/m/y') }}</I></FONT></P>
                     </TD>
                     <TD WIDTH=121 STYLE="border: 1px solid #000000; padding: 0in">
                         <P STYLE="margin-left: 0.08in; margin-top: 0in; font-style: normal">
@@ -142,7 +142,7 @@
                     </TD>
         @if($invoice_count > 0)
             @foreach($invoice_details as $detail)
-            
+
                 @if($loop->first)
 
                     <TR>
@@ -157,7 +157,7 @@
                         </P>
                     </TD>
                     <TD WIDTH=102 STYLE="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding: 0in">
-                        <P STYLE="margin-left: 0.07in; margin-top: 0in"><FONT SIZE=4><I>{{ isset($detail->invoice_date) ? $detail->invoice_date : "" }}</I></FONT></P>
+                        <P STYLE="margin-left: 0.07in; margin-top: 0in"><FONT SIZE=4><I>{{ isset($detail->invoice_date) ? Carbon\Carbon::parse($detail->invoice_date)->format('d/m/y') : "" }}</I></FONT></P>
                     </TD>
                     <TD WIDTH=102 STYLE="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding: 0in">
                         <P STYLE="margin-left: 0.07in; margin-top: 0in"><FONT SIZE=4><I>{{ isset($detail->invoice_amount) ? $detail->invoice_amount : "" }}</I></FONT></P>
@@ -177,7 +177,7 @@
                         </P>
                     </TD>
                     <TD WIDTH=102 STYLE="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding: 0in">
-                        <P STYLE="margin-left: 0.07in; margin-top: 0in"><FONT SIZE=4><I>{{ isset($detail->invoice_date) ? $detail->invoice_date : "" }}</I></FONT></P>
+                        <P STYLE="margin-left: 0.07in; margin-top: 0in"><FONT SIZE=4><I>{{ isset($detail->invoice_date) ? Carbon\Carbon::parse($detail->invoice_date)->format('d/m/y') : "" }}</I></FONT></P>
                     </TD>
                     <TD WIDTH=121 STYLE="border: 1px solid #000000; padding: 0in">
                         <P STYLE="margin-left: 0.08in; margin-top: 0in; font-style: normal">

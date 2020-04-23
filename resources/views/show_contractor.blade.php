@@ -24,100 +24,65 @@
                             <div class="card-body">
                                 <table id="bs4-table" class="table table-bordered table-striped table-responsive-sm">
                                     <tr>
-                                    <tr>
                                         <th class="text-nowrap" scope="row">Contract No</th>
-                                        <td>{{$contractor->contractor_number}}</td>
                                         <th class="text-nowrap" scope="row">Contract Date</th>
-                                        <td>{{$contractor->date}}</td>
-                                    </tr>
-                                    <tr>
                                         <th class="text-nowrap" scope="row">Item</th>
-                                        <td>{{$contractor->item}}</td>
                                         <th class="text-nowrap" scope="row">Seller</th>
-                                        <td>{{$contractor->seller_name}}</td>
-                                    </tr>
-                                    <tr>
                                         <th class="text-nowrap" scope="row">Buyer</th>
-                                        <td>{{$contractor->buyer_name}}</td>
                                         <th class="text-nowrap" scope="row">Lc Opener</th>
-                                        <td>{{$contractor->lc_opener_name}}</td>
-                                    </tr>
-                                    <tr>
                                         <th class="text-nowrap" scope="row">Fcls</th>
-                                        <td>{{$contractor->fcls}}</td>
                                         <th class="text-nowrap" scope="row">LSD</th>
-                                        <td>{{$contractor->lsd}}</td>
-                                    </tr>
-                                    <tr>
                                         <th class="text-nowrap" scope="row">LC type</th>
-                                        <td>{{$contractor->lc_type}}</td>
                                         <th class="text-nowrap" scope="row">Lc Number</th>
-                                        <td>{{$contractor->lc_number}}</td>
-                                    </tr>
-                                    <tr>
                                         <th class="text-nowrap" scope="row">Price per $</th>
-                                        <td>{{$contractor->price_per_dollar}}</td>
                                         <th class="text-nowrap" scope="row">Quantity</th>
-                                        <td>{{$contractor->qty}}</td>
-                                    </tr>
-                                    <tr>
                                         <th class="text-nowrap" scope="row">Total Amount</th>
-                                        <td>{{$contractor->total_amount}}</td>
                                         <th class="text-nowrap" scope="row">Commission Type</th>
-                                        <td>{{$contractor->commission_type}}</td>
-                                    </tr>
-                                    <tr>
                                         @if($contractor->commission_type == 'kg')
                                         <th class="text-nowrap" scope="row">KG</th>
-                                        <td>{{$contractor->kg}}</td>
                                         @else
                                         <th class="text-nowrap" scope="row">Percent</th>
-                                        <td>{{$contractor->percent}}</td>
                                         @endif
                                         <th class="text-nowrap" scope="row">Commission Amount</th>
-                                        <td>{{$contractor->commission_amount}}</td>
-                                    </tr>
-                                    <tr>
                                         <th class="text-nowrap" scope="row">Invoice Number</th>
-                                        <td>{{$contractor->invoice_number}}</td>
                                         <th class="text-nowrap" scope="row">BL Number</th>
-                                        <td>{{$contractor->bl_number}}</td>
-                                    </tr>
-                                    <tr>
                                         <th class="text-nowrap" scope="row">ETD</th>
-                                        <td>{{$contractor->etd}}</td>
                                         <th class="text-nowrap" scope="row">ETA</th>
-                                        <td>{{$contractor->eta}}</td>
-                                    </tr>
-
-{{--                                    <tr>--}}
-{{--                                        <th class="text-nowrap" scope="row">ETD FCLS</th>--}}
-{{--                                        <td>{{$contractor->etd_fcls}}</td>--}}
-{{--                                        <th class="text-nowrap" scope="row">ETD Rest</th>--}}
-{{--                                        <td>{{$contractor->etd_rest}}</td>--}}
-{{--                                    </tr>--}}
-{{--                                    <tr>--}}
-{{--                                        <th class="text-nowrap" scope="row">ETA</th>--}}
-{{--                                        <td>{{$contractor->eta}}</td>--}}
-{{--                                        <th class="text-nowrap" scope="row">ETA FCLS</th>--}}
-{{--                                        <td>{{$contractor->eta_fcls}}</td>--}}
-{{--                                    </tr>--}}
-                                    <tr>
-{{--                                        <th class="text-nowrap" scope="row">ETA Rest</th>--}}
-{{--                                        <td>{{$contractor->eta_rest}}</td>--}}
                                         <th class="text-nowrap" scope="row">AWB</th>
-                                        <td>{{$contractor->awb}}</td>
                                         <th class="text-nowrap" scope="row">Document</th>
-                                        <td>{{$contractor->document}}</td>
-                                    </tr>
-                                    <tr>
                                         <th class="text-nowrap" scope="row">Shipment Status</th>
-                                        <td>{{$contractor->shipment_status}}</td>
                                         <th class="text-nowrap" scope="row">Commission Deadline</th>
-                                        <td>{{$contractor->comm_deadline}}</td>
+                                        <th class="text-nowrap" scope="row">Status</th>
                                     </tr>
                                     <tr>
-                                        <th class="text-nowrap" scope="row">Status</th>
+                                        <td>{{$contractor->contractor_number}}</td>
+                                        <td>{{$contractor->date->format('d/m/y')}}</td>
+                                        <td>{{$contractor->item}}</td>
+                                        <td>{{$contractor->seller_name}}</td>
+                                        <td>{{$contractor->buyer_name}}</td>
+                                        <td>{{$contractor->lc_opener_name}}</td>
+                                        <td>{{$contractor->fcls}}</td>
+                                        <td>{{$contractor->lsd->format('d/m/y')}}</td>
+                                        <td>{{$contractor->lc_type}}</td>
+                                        <td>{{$contractor->lc_number}}</td>
+                                        <td>{{$contractor->price_per_dollar}}</td>
+                                        <td>{{$contractor->qty}}</td>
+                                        <td>{{$contractor->total_amount}}</td>
+                                        <td>{{$contractor->commission_type}}</td>
+                                        @if($contractor->commission_type == 'kg')
+                                            <td>{{$contractor->kg}}</td>
+                                        @else
+                                            <td>{{$contractor->percent}}</td>
+                                        @endif
+                                        <td>{{$contractor->commission_amount}}</td>
+                                        <td>{{$contractor->invoice_number}}</td>
+                                        <td>{{$contractor->bl_number}}</td>
+                                        <td>{{$contractor->etd->format('d/m/y')}}</td>
+                                        <td>{{$contractor->eta->format('d/m/y')}}</td>
+                                        <td>{{$contractor->awb}}</td>
+                                        <td>{{$contractor->document}}</td>
+                                        <td>{{$contractor->shipment_status}}</td>
+                                        <td>{{$contractor->comm_deadline->format('d/m/y')}}</td>
                                         <td>
                                             @php
                                                 $nowDate        =  Carbon\Carbon::now();
@@ -125,32 +90,26 @@
                                                 $comm_deadline  = $contractor->comm_deadline;
                                             @endphp
                                             @if($nowDate >= $last7Days && $nowDate <= $comm_deadline)
-                                                 last 7 days
+                                                last 7 days
                                             @elseif($nowDate > $comm_deadline)
-                                                 Completed
+                                                Completed
                                             @else
-                                                 Pending
+                                                Pending
                                             @endif
                                         </td>
                                     </tr>
-
 
                                     </tbody>
                                 </table>
 
                                     @if($contractor->invoice_details)
-
-                                        <h3 class="text-center">
-                                            Extra Invoice Details
-                                        </h3>
-
+                                        <div class="text-center">
+                                            <h3>Extra Invoice</h3>
+                                        </div>
                                     <table class="table table-bordered table-striped table-responsive-sm">
                                         <tr>
                                             <th class="text-nowrap" scope="row">Invoice Number</th>
-                                            {{-- <td>{{$invoice_detail->invoice}}</td> --}}
                                             <th class="text-nowrap" scope="row">BL Number</th>
-                                            {{-- <td>{{$invoice_detail->bl_number}}</td> --}}
-
                                             <th class="text-nowrap" scope="row">Fcls</th>
                                             <th class="text-nowrap" scope="row">ETD</th>
                                             <th class="text-nowrap" scope="row">ETA</th>
@@ -159,14 +118,14 @@
                                         </tr>
 
                                         @foreach(json_decode($contractor->invoice_details) as $key=>$invoice_detail)
-                         
+
                                             <tr>
-                                                 <td>{{isset($invoice_detail->invoice) ? $invoice_detail->invoice : null }}</td> 
-                                                 <td>{{isset($invoice_detail->bl_number) ? $invoice_detail->bl_number : null }}</td> 
+                                                 <td>{{isset($invoice_detail->invoice) ? $invoice_detail->invoice : null }}</td>
+                                                 <td>{{isset($invoice_detail->bl_number) ? $invoice_detail->bl_number : null }}</td>
                                                 <td>{{isset($invoice_detail->fcls) ? $invoice_detail->fcls : null }}</td>
-                                                <td>{{isset($invoice_detail->etd_date) ? $invoice_detail->etd_date : null }}</td>
-                                                <td>{{isset($invoice_detail->eta_date) ? $invoice_detail->eta_date : null }}</td>
-                                                <td>{{isset($invoice_detail->invoice_date) ? $invoice_detail->invoice_date : null }}</td>
+                                                <td>{{isset($invoice_detail->etd_date) ? Carbon\Carbon::parse($invoice_detail->etd_date)->format('d/m/y') : null }}</td>
+                                                <td>{{isset($invoice_detail->eta_date) ? Carbon\Carbon::parse($invoice_detail->eta_date)->format('d/m/y') : null }}</td>
+                                                <td>{{isset($invoice_detail->invoice_date) ? Carbon\Carbon::parse($invoice_detail->invoice_date)->format('d/m/y') : null }}</td>
                                                 <td>{{isset($invoice_detail->invoice_amount) ? $invoice_detail->invoice_amount : null }}</td>
                                             </tr>
                                         @endforeach
