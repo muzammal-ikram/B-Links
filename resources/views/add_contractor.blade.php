@@ -337,7 +337,7 @@
                                                         <div class="invalid-feedback">
                                                             Please provide a BL Number.
                                                         </div>
-                                                    </div> 
+                                                    </div>
                                                     <div class="col-md-2 mb-3">
                                                         <label for="validationCustom01">No Of FCLS:</label>
                                                         <input type="number" step="any" name="invoice_fcls" id="fcls" class="form-control" value="" autocomplete="off">
@@ -358,10 +358,18 @@
                                                               Please provide a ETA.
                                                           </div>
                                                       </div>
-                                                     
+
+                                                      <div class="col-md-3 mb-3">
+                                                          <label for="validationCustom04">Date</label>
+                                                          <input type="date" name="invoice_date" class="form-control " value="{{old('invoice_date')}}" autocomplete="off">
+                                                          <div class="invalid-feedback">
+                                                              Please provide a ETA.
+                                                          </div>
+                                                      </div>
+
                                                     <div class="col-md-3 mb-3">
                                                         <label for="validationCustom04">Amount</label>
-                                                        <input type="number" step="any" name="invoice_amount" class="form-control " autocomplete="off">
+                                                        <input type="number" step="any" name="invoice_amount" class="form-control" value="{{old('invoice_amount')}}" autocomplete="off">
                                                         <div class="invalid-feedback">
                                                             Please provide a ETA.
                                                         </div>
@@ -415,7 +423,7 @@
                                                                 <input type="number" step="any" name="invoice_fcls_add[]" class="form-control" value="" autocomplete="off">
 
                                                             </div>
- 
+
                                                             <div class="col-md-3 mb-3">
                                                                 <label for="validationCustom04">ETD</label>
                                                                 <input type="date" name="etd_date_add[]" class="form-control {{ $errors->has('etd') ? ' is-invalid' : '' }}" id="validationCustom04" value="" autocomplete="off">
@@ -433,14 +441,14 @@
                                                             </div>
                                                             <div class="col-md-3 mb-3">
                                                                 <label for="validationCustom04">Date</label>
-                                                                <input type="date" name="invoice_date_add[]" class="form-control " value="{{old('invoice_date')}}" autocomplete="off">
+                                                                <input type="date" name="invoice_date_add[]" class="form-control " value="{{old('invoice_date_add')}}" autocomplete="off">
                                                                 <div class="invalid-feedback">
                                                                     Please provide a ETA.
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-3 mb-3">
                                                                 <label for="validationCustom04">Amount</label>
-                                                                <input type="number" name="invoice_amount_add[]" class="form-control " autocomplete="off">
+                                                                <input type="number" name="invoice_amount_add[]" class="form-control " value="{{old('invoice_amount_add')}}" autocomplete="off">
                                                                 <div class="invalid-feedback">
                                                                     Please provide a ETA.
                                                                 </div>
@@ -450,23 +458,23 @@
                                                                     <label for="validationCustom01"></label>
                                                                     <div class="input-group">
                                                                         <div class="input-group-btn">
-                                                                        
+
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                            </div> 
-                                                        </div> 
+                                                            </div>
+                                                        </div>
                                                     </div>
 
                                                   </div>
                                                 </div>
-                                            </div>   
+                                            </div>
                                              <button class="btn btn-danger " type="button" onclick="Delete(this) " style="width:100%;"><i class="glyphicon glyphicon-remove"></i> Remove</button>
                                         </div>
-                                        
+
                                         </div>
 
- 
+
                                                 <div class="card">
                                                     <h5 class="card-header h5">Documents Details</h5>
                                                     <div class="card-body">

@@ -14,7 +14,7 @@
                 </div>
             </div>
             <div class="container">
- 
+
                         <div class="card ">
                             <div class="card-header">
                                 <div class="card-title">Contract Details</div>
@@ -45,8 +45,10 @@
                                         <th class="text-nowrap" scope="row">Invoice Number</th>
                                         <th class="text-nowrap" scope="row">BL Number</th>
                                         <th class="text-nowrap" scope="row">Invoice FCLS</th>
+                                        <th class="text-nowrap" scope="row">Invoice Amount</th>
                                         <th class="text-nowrap" scope="row">ETD</th>
                                         <th class="text-nowrap" scope="row">ETA</th>
+                                        <th class="text-nowrap" scope="row">Invoice Date</th>
                                         <th class="text-nowrap" scope="row">AWB</th>
                                         <th class="text-nowrap" scope="row">Document</th>
                                         <th class="text-nowrap" scope="row">Shipment Status</th>
@@ -55,7 +57,7 @@
                                     </tr>
                                     <tr>
                                         <td>{{$contractor->contractor_number}}</td>
-                                        <td>{{$contractor->date ? $contractor->date->format('d/m/y') : ''}}</td>
+                                        <td>{{$contractor->date ? Carbon\Carbon::parse($contractor->date)->format('d/m/y') : ''}}</td>
                                         <td>{{$contractor->item}}</td>
                                         <td>
                                             @if($contractor->seller_name != Null)
@@ -112,7 +114,7 @@
                                             @endif
                                         </td>
                                         <td>{{$contractor->fcls}}</td>
-                                        <td>{{$contractor->lsd ? $contractor->lsd->format('d/m/y'): ''}}</td>
+                                        <td>{{$contractor->lsd ? Carbon\Carbon::parse($contractor->lsd)->format('d/m/y') : ''}}</td>
                                         <td>{{$contractor->lc_type}}</td>
                                         <td>{{$contractor->lc_number}}</td>
                                         <td>{{$contractor->price_per_dollar}}</td>
@@ -128,12 +130,14 @@
                                         <td>{{$contractor->invoice_number}}</td>
                                         <td>{{$contractor->bl_number}}</td>
                                         <td>{{$contractor->invoice_fcls}}</td>
-                                        <td>{{$contractor->etd? $contractor->etd->format('d/m/y'): ''}}</td>
-                                        <td>{{$contractor->eta ? $contractor->eta->format('d/m/y'): ''}}</td>
+                                        <td>{{$contractor->invoice_amount}}</td>
+                                        <td>{{$contractor->etd ? Carbon\Carbon::parse($contractor->etd)->format('d/m/y') : ''}}</td>
+                                        <td>{{$contractor->eta ? Carbon\Carbon::parse($contractor->eta)->format('d/m/y') : ''}}</td>
+                                        <td>{{$contractor->invoice_date ? Carbon\Carbon::parse($contractor->invoice_date)->format('d/m/y') : ''}}</td>
                                         <td>{{$contractor->awb}}</td>
                                         <td>{{$contractor->document}}</td>
                                         <td>{{$contractor->shipment_status}}</td>
-                                        <td>{{$contractor->comm_deadline ? $contractor->comm_deadline->format('d/m/y') : ''}}</td>
+                                        <td>{{$contractor->comm_deadline ? Carbon\Carbon::parse($contractor->comm_deadline)->format('d/m/y') : ''}}</td>
                                         <td>
                                             @php
                                                 $nowDate        =  Carbon\Carbon::now();
@@ -193,12 +197,12 @@
                                     <a href="{{ url('/debit-note', $contractor->id) }}"
                                        class="col-2 btn btn-warning">Show Debit Note</a>
                                     <a href="{{ url('/download-debit-note', $contractor->id) }}"
-                                       class="col-2 btn btn-primary">Download Debit Note</a>
+                                       class="col-3 btn btn-primary">Download Debit Note</a>
                                 </div>
                             </div>
 
                         </div>
-                  
+
             </div>
         </main>
 
