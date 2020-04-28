@@ -77,7 +77,7 @@ class ContractorController extends Controller
         $kg                 = $request->get('kg');
         $percent            = $request->get('percent');
         $commission_amount  = $request->get('commission_amount');
-        $invoice_amount     = number_format($request->get('invoice_amount'), 2);
+//        $invoice_amount     = number_format($request->get('invoice_amount'), 2);
 
         // if($commission_type == 'kg'){
         //     $commission_amount =  $qty * $kg;
@@ -128,7 +128,7 @@ class ContractorController extends Controller
         $contractor->invoice_container         = $request->get('invoice_container');
         $contractor->invoice_fcls              = $request->get('invoice_fcls');
         $contractor->invoice_date              = $request->get('invoice_date');
-        $contractor->invoice_amount              = $invoice_amount;
+        $contractor->invoice_amount              = $request->get('invoice_amount');
 
         // invoice more data here
         $contractor->invoice_details        = json_encode($invoice_details);
@@ -231,7 +231,7 @@ class ContractorController extends Controller
         $kg                 = $request->get('kg');
         $percent            = $request->get('percent');
         $commission_amount  = $request->get('commission_amount');
-        $invoice_amount     = number_format($request->get('invoice_amount'), 2);
+//        $invoice_amount     = number_format($request->get('invoice_amount'), 2);
         // if($commission_type == 'kg'){
         //     $commission_amount =  $qty * $kg;
         // }
@@ -279,7 +279,8 @@ class ContractorController extends Controller
         $contractor->invoice_container         = $request->get('invoice_container');
         $contractor->invoice_fcls              = $request->get('invoice_fcls');
         $contractor->invoice_date              = $request->get('invoice_date');
-        $contractor->invoice_amount              = $invoice_amount;
+        $contractor->invoice_amount              = $request->get('invoice_amount');
+//        $contractor->invoice_amount              = $invoice_amount;
 
         // invoice more data here
         $contractor->invoice_details        = json_encode($invoice_details);
