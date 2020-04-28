@@ -35,10 +35,10 @@ class ContractorController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    { 
+    {
         // dd($request->all());
         $invoice_details = [];
-        
+
         $invoice_number_add     = $request->invoice_number_add;
         $bl_number_add          = $request->bl_number_add;
         $invoice_fcls_add       = $request->invoice_fcls_add;
@@ -55,10 +55,10 @@ class ContractorController extends Controller
                 $arr['invoice']     = $invoice_number_add[$key];
                 $arr['bl_number']   = $bl_number_add[$key];
                 $arr['fcls']        = $invoice_fcls_add[$key];
-                $arr['etd_date']     = $etd_date_add[$key];  
-                $arr['eta_date']      = $eta_date_add[$key]; 
-                $arr['invoice_date']     = $invoice_date_add[$key];  
-                $arr['invoice_amount']      = $invoice_amount_add[$key]; 
+                $arr['etd_date']     = $etd_date_add[$key];
+                $arr['eta_date']      = $eta_date_add[$key];
+                $arr['invoice_date']     = $invoice_date_add[$key];
+                $arr['invoice_amount']      = $invoice_amount_add[$key];
 
                 if(is_null($arr['invoice']) && is_null($arr['bl_number']) && is_null($arr['etd_date']) && is_null($arr['eta_date']) && is_null($arr['fcls']) && is_null($arr['invoice_date']) && is_null($arr['invoice_amount'])) {
                     continue;
@@ -78,7 +78,7 @@ class ContractorController extends Controller
         $percent            = $request->get('percent');
         $commission_amount  = $request->get('commission_amount');
         $invoice_amount     = number_format($request->get('invoice_amount'), 2);
- 
+
         // if($commission_type == 'kg'){
         //     $commission_amount =  $qty * $kg;
         // }
@@ -127,6 +127,7 @@ class ContractorController extends Controller
         $contractor->bl_number              = $request->get('bl_number');
         $contractor->invoice_container         = $request->get('invoice_container');
         $contractor->invoice_fcls              = $request->get('invoice_fcls');
+        $contractor->invoice_date              = $request->get('invoice_date');
         $contractor->invoice_amount              = $invoice_amount;
 
         // invoice more data here
@@ -175,7 +176,7 @@ class ContractorController extends Controller
     public function edit($id)
     {
         $contractor = Contractor::findOrFail($id);
-         
+
         return view('edit_contractor', compact('contractor'));
     }
 
@@ -187,9 +188,9 @@ class ContractorController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    { 
+    {
         $invoice_details = [];
-        
+
         $invoice_number_add     = $request->invoice_number_add;
         $bl_number_add          = $request->bl_number_add;
         $invoice_fcls_add       = $request->invoice_fcls_add;
@@ -206,9 +207,9 @@ class ContractorController extends Controller
                 $arr['invoice']     = $invoice_number_add[$key];
                 $arr['bl_number']   = $bl_number_add[$key];
                 $arr['fcls']        = $invoice_fcls_add[$key];
-                $arr['etd_date']     = $etd_date_add[$key];  
-                $arr['eta_date']      = $eta_date_add[$key]; 
-                $arr['invoice_date']     = $invoice_date_add[$key];   
+                $arr['etd_date']     = $etd_date_add[$key];
+                $arr['eta_date']      = $eta_date_add[$key];
+                $arr['invoice_date']     = $invoice_date_add[$key];
 
                 if(is_null($arr['invoice']) && is_null($arr['bl_number']) && is_null($arr['etd_date']) && is_null($arr['eta_date']) && is_null($arr['fcls']) && is_null($arr['invoice_date']) && is_null($invoice_amount_add[$key])) {
                     continue;
@@ -239,8 +240,8 @@ class ContractorController extends Controller
         // }
 
         // find etd rest
-        $fcls               = $request->get('fcls'); 
- 
+        $fcls               = $request->get('fcls');
+
 
         // find commission deadline
         $commission_deadline                = new \Carbon\Carbon($request->get('etd'));
@@ -254,8 +255,8 @@ class ContractorController extends Controller
         $contractor->item                  = $request->get('item');
 
         // Seller
-        $contractor->seller_name            = $request->get('seller_name'); 
-        $contractor->buyer_name             = $request->get('buyer_name'); 
+        $contractor->seller_name            = $request->get('seller_name');
+        $contractor->buyer_name             = $request->get('buyer_name');
         $contractor->lc_opener_name         = $request->get('lc_opener_name');
         // Contract Details
         $contractor->fcls                   = $fcls;
@@ -277,14 +278,15 @@ class ContractorController extends Controller
         $contractor->bl_number              = $request->get('bl_number');
         $contractor->invoice_container         = $request->get('invoice_container');
         $contractor->invoice_fcls              = $request->get('invoice_fcls');
+        $contractor->invoice_date              = $request->get('invoice_date');
         $contractor->invoice_amount              = $invoice_amount;
 
         // invoice more data here
         $contractor->invoice_details        = json_encode($invoice_details);
 
         // ETD/ETA Details
-        $contractor->etd                    = $request->get('etd'); 
-        $contractor->eta                    = $request->get('eta'); 
+        $contractor->etd                    = $request->get('etd');
+        $contractor->eta                    = $request->get('eta');
         // Documents Details
         $contractor->awb                    = $request->get('awb');
         $contractor->document               = $request->get('document');
@@ -388,9 +390,12 @@ class ContractorController extends Controller
         $calculate_amount = 0;
         foreach($invoice_details as $detail){
 
-            $calculate_amount += isset($detail->invoice_amount) ? $detail->invoice_amount : 0;    
+            if($detail->invoice_amount != ""){
+
+            $calculate_amount += isset($detail->invoice_amount) ? $detail->invoice_amount : 0;
             $calculate_amount = number_format($calculate_amount, 2);
         }
+    }
         $calculate_amount += $invoice_amount;
         $calculate_amount = number_format($calculate_amount, 2);
 
@@ -412,10 +417,11 @@ class ContractorController extends Controller
         $invoice_amount     = $contract->invoice_amount;
         $invoice_details    = json_decode($contract->invoice_details);
         $calculate_amount = 0;
-        foreach($invoice_details as $detail){
-
-            $calculate_amount += isset($detail->invoice_amount) ? $detail->invoice_amount : 0;         
-            $calculate_amount = number_format($calculate_amount, 2);
+        foreach($invoice_details as $detail) {
+            if ($detail->invoice_amount != "") {
+                $calculate_amount += isset($detail->invoice_amount) ? $detail->invoice_amount : 0;
+                $calculate_amount = number_format($calculate_amount, 2);
+            }
         }
         $calculate_amount += $invoice_amount;
         $calculate_amount = number_format($calculate_amount, 2);

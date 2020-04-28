@@ -71,7 +71,7 @@
                                             <div class="row">
                                                 <div class="col-md-3 mb-3">
                                                     <label for="Date">Date</label>
-                                                    <input type="date" name="date" class="form-control" id="Date" value="{{ $contractor->date ? $contractor->date->format('Y-m-d') : ""}}" autocomplete="off">
+                                                    <input type="date" name="date" class="form-control" id="Date" value="{{ $contractor->date ? Carbon\Carbon::parse($contractor->date)->format('Y-m-d') : ""}}" autocomplete="off">
                                                   </div>
 
                                                 <div class="col-md-6 mb-3">
@@ -226,7 +226,7 @@
                                                     </div>
                                                     <div class="col-md-3 mb-3">
                                                         <label for="validationCustom01">LSD</label>
-                                                        <input type="date" name="lsd" class="form-control" value="{{ $contractor->lsd ? $contractor->lsd->format('Y-m-d') : null }}" autocomplete="off">
+                                                        <input type="date" name="lsd" class="form-control" value="{{ $contractor->lsd ? Carbon\Carbon::parse($contractor->lsd)->format('Y-m-d') : null }}" autocomplete="off">
                                                         <div class="invalid-feedback">
                                                             Please provide a LSD.
                                                         </div>
@@ -360,14 +360,21 @@
 
                                                       <div class="col-md-3 mb-3">
                                                           <label for="validationCustom04">ETD</label>
-                                                          <input type="date" name="etd" class="form-control {{ $errors->has('etd') ? ' is-invalid' : '' }}" id="validationCustom04" value="{{$contractor->etd ? $contractor->etd->format('Y-m-d') : null}}" autocomplete="off">
+                                                          <input type="date" name="etd" class="form-control {{ $errors->has('etd') ? ' is-invalid' : '' }}" id="validationCustom04" value="{{$contractor->etd ? Carbon\Carbon::parse($contractor->etd)->format('Y-m-d') : null}}" autocomplete="off">
                                                           <div class="invalid-feedback">
                                                               Please provide a ETD.
                                                           </div>
                                                       </div>
                                                       <div class="col-md-3 mb-3">
                                                           <label for="validationCustom04">ETA</label>
-                                                          <input type="date" name="eta" class="form-control {{ $errors->has('eta') ? ' is-invalid' : '' }}" id="validationCustom04" value="{{$contractor->eta ? $contractor->eta->format('Y-m-d') : null}}" autocomplete="off">
+                                                          <input type="date" name="eta" class="form-control {{ $errors->has('eta') ? ' is-invalid' : '' }}" id="validationCustom04" value="{{$contractor->eta ? Carbon\Carbon::parse($contractor->eta)->format('Y-m-d') : null}}" autocomplete="off">
+                                                          <div class="invalid-feedback">
+                                                              Please provide a ETA.
+                                                          </div>
+                                                      </div>
+                                                      <div class="col-md-3 mb-3">
+                                                          <label for="validationCustom04">Date</label>
+                                                          <input type="date" name="invoice_date" class="form-control " value="{{$contractor->invoice_date ? Carbon\Carbon::parse($contractor->invoice_date)->format('Y-m-d') : null}}" autocomplete="off">
                                                           <div class="invalid-feedback">
                                                               Please provide a ETA.
                                                           </div>
@@ -389,16 +396,16 @@
                                                          </div>
                                                     </div>
 
-                                                  </div> 
+                                                  </div>
 
                                               </div>
                                             </div>
 
 
-                                            <br> 
+                                            <br>
                                             <div  >
                                             @if($contractor->invoice_details)
-                                              
+
                                             @foreach (json_decode($contractor->invoice_details) as $key=>$invoice_detail)
                                                 <div>
                                                    <div class="card control-group " >
@@ -424,7 +431,7 @@
                                                                             Please provide a BL Number.
                                                                         </div>
                                                                     </div>
- 
+
                                                                     <div class="col-md-2 mb-3">
                                                                         <label for="validationCustom01">No Of FCLS:</label>
                                                                         <input type="number" step="any" name="invoice_fcls_add[]" class="form-control" value="{{  isset($invoice_detail->fcls) ? $invoice_detail->fcls : null  }}" autocomplete="off">
@@ -433,21 +440,21 @@
 
                                                                     <div class="col-md-3 mb-3">
                                                                         <label for="validationCustom04">ETD</label>
-                                                                        <input type="date" name="etd_date_add[]" class="form-control {{ $errors->has('etd') ? ' is-invalid' : '' }}" id="validationCustom04" value="{{  isset($invoice_detail->etd_date) ? $invoice_detail->etd_date  : null  }}" autocomplete="off">
+                                                                        <input type="date" name="etd_date_add[]" class="form-control {{ $errors->has('etd') ? ' is-invalid' : '' }}" id="validationCustom04" value="{{  isset($invoice_detail->etd_date) ? Carbon\Carbon::parse($invoice_detail->etd_date)->format('Y-m-d')  : null  }}" autocomplete="off">
                                                                         <div class="invalid-feedback">
                                                                             Please provide a ETD.
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-md-3 mb-3">
                                                                         <label for="validationCustom04">ETA</label>
-                                                                        <input type="date" name="eta_date_add[]" class="form-control {{ $errors->has('eta') ? ' is-invalid' : '' }}" id="validationCustom04" value="{{  isset($invoice_detail->eta_date) ? $invoice_detail->eta_date : null }}" autocomplete="off">
+                                                                        <input type="date" name="eta_date_add[]" class="form-control {{ $errors->has('eta') ? ' is-invalid' : '' }}" id="validationCustom04" value="{{  isset($invoice_detail->eta_date) ? Carbon\Carbon::parse($invoice_detail->eta_date)->format('Y-m-d') : null }}" autocomplete="off">
                                                                         <div class="invalid-feedback">
                                                                             Please provide a ETA.
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-md-3 mb-3">
                                                                         <label for="validationCustom04">Date</label>
-                                                                        <input type="date" name="invoice_date_add[]" class="form-control " value="{{  isset($invoice_detail->invoice_date) ? $invoice_detail->invoice_date : null }}" autocomplete="off">
+                                                                        <input type="date" name="invoice_date_add[]" class="form-control " value="{{  isset($invoice_detail->invoice_date) ? Carbon\Carbon::parse($invoice_detail->invoice_date)->format('Y-m-d') : null }}" autocomplete="off">
                                                                         <div class="invalid-feedback">
                                                                             Please provide a ETA.
                                                                         </div>
@@ -459,10 +466,10 @@
                                                                             Please provide a ETA.
                                                                         </div>
                                                                     </div>
- 
+
 
                                                                     {{-- eta/etd --}}
-                                                                </div> 
+                                                                </div>
                                                             </div>
 
                                                           </div>
@@ -505,7 +512,7 @@
                                                                 <input type="number" step="any" name="invoice_fcls_add[]" class="form-control" value="" autocomplete="off">
 
                                                             </div>
- 
+
                                                             <div class="col-md-3 mb-3">
                                                                 <label for="validationCustom04">ETD</label>
                                                                 <input type="date" name="etd_date_add[]" class="form-control {{ $errors->has('etd') ? ' is-invalid' : '' }}" id="validationCustom04" value="" autocomplete="off">
@@ -540,20 +547,20 @@
                                                                     <label for="validationCustom01"></label>
                                                                     <div class="input-group">
                                                                         <div class="input-group-btn">
-                                                                        
+
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                            </div> 
-                                                        </div> 
+                                                            </div>
+                                                        </div>
                                                     </div>
 
                                                   </div>
                                                 </div>
-                                            </div>   
+                                            </div>
                                              <button class="btn btn-danger " type="button" onclick="Delete(this) " style="width:100%;"><i class="glyphicon glyphicon-remove"></i> Remove</button>
                                         </div>
-                                        
+
                                         </div>
                                                 <div class="card">
                                                     <h5 class="card-header h5">Documents Details</h5>
