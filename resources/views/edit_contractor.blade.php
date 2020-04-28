@@ -381,7 +381,7 @@
                                                       </div>
                                                       <div class="col-md-3 mb-3">
                                                         <label for="validationCustom04">Amount</label>
-                                                      <input type="number" step="any" name="invoice_amount" class="form-control " value="{{ $contractor->invoice_amount }}" autocomplete="off">
+                                                      <input type="number" step="any" name="invoice_amount" class="form-control " value="{{ str_replace("," , "" ,$contractor->invoice_amount) }}" autocomplete="off">
                                                         <div class="invalid-feedback">
                                                             Please provide a ETA.
                                                         </div>
@@ -461,7 +461,7 @@
                                                                     </div>
                                                                     <div class="col-md-3 mb-3">
                                                                         <label for="validationCustom04">Amount</label>
-                                                                        <input type="number" step="any" name="invoice_amount_add[]" class="form-control " value="{{  isset($invoice_detail->invoice_amount) ? $invoice_detail->invoice_amount : null }}" autocomplete="off">
+                                                                        <input type="number" step="any" name="invoice_amount_add[]" class="form-control " value="{{  isset($invoice_detail->invoice_amount) ? str_replace("," , "" , $invoice_detail->invoice_amount) : null }}" autocomplete="off">
                                                                         <div class="invalid-feedback">
                                                                             Please provide a ETA.
                                                                         </div>
