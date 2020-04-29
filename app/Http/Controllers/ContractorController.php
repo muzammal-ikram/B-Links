@@ -35,8 +35,7 @@ class ContractorController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        // dd($request->all());
+    { 
         $invoice_details = [];
 
         $invoice_number_add     = $request->invoice_number_add;
@@ -214,8 +213,9 @@ class ContractorController extends Controller
                 if(is_null($arr['invoice']) && is_null($arr['bl_number']) && is_null($arr['etd_date']) && is_null($arr['eta_date']) && is_null($arr['fcls']) && is_null($arr['invoice_date']) && is_null($invoice_amount_add[$key])) {
                     continue;
                 }
-                $arr['invoice_amount']   = number_format($invoice_amount_add[$key] ,2);
-
+                $invoice_amount   = number_format($invoice_amount_add[$key] ,2);
+                $arr['invoice_amount'] = str_replace(',', '', $invoice_amount);
+        
                 array_push($invoice_details, $arr);
             }
 
@@ -387,19 +387,19 @@ class ContractorController extends Controller
         $invoice_details    = json_decode($contract->invoice_details);
         $invoice_amount     = $contract->invoice_amount;
 
-        // dd($invoice_details);
         $calculate_amount = 0;
         foreach($invoice_details as $detail){
-
             if($detail->invoice_amount != ""){
 
-            $calculate_amount += isset($detail->invoice_amount) ? $detail->invoice_amount : 0;
-            $calculate_amount = number_format($calculate_amount, 2);
+            $amount = isset($detail->invoice_amount) ? $detail->invoice_amount : 0;
+            $amount = str_replace(',', '', $amount);
+            $calculate_amount += $amount;
         }
     }
         $calculate_amount += $invoice_amount;
         $calculate_amount = number_format($calculate_amount, 2);
-
+        $calculate_amount = str_replace(',', '', $calculate_amount);
+        
         // invoice More details
         $invoice_details    = json_decode($contract->invoice_details);
         $invoice_count      = count($invoice_details)+1;
@@ -420,13 +420,15 @@ class ContractorController extends Controller
         $calculate_amount = 0;
         foreach($invoice_details as $detail) {
             if ($detail->invoice_amount != "") {
-                $calculate_amount += isset($detail->invoice_amount) ? $detail->invoice_amount : 0;
-                $calculate_amount = number_format($calculate_amount, 2);
+                    
+                $amount = isset($detail->invoice_amount) ? $detail->invoice_amount : 0;
+                $amount = str_replace(',', '', $amount);
+                $calculate_amount += $amount;
             }
         }
         $calculate_amount += $invoice_amount;
         $calculate_amount = number_format($calculate_amount, 2);
-
+        $calculate_amount = str_replace(',', '', $calculate_amount);
 
         // invoice More details
         $invoice_count      = count($invoice_details)+1;
