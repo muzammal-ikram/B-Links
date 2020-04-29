@@ -396,6 +396,7 @@ class ContractorController extends Controller
             $calculate_amount += $amount;
         }
     }
+        $invoice_amount = str_replace(',', '', $invoice_amount);
         $calculate_amount += $invoice_amount;
         $calculate_amount = number_format($calculate_amount, 2);
         $calculate_amount = str_replace(',', '', $calculate_amount);
@@ -426,6 +427,7 @@ class ContractorController extends Controller
                 $calculate_amount += $amount;
             }
         }
+        $invoice_amount = str_replace(',', '', $invoice_amount);
         $calculate_amount += $invoice_amount;
         $calculate_amount = number_format($calculate_amount, 2);
         $calculate_amount = str_replace(',', '', $calculate_amount);
