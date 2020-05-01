@@ -67,7 +67,7 @@
 <P CLASS="western" STYLE="margin-bottom: 0.14in; font-style: normal; line-height: 100%; widows: 2; orphans: 2">
     <FONT SIZE=2 STYLE="font-size: 11pt"><I>Being the amount of
             commission towards sales of your yarn as per detail given below and
-            debited to your account with us amounting to  </I><FONT COLOR="#ff0000"><I><B>US${{$calculate_amount}}/-</B></I></FONT></FONT></P>
+            debited to your account with us amounting to  </I><FONT COLOR="#ff0000"><I><B>US${{$contract->commission_amount}}/-</B></I></FONT></FONT></P>
 <TABLE WIDTH=686 CELLPADDING=0 CELLSPACING=0>
     <COL WIDTH=167>
     <COL WIDTH=138>
@@ -195,10 +195,17 @@
     <TR VALIGN=TOP>
         <TD COLSPAN=5 WIDTH=563 HEIGHT=19 BGCOLOR="#e3e3e3" STYLE="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding: 0in">
             <P STYLE="margin-left: 0.07in; margin-top: 0in"><FONT COLOR="#ff0000"><FONT SIZE=4><I><B>COMMISSION
-                                @ {{$contract->commission_amount}}%</B></I></FONT></FONT></P>
+                                @
+                                @if($contract->commission_type == 'percent')
+                                {{$contract->percent}}
+                                @elseif($contract->commission_type == 'kg')
+                                {{$contract->kg}}
+                                @endif
+                                %</B></I></FONT></FONT></P>
+
         </TD>
         <TD WIDTH=121 BGCOLOR="#e3e3e3" STYLE="border: 1px solid #000000; padding: 0in">
-            <P STYLE="margin-left: 0.08in; margin-top: 0in"><FONT COLOR="#ff0000"><FONT SIZE=4><I><B>${{$calculate_amount}}</B></I></FONT></FONT></P>
+            <P STYLE="margin-left: 0.08in; margin-top: 0in"><FONT COLOR="#ff0000"><FONT SIZE=4><I><B>${{$contract->commission_amount}}</B></I></FONT></FONT></P>
         </TD>
     </TR>
 </TABLE>

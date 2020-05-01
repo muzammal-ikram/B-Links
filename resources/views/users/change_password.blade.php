@@ -2,15 +2,15 @@
 @section('content')
      @include('_partials.navbar')
     <div class="app-body">
-    @include('_partials.sidebar')
+{{--    @include('_partials.sidebar')--}}
         <main class="main-content">
             <div class="container-fluid">
-   <div class="page-title pl-0">
-                    <h4 class="mb-0">Change Password</h4>
-                    <ol class="breadcrumb mb-0 pl-0 pt-1 pb-0">
-                        <li class="breadcrumb-item active">/change Password</li>
-                    </ol>
-                </div>
+{{--                <div class="page-title pl-0">--}}
+{{--                    <h4 class="mb-0">Change Password</h4>--}}
+{{--                    <ol class="breadcrumb mb-0 pl-0 pt-1 pb-0">--}}
+{{--                        <li class="breadcrumb-item active">/change Password</li>--}}
+{{--                    </ol>--}}
+{{--                </div>--}}
             @if (session('success'))
                 <div class="container-fluid">
                     <div class="alert alert-success" role="alert">
@@ -77,10 +77,10 @@
                     </div>
                 </div>
             </div>
-            </div>  
+            </div>
         </main>
     </div>
-    
+
           @include('_partials.footer')
 
 @endsection

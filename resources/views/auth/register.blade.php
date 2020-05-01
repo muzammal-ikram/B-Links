@@ -1,4 +1,4 @@
- 
+
  @extends('layouts.app')
 @section('content')
     <!--===========login start===========-->
@@ -6,10 +6,10 @@
 
     <div class="app-body">
 
-        @include('_partials.sidebar')
+{{--        @include('_partials.sidebar')--}}
         <main class="main-content">
             <div class="container">
-            
+
                 @if(isset($user))
                 <form class="form-signin" style="margin-top: 5%; margin-bottom:5%;" method="POST" action="{{ route('UserUpdate', $user->id) }}">
                 @method('PUT')
@@ -74,13 +74,13 @@
                         <input type="password" id="password-confirm" name="password_confirmation" class="form-control" placeholder="Confirm Password" required>
                     </div>
                 @endif
-                    <div class="form-group">  
+                    <div class="form-group">
                         <label for="user_type" class="sr-only">User Type</label>
                         @if(isset($user))
                         <select class='form-control' id='user_type' name='user_type'>
                             <option value='0' {{ ($user->is_admin == 0) ? 'selected' : '' }}>Assistant</option>
                             <option value='1' {{ ($user->is_admin == 1) ? 'selected' : '' }}>Admin</option>
-                        </select>  
+                        </select>
                         @else
                         <select class='form-control' id='user_type' name='user_type'>
                             <option value='0'>Assistant</option>
@@ -88,7 +88,7 @@
                         </select>
                         @endif
                     </div>
-                    <button class="btn btn-lg btn-primary btn-block" type="submit">Register Assistant</button>
+                    <button class="btn btn-lg btn-primary btn-block" type="submit">Register User</button>
                 </form>
 
             </div>
