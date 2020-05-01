@@ -3,6 +3,11 @@
 @include('_partials.navbar')
 
 <style>
+    .card-body{
+        padding: 0rem;
+        padding-left: 1.25rem;
+        padding-right: 1.25rem;
+    }
     .display_block{
         display: block;
     }
@@ -13,21 +18,21 @@
 <div class="app-body">
 
     <!--left sidebar start-->
-    @include('_partials.sidebar')
+{{--    @include('_partials.sidebar')--}}
     <!--left sidebar end-->
 
     <!--main contents start-->
     <main class="main-content">
         <!--page title start-->
-        <div class="page-title">
-            <h4 class="mb-0"> Add Contract
+{{--        <div class="page-title">--}}
+{{--            <h4 class="mb-0"> Add Contract--}}
 {{--                <small>basic input examples</small>--}}
-            </h4>
-            <ol class="breadcrumb mb-0 pl-0 pt-1 pb-0">
-                <li class="breadcrumb-item"><a href="#" class="default-color">Dashboard</a></li>
-                <li class="breadcrumb-item active">Add Contract</li>
-            </ol>
-        </div>
+{{--            </h4>--}}
+{{--            <ol class="breadcrumb mb-0 pl-0 pt-1 pb-0">--}}
+{{--                <li class="breadcrumb-item"><a href="#" class="default-color">Dashboard</a></li>--}}
+{{--                <li class="breadcrumb-item active">Add Contract</li>--}}
+{{--            </ol>--}}
+{{--        </div>--}}
         <!--page title end-->
 
 
@@ -40,7 +45,7 @@
                     <div class="card card-shadow mb-4">
                         <div class="card-header">
                             <div class="card-title">
-                                Add Contract
+                                Edit Contract
                             </div>
                         </div>
                         <div class="card-body">
@@ -60,9 +65,9 @@
                                     {{session('success')}}
                                 </div>
                             @endif
-                            <form class="container" action="{{ url('update-contractor/'.$contractor->id)}}" method="POST" id="needs-validation" novalidate>
+                            <form class="container-fluid" action="{{ url('update-contractor/'.$contractor->id)}}" method="POST" id="needs-validation" novalidate>
                                 @csrf
-                                <div class="container">
+                                <div class="container-fluid" style="padding-top: 20px">
 
                                     <div class="card">
                                         <h5 class="card-header h5">Basic Details</h5>

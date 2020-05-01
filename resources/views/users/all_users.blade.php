@@ -4,19 +4,19 @@
 
     <!--===========app body start===========-->
     <div class="app-body">
-        @include('_partials.sidebar')
+{{--        @include('_partials.sidebar')--}}
         <!--main contents start-->
         <main class="main-content">
             <!--page title start-->
-            <div class="page-title">
-                <h4 class="mb-0"> All Users
-                </h4>
-                <ol class="breadcrumb mb-0 pl-0 pt-1 pb-0">
-                    <li class="breadcrumb-item"><a href="{{ route('home') }}" class="default-color">Home</a></li>
-                    <li class="breadcrumb-item"><a href="{{ route('allUsers') }}" class="default-color">Users</a></li>
-                    <li class="breadcrumb-item active">All Users</li>
-                </ol>
-            </div>
+{{--            <div class="page-title">--}}
+{{--                <h4 class="mb-0"> All Users--}}
+{{--                </h4>--}}
+{{--                <ol class="breadcrumb mb-0 pl-0 pt-1 pb-0">--}}
+{{--                    <li class="breadcrumb-item"><a href="{{ route('home') }}" class="default-color">Home</a></li>--}}
+{{--                    <li class="breadcrumb-item"><a href="{{ route('allUsers') }}" class="default-color">Users</a></li>--}}
+{{--                    <li class="breadcrumb-item active">All Users</li>--}}
+{{--                </ol>--}}
+{{--            </div>--}}
             <!--page title end-->
             <div class="container-fluid">
                 <!-- state start-->

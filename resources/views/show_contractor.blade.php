@@ -1,143 +1,150 @@
 @extends('layouts.app')
 @section('content')
     @include('_partials.navbar')
+    <style>
+        .table td, .table th{
+            padding: 0.4rem 1rem;
+        }
+        </style>
 
     <div class="app-body">
 
         <!--left sidebar start-->
-    @include('_partials.sidebar')
+{{--    @include('_partials.sidebar')--}}
     <!--left sidebar end-->
         <main class="main-content">
-            <div class="page-title">
-                <div class="row">
-                    <h4 class="mb-0 mr-auto ml-3">Contract No: {{$contractor->contractor_number}}</h4>
-                </div>
-            </div>
-            <div class="container">
+{{--            <div class="page-title">--}}
+{{--                <div class="row">--}}
+{{--                    <h4 class="mb-0 mr-auto ml-3">Contract No: {{$contractor->contractor_number}}</h4>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+            <div class="container-fluid">
 
                         <div class="card ">
                             <div class="card-header">
                                 <div class="card-title">Contract Details</div>
                             </div>
                             <div class="card-body">
-                                <table id="bs4-table" class="table table-bordered table-striped table-responsive" style="overflow:scroll;">
+                                <table id="bs4-table" class="table table-bordered table-striped table-responsive">
                                     <tr>
-                                        <th class="text-nowrap" scope="row">Contract No</th>
+                                        <th class="text-nowrap" scope="row" style="">Contract No</th>
+                                        <td>{{$contractor->contractor_number}}</td>
                                         <th class="text-nowrap" scope="row">Contract Date</th>
+                                        <td>{{$contractor->date ? Carbon\Carbon::parse($contractor->date)->format('d/m/y') : ''}}</td>
                                         <th class="text-nowrap" scope="row">Item</th>
-                                        <th class="text-nowrap" scope="row">Seller</th>
-                                        <th class="text-nowrap" scope="row">Buyer</th>
-                                        <th class="text-nowrap" scope="row">Lc Opener</th>
+                                        <td>{{$contractor->item}}</td>
                                         <th class="text-nowrap" scope="row">Fcls</th>
-                                        <th class="text-nowrap" scope="row">LSD</th>
-                                        <th class="text-nowrap" scope="row">LC type</th>
-                                        <th class="text-nowrap" scope="row">Lc Number</th>
-                                        <th class="text-nowrap" scope="row">Price per $</th>
-                                        <th class="text-nowrap" scope="row">Quantity</th>
-                                        <th class="text-nowrap" scope="row">Total Amount</th>
-                                        <th class="text-nowrap" scope="row">Commission Type</th>
-                                        @if($contractor->commission_type == 'kg')
-                                        <th class="text-nowrap" scope="row">KG</th>
-                                        @else
-                                        <th class="text-nowrap" scope="row">Percent</th>
-                                        @endif
-                                        <th class="text-nowrap" scope="row">Commission Amount</th>
-                                        <th class="text-nowrap" scope="row">Invoice Number</th>
-                                        <th class="text-nowrap" scope="row">BL Number</th>
-                                        <th class="text-nowrap" scope="row">Invoice FCLS</th>
-                                        <th class="text-nowrap" scope="row">Invoice Amount</th>
-                                        <th class="text-nowrap" scope="row">ETD</th>
-                                        <th class="text-nowrap" scope="row">ETA</th>
-                                        <th class="text-nowrap" scope="row">Invoice Date</th>
-                                        <th class="text-nowrap" scope="row">AWB</th>
-                                        <th class="text-nowrap" scope="row">Document</th>
-                                        <th class="text-nowrap" scope="row">Shipment Status</th>
-                                        <th class="text-nowrap" scope="row">Commission Deadline</th>
-                                        <th class="text-nowrap" scope="row">Status</th>
+                                        <td>{{$contractor->fcls}}</td>
                                     </tr>
                                     <tr>
-                                        <td>{{$contractor->contractor_number}}</td>
-                                        <td>{{$contractor->date ? Carbon\Carbon::parse($contractor->date)->format('d/m/y') : ''}}</td>
-                                        <td>{{$contractor->item}}</td>
+                                        <th class="text-nowrap" scope="row">Seller</th>
                                         <td>
                                             @if($contractor->seller_name != Null)
-                                                @if(strlen($contractor->seller_name) > 20)
-                                                        <div id="more{{$contractor->id}}" name = "more">
-                                                            {{ \Illuminate\Support\Str::limit($contractor->seller_name, 20, '...') }}
-                                                            <p href = "" onclick="showmore({{$contractor->id}});" style="cursor: pointer;color: lightblue;">more</p>
-                                                        </div>
-                                                        <div id="less{{$contractor->id}}" name = "less" style="display:none;">
-                                                            {{$contractor->seller_name}}
-                                                            <p href = "" onclick="showless({{$contractor->id}});" style="cursor: pointer; color: lightblue;">less</p>
-                                                        </div>
-                                                @else
-                                                    <div>
-                                                        {{$contractor->seller_name}}
-                                                    </div>
-                                                @endif
+                                                {{--                                                @if(strlen($contractor->seller_name) > 20)--}}
+                                                {{--                                                    <div id="more{{$contractor->id}}" name = "more">--}}
+                                                {{--                                                        {{ \Illuminate\Support\Str::limit($contractor->seller_name, 20, '...') }}--}}
+                                                {{--                                                        <p href = "" onclick="showmore({{$contractor->id}});" style="cursor: pointer;color: lightblue;">more</p>--}}
+                                                {{--                                                    </div>--}}
+                                                {{--                                                    <div id="less{{$contractor->id}}" name = "less" style="display:none;">--}}
+                                                {{--                                                        {{$contractor->seller_name}}--}}
+                                                {{--                                                        <p href = "" onclick="showless({{$contractor->id}});" style="cursor: pointer; color: lightblue;">less</p>--}}
+                                                {{--                                                    </div>--}}
+                                                {{--                                                @else--}}
+                                                {{--                                                    <div>--}}
+                                                {{--                                                        {{$contractor->seller_name}}--}}
+                                                {{--                                                    </div>--}}
+                                                {{--                                                @endif--}}
+                                                <div>
+                                                    {{$contractor->seller_name}}
+                                                </div>
                                             @endif
                                         </td>
+
+                                        <th class="text-nowrap" scope="row">Buyer</th>
                                         <td>
                                             @if($contractor->buyer_name != Null)
-                                                @if(strlen($contractor->buyer_name) > 20)
-                                                        <div id="buyer_more{{$contractor->id}}" name = "buyer_more">
-                                                            {{ \Illuminate\Support\Str::limit($contractor->buyer_name, 20, '...') }}
-                                                            <p href = "" onclick="showBuyermore({{$contractor->id}});" style="cursor: pointer;color: lightblue;">more</p>
-                                                        </div>
-                                                        <div id="buyer_less{{$contractor->id}}" name = "buyer_less" style="display:none;">
-                                                            {{$contractor->buyer_name}}
-                                                            <p href = "" onclick="showBuyerless({{$contractor->id}});" style="cursor: pointer; color: lightblue;">less</p>
-                                                        </div>
-                                                @else
-                                                    <div>
-                                                        {{$contractor->buyer_name}}
-                                                    </div>
-                                                @endif
+{{--                                                @if(strlen($contractor->buyer_name) > 20)--}}
+{{--                                                    <div id="buyer_more{{$contractor->id}}" name = "buyer_more">--}}
+{{--                                                        {{ \Illuminate\Support\Str::limit($contractor->buyer_name, 20, '...') }}--}}
+{{--                                                        <p href = "" onclick="showBuyermore({{$contractor->id}});" style="cursor: pointer;color: lightblue;">more</p>--}}
+{{--                                                    </div>--}}
+{{--                                                    <div id="buyer_less{{$contractor->id}}" name = "buyer_less" style="display:none;">--}}
+{{--                                                        {{$contractor->buyer_name}}--}}
+{{--                                                        <p href = "" onclick="showBuyerless({{$contractor->id}});" style="cursor: pointer; color: lightblue;">less</p>--}}
+{{--                                                    </div>--}}
+{{--                                                @else--}}
+{{--                                                    <div>--}}
+{{--                                                        {{$contractor->buyer_name}}--}}
+{{--                                                    </div>--}}
+{{--                                                @endif--}}
+                                                <div>
+                                                    {{$contractor->buyer_name}}
+                                                </div>
                                             @endif
                                         </td>
+                                        <th class="text-nowrap" scope="row">Lc Opener</th>
                                         <td>
                                             @if($contractor->lc_opener_name != Null)
-                                                @if(strlen($contractor->lc_opener_name) > 20)
-                                                        <div id="opener_more{{$contractor->id}}" name = "opener_more">
-                                                            {{ \Illuminate\Support\Str::limit($contractor->lc_opener_name, 20, '...') }}
-                                                            <p href = "" onclick="showOpenermore({{$contractor->id}});" style="cursor: pointer;color: lightblue;">more</p>
-                                                        </div>
-                                                        <div id="opener_less{{$contractor->id}}" name = "opener_less" style="display:none;">
-                                                            {{$contractor->lc_opener_name}}
-                                                            <p href = "" onclick="showOpenerless({{$contractor->id}});" style="cursor: pointer; color: lightblue;">less</p>
-                                                        </div>
-                                                @else
+{{--                                                @if(strlen($contractor->lc_opener_name) > 20)--}}
+{{--                                                    <div id="opener_more{{$contractor->id}}" name = "opener_more">--}}
+{{--                                                        {{ \Illuminate\Support\Str::limit($contractor->lc_opener_name, 20, '...') }}--}}
+{{--                                                        <p href = "" onclick="showOpenermore({{$contractor->id}});" style="cursor: pointer;color: lightblue;">more</p>--}}
+{{--                                                    </div>--}}
+{{--                                                    <div id="opener_less{{$contractor->id}}" name = "opener_less" style="display:none;">--}}
+{{--                                                        {{$contractor->lc_opener_name}}--}}
+{{--                                                        <p href = "" onclick="showOpenerless({{$contractor->id}});" style="cursor: pointer; color: lightblue;">less</p>--}}
+{{--                                                    </div>--}}
+{{--                                                @else--}}
+{{--                                                    <div>--}}
+{{--                                                        {{$contractor->lc_opener_name}}--}}
+{{--                                                    </div>--}}
+{{--                                                @endif--}}
                                                     <div>
                                                         {{$contractor->lc_opener_name}}
                                                     </div>
-                                                @endif
                                             @endif
                                         </td>
-                                        <td>{{$contractor->fcls}}</td>
+                                        <th class="text-nowrap" scope="row">LSD</th>
                                         <td>{{$contractor->lsd ? Carbon\Carbon::parse($contractor->lsd)->format('d/m/y') : ''}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th class="text-nowrap" scope="row">LC type</th>
                                         <td>{{$contractor->lc_type}}</td>
+                                        <th class="text-nowrap" scope="row">Lc Number</th>
                                         <td>{{$contractor->lc_number}}</td>
+                                        <th class="text-nowrap" scope="row">Price per $</th>
                                         <td>{{$contractor->price_per_dollar}}</td>
+                                        <th class="text-nowrap" scope="row">Quantity</th>
                                         <td>{{$contractor->qty}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th class="text-nowrap" scope="row">Total Amount</th>
                                         <td>{{$contractor->total_amount}}</td>
+                                        <th class="text-nowrap" scope="row">Commission Type</th>
                                         <td>{{$contractor->commission_type}}</td>
                                         @if($contractor->commission_type == 'kg')
+                                        <th class="text-nowrap" scope="row">KG</th>
                                             <td>{{$contractor->kg}}</td>
                                         @else
+                                        <th class="text-nowrap" scope="row">Percent</th>
                                             <td>{{$contractor->percent}}</td>
                                         @endif
+                                        <th class="text-nowrap" scope="row">Commission Amount</th>
                                         <td>{{$contractor->commission_amount}}</td>
-                                        <td>{{$contractor->invoice_number}}</td>
-                                        <td>{{$contractor->bl_number}}</td>
-                                        <td>{{$contractor->invoice_fcls}}</td>
-                                        <td>{{$contractor->invoice_amount}}</td>
-                                        <td>{{$contractor->etd ? Carbon\Carbon::parse($contractor->etd)->format('d/m/y') : ''}}</td>
-                                        <td>{{$contractor->eta ? Carbon\Carbon::parse($contractor->eta)->format('d/m/y') : ''}}</td>
-                                        <td>{{$contractor->invoice_date ? Carbon\Carbon::parse($contractor->invoice_date)->format('d/m/y') : ''}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th class="text-nowrap" scope="row">AWB</th>
                                         <td>{{$contractor->awb}}</td>
+                                        <th class="text-nowrap" scope="row">Document</th>
                                         <td>{{$contractor->document}}</td>
+                                        <th class="text-nowrap" scope="row">Shipment Status</th>
                                         <td>{{$contractor->shipment_status}}</td>
+                                        <th class="text-nowrap" scope="row">Commission Deadline</th>
                                         <td>{{$contractor->comm_deadline ? Carbon\Carbon::parse($contractor->comm_deadline)->format('d/m/y') : ''}}</td>
+                                    </tr>
+                                    <tr>
+
+                                        <th class="text-nowrap" scope="row">Status</th>
                                         <td>
                                             @php
                                                 $nowDate        =  Carbon\Carbon::now();
@@ -157,19 +164,42 @@
                                     </tbody>
                                 </table>
 
+                                <div class="text-center">
+                                    <h3>Invoices</h3>
+                                </div>
+
+                                <table class="table table-bordered table-striped table-responsive-sm">
+                                    <tr>
+                                        <th class="text-nowrap" scope="row">Invoice Number</th>
+                                        <th class="text-nowrap" scope="row">BL Number</th>
+                                        <th class="text-nowrap" scope="row">Invoice FCLS</th>
+                                        <th class="text-nowrap" scope="row">Invoice Amount</th>
+                                        <th class="text-nowrap" scope="row">ETD</th>
+                                        <th class="text-nowrap" scope="row">ETA</th>
+                                        <th class="text-nowrap" scope="row">Invoice Date</th>
+                                    </tr>
+
+                                    <tr>
+                                        <td>{{$contractor->invoice_number}}</td>
+                                        <td>{{$contractor->bl_number}}</td>
+                                        <td>{{$contractor->invoice_fcls}}</td>
+                                        <td>{{$contractor->invoice_amount}}</td>
+                                        <td>{{$contractor->etd ? Carbon\Carbon::parse($contractor->etd)->format('d/m/y') : ''}}</td>
+                                        <td>{{$contractor->eta ? Carbon\Carbon::parse($contractor->eta)->format('d/m/y') : ''}}</td>
+                                        <td>{{$contractor->invoice_date ? Carbon\Carbon::parse($contractor->invoice_date)->format('d/m/y') : ''}}</td>
+                                    </tr>
+                                </table>
+
                                     @if($contractor->invoice_details)
-                                        <div class="text-center">
-                                            <h3>Extra Invoice</h3>
-                                        </div>
                                     <table class="table table-bordered table-striped table-responsive-sm">
                                         <tr>
                                             <th class="text-nowrap" scope="row">Invoice Number</th>
                                             <th class="text-nowrap" scope="row">BL Number</th>
-                                            <th class="text-nowrap" scope="row">Fcls</th>
+                                            <th class="text-nowrap" scope="row">Invoice FCLS</th>
+                                            <th class="text-nowrap" scope="row">Invoice Amount</th>
                                             <th class="text-nowrap" scope="row">ETD</th>
                                             <th class="text-nowrap" scope="row">ETA</th>
-                                            <th class="text-nowrap" scope="row">Date</th>
-                                            <th class="text-nowrap" scope="row">Amount</th>
+                                            <th class="text-nowrap" scope="row">Invoice Date</th>
                                         </tr>
 
                                         @foreach(json_decode($contractor->invoice_details) as $key=>$invoice_detail)
@@ -178,10 +208,10 @@
                                                  <td>{{isset($invoice_detail->invoice) ? $invoice_detail->invoice : null }}</td>
                                                  <td>{{isset($invoice_detail->bl_number) ? $invoice_detail->bl_number : null }}</td>
                                                 <td>{{isset($invoice_detail->fcls) ? $invoice_detail->fcls : null }}</td>
+                                                <td>{{isset($invoice_detail->invoice_amount) ? $invoice_detail->invoice_amount : null }}</td>
                                                 <td>{{isset($invoice_detail->etd_date) ? Carbon\Carbon::parse($invoice_detail->etd_date)->format('d/m/y') : null }}</td>
                                                 <td>{{isset($invoice_detail->eta_date) ? Carbon\Carbon::parse($invoice_detail->eta_date)->format('d/m/y') : null }}</td>
                                                 <td>{{isset($invoice_detail->invoice_date) ? Carbon\Carbon::parse($invoice_detail->invoice_date)->format('d/m/y') : null }}</td>
-                                                <td>{{isset($invoice_detail->invoice_amount) ? $invoice_detail->invoice_amount : null }}</td>
                                             </tr>
                                         @endforeach
                                     </table>

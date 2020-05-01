@@ -8,7 +8,7 @@
     <div class="app-body">
 
         <!--left sidebar start-->
-    @include('_partials.sidebar')
+{{--    @include('_partials.sidebar')--}}
         <!--left sidebar end-->
 
         <!--main contents start-->
@@ -17,13 +17,13 @@
             <div class="container-fluid">
 
                 <!--page title start-->
-                <div class="page-title pl-0">
-                    <h4 class="mb-0"> Home
-                    </h4>
-                    <ol class="breadcrumb mb-0 pl-0 pt-1 pb-0">
-                        <li class="breadcrumb-item active">/home</li>
-                    </ol>
-                </div>
+{{--                <div class="page-title pl-0">--}}
+{{--                    <h4 class="mb-0"> Home--}}
+{{--                    </h4>--}}
+{{--                    <ol class="breadcrumb mb-0 pl-0 pt-1 pb-0">--}}
+{{--                        <li class="breadcrumb-item active">/home</li>--}}
+{{--                    </ol>--}}
+{{--                </div>--}}
                 <!--page title end-->
 
                 <!--state widget start-->
@@ -33,25 +33,26 @@
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-4">
-                                            <h6>USD Rate:</h6>
-                                            <p class="mt-1 mb-0">Last Updated:</p>
+                                        <h6>USD Rate:</h6>
+                                        <p class="mt-1 mb-0">Last Updated:</p>
                                     </div>
                                     <div class="col-8">
-                                         <h5 id="latest-usd-rate">
+                                        <h5 id="latest-usd-rate">
                                             @if($latest_db_dollar_rate)
-                                            {{$latest_db_dollar_rate->dollar_rate}}
+                                                {{$latest_db_dollar_rate->dollar_rate}}
                                             @else
-                                            Press Refresh
+                                                Press Refresh
                                             @endif
                                         </h5>
 
                                         <p class="mt-1 mb-0" id="last-updated-time"></p>
                                         <!-- <h6 class="f12 mb-0"></p> -->
                                         <button class="btn btn-primary btn-sm" id="refresh">Refresh</button>
+                                        &nbsp;&nbsp;&nbsp;
                                         @if($latest_db_dollar_rate)
-                                          <p class="mt-1 mb-0" id="last-updated">
+{{--                                          <p class="mt-1 mb-0" id="last-updated">--}}
                                             {{$latest_db_dollar_rate->created_at}}
-                                        </p>
+{{--                                        </p>--}}
                                         @else
                                          <p class="mt-1 mb-0" id="last-updated">
 
