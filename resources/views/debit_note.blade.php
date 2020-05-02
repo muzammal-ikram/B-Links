@@ -141,9 +141,8 @@ ID: sales.blinks@qq.com </I></FONT></FONT></FONT>
             </table>
 <br>
 
-<P LANG="en-US" CLASS="western" STYLE="margin-right: 0.53in">Total Amount in words: 
+<P LANG="en-US" CLASS="western" STYLE="margin-right: 0.53in">Total Amount in words:  <FONT SIZE=2 STYLE="font-size: 11pt"><FONT COLOR="#000000"></FONT><FONT COLOR="#000000"><I><B>{{$word_amount}}</B></I></FONT></FONT>
 </P>
-
 <P LANG="en-US" CLASS="western"><FONT SIZE=2 STYLE="font-size: 11pt">(*)
         Kindly arrange to route TT in favor of following account info and
         advise the swift copy.</FONT></P>

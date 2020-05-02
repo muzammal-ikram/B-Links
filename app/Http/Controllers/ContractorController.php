@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use DB;
 use Barryvdh\DomPDF\Facade as PDF;
+use NumberToWords\NumberToWords;
 class ContractorController extends Controller
 {
     /**
@@ -401,11 +402,16 @@ class ContractorController extends Controller
         $calculate_amount = number_format($calculate_amount, 2);
         $calculate_amount = str_replace(',', '', $calculate_amount);
         
+        $numberToWords = new NumberToWords();
+        $numberTransformer = $numberToWords->getNumberTransformer('en');
+
+        $word_amount =  $numberTransformer->toWords($calculate_amount); 
+
         // invoice More details
         $invoice_details    = json_decode($contract->invoice_details);
         $invoice_count      = count($invoice_details)+1;
 
-        return view('debit_note', compact('contract', 'invoice_details', 'invoice_count', 'date', 'invoice_number', 'bl_number', 'total_amount', 'calculate_amount'));
+        return view('debit_note', compact('contract', 'invoice_details', 'invoice_count', 'date', 'invoice_number', 'bl_number', 'total_amount', 'calculate_amount','word_amount'));
     }
 
     public function downloadDebitNote ($id){
@@ -431,11 +437,14 @@ class ContractorController extends Controller
         $calculate_amount += $invoice_amount;
         $calculate_amount = number_format($calculate_amount, 2);
         $calculate_amount = str_replace(',', '', $calculate_amount);
+        $numberToWords = new NumberToWords();
+        $numberTransformer = $numberToWords->getNumberTransformer('en');
 
+        $word_amount =  $numberTransformer->toWords($calculate_amount); 
         // invoice More details
         $invoice_count      = count($invoice_details)+1;
 
-        $pdf = PDF::loadView('pdf_debit_note', compact('contract', 'invoice_details', 'invoice_count', 'date', 'invoice_number', 'bl_number', 'total_amount', 'calculate_amount'));
+        $pdf = PDF::loadView('pdf_debit_note', compact('contract', 'invoice_details', 'invoice_count', 'date', 'invoice_number', 'bl_number', 'total_amount', 'calculate_amount', 'word_amount'));
         return $pdf->download($contract->contractor_number.'-debit_note.pdf');
     }
 
