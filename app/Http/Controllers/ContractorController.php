@@ -377,8 +377,10 @@ class ContractorController extends Controller
         return $openerInfo;
     }
 
-    public function debitNote ($id){
-
+    public function debitNote ($id, $status){
+        // $status == 1('common')
+        // $status == 0('download')
+        
         $contract           = Contractor::where('id', $id)->first();
 
         $date               = $contract->date;
@@ -411,10 +413,10 @@ class ContractorController extends Controller
         $invoice_details    = json_decode($contract->invoice_details);
         $invoice_count      = count($invoice_details)+1;
 
-        return view('debit_note', compact('contract', 'invoice_details', 'invoice_count', 'date', 'invoice_number', 'bl_number', 'total_amount', 'calculate_amount','word_amount'));
+        return view('debit_note', compact('contract', 'invoice_details', 'invoice_count', 'date', 'invoice_number', 'bl_number', 'total_amount', 'calculate_amount','word_amount', 'status'));
     }
 
-    public function downloadDebitNote ($id){
+    public function downloadDebitNote ($id, $status){
 
         $contract           = Contractor::where('id', $id)->first();
 
@@ -444,7 +446,7 @@ class ContractorController extends Controller
         // invoice More details
         $invoice_count      = count($invoice_details)+1;
 
-        $pdf = PDF::loadView('pdf_debit_note', compact('contract', 'invoice_details', 'invoice_count', 'date', 'invoice_number', 'bl_number', 'total_amount', 'calculate_amount', 'word_amount'));
+        $pdf = PDF::loadView('pdf_debit_note', compact('contract', 'invoice_details', 'invoice_count', 'date', 'invoice_number', 'bl_number', 'total_amount', 'calculate_amount', 'word_amount', 'status'));
         return $pdf->download($contract->contractor_number.'-debit_note.pdf');
     }
 

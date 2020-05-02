@@ -257,8 +257,8 @@
                                               Show Debit Note
                                             </a>                                      
                                             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                              <a class="dropdown-item" href="{{ url('/debit-note', $contractor->id) }}">Simple Debit Note</a>
-                                              <a class="dropdown-item" href="#">Chinese Debit Note</a>
+                                              <a class="dropdown-item" href="{{ url('/debit-note/'.$contractor->id.'/1') }}">Simple Debit Note</a>
+                                              <a class="dropdown-item" href="{{ url('/debit-note/'.$contractor->id.'/0') }}">Chinese Debit Note</a>
                                             </div>
                                           </div>
                                     </div>
@@ -268,8 +268,8 @@
                                           Download Debit Note
                                         </a>                                      
                                         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                          <a class="dropdown-item" href="{{ url('/download-debit-note', $contractor->id) }}">Simple Debit Note</a>
-                                          <a class="dropdown-item" href="#">Chinese Debit Note</a>
+                                          <a class="dropdown-item" href="{{ url('/download-debit-note/'.$contractor->id.'/1') }}">Simple Debit Note</a>
+                                          <a class="dropdown-item" href="{{ url('/download-debit-note/'.$contractor->id.'/0') }}">Chinese Debit Note</a>
                                         </div>
                                       </div>
                                     </div>

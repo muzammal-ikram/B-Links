@@ -31,24 +31,40 @@ th, td {
 </HEAD>
 <BODY LANG="en-US" TEXT="#000000" LINK="#0000ff" DIR="LTR">
 <P LANG="en-US" ALIGN=RIGHT STYLE="line-height: 100%; widows: 2; orphans: 2">
-    <IMG SRC="{{ asset('assets/img/b-links-logo.png') }}" NAME="graphics1" ALIGN=LEFT HSPACE=12 WIDTH=372 HEIGHT=79 BORDER=0><BR>
+    <IMG SRC="{{ asset('assets/img/b-links-logo.png') }}" NAME="graphics1" ALIGN=LEFT HSPACE=12 WIDTH=372 HEIGHT=81 BORDER=0><BR>
 </P>
-<P STYLE="margin-left: 0.5in; text-indent: 0.5in; font-style: normal; line-height: 100%; widows: 2; orphans: 2; margin-top:0px;">
-    <FONT FACE="Times New Roman, serif"><FONT FACE="Calibri, sans-serif"><FONT SIZE=2><I>House
-                    # 251- Westwood Housing Society, </I></FONT></FONT></FONT>
-</P>
-<P STYLE="text-indent: 0.5in; line-height: 100%; widows: 2; orphans: 2; margin-top:0px;">
-    <FONT FACE="Calibri, sans-serif"><FONT SIZE=2><I>Raiwind Road,
-                Thoker, Lahore</I></FONT></FONT></P>
-<P STYLE="text-indent: 0.5in; font-style: normal; line-height: 100%; widows: 2; orphans: 2; margin-top:0px;">
-    <FONT FACE="Times New Roman, serif"><FONT FACE="Calibri, sans-serif"><FONT SIZE=2><I>Pakistan,
-                    Post Code: 53700, </I></FONT></FONT></FONT>
-</P>
-<P STYLE="text-indent: 0.5in; font-style: normal; line-height: 100%; widows: 2; orphans: 2; margin-top:0px;">
-    <FONT FACE="Times New Roman, serif"><FONT FACE="Calibri, sans-serif"><FONT SIZE=2><I>E-mail
-ID: sales.blinks@qq.com </I></FONT></FONT></FONT>
-</P>
-
+    @if($status == 1)
+        <P STYLE="margin-left: 0.5in; text-indent: 0.5in; font-style: normal; line-height: 100%; widows: 2; orphans: 2; margin-top:0px;">
+            <FONT FACE="Times New Roman, serif"><FONT FACE="Calibri, sans-serif"><FONT SIZE=2><I>House
+                            # 251- Westwood Housing Society, </I></FONT></FONT></FONT>
+        </P>
+        <P STYLE="text-indent: 0.5in; line-height: 100%; widows: 2; orphans: 2; margin-top:0px;">
+            <FONT FACE="Calibri, sans-serif"><FONT SIZE=2><I>Raiwind Road,
+                        Thoker, Lahore</I></FONT></FONT></P>
+        <P STYLE="text-indent: 0.5in; font-style: normal; line-height: 100%; widows: 2; orphans: 2; margin-top:0px;">
+            <FONT FACE="Times New Roman, serif"><FONT FACE="Calibri, sans-serif"><FONT SIZE=2><I>Pakistan,
+                            Post Code: 53700, </I></FONT></FONT></FONT>
+        </P>
+        <P STYLE="text-indent: 0.5in; font-style: normal; line-height: 100%; widows: 2; orphans: 2; margin-top:0px;">
+            <FONT FACE="Times New Roman, serif"><FONT FACE="Calibri, sans-serif"><FONT SIZE=2><I>E-mail
+        ID: sales.blinks@qq.com </I></FONT></FONT></FONT>
+        </P>
+    @elseif($status == 0)
+        <P STYLE="margin-left: 0.5in; text-indent: 0.5in; font-style: normal; line-height: 100%; widows: 2; orphans: 2; margin-top:0px;">
+            <FONT FACE="Times New Roman, serif"><FONT FACE="Calibri, sans-serif"><FONT SIZE=2><I>Suite #. 1927, JiaZhaoYe Center, Building B, NanYuan  </I></FONT></FONT></FONT>
+        </P>
+        <P STYLE="text-indent: 0.5in; line-height: 100%; widows: 2; orphans: 2; margin-top:0px;">
+            <FONT FACE="Calibri, sans-serif"><FONT SIZE=2><I>Road 66, Futian Dist. Shenzhen, China,Post Code: 518000,</I></FONT></FONT></P>
+        <P STYLE="text-indent: 0.5in; font-style: normal; line-height: 100%; widows: 2; orphans: 2; margin-top:0px;">
+            <FONT FACE="Times New Roman, serif"><FONT FACE="Calibri, sans-serif"><FONT SIZE=2><I>Ph:+86(755)2227-6490</I></FONT></FONT></FONT>
+        </P>
+        <P STYLE="text-indent: 0.5in; font-style: normal; line-height: 100%; widows: 2; orphans: 2; margin-top:0px;">
+            <FONT FACE="Times New Roman, serif"><FONT FACE="Calibri, sans-serif"><FONT SIZE=2><I>Fax:+86(755)2227-6491</I></FONT></FONT></FONT>
+        </P>
+        <P STYLE="text-indent: 0.5in; font-style: normal; line-height: 100%; widows: 2; orphans: 2; margin-top:0px;">
+            <FONT FACE="Times New Roman, serif"><FONT FACE="Calibri, sans-serif"><FONT SIZE=2><I>E-mail ID: info@blinksinternational.net</I></FONT></FONT></FONT>
+        </P>
+    @endif
 <P STYLE="border-top: none; border-bottom: 1.50pt solid #000000; border-left: none; border-right: none; padding-top: 0in; padding-bottom: 0.01in; padding-left: 0in; padding-right: 0in; line-height: 100%; widows: 2; orphans: 2">
     <FONT FACE="Calibri, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt"><I>
             </I></FONT></FONT></P>

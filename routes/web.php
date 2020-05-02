@@ -53,8 +53,8 @@ Route::get('buyer-info', 'ContractorController@getbuyerInfo')->name('buyer-info'
 Route::get('lc-opener-names', 'ContractorController@getLcOpener')->name('lc-opener-names');
 Route::get('opener-info', 'ContractorController@getOpenerInfo')->name('opener-info');
 
-Route::get('/debit-note/{id}', 'ContractorController@debitNote');
-Route::get('/download-debit-note/{id}', 'ContractorController@downloadDebitNote');
+Route::get('/debit-note/{id}/{status}', 'ContractorController@debitNote');
+Route::get('/download-debit-note/{id}/{status}', 'ContractorController@downloadDebitNote');
 
 Route::get('/save-dollar-rate/{dollar_rate}', 'DollarRateController@saveDollarRate');
 
