@@ -221,14 +221,61 @@
 
                                 <br>
                                 <br>
-                                <div class="btn-demo">
+                                {{-- <div class="btn-demo">
                                     <a href="{{ URL::previous() }}" role="button"
-                                       class="col-1 btn btn-info">Back</a>
-                                    <a href="{{ url('/debit-note', $contractor->id) }}"
-                                       class="col-2 btn btn-warning">Show Debit Note</a>
-                                    <a href="{{ url('/download-debit-note', $contractor->id) }}"
-                                       class="col-3 btn btn-primary">Download Debit Note</a>
-                                </div>
+                                       class="col-1 btn btn-info" style="float:left;">Back</a>
+                                       <div class="dropdown show" >
+                                            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                              Show Debit Note
+                                            </a>                                      
+                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                              <a class="dropdown-item" href="{{ url('/debit-note', $contractor->id) }}">Simple Debit Note</a>
+                                              <a class="dropdown-item" href="#">Chinese Debit Note</a>
+                                            </div>
+                                          </div>
+     
+                                      <div class="dropdown show">
+                                        <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                          Download Debit Note
+                                        </a>                                      
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                          <a class="dropdown-item" href="{{ url('/debit-note', $contractor->id) }}">Simple Debit Note</a>
+                                          <a class="dropdown-item" href="#">Chinese Debit Note</a>
+                                        </div>
+                                      </div> 
+                                </div> --}}
+
+
+                                <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+                                    <div class="btn-group mr-2" role="group" aria-label="First group">
+                                        <a href="{{ URL::previous() }}" role="button"
+                                       class="btn btn-info">Back</a>
+                                    </div>
+                                    <div class="btn-group mr-2" role="group" aria-label="Second group">
+                                        <div class="dropdown show" >
+                                            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                              Show Debit Note
+                                            </a>                                      
+                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                              <a class="dropdown-item" href="{{ url('/debit-note', $contractor->id) }}">Simple Debit Note</a>
+                                              <a class="dropdown-item" href="#">Chinese Debit Note</a>
+                                            </div>
+                                          </div>
+                                    </div>
+                                    <div class="btn-group" role="group" aria-label="Third group">
+                                     <div class="dropdown show">
+                                        <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                          Download Debit Note
+                                        </a>                                      
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                          <a class="dropdown-item" href="{{ url('/download-debit-note', $contractor->id) }}">Simple Debit Note</a>
+                                          <a class="dropdown-item" href="#">Chinese Debit Note</a>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+
+
                             </div>
 
                         </div>

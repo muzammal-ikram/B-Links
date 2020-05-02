@@ -18,26 +18,37 @@
         A:link { color: #0000ff }
         -->
     </STYLE>
+    <style>
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+th, td {
+  padding: 5px;
+  text-align: left;
+}
+</style>
 </HEAD>
 <BODY LANG="en-US" TEXT="#000000" LINK="#0000ff" DIR="LTR">
 <P LANG="en-US" ALIGN=RIGHT STYLE="line-height: 100%; widows: 2; orphans: 2">
     <IMG SRC="{{ asset('assets/img/b-links-logo.png') }}" NAME="graphics1" ALIGN=LEFT HSPACE=12 WIDTH=372 HEIGHT=79 BORDER=0><BR>
 </P>
-<P STYLE="margin-left: 0.5in; text-indent: 0.5in; font-style: normal; line-height: 100%; widows: 2; orphans: 2">
+<P STYLE="margin-left: 0.5in; text-indent: 0.5in; font-style: normal; line-height: 100%; widows: 2; orphans: 2; margin-top:0px;">
     <FONT FACE="Times New Roman, serif"><FONT FACE="Calibri, sans-serif"><FONT SIZE=2><I>House
                     # 251- Westwood Housing Society, </I></FONT></FONT></FONT>
 </P>
-<P STYLE="text-indent: 0.5in; line-height: 100%; widows: 2; orphans: 2">
+<P STYLE="text-indent: 0.5in; line-height: 100%; widows: 2; orphans: 2; margin-top:0px;">
     <FONT FACE="Calibri, sans-serif"><FONT SIZE=2><I>Raiwind Road,
                 Thoker, Lahore</I></FONT></FONT></P>
-<P STYLE="text-indent: 0.5in; font-style: normal; line-height: 100%; widows: 2; orphans: 2">
+<P STYLE="text-indent: 0.5in; font-style: normal; line-height: 100%; widows: 2; orphans: 2; margin-top:0px;">
     <FONT FACE="Times New Roman, serif"><FONT FACE="Calibri, sans-serif"><FONT SIZE=2><I>Pakistan,
                     Post Code: 53700, </I></FONT></FONT></FONT>
 </P>
-<P STYLE="font-style: normal; line-height: 100%; widows: 2; orphans: 2">
-    <FONT FACE="Times New Roman, serif"><FONT FACE="Calibri, sans-serif"><FONT SIZE=2><I>
-                </I></FONT></FONT><FONT FACE="Calibri, sans-serif"><FONT SIZE=2><I>E-mail
-                    ID: sales.blinks@qq.com</I></FONT></FONT></FONT></P>
+<P STYLE="text-indent: 0.5in; font-style: normal; line-height: 100%; widows: 2; orphans: 2; margin-top:0px;">
+    <FONT FACE="Times New Roman, serif"><FONT FACE="Calibri, sans-serif"><FONT SIZE=2><I>E-mail
+ID: sales.blinks@qq.com </I></FONT></FONT></FONT>
+</P>
+
 <P STYLE="border-top: none; border-bottom: 1.50pt solid #000000; border-left: none; border-right: none; padding-top: 0in; padding-bottom: 0.01in; padding-left: 0in; padding-right: 0in; line-height: 100%; widows: 2; orphans: 2">
     <FONT FACE="Calibri, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt"><I>
             </I></FONT></FONT></P>
@@ -68,151 +79,71 @@
     <FONT SIZE=2 STYLE="font-size: 11pt"><I>Being the amount of
             commission towards sales of your yarn as per detail given below and
             debited to your account with us amounting to  </I><FONT COLOR="#ff0000"><I><B>US${{$contract->commission_amount}}/-</B></I></FONT></FONT></P>
-<TABLE WIDTH=686 CELLPADDING=0 CELLSPACING=0>
-    <COL WIDTH=167>
-    <COL WIDTH=138>
-    <COL WIDTH=156>
-    <COL WIDTH=102>
-    <COL WIDTH=121>
-    <COL WIDTH=121>
-    <TR VALIGN=TOP>
-        <TD WIDTH=167 HEIGHT=19 STYLE="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding: 0in">
-            <P STYLE="margin-left: 0.11in; margin-top: 0in"><FONT SIZE=4><I><B>LC Opener
-                            Name</B></I></FONT></P>
-        </TD>
-        <TD WIDTH=138 STYLE="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding: 0in">
-            <P STYLE="margin-left: 0.07in; margin-top: 0in"><FONT SIZE=4><I><B>Contract
-                            #</B></I></FONT></P>
-        </TD>
-        <TD WIDTH=156 STYLE="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding: 0in">
-            <P STYLE="margin-left: 0.07in; margin-top: 0in"><FONT SIZE=4><I><B>Bl #.
-            </B></I></FONT></P>
-        </TD>
-        <TD WIDTH=156 STYLE="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding: 0in">
-            <P STYLE="margin-left: 0.07in; margin-top: 0in"><FONT SIZE=4><I><B>Inv.
-                            No.</B></I></FONT></P>
-        </TD>
-        <TD WIDTH=102 STYLE="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding: 0in">
-            <P STYLE="margin-left: 0.07in; margin-top: 0in"><FONT SIZE=4><I><B>Date</B></I></FONT></P>
-        </TD>
-        <TD WIDTH=121 STYLE="border: 1px solid #000000; padding: 0in">
-            <P STYLE="margin-left: 0.08in; margin-top: 0in"><FONT SIZE=4><I><B>Amt.(US$)</B></I></FONT></P>
-        </TD>
-    </TR>
-    <TR VALIGN=TOP>
-        <TD ROWSPAN={{$invoice_count}} WIDTH=167 HEIGHT=65 STYLE="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding: 0in">
-            <P CLASS="western" STYLE="margin-bottom: 0.14in; widows: 2; orphans: 2; padding: 10px;">
-                <FONT SIZE=3><I><B>{{$contract->lc_opener_name}}</B></I></FONT></P>
-            <P STYLE="margin-left: 0.07in; margin-right: 0.41in"><BR>
-            </P>
-        </TD>
-        <TD ROWSPAN={{$invoice_count}} WIDTH=138 STYLE="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding: 0in">
-            <P STYLE="margin-left: 0.07in; margin-top: 0in"><BR>
-            </P>
-            <P ALIGN=CENTER STYLE="margin-left: 0.07in; margin-top: 0in"><BR>
-            </P>
-            <P ALIGN=CENTER STYLE="margin-left: 0.07in; margin-top: 0in"><A NAME="_GoBack"></A>
-                <FONT SIZE=4><I><B>{{$contract->contractor_number}}</B></I></FONT></P>
-        </TD>
 
-        <TD WIDTH=156 STYLE="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding: 0in">
-                        <P ALIGN=CENTER STYLE="margin-left: 0.07in; margin-top: 0in"><FONT SIZE=4><I>{{ $bl_number }}</I></FONT></P>
-                        <P CLASS="western" ALIGN=RIGHT STYLE="widows: 2; orphans: 2"><BR>
-                        </P>
-                    </TD>
-                    <TD WIDTH=156 STYLE="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding: 0in">
-                        <P ALIGN=CENTER STYLE="margin-left: 0.07in; margin-top: 0in"><FONT SIZE=4><I>{{ $invoice_number }}</I></FONT></P>
-                        <P CLASS="western" ALIGN=RIGHT STYLE="widows: 2; orphans: 2"><BR>
-                        </P>
-                    </TD>
-                    <TD WIDTH=102 STYLE="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding: 0in">
-                        <P STYLE="margin-left: 0.07in; margin-top: 0in"><FONT SIZE=4><I>{{ $contract->invoice_date ? Carbon\Carbon::parse($contract->invoice_date)->format('d/m/y') : "" }}</I></FONT></P>
-                    </TD>
-                    <TD WIDTH=121 STYLE="border: 1px solid #000000; padding: 0in">
-                        <P STYLE="margin-left: 0.08in; margin-top: 0in; font-style: normal">
-                            <FONT SIZE=2 STYLE="font-size: 11pt"><FONT SIZE=4><I>{{ $contract->invoice_amount }}</I></FONT></FONT></P>
-                    </TD>
-        @if($invoice_count > 0)
+            <table style="width:686px"> 
+            <tr>
+                <th style="width:167px;">LC Opener Name</th>
+                <th style="width:138px;">Contract #</th>
+                <th style="width:138px;">BL #</th>
+                <th style="width:138px;">Inv . #</th>
+                <th style="width:138px;">Date</th>
+                <th style="width:138px;">Amt.(US$)</th>
+            </tr>
+            <tr>
+                
+                <td td rowspan="{{$invoice_count}}" style="width:167px;"><i><b>{{$contract->lc_opener_name}}</b></i></td >
+                <td td rowspan="{{$invoice_count}}" style="width:138px;"><i><b>{{$contract->contractor_number}}</b></i></td >
+                <td style="width:138px;"><i>{{ $bl_number }}</i></td >
+                <td style="width:138px;"><i>{{ $invoice_number }}</i></td >
+                <td style="width:138px;"><i>{{ $contract->invoice_date ? Carbon\Carbon::parse($contract->invoice_date)->format('d/m/y') : "" }}</i></td >
+                <td style="width:138px;"><i>{{ $contract->invoice_amount }}</i></td >
+
+            </tr>
+            @if($invoice_count > 0)
             @foreach($invoice_details as $detail)
-
                 @if($loop->first)
+                <tr>  
+                    <td style="width:138px;"><i>{{ isset($detail->bl_number) ? $detail->bl_number : "" }}</i></td >
+                    <td style="width:138px;"><i>{{ isset($detail->invoice) ? $detail->invoice : "" }}</i></td >
+                    <td style="width:138px;"><i>{{ isset($detail->invoice_date) ? Carbon\Carbon::parse($detail->invoice_date)->format('d/m/y') : "" }}</i></td >
+                    <td style="width:138px;"><i>{{ isset($detail->invoice_amount) ? $detail->invoice_amount : "" }}</i></td >
+                </tr>
 
-                    <TR>
-                    <TD WIDTH=156 STYLE="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding: 0in">
-                        <P ALIGN=CENTER STYLE="margin-left: 0.07in; margin-top: 0in"><FONT SIZE=4><I>{{ isset($detail->bl_number) ? $detail->bl_number : "" }}</I></FONT></P>
-                        <P CLASS="western" ALIGN=RIGHT STYLE="widows: 2; orphans: 2"><BR>
-                        </P>
-                    </TD>
-                    <TD WIDTH=156 STYLE="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding: 0in">
-                        <P ALIGN=CENTER STYLE="margin-left: 0.07in; margin-top: 0in"><FONT SIZE=4><I>{{ isset($detail->invoice) ? $detail->invoice : "" }}</I></FONT></P>
-                        <P CLASS="western" ALIGN=RIGHT STYLE="widows: 2; orphans: 2"><BR>
-                        </P>
-                    </TD>
-                    <TD WIDTH=102 STYLE="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding: 0in">
-                        <P STYLE="margin-left: 0.07in; margin-top: 0in"><FONT SIZE=4><I>{{ isset($detail->invoice_date) ? Carbon\Carbon::parse($detail->invoice_date)->format('d/m/y') : "" }}</I></FONT></P>
-                    </TD>
-                    <TD WIDTH=102 STYLE="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding: 0in">
-                        <P STYLE="margin-left: 0.07in; margin-top: 0in"><FONT SIZE=4><I>{{ isset($detail->invoice_amount) ? $detail->invoice_amount : "" }}</I></FONT></P>
-                    </TD>
-                    </TR>
                 @else
-                    <TR>
-
-                    <TD WIDTH=156 STYLE="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding: 0in">
-                        <P ALIGN=CENTER STYLE="margin-left: 0.07in; margin-top: 0in"><FONT SIZE=4><I>{{ isset($detail->bl_number) ? $detail->bl_number : "" }}</I></FONT></P>
-                        <P CLASS="western" ALIGN=RIGHT STYLE="widows: 2; orphans: 2"><BR>
-                        </P>
-                    </TD>
-                    <TD WIDTH=156 STYLE="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding: 0in">
-                        <P ALIGN=CENTER STYLE="margin-left: 0.07in; margin-top: 0in"><FONT SIZE=4><I>{{ isset($detail->invoice) ? $detail->invoice : "" }}</I></FONT></P>
-                        <P CLASS="western" ALIGN=RIGHT STYLE="widows: 2; orphans: 2"><BR>
-                        </P>
-                    </TD>
-                    <TD WIDTH=102 STYLE="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding: 0in">
-                        <P STYLE="margin-left: 0.07in; margin-top: 0in"><FONT SIZE=4><I>{{ isset($detail->invoice_date) ? Carbon\Carbon::parse($detail->invoice_date)->format('d/m/y') : "" }}</I></FONT></P>
-                    </TD>
-                    <TD WIDTH=121 STYLE="border: 1px solid #000000; padding: 0in">
-                        <P STYLE="margin-left: 0.08in; margin-top: 0in; font-style: normal">
-                            <FONT SIZE=2 STYLE="font-size: 11pt"><FONT SIZE=4><I>{{ isset($detail->invoice_amount) ? $detail->invoice_amount : "" }}</I></FONT></FONT></P>
-                    </TD>
-
-                    </TR>
-
+                <tr>  
+                    <td style="width:138px;"><i>{{ isset($detail->bl_number) ? $detail->bl_number : "" }}</i></td >
+                    <td style="width:138px;"><i>{{ isset($detail->invoice) ? $detail->invoice : "" }}</i></td >
+                    <td style="width:138px;"><i>{{ isset($detail->invoice_date) ? Carbon\Carbon::parse($detail->invoice_date)->format('d/m/y') : "" }}</i></td >
+                    <td style="width:138px;"><i>{{ isset($detail->invoice_amount) ? $detail->invoice_amount : "" }}</i></td >
+                </tr>
                 @endif
-
             @endforeach
-        @endif
+            @endif
 
-    <TR VALIGN=TOP>
-        <TD COLSPAN=5 WIDTH=563 HEIGHT=20 BGCOLOR="#e3e3e3" STYLE="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding: 0in">
-            <P ALIGN=RIGHT STYLE="margin-left: 0.07in; margin-top: 0in"><FONT COLOR="#ff0000"><FONT SIZE=4><I><B>Total
-                                Amount</B></I></FONT></FONT></P>
-        </TD>
-        <TD WIDTH=121 BGCOLOR="#e3e3e3" STYLE="border: 1px solid #000000; padding: 0in">
-            <P STYLE="margin-left: 0.08in; margin-top: 0in"><FONT COLOR="#ff0000"><FONT SIZE=4><I><B>${{$calculate_amount}}</B></I></FONT></FONT></P>
-        </TD>
-    </TR>
-    <TR VALIGN=TOP>
-        <TD COLSPAN=5 WIDTH=563 HEIGHT=19 BGCOLOR="#e3e3e3" STYLE="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding: 0in">
-            <P STYLE="margin-left: 0.07in; margin-top: 0in"><FONT COLOR="#ff0000"><FONT SIZE=4><I><B>COMMISSION
-                                @
-                                @if($contract->commission_type == 'percent')
-                                {{$contract->percent}}
-                                @elseif($contract->commission_type == 'kg')
-                                {{$contract->kg}}
-                                @endif
-                                %</B></I></FONT></FONT></P>
+            <tr style="background-color:rgb(227, 227, 227);">  
+                <td colspan="4"></td >
+                <td style="width:138px;"><FONT COLOR="#ff0000"><FONT SIZE=4><I><B>Total Amount</FONT></FONT></td >
+                <td style="width:138px;"><FONT COLOR="#ff0000"><FONT SIZE=4><I><B>${{$calculate_amount}}</FONT></FONT></td >
+            </tr>
 
-        </TD>
-        <TD WIDTH=121 BGCOLOR="#e3e3e3" STYLE="border: 1px solid #000000; padding: 0in">
-            <P STYLE="margin-left: 0.08in; margin-top: 0in"><FONT COLOR="#ff0000"><FONT SIZE=4><I><B>${{$contract->commission_amount}}</B></I></FONT></FONT></P>
-        </TD>
-    </TR>
-</TABLE>
-<P LANG="en-US" CLASS="western" STYLE="margin-right: 0.53in"><BR>
+            <tr style="background-color:rgb(227, 227, 227);">  
+                <td colspan="5"><FONT COLOR="#ff0000"><FONT SIZE=4><I><B>COMMISSION
+                    @
+                    @if($contract->commission_type == 'percent')
+                    {{$contract->percent}}
+                    @elseif($contract->commission_type == 'kg')
+                    {{$contract->kg}}
+                    @endif
+                    %</FONT></FONT></td > 
+                <td style="width:138px;color:rgb(255, 0, 0);">
+                    <FONT COLOR="#ff0000"><FONT SIZE=4><I><B>${{$contract->commission_amount}}</I></FONT></FONT></td >
+            </tr>
+            </table>
+<br>
+
+<P LANG="en-US" CLASS="western" STYLE="margin-right: 0.53in">Total Amount in words: 
 </P>
-<P LANG="en-US" CLASS="western" STYLE="margin-right: 0.53in"><BR>
-</P>
+
 <P LANG="en-US" CLASS="western"><FONT SIZE=2 STYLE="font-size: 11pt">(*)
         Kindly arrange to route TT in favor of following account info and
         advise the swift copy.</FONT></P>
