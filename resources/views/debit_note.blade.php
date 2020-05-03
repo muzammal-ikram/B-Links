@@ -228,7 +228,7 @@ th, td {
     @if($status == 1)
     <IMG SRC="{{ asset('assets/img/debit-note-stamp.png') }}" NAME="Picture 1" ALIGN=LEFT HSPACE=12 WIDTH=220 HEIGHT=104 BORDER=0><BR>
     @elseif($status == 0)
-        <IMG SRC="{{ asset('assets/img/chinese-stamp.png') }}" NAME="Picture 1" ALIGN=LEFT HSPACE=12 WIDTH=220 HEIGHT=104 BORDER=0><BR>
+        <IMG SRC="{{ asset('assets/img/debit-note-chinese-stamp.png') }}" NAME="Picture 1" ALIGN=LEFT HSPACE=12 WIDTH=220 HEIGHT=104 BORDER=0><BR>
     @endif
 </P>
 <P CLASS="western" STYLE="font-style: normal; line-height: 100%; widows: 2; orphans: 2">
