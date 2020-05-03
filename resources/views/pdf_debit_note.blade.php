@@ -235,7 +235,7 @@ ID: sales.blinks@qq.com </I></FONT></FONT></FONT>
     @if($status == 1)
         <IMG SRC="{{ public_path('assets/img/debit-note-stamp.png') }}" NAME="Picture 1" ALIGN=LEFT HSPACE=12 WIDTH=220 HEIGHT=104 BORDER=0><BR>
     @elseif($status == 0)
-        <IMG SRC="{{ public_path('assets/img/chinese-stamp.png') }}" NAME="Picture 1" ALIGN=LEFT HSPACE=12 WIDTH=220 HEIGHT=104 BORDER=0><BR>
+        <IMG SRC="{{ public_path('assets/img/debit-note-chinese-stamp.png') }}" NAME="Picture 1" ALIGN=LEFT HSPACE=12 WIDTH=220 HEIGHT=104 BORDER=0><BR>
     @endif
 
 </P>
