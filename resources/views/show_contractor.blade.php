@@ -125,25 +125,30 @@
                                         @if($contractor->commission_type == 'kg')
                                         <th class="text-nowrap" scope="row">KG</th>
                                             <td>{{$contractor->kg}}</td>
-                                        @else
+                                        @elseif($contractor->commission_type == 'percent')
                                         <th class="text-nowrap" scope="row">Percent</th>
                                             <td>{{$contractor->percent}}</td>
+                                        @else
+                                            <th class="text-nowrap" scope="row">kg</th>
+                                            <td>{{$contractor->both_kg}}</td>
+                                            <th class="text-nowrap" scope="row">Percent</th>
+                                            <td>{{$contractor->both_percent}}</td>
                                         @endif
-                                        <th class="text-nowrap" scope="row">Commission Amount</th>
-                                        <td>{{$contractor->commission_amount}}</td>
                                     </tr>
                                     <tr>
+                                        <th class="text-nowrap" scope="row">Commission Amount</th>
+                                        <td>{{$contractor->commission_amount}}</td>
                                         <th class="text-nowrap" scope="row">AWB</th>
                                         <td>{{$contractor->awb}}</td>
                                         <th class="text-nowrap" scope="row">Document</th>
                                         <td>{{$contractor->document}}</td>
                                         <th class="text-nowrap" scope="row">Shipment Status</th>
                                         <td>{{$contractor->shipment_status}}</td>
-                                        <th class="text-nowrap" scope="row">Commission Deadline</th>
-                                        <td>{{$contractor->comm_deadline ? Carbon\Carbon::parse($contractor->comm_deadline)->format('d/m/y') : ''}}</td>
                                     </tr>
                                     <tr>
-
+                                        <th class="text-nowrap" scope="row">Commission Deadline</th>
+                                        <td>{{$contractor->comm_deadline ? Carbon\Carbon::parse($contractor->comm_deadline)->format('d/m/y') : ''}}</td>
+                                        
                                         <th class="text-nowrap" scope="row">Status</th>
                                         <td>
                                             @php
@@ -227,22 +232,22 @@
                                        <div class="dropdown show" >
                                             <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                               Show Debit Note
-                                            </a>                                      
+                                            </a>
                                             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                                               <a class="dropdown-item" href="{{ url('/debit-note', $contractor->id) }}">Simple Debit Note</a>
                                               <a class="dropdown-item" href="#">Chinese Debit Note</a>
                                             </div>
                                           </div>
-     
+
                                       <div class="dropdown show">
                                         <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                           Download Debit Note
-                                        </a>                                      
+                                        </a>
                                         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                                           <a class="dropdown-item" href="{{ url('/debit-note', $contractor->id) }}">Simple Debit Note</a>
                                           <a class="dropdown-item" href="#">Chinese Debit Note</a>
                                         </div>
-                                      </div> 
+                                      </div>
                                 </div> --}}
 
 
@@ -255,7 +260,7 @@
                                         <div class="dropdown show" >
                                             <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                               Show Debit Note
-                                            </a>                                      
+                                            </a>
                                             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                                               <a class="dropdown-item" href="{{ url('/debit-note/'.$contractor->id.'/1') }}">Simple Debit Note</a>
                                               <a class="dropdown-item" href="{{ url('/debit-note/'.$contractor->id.'/0') }}">Chinese Debit Note</a>
@@ -266,7 +271,7 @@
                                      <div class="dropdown show">
                                         <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                           Download Debit Note
-                                        </a>                                      
+                                        </a>
                                         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                                           <a class="dropdown-item" href="{{ url('/download-debit-note/'.$contractor->id.'/1') }}">Simple Debit Note</a>
                                           <a class="dropdown-item" href="{{ url('/download-debit-note/'.$contractor->id.'/0') }}">Chinese Debit Note</a>

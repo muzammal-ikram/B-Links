@@ -5,12 +5,28 @@
         if(select_commission == 'kg'){
             document.getElementById("kg-input").style.display = "inline";
             document.getElementById("percent-input").style.display = "none";
-            document.getElementById("percent_commission").value = ""
+            document.getElementById("both-kg-input").style.display = "none";
+            document.getElementById("both-percent-input").style.display = "none";
+            document.getElementById("percent_commission").value = "";
+            document.getElementById("both_kg").value = "";
+            document.getElementById("both_percent").value = "";
         }
-        else{
+        else if(select_commission == 'percent'){
             document.getElementById("percent-input").style.display = "inline";
             document.getElementById("kg-input").style.display = "none";
-            document.getElementById("kgs_commission").value = ""
+            document.getElementById("both-kg-input").style.display = "none";
+            document.getElementById("both-percent-input").style.display = "none";
+            document.getElementById("kgs_commission").value = "";
+            document.getElementById("both_kg").value = "";
+            document.getElementById("both_percent").value = "";
+        }
+        else{
+            document.getElementById("both-kg-input").style.display = "inline";
+            document.getElementById("both-percent-input").style.display = "inline";
+            document.getElementById("kg-input").style.display = "none";
+            document.getElementById("percent-input").style.display = "none";
+            document.getElementById("kgs_commission").value = "";
+            document.getElementById("percent_commission").value = "";
         }
     });
     // ******* SELLER NAME **************
@@ -221,8 +237,8 @@ function Delete(button) {
 $(document).ready(function() {
 
     var count = 0;
-  
-    // $(".add-more").click(function(){ 
+
+    // $(".add-more").click(function(){
     //       if(count == 0){
     //           document.getElementById("clone1").style.display = "block";
     //           return;
@@ -258,7 +274,7 @@ $(document).ready(function() {
 //         console.log(count)
 //     });
 
-      $("body").on("click",".remove",function(){ 
+      $("body").on("click",".remove",function(){
           $(this).parents(".control-group").remove();
       });
 
@@ -294,6 +310,9 @@ function totalCommission(){
     if(commission_type == 'percent'){
         CommissionPercentage();
     }
+    if(commission_type == 'kg-percent'){
+        CommissionBothKgPercentage();
+    }
 }
 function CommissionPerKg(){
     var qty = $("#qty_show").val();
@@ -325,6 +344,15 @@ function CommissionPercentage(){
     document.getElementById('commission_amount_show').value = commission;
     document.getElementById('commission_amount_hide').value = commission;
 }
+
+    function CommissionBothKgPercentage(){
+        var both_kg_input = $("#both_kg").val();
+        var both_percent_input = $("#both_percent").val();
+        var commission = +both_kg_input + +both_percent_input;
+        commission = commission.toFixed(2);
+        document.getElementById('commission_amount_show').value = commission;
+        document.getElementById('commission_amount_hide').value = commission;
+    }
 
 
 
@@ -359,7 +387,7 @@ function CommissionPercentage(){
 //                                                                 '<input type="number" step="any" name="invoice_fcls_add[]" class="form-control" value="" autocomplete="off">'+
 
 //                                                             '</div>'+
- 
+
 //                                                             '<div class="col-md-2 mb-3">'+
 //                                                                 '<label for="validationCustom04">ETD</label>'+
 //                                                                 '<input type="date" name="etd_date_add[]" class="form-control {{ $errors->has('etd') ? ' is-invalid' : '' }}" id="validationCustom04" value="" autocomplete="off">'+
@@ -382,13 +410,13 @@ function CommissionPercentage(){
 //                                                                         '</div>'+
 //                                                                     '</div>'+
 //                                                                 '</div>'+
-//                                                             '</div>'+ 
-//                                                         '</div>'+ 
+//                                                             '</div>'+
+//                                                         '</div>'+
 //                                                     '</div>'+
 
 //                                                   '</div>'+
 //                                                 '</div>'+
-//                                             '</div>'); 
+//                                             '</div>');
 //         });
 //         $(document).on("click", "a.remove" , function() {
 //             $(this).parent().remove();

@@ -294,6 +294,7 @@
                                                           <select class="form-control" id="select-commission" name="commission_type" autocomplete="off">
                                                               <option value="kg">kilogram kg</option>
                                                               <option value="percent">percentage %</option>
+                                                              <option value="kg-percent">kg + percent</option>
                                                           </select>
                                                       </div>
                                                       <div class="col-md-3 mb-3" id="kg-input">
@@ -311,6 +312,22 @@
                                                               Please provide a Percent.
                                                           </div>
                                                       </div>
+
+                                                      <div class="col-md-2 mb-3" id="both-kg-input" style="display:none">
+                                                          <label for="validationCustom01">kgs</label>
+                                                          <input type="number" step="any" name="both_kg" class="form-control {{ $errors->has('both_kg') ? ' is-invalid' : '' }}" id="both_kg" value="{{old('both_kg')}}" autocomplete="off">
+                                                          <div class="invalid-feedback">
+                                                              Please provide a kg.
+                                                          </div>
+                                                      </div>
+                                                      <div class="col-md-2 mb-3" id="both-percent-input" style="display:none">
+                                                          <label for="validationCustom01">Percent</label>
+                                                          <input type="number" step="any" name="both_percent" class="form-control {{ $errors->has('both_percent') ? ' is-invalid' : '' }}" id="both_percent" value="{{old('both_percent')}}" autocomplete="off">
+                                                          <div class="invalid-feedback">
+                                                              Please provide a Percent.
+                                                          </div>
+                                                      </div>
+
                                                       <div class="col-md-1 mb-3">
                                                         <label for="qty_show">Total</label>
                                                         <button class="btn btn-primary form-control" type="button" onclick="totalCommission()">=</button>

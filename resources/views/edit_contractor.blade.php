@@ -297,6 +297,7 @@
                                                           <select class="form-control" id="select-commission" name="commission_type" autocomplete="off">
                                                               <option value="kg" {{ ($contractor->commission_type == "kg") ? "selected" : "" }}>kilogram kg</option>
                                                               <option value="percent" {{ ($contractor->commission_type == "percent") ? "selected" : "" }}>percentage %</option>
+                                                              <option value="kg-percent" {{ ($contractor->commission_type == "kg-percent") ? "selected" : "" }}>kg + percent</option>
                                                           </select>
                                                       </div>
 
@@ -315,6 +316,22 @@
                                                               Please provide a Percent.
                                                           </div>
                                                       </div>
+
+                                                      <div class="col-md-2 mb-3 {{ ($contractor->commission_type == 'kg-percent') ? 'display_block' : 'display_none'}}" id="both-kg-input">
+                                                          <label for="validationCustom01">kgs</label>
+                                                          <input type="number" step="any" name="both_kg" class="form-control" id="both_kg" value="{{ $contractor->both_kg }}" autocomplete="off">
+                                                          <div class="invalid-feedback">
+                                                              Please provide a kg.
+                                                          </div>
+                                                      </div>
+                                                      <div class="col-md-2 mb-3 {{ ($contractor->commission_type == 'kg-percent') ? 'display_block' : 'display_none'}}" id="both-percent-input">
+                                                          <label for="validationCustom01">Percent</label>
+                                                          <input type="number" step="any" name="both_percent" class="form-control" id="both_percent" value="{{ $contractor->both_percent }}" autocomplete="off">
+                                                          <div class="invalid-feedback">
+                                                              Please provide a Percent.
+                                                          </div>
+                                                      </div>
+
                                                       <div class="col-md-1 mb-3">
                                                         <label for="qty_show">Total</label>
                                                         <button class="btn btn-primary form-control" type="button" onclick="totalCommission()">=</button>
