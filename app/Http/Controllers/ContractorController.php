@@ -36,7 +36,7 @@ class ContractorController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    { 
+    {
         $invoice_details = [];
 
         $invoice_number_add     = $request->invoice_number_add;
@@ -120,6 +120,10 @@ class ContractorController extends Controller
         $contractor->commission_type        = $commission_type;
         $contractor->percent                = $percent;
         $contractor->kg                     = $kg;
+
+        $contractor->both_kg                = $request->get('both_kg');
+        $contractor->both_percent           = $request->get('both_percent');
+
         $contractor->commission_amount      = $commission_amount;
 
         // Invoice Details
@@ -216,7 +220,7 @@ class ContractorController extends Controller
                 }
                 $invoice_amount   = number_format($invoice_amount_add[$key] ,2);
                 $arr['invoice_amount'] = str_replace(',', '', $invoice_amount);
-        
+
                 array_push($invoice_details, $arr);
             }
 
@@ -272,6 +276,10 @@ class ContractorController extends Controller
         $contractor->commission_type        = $commission_type;
         $contractor->percent                = $percent;
         $contractor->kg                     = $kg;
+
+        $contractor->both_kg                = $request->get('both_kg');
+        $contractor->both_percent           = $request->get('both_percent');
+
         $contractor->commission_amount      = $commission_amount;
 
         // Invoice Details
@@ -380,7 +388,7 @@ class ContractorController extends Controller
     public function debitNote ($id, $status){
         // $status == 1('common')
         // $status == 0('download')
-        
+
         $contract           = Contractor::where('id', $id)->first();
 
         $date               = $contract->date;
@@ -403,11 +411,11 @@ class ContractorController extends Controller
         $calculate_amount += $invoice_amount;
         $calculate_amount = number_format($calculate_amount, 2);
         $calculate_amount = str_replace(',', '', $calculate_amount);
-        
+
         $numberToWords = new NumberToWords();
         $numberTransformer = $numberToWords->getNumberTransformer('en');
 
-        $word_amount =  $numberTransformer->toWords($calculate_amount); 
+        $word_amount =  $numberTransformer->toWords($calculate_amount);
 
         // invoice More details
         $invoice_details    = json_decode($contract->invoice_details);
@@ -429,7 +437,7 @@ class ContractorController extends Controller
         $calculate_amount = 0;
         foreach($invoice_details as $detail) {
             if ($detail->invoice_amount != "") {
-                    
+
                 $amount = isset($detail->invoice_amount) ? $detail->invoice_amount : 0;
                 $amount = str_replace(',', '', $amount);
                 $calculate_amount += $amount;
@@ -442,7 +450,7 @@ class ContractorController extends Controller
         $numberToWords = new NumberToWords();
         $numberTransformer = $numberToWords->getNumberTransformer('en');
 
-        $word_amount =  $numberTransformer->toWords($calculate_amount); 
+        $word_amount =  $numberTransformer->toWords($calculate_amount);
         // invoice More details
         $invoice_count      = count($invoice_details)+1;
 
