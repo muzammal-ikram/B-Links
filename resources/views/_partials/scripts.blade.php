@@ -301,6 +301,22 @@ function totalAmount(){
     document.getElementById('total_amount_show').value = total;
     document.getElementById('total_amount_hide').value = total;
 }
+
+
+    function item_2_totalAmount(){
+        var price_dollar = $("#item_2_price_per_dollar").val();
+        var qty = $("#item_2_qty").val();
+        if(price_dollar == '' || qty == ''){
+            document.getElementById('item_2_total_amount_show').value = '';
+            document.getElementById('item_2_total_amount_hide').value = '';
+            return;
+        }
+        var total =  price_dollar * qty;
+        total = total.toFixed(2);
+        document.getElementById('item_2_total_amount_show').value = total;
+        document.getElementById('item_2_total_amount_hide').value = total;
+    }
+
 function totalCommission(){
     var commission_type = $("#select-commission").val();
 
@@ -352,6 +368,28 @@ function CommissionPercentage(){
         commission = commission.toFixed(2);
         document.getElementById('commission_amount_show').value = commission;
         document.getElementById('commission_amount_hide').value = commission;
+    }
+
+    function addItem(){
+        document.getElementById("item-2-input").style.display = "inline";
+        document.getElementById("delete-item-btn").style.display = "inline";
+        document.getElementById("fcls-2-input").style.display = "inline";
+        document.getElementById("payment-2-input").style.display = "flex";
+        document.getElementById("add-item-btn").style.display = "none";
+    }
+
+    function deleteItem(){
+        document.getElementById("add-item-btn").style.display = "inline";
+        document.getElementById("item-2-input").style.display = "none";
+        document.getElementById("delete-item-btn").style.display = "none";
+        document.getElementById("fcls-2-input").style.display = "none";
+        document.getElementById("payment-2-input").style.display = "none";
+        document.getElementById("item_2").value = "";
+        document.getElementById("item_2_fcls").value = "";
+        document.getElementById("item_2_price_per_dollar").value = "";
+        document.getElementById("item_2_qty").value = "";
+        document.getElementById("item_2_total_amount_hide").value = "";
+        document.getElementById("item_2_total_amount_show").value = "";
     }
 
 

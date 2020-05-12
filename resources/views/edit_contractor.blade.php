@@ -14,6 +14,9 @@
     .display_none{
         display: none;
     }
+    .display_flex{
+        display: flex;
+    }
 </style>
 <div class="app-body">
 
@@ -79,7 +82,7 @@
                                                     <input type="date" name="date" class="form-control" id="Date" value="{{ $contractor->date ? Carbon\Carbon::parse($contractor->date)->format('Y-m-d') : ""}}" autocomplete="off">
                                                   </div>
 
-                                                <div class="col-md-6 mb-3">
+                                                <div class="col-md-3 mb-3">
                                                     <label for="contract_number">Contract #</label>
                                                     <input type="text" name="contract_number" class="form-control" value="{{ $contractor->contractor_number}}" autocomplete="off">
                                                     <div class="invalid-feedback">
@@ -87,13 +90,32 @@
                                                     </div>
                                                 </div>
 
-                                                <div class="col-md-3 mb-3">
+                                                <div class="col-md-2 mb-3">
                                                     <label for="item">Item</label>
                                                     <input type="text" name="item" class="form-control" value="{{ $contractor->item }}" autocomplete="off">
                                                     <div class="invalid-feedback">
                                                         Please provide a Count.
                                                     </div>
                                                 </div>
+
+                                                <div class="col-md-2 mb-3 {{ ($contractor->item_2 != '') ? 'display_block' : 'display_none'}}" id="item-2-input">
+                                                    <label for="item">Item 2</label>
+                                                    <input type="text" name="item_2" class="form-control" id="item_2" value="{{ $contractor->item_2 }}" autocomplete="off">
+                                                    <div class="invalid-feedback">
+                                                        Please provide a Count.
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-1 mb-3 {{ ($contractor->item_2 == '') ? 'display_block' : 'display_none'}}" id="add-item-btn">
+                                                    <label for="qty_show">Add Item</label>
+                                                    <button class="btn btn-primary form-control" type="button" onclick="addItem()">+</button>
+                                                </div>
+
+                                                <div class="col-md-1 mb-3 {{ ($contractor->item_2 != '') ? 'display_block' : 'display_none'}}" id="delete-item-btn">
+                                                    <label for="qty_show">Delete Item</label>
+                                                    <button class="btn btn-danger form-control" type="button" onclick="deleteItem()">-</button>
+                                                </div>
+
                                             </div>
                                         </div>
                                     </div>
@@ -222,13 +244,22 @@
                                             <h5 class="card-header h5">Contract Details</h5>
                                             <div class="card-body">
                                                 <div class="row">
-                                                    <div class="col-md-3 mb-3">
+                                                    <div class="col-md-2 mb-3">
                                                         <label for="validationCustom01">FCLS</label>
                                                         <input type="number" step="any" name="fcls" class="form-control" value="{{ $contractor->fcls }}" autocomplete="off">
                                                         <div class="invalid-feedback">
                                                             Please provide a FCLS.
                                                         </div>
                                                     </div>
+
+                                                    <div class="col-md-2 mb-3 {{ ($contractor->item_2_fcls != '') ? 'display_block' : 'display_none'}}" id="fcls-2-input">
+                                                        <label for="validationCustom01">Item 2 FCLS </label>
+                                                        <input type="number" step="any" name="item_2_fcls" id="item_2_fcls" class="form-control" value="{{ $contractor->item_2_fcls }}" autocomplete="off">
+                                                        <div class="invalid-feedback">
+                                                            Please provide a FCLS.
+                                                        </div>
+                                                    </div>
+
                                                     <div class="col-md-3 mb-3">
                                                         <label for="validationCustom01">LSD</label>
                                                         <input type="date" name="lsd" class="form-control" value="{{ $contractor->lsd ? Carbon\Carbon::parse($contractor->lsd)->format('Y-m-d') : null }}" autocomplete="off">
@@ -236,7 +267,7 @@
                                                             Please provide a LSD.
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-3 mb-3">
+                                                    <div class="col-md-2 mb-3">
                                                         <label for="lc_type">LC Type</label>
                                                         <select class="form-control" id="sel1" name="lc_type">
                                                             <option value="15" {{ ($contractor->lc_type==15) ? "selected" : "" }}>15</option>
@@ -291,6 +322,39 @@
 
                                                       </div>
                                                   </div>
+
+                                                  <div class="row {{ ($contractor->item_2 != '') ? 'display_flex' : 'display_none'}}" id="payment-2-input">
+
+                                                      <div class="col-md-3 mb-3">
+                                                          <label for="price_per_dollar">Item 2 Price Per $</label>
+                                                          <input type="number" step="any" name="item_2_price_per_dollar" class="form-control" id="item_2_price_per_dollar" value="{{$contractor->item_2_price_per_dollar}}" autocomplete="off">
+                                                          <div class="invalid-feedback">
+                                                              Please provide a Price Per Kg.
+                                                          </div>
+                                                      </div>
+
+                                                      <div class="col-md-3 mb-3">
+                                                          <label for="qty_show">Item 2 Qty (in kg's)</label>
+                                                          <input type="number" step="any" class="form-control" name="item_2_qty" id="item_2_qty" value="{{$contractor->item_2_qty}}" autocomplete="off" >
+
+                                                      </div>
+                                                      <div class="col-md-1 mb-3">
+                                                          <label for="qty_show">Total</label>
+                                                          <button class="btn btn-primary form-control" type="button" onclick="item_2_totalAmount()">=</button>
+                                                      </div>
+
+                                                      <div class="col-md-4 mb-3">
+                                                          <label for="validationCustom04">Item 2 Total Amount</label>
+                                                          <input type="text" class="form-control" id="item_2_total_amount_show" value="{{$contractor->item_2_total_amount}}" autocomplete="off" disabled>
+                                                          <input type="text" name="item_2_total_amount" id="item_2_total_amount_hide" value="{{$contractor->item_2_total_amount}}" autocomplete="off" style="display:none;">
+
+                                                          <div class="invalid-feedback">
+                                                              Please provide a Total Amount.
+                                                          </div>
+
+                                                      </div>
+                                                  </div>
+
                                                   <div class="row">
                                                       <div class="col-md-3  mb-3">
                                                           <label for="commission">Commission Type</label>
