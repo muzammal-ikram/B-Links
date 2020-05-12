@@ -145,10 +145,26 @@
                                         <th class="text-nowrap" scope="row">Shipment Status</th>
                                         <td>{{$contractor->shipment_status}}</td>
                                     </tr>
+                                    @if($contractor->item_2 != '')
                                     <tr>
+                                        <th class="text-nowrap" scope="row">Item 2</th>
+                                        <td>{{$contractor->item_2}}</td>
+                                        <th class="text-nowrap" scope="row">Item 2 FCLS</th>
+                                        <td>{{$contractor->item_2_fcls}}</td>
+                                        <th class="text-nowrap" scope="row">Item 2 Price per $</th>
+                                        <td>{{$contractor->item_2_price_per_dollar}}</td>
+                                        <th class="text-nowrap" scope="row">Item 2 Qty</th>
+                                        <td>{{$contractor->item_2_qty}}</td>
+                                    </tr>
+                                    @endif
+                                    <tr>
+                                        @if($contractor->item_2 != '')
+                                        <th class="text-nowrap" scope="row">Item 2 Total Amount</th>
+                                        @endif
+                                        <td>{{$contractor->item_2_total_amount}}</td>
                                         <th class="text-nowrap" scope="row">Commission Deadline</th>
                                         <td>{{$contractor->comm_deadline ? Carbon\Carbon::parse($contractor->comm_deadline)->format('d/m/y') : ''}}</td>
-                                        
+
                                         <th class="text-nowrap" scope="row">Status</th>
                                         <td>
                                             @php

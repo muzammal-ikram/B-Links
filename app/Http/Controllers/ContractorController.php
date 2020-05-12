@@ -99,6 +99,14 @@ class ContractorController extends Controller
         $contractor->contractor_number      = $request->get('contract_number');
         $contractor->item                  = $request->get('item');
 
+        // for more than 1 item inputs
+
+        $contractor->item_2                = $request->get('item_2');
+        $contractor->item_2_fcls           = $request->get('item_2_fcls');
+        $contractor->item_2_price_per_dollar          = $request->get('item_2_price_per_dollar');
+        $contractor->item_2_qty               = $request->get('item_2_qty');
+        $contractor->item_2_total_amount       = $request->get('item_2_total_amount');
+
         // Seller
         $contractor->seller_name            = $request->get('seller_name');
 
@@ -258,6 +266,14 @@ class ContractorController extends Controller
         $contractor->date                   = $request->get('date');
         $contractor->contractor_number      = $request->get('contract_number');
         $contractor->item                  = $request->get('item');
+
+        // for more than 1 item inputs
+
+        $contractor->item_2                = $request->get('item_2');
+        $contractor->item_2_fcls           = $request->get('item_2_fcls');
+        $contractor->item_2_price_per_dollar          = $request->get('item_2_price_per_dollar');
+        $contractor->item_2_qty               = $request->get('item_2_qty');
+        $contractor->item_2_total_amount       = $request->get('item_2_total_amount');
 
         // Seller
         $contractor->seller_name            = $request->get('seller_name');

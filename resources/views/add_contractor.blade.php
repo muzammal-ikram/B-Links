@@ -74,7 +74,7 @@
                                                     <input type="date" name="date" class="form-control {{ $errors->has('date') ? ' is-invalid' : '' }}" id="validationCustom04" value="{{old('date')}}" autocomplete="off">
                                                   </div>
 
-                                                <div class="col-md-6 mb-3">
+                                                <div class="col-md-3 mb-3">
                                                     <label for="contract_number">Contract #</label>
                                                     <input type="text" name="contract_number" class="form-control {{ $errors->has('contract_number') ? ' is-invalid' : '' }}" id="contract_number"  value="{{old('contract_number')}}" autocomplete="off">
                                                     <div class="invalid-feedback">
@@ -82,13 +82,33 @@
                                                     </div>
                                                 </div>
 
-                                                <div class="col-md-3 mb-3">
+                                                <div class="col-md-2 mb-3">
                                                     <label for="item">Item</label>
                                                     <input type="text" name="item" class="form-control {{ $errors->has('item') ? ' is-invalid' : '' }}" id="item" value="{{old('item')}}" autocomplete="off">
                                                     <div class="invalid-feedback">
                                                         Please provide a Count.
                                                     </div>
                                                 </div>
+
+                                                <div class="col-md-2 mb-3" id="item-2-input" style="display: none">
+                                                    <label for="item">Item 2</label>
+                                                    <input type="text" name="item_2" class="form-control {{ $errors->has('item_2') ? ' is-invalid' : '' }}" id="item_2" value="{{old('item_2')}}" autocomplete="off">
+                                                    <div class="invalid-feedback">
+                                                        Please provide a Count.
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-1 mb-3" id="add-item-btn">
+                                                    <label for="qty_show">Add Item</label>
+                                                    <button class="btn btn-primary form-control" type="button" onclick="addItem()">+</button>
+                                                </div>
+
+                                                <div class="col-md-1 mb-3" id="delete-item-btn" style="display: none">
+                                                    <label for="qty_show">Delete Item</label>
+                                                    <button class="btn btn-danger form-control" type="button" onclick="deleteItem()">-</button>
+                                                </div>
+
+
                                             </div>
                                         </div>
                                     </div>
@@ -219,13 +239,22 @@
                                             <h5 class="card-header h5">Contract Details</h5>
                                             <div class="card-body">
                                                 <div class="row">
-                                                    <div class="col-md-3 mb-3">
+                                                    <div class="col-md-2 mb-3">
                                                         <label for="validationCustom01">FCLS</label>
                                                         <input type="number" step="any" name="fcls" class="form-control {{ $errors->has('fcls') ? ' is-invalid' : '' }}" value="{{old('fcls')}}" autocomplete="off">
                                                         <div class="invalid-feedback">
                                                             Please provide a FCLS.
                                                         </div>
                                                     </div>
+
+                                                    <div class="col-md-2 mb-3" id="fcls-2-input" style="display: none">
+                                                        <label for="validationCustom01">Item 2 FCLS </label>
+                                                        <input type="number" step="any" name="item_2_fcls" class="form-control {{ $errors->has('item_2_fcls') ? ' is-invalid' : '' }}" value="{{old('item_2_fcls')}}" autocomplete="off">
+                                                        <div class="invalid-feedback">
+                                                            Please provide a FCLS.
+                                                        </div>
+                                                    </div>
+
                                                     <div class="col-md-3 mb-3">
                                                         <label for="validationCustom01">LSD</label>
                                                         <input type="date" name="lsd" class="form-control {{ $errors->has('lsd') ? ' is-invalid' : '' }}" id="validationCustom04" value="{{old('lsd')}}" autocomplete="off">
@@ -233,7 +262,7 @@
                                                             Please provide a LSD.
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-3 mb-3">
+                                                    <div class="col-md-2 mb-3">
                                                         <label for="lc_type">LC Type</label>
                                                         <select class="form-control" id="sel1" name="lc_type">
                                                             <option value="15">15</option>
@@ -288,6 +317,39 @@
 
                                                       </div>
                                                   </div>
+
+                                                  <div class="row" id="payment-2-input" style="display: none">
+
+                                                      <div class="col-md-3 mb-3">
+                                                          <label for="price_per_dollar">Item 2 Price Per $</label>
+                                                          <input type="number" step="any" name="item_2_price_per_dollar" class="form-control {{ $errors->has('item_2_price_per_dollar') ? ' is-invalid' : '' }}" id="item_2_price_per_dollar" value="{{old('item_2_price_per_dollar')}}" autocomplete="off">
+                                                          <div class="invalid-feedback">
+                                                              Please provide a Price Per Kg.
+                                                          </div>
+                                                      </div>
+
+                                                      <div class="col-md-3 mb-3">
+                                                          <label for="qty_show">Item 2 Qty (in kg's)</label>
+                                                          <input type="number" step="any" class="form-control" name="item_2_qty" id="item_2_qty" value="" autocomplete="off" >
+
+                                                      </div>
+                                                      <div class="col-md-1 mb-3">
+                                                          <label for="qty_show">Total</label>
+                                                          <button class="btn btn-primary form-control" type="button" onclick="item_2_totalAmount()">=</button>
+                                                      </div>
+
+                                                      <div class="col-md-4 mb-3">
+                                                          <label for="validationCustom04">Item 2 Total Amount</label>
+                                                          <input type="text" class="form-control {{ $errors->has('item_2_total_amount') ? ' is-invalid' : '' }}" id="item_2_total_amount_show" value="" autocomplete="off" disabled>
+                                                          <input type="text" name="item_2_total_amount" id="item_2_total_amount_hide" value="" autocomplete="off" style="display:none;" >
+
+                                                          <div class="invalid-feedback">
+                                                              Please provide a Total Amount.
+                                                          </div>
+
+                                                      </div>
+                                                  </div>
+
                                                   <div class="row">
                                                       <div class="col-md-3  mb-3">
                                                           <label for="commission">Commission Type</label>
