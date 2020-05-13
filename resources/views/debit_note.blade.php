@@ -149,6 +149,11 @@ th, td {
                     {{$contract->percent}}
                     @elseif($contract->commission_type == 'kg')
                     {{$contract->kg}}
+                   @elseif($contract->commission_type == 'kg-percent')
+                        @php
+                       $both_commission =  $contract->both_kg +  $contract->both_percent;
+                        @endphp
+                    {{$both_commission}}
                     @endif
                     %</FONT></FONT></td >
                 <td style="width:138px;color:rgb(255, 0, 0);">
