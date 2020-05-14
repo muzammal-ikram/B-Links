@@ -653,7 +653,7 @@
                                                     <div class="card-body">
                                                         <div class="row">
 
-                                                            <div class="col-md-4 mb-3">
+                                                            <div class="col-md-3 mb-3">
                                                                 <label for="validationCustom05">AWB</label>
                                                                 <input type="text" name="awb" class="form-control" value="{{ $contractor->awb }}" autocomplete="off">
                                                                 <div class="invalid-feedback">
@@ -661,7 +661,7 @@
                                                                 </div>
                                                             </div>
 
-                                                            <div class="col-md-4 mb-3">
+                                                            <div class="col-md-3 mb-3">
                                                                 <label for="validationCustom05">Document</label>
 {{--                                                                <input type="text" name="document" class="form-control" value="{{ $contractor->document }}" autocomplete="off">--}}
                                                                 <select class="form-control" id="sel1" name="document">
@@ -673,7 +673,7 @@
                                                                 </div>
                                                             </div>
 
-                                                            <div class="col-md-4 mb-3">
+                                                            <div class="col-md-3 mb-3">
                                                                 <label for="lc_type">Shipment Status</label>
                                                                 <select class="form-control" id="sel1" name="shipment_status">
                                                                     <option value="pending" {{ ($contractor->shipment_status == 'pending') ? "selected" : "" }}>Pending</option>
@@ -681,6 +681,17 @@
                                                                 </select>
                                                                 <div class="invalid-feedback">
                                                                     Please provide a Shipment Status.
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="col-md-3 mb-3">
+                                                                <label for="lc_type">Commission Status</label>
+                                                                <select class="form-control" id="commission_status" name="commission_status">
+                                                                    <option value="Not qualified">Not Qualified</option>
+                                                                    <option value="Qualified">Qualified</option>
+                                                                </select>
+                                                                <div class="invalid-feedback">
+                                                                    Please provide a Commission Status.
                                                                 </div>
                                                             </div>
 
