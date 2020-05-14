@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class UpdateContractorTable extends Migration
+class AddInvoiceAmount extends Migration
 {
     /**
      * Run the migrations.
@@ -14,8 +14,9 @@ class UpdateContractorTable extends Migration
     public function up()
     {
         Schema::table('contractors', function (Blueprint $table) {
-            $table->string('invoice_amount')->after('invoice_fcls')->nullable(); 
+            $table->string('invoice_amount')->after('invoice_fcls')->nullable();
         });
+        //
     }
 
     /**

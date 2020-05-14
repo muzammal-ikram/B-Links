@@ -412,17 +412,17 @@ class ContractorController extends Controller
         $bl_number          = $contract->bl_number;
         $total_amount       = $contract->total_amount;
         $invoice_details    = json_decode($contract->invoice_details);
-        $invoice_amount     = $contract->invoice_amount;
-
+        $invoice_amount     = $contract->invoice_amount ? $contract->invoice_amount : 0;
+        
         $calculate_amount = 0;
         foreach($invoice_details as $detail){
             if($detail->invoice_amount != ""){
 
-            $amount = isset($detail->invoice_amount) ? $detail->invoice_amount : 0;
-            $amount = str_replace(',', '', $amount);
-            $calculate_amount += $amount;
+                $amount = isset($detail->invoice_amount) ? $detail->invoice_amount : 0;
+                $amount = str_replace(',', '', $amount);
+                $calculate_amount += $amount;
+            }
         }
-    }
         $invoice_amount = str_replace(',', '', $invoice_amount);
         $calculate_amount += $invoice_amount;
         $calculate_amount = number_format($calculate_amount, 2);
@@ -448,7 +448,7 @@ class ContractorController extends Controller
         $invoice_number     = $contract->invoice_number;
         $bl_number          = $contract->bl_number;
         $total_amount       = $contract->total_amount;
-        $invoice_amount     = $contract->invoice_amount;
+        $invoice_amount     = $contract->invoice_amount ? $contract->invoice_amount : 0;
         $invoice_details    = json_decode($contract->invoice_details);
         $calculate_amount = 0;
         foreach($invoice_details as $detail) {
