@@ -11,6 +11,19 @@
                 <div class="dropdown-menu" x-placement="bottom-start"
                             style="position: absolute; transform: translate3d(0px, 39px, 0px); top: 0px; left: 0px; will-change: transform;">
 
+                        @php
+                            $nowDate        =  Carbon\Carbon::now();
+                            $last7Days      = $con->comm_deadline->subDays(7);
+                            $comm_deadline  = $con->comm_deadline;
+                        @endphp
+                        @if($nowDate >= $last7Days && $nowDate <= $comm_deadline)
+                            <a class="dropdown-item"
+                            href="{{ url('download-debit-note/'.$con->id.'/1') }}"> <i
+                                class="fa fa-download text-primary pr-2"></i> Simple Debit Note </a>
+                            <a class="dropdown-item"
+                            href="{{ url('download-debit-note/'.$con->id.'/0') }}"> <i
+                                class="fa fa-download text-primary pr-2"></i> Chinese Debit Note </a>
+                        @endif
                     <a class="dropdown-item"
                        href="{{ route('show-contractor', $con->id) }}"> <i
                             class="ti-eye text-primary pr-2"></i> View </a>
