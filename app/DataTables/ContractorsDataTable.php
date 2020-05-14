@@ -53,7 +53,7 @@ class ContractorsDataTable extends DataTable
             if($nowDate >= $last7Days && $nowDate <= $comm_deadline){
                 return "last 7 days";
             }else if($nowDate > $comm_deadline){
-                return "Completed";
+                return "Overdue";
             }else{
                 return "Pending";
             }
@@ -121,6 +121,26 @@ class ContractorsDataTable extends DataTable
                 'data' => 'item'
             ],
 
+            'Price'=>[
+                'data' => 'price_per_dollar'
+            ],
+
+            'Qty'=>[
+                'data' => 'qty'
+            ],
+
+            'Item 2'=>[
+                'data' => 'item_2'
+            ],
+
+            'Item 2 Price'=>[
+                'data' => 'item_2_price_per_dollar'
+            ],
+
+            'Item 2 Qty'=>[
+                'data' => 'item_2_qty'
+            ],
+
             'Seller'=>[
                 'data' => 'seller_name',
             ],
@@ -133,8 +153,11 @@ class ContractorsDataTable extends DataTable
             'Commission'=>[
                 'data'=>'comm_deadline'
             ],
-            'Status'=>[
+            'Cont Status'=>[
                 'data'=>'status'
+            ],
+            'Comm Status'=>[
+                'data'=>'commission_status'
             ],
             'action'
 

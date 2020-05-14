@@ -156,6 +156,7 @@ class ContractorController extends Controller
         $contractor->awb                    = $request->get('awb');
         $contractor->document               = $request->get('document');
         $contractor->shipment_status        = $request->get('shipment_status');
+        $contractor->commission_status        = $request->get('commission_status');
 
         $contractor->comm_deadline          = $commission_deadline;
         $contractor->status                 = 'status';
@@ -317,6 +318,7 @@ class ContractorController extends Controller
         $contractor->awb                    = $request->get('awb');
         $contractor->document               = $request->get('document');
         $contractor->shipment_status        = $request->get('shipment_status');
+        $contractor->commission_status        = $request->get('commission_status');
 
         $contractor->comm_deadline          = $commission_deadline;
         $contractor->status                 = 'status';
@@ -413,7 +415,7 @@ class ContractorController extends Controller
         $total_amount       = $contract->total_amount;
         $invoice_details    = json_decode($contract->invoice_details);
         $invoice_amount     = $contract->invoice_amount ? $contract->invoice_amount : 0;
-        
+
         $calculate_amount = 0;
         foreach($invoice_details as $detail){
             if($detail->invoice_amount != ""){

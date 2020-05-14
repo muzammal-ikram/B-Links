@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddInvoiceAmount extends Migration
+class AddCommissionStatusInContractorsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,9 +14,8 @@ class AddInvoiceAmount extends Migration
     public function up()
     {
         Schema::table('contractors', function (Blueprint $table) {
-            $table->string('invoice_amount')->after('invoice_fcls')->nullable();
+            $table->string('commission_status')->after('status')->nullable();
         });
-        //
     }
 
     /**
@@ -26,6 +25,8 @@ class AddInvoiceAmount extends Migration
      */
     public function down()
     {
-        //
+        Schema::table('contractors', function (Blueprint $table) {
+            $table->dropColumn('commission_status');
+        });
     }
 }

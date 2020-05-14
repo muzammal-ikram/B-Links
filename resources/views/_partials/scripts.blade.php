@@ -362,12 +362,38 @@ function CommissionPercentage(){
 }
 
     function CommissionBothKgPercentage(){
-        var both_kg_input = $("#both_kg").val();
-        var both_percent_input = $("#both_percent").val();
-        var commission = +both_kg_input + +both_percent_input;
+     // kg commission when both
+        var qty = $("#qty_show").val();
+        var kgs = $("#both_kg").val();
+        if(qty == '' || kgs == ''){
+            document.getElementById('commission_amount_show').value = '';
+            document.getElementById('commission_amount_hide').value = '';
+            return;
+        }
+
+        var kg_commission =  qty * kgs;
+        kg_commission = kg_commission / 100;
+        kg_commission = kg_commission.toFixed(2);
+
+        // percent commission when both
+        var total_amount = $("#total_amount_hide").val();
+        var percent_commission = $("#both_percent").val();
+
+        if(total_amount == '' || percent_commission == ''){
+            document.getElementById('commission_amount_show').value = '';
+            document.getElementById('commission_amount_hide').value = '';
+            return;
+        }
+        var percent_commission =  total_amount * percent_commission;
+        percent_commission = percent_commission / 100;
+        percent_commission = percent_commission.toFixed(2);
+
+        var commission = +kg_commission + +percent_commission;
         commission = commission.toFixed(2);
+
         document.getElementById('commission_amount_show').value = commission;
         document.getElementById('commission_amount_hide').value = commission;
+
     }
 
     function addItem(){

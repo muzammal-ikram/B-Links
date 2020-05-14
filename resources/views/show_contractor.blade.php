@@ -160,8 +160,8 @@
                                     <tr>
                                         @if($contractor->item_2 != '')
                                         <th class="text-nowrap" scope="row">Item 2 Total Amount</th>
+                                            <td>{{$contractor->item_2_total_amount}}</td>
                                         @endif
-                                        <td>{{$contractor->item_2_total_amount}}</td>
                                         <th class="text-nowrap" scope="row">Commission Deadline</th>
                                         <td>{{$contractor->comm_deadline ? Carbon\Carbon::parse($contractor->comm_deadline)->format('d/m/y') : ''}}</td>
 
@@ -180,6 +180,8 @@
                                                 Pending
                                             @endif
                                         </td>
+                                            <th class="text-nowrap" scope="row">Commission Status</th>
+                                            <td>{{$contractor->commission_status}}</td>
                                     </tr>
 
                                     </tbody>
