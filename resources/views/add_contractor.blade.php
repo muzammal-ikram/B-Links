@@ -289,7 +289,7 @@
                                                   <div class="row">
 
                                                       <div class="col-md-3 mb-3">
-                                                          <label for="price_per_dollar">Price Per $</label>
+                                                          <label for="price_per_dollar">Price</label>
                                                           <input type="number" step="any" name="price_per_dollar" class="form-control {{ $errors->has('price_per_dollar') ? ' is-invalid' : '' }}" id="price_per_dollar" value="{{old('price_per_dollar')}}" autocomplete="off">
                                                           <div class="invalid-feedback">
                                                               Please provide a Price Per Kg.
@@ -297,7 +297,7 @@
                                                       </div>
 
                                                       <div class="col-md-3 mb-3">
-                                                        <label for="qty_show">Qty (in kg's)</label>
+                                                        <label for="qty_show">Qty</label>
                                                         <input type="number" step="any" class="form-control" name="qty" id="qty_show" value="" autocomplete="off" >
 
                                                       </div>
@@ -321,7 +321,7 @@
                                                   <div class="row" id="payment-2-input" style="display: none">
 
                                                       <div class="col-md-3 mb-3">
-                                                          <label for="price_per_dollar">Item 2 Price Per $</label>
+                                                          <label for="price_per_dollar">Item 2 Price</label>
                                                           <input type="number" step="any" name="item_2_price_per_dollar" class="form-control {{ $errors->has('item_2_price_per_dollar') ? ' is-invalid' : '' }}" id="item_2_price_per_dollar" value="{{old('item_2_price_per_dollar')}}" autocomplete="off">
                                                           <div class="invalid-feedback">
                                                               Please provide a Price Per Kg.
@@ -329,7 +329,7 @@
                                                       </div>
 
                                                       <div class="col-md-3 mb-3">
-                                                          <label for="qty_show">Item 2 Qty (in kg's)</label>
+                                                          <label for="qty_show">Item 2 Qty</label>
                                                           <input type="number" step="any" class="form-control" name="item_2_qty" id="item_2_qty" value="" autocomplete="off" >
 
                                                       </div>
@@ -601,8 +601,8 @@
                                                             <div class="col-md-3 mb-3">
                                                                 <label for="lc_type">Commission Status</label>
                                                                 <select class="form-control" id="commission_status" name="commission_status">
-                                                                    <option value="Not qualified">Not Qualified</option>
-                                                                    <option value="Qualified">Qualified</option>
+                                                                    <option value="Claimed">Claimed</option>
+                                                                    <option value="Recieved">Recieved</option>
                                                                 </select>
                                                                 <div class="invalid-feedback">
                                                                     Please provide a Commission Status.
