@@ -73,7 +73,7 @@
                                 <div class="container-fluid" style="padding-top: 20px">
 
                                     <div class="card">
-                                        <h5 class="card-header h5">Basic Details</h5>
+{{--                                        <h5 class="card-header h5">Basic Details</h5>--}}
                                         <div class="card-body">
                                             {{-- {{ dd($contractor->date)}} --}}
                                             <div class="row">
@@ -123,7 +123,7 @@
 
                                     <br>
                                     <div class="card">
-                                        <h5 class="card-header h5">Names</h5>
+{{--                                        <h5 class="card-header h5">Names</h5>--}}
                                         <div class="card-body">
                                             <div class="row">
                                                 <div class="col-md-4 mb-3">
@@ -241,7 +241,7 @@
 
                                         <br> --}}
                                         <div class="card">
-                                            <h5 class="card-header h5">Contract Details</h5>
+{{--                                            <h5 class="card-header h5">Contract Details</h5>--}}
                                             <div class="card-body">
                                                 <div class="row">
                                                     <div class="col-md-2 mb-3">
@@ -289,12 +289,12 @@
                                           </div>
                                           <br>
                                           <div class="card">
-                                              <h5 class="card-header h5">Payment Details</h5>
+{{--                                              <h5 class="card-header h5">Payment Details</h5>--}}
                                               <div class="card-body">
                                                   <div class="row">
 
                                                       <div class="col-md-3 mb-3">
-                                                          <label for="price_per_dollar">Price Per $</label>
+                                                          <label for="price_per_dollar">Price</label>
                                                           <input type="number" step="any" name="price_per_dollar" class="form-control" id="price_per_dollar" value="{{$contractor->price_per_dollar}}" autocomplete="off">
                                                           <div class="invalid-feedback">
                                                               Please provide a Price Per Kg.
@@ -302,7 +302,7 @@
                                                       </div>
 
                                                       <div class="col-md-3 mb-3">
-                                                        <label for="qty_show">Qty (in kg's)</label>
+                                                        <label for="qty_show">Qty</label>
                                                         <input type="number" step="any" class="form-control" name="qty" id="qty_show" value="{{$contractor->qty}}" autocomplete="off" >
 
                                                       </div>
@@ -326,7 +326,7 @@
                                                   <div class="row {{ ($contractor->item_2 != '') ? 'display_flex' : 'display_none'}}" id="payment-2-input">
 
                                                       <div class="col-md-3 mb-3">
-                                                          <label for="price_per_dollar">Item 2 Price Per $</label>
+                                                          <label for="price_per_dollar">Item 2 Price</label>
                                                           <input type="number" step="any" name="item_2_price_per_dollar" class="form-control" id="item_2_price_per_dollar" value="{{$contractor->item_2_price_per_dollar}}" autocomplete="off">
                                                           <div class="invalid-feedback">
                                                               Please provide a Price Per Kg.
@@ -334,7 +334,7 @@
                                                       </div>
 
                                                       <div class="col-md-3 mb-3">
-                                                          <label for="qty_show">Item 2 Qty (in kg's)</label>
+                                                          <label for="qty_show">Item 2 Qty</label>
                                                           <input type="number" step="any" class="form-control" name="item_2_qty" id="item_2_qty" value="{{$contractor->item_2_qty}}" autocomplete="off" >
 
                                                       </div>
@@ -412,7 +412,7 @@
 
                                           <br>
                                           <div class="card">
-                                              <h5 class="card-header h5">Invoice Details</h5>
+{{--                                              <h5 class="card-header h5">Invoice Details</h5>--}}
                                               <div class="card-body">
                                                   <div class="row">
 
@@ -495,7 +495,7 @@
                                             @foreach (json_decode($contractor->invoice_details) as $key=>$invoice_detail)
                                                 <div>
                                                    <div class="card control-group " >
-                                                    <h5 class="card-header h5">Extra invoice</h5>
+{{--                                                    <h5 class="card-header h5">Extra invoice</h5>--}}
                                                     <div class="card-body">
                                                         <div >
 
@@ -571,7 +571,7 @@
     <div id="add-more-invoice" style="display:none;">
                                         <div class="copy clone" id="thediv"  >
                                            <div class="card control-group clone_divs">
-                                            <h5 class="card-header h5">Extra invoice</h5>
+{{--                                            <h5 class="card-header h5">Extra invoice</h5>--}}
                                             <div class="card-body">
                                                 <div >
 
@@ -649,7 +649,7 @@
 
                                         </div>
                                                 <div class="card">
-                                                    <h5 class="card-header h5">Documents Details</h5>
+{{--                                                    <h5 class="card-header h5">Documents Details</h5>--}}
                                                     <div class="card-body">
                                                         <div class="row">
 
@@ -687,8 +687,8 @@
                                                             <div class="col-md-3 mb-3">
                                                                 <label for="lc_type">Commission Status</label>
                                                                 <select class="form-control" id="commission_status" name="commission_status">
-                                                                    <option value="Not qualified">Not Qualified</option>
-                                                                    <option value="Qualified">Qualified</option>
+                                                                    <option value="Claimed">Claimed</option>
+                                                                    <option value="Recieved">Recieved</option>
                                                                 </select>
                                                                 <div class="invalid-feedback">
                                                                     Please provide a Commission Status.

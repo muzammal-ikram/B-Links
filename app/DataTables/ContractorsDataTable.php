@@ -108,9 +108,9 @@ class ContractorsDataTable extends DataTable
     {
 
         return [
-            'Id'=> [
-                'data'=>'id'
-            ],
+//            'Id'=> [
+//                'data'=>'id'
+//            ],
             'Date'=>[
                 'data'=>'date'
             ],
