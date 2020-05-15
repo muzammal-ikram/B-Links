@@ -22,6 +22,8 @@
     <link href="{{ asset('assets/vendor/themify-icons/css/themify-icons.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/vendor/weather-icons/css/weather-icons.min.css') }}" rel="stylesheet">
     <!--custom css-->
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.6.2/css/buttons.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css">
     <link href="{{ asset('assets/css/main.css') }}" rel="stylesheet">
 <style>
     .main_area_width{
@@ -49,10 +51,17 @@
 <script class="include" type="text/javascript" src="{{ asset('assets/vendor/jquery.dcjqaccordion.2.7.js') }}"></script>
 <script src="{{ asset('assets/vendor/jquery.scrollTo.min.js') }}"></script>
 
-        <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
-        <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
-        <script src="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css"></script>
+<script src="{{asset('assets/vendor/data-tables/jquery.dataTables.min.js')}}"></script>
+<script src="{{asset('assets/vendor/data-tables/dataTables.bootstrap4.min.js')}}"></script>
 
+
+<script src="https://cdn.datatables.net/buttons/1.6.0/js/dataTables.buttons.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.6.0/js/buttons.html5.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.1.0/js/buttons.print.min.js"></script>
 {{--<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>--}}
 {{--<script src="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css"></script>--}}
 
@@ -78,6 +87,14 @@
 <script src="{{ asset('assets/js/scripts.js') }}"></script>
 
 @stack('scripts')
+
+<script>
+    $(document).ready(function(){
+        $("#customers-table_wrapper button").css("margin","15px");
+        $("#customers-table").css('margin-left', '-25px');
+    })
+</script>
+
 </body>
 </html>
 

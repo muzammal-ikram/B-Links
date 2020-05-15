@@ -75,40 +75,6 @@
 
 @endsection
 @push('scripts')
-{{-- <script src="https://cdn.datatables.net/buttons/1.6.1/js/dataTables.buttons.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.flash.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.print.min.js"></script> --}}
-{{-- <script type="text/javascript">
-$(document).ready(function() {
-
-    Table = $('#contractors').DataTable({
-        "processing": true,
-        "serverSide": true,
-        buttons: [
-           'copy', 'csv', 'excel', 'pdf', 'print'
-        ],
-         dom: 'Bfrtip',
-        "ajax": "{{ route('allContractor') }}",
-        "columns": [
-            {data: 'id', name: 'id'},
-            {data: 'name', name: 'name'},
-            {data: 'email', name: 'email'},
-            {data: 'is_admin', name: 'is_admin',
-              "render": function (data, type, row) {
-                if (data == 1) {
-                    return 'Admin';}
-                    else {
-                    return 'Assistant';
-                }
-            }
-        },
-            {data: 'created_at', name: 'created_at'},
-        ]
-    });
-});
-</script>
---}}
-
 
         {!! $dataTable->scripts() !!}
 

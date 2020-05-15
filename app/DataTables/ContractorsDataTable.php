@@ -9,7 +9,7 @@ use Yajra\DataTables\Services\DataTable;
 use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Html\Editor\Editor;
 use Carbon\Carbon;
-
+use yajra\Datatables\Facades\Datatables;
 class ContractorsDataTable extends DataTable
 {
     /**
@@ -91,12 +91,26 @@ class ContractorsDataTable extends DataTable
     public function html()
     {
         return $this->builder()
-            ->setTableId('users-table')
-            ->columns($this->getColumns())
-            ->minifiedAjax()
-            ->dom('Bfrtip')
-            ->orderBy(1)
-            ->parameters([ 'buttons' => ['excel'] ]);
+        ->setTableId('customers-table')
+        ->columns($this->getColumns())
+        ->minifiedAjax()
+        ->dom('Bfrtip')
+        ->parameters([
+            'buttons' => [
+                [
+                    'extend' => 'pdfHtml5',
+                    'text' => __('Export PDF'),
+                    'orientation' => 'landscape',
+                    'pageSize' => 'LEGAL',
+                    'exportOptions' =>  [
+                        'columns'=> [0,1,2,3,4,5,6,7,8,9,10,11,12,13]
+                    ]
+                ]
+            ],
+            'order' => [
+                0, 'desc'
+            ]
+        ]);
     }
 
     /**
@@ -114,7 +128,7 @@ class ContractorsDataTable extends DataTable
             'Date'=>[
                 'data'=>'date'
             ],
-            'Contract #'=>[
+            'contract #'=>[
                 'data'=> 'contractor_number'
             ],
             'Item'=>[
@@ -129,7 +143,7 @@ class ContractorsDataTable extends DataTable
                 'data' => 'qty'
             ],
 
-            'Item 2'=>[
+            'Item2'=>[
                 'data' => 'item_2'
             ],
 
@@ -150,7 +164,7 @@ class ContractorsDataTable extends DataTable
             'Lc Opener'=>[
                 'data' => 'lc_opener_name'
             ],
-            'Commission'=>[
+            'Comm'=>[
                 'data'=>'comm_deadline'
             ],
             'Cont Status'=>[
