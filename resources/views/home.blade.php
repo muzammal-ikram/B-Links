@@ -1,5 +1,11 @@
 @extends('layouts.app')
 @section('content')
+    <style>
+    .btn-primary{
+    background-color: lightblue;
+    border-color: lightblue;
+    }
+</style>
 
 <!--===========header start===========-->
     @include('_partials.navbar')
@@ -81,7 +87,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-4 col-md-6">
+                    <div class="col-lg-2 col-md-3">
                         <div class="card mb-4">
                             <div class="card-body ">
                                 <div class="row">
@@ -91,8 +97,25 @@
                                             </span>
                                     </div>
                                     <div class="col-9">
-                                        <h6 class="mt-1 mb-0">Total Buyers/Sellers</h6>
-                                        <p class="f12 mb-0">{{$total_buyers}}/{{$total_sellers}}</p>
+                                        <h6 class="mt-1 mb-0">Total Buyers</h6>
+                                        <p class="f12 mb-0"><a href="{{url('show-buyers')}}">{{$total_buyers}}</a></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-3">
+                        <div class="card mb-4">
+                            <div class="card-body ">
+                                <div class="row">
+                                    <div class="col-3">
+                                            <span class="bg-warning rounded-circle text-center wb-icon-box">
+                                                <i class="icon-basket-loaded text-light f24"></i>
+                                            </span>
+                                    </div>
+                                    <div class="col-9">
+                                        <h6 class="mt-1 mb-0">Total Sellers</h6>
+                                        <p class="f12 mb-0"><a href="{{url('show-sellers')}}">{{$total_sellers}}</a></p>
                                     </div>
                                 </div>
                             </div>

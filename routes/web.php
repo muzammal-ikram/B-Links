@@ -58,3 +58,6 @@ Route::get('/download-debit-note/{id}/{status}', 'ContractorController@downloadD
 
 Route::get('/save-dollar-rate/{dollar_rate}', 'DollarRateController@saveDollarRate');
 
+Route::get('/show-buyers', 'ContractorController@showBuyer');
+Route::get('/show-sellers', 'ContractorController@showSeller');
+

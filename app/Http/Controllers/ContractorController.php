@@ -476,4 +476,14 @@ class ContractorController extends Controller
         return $pdf->download($contract->contractor_number.'-debit_note.pdf');
     }
 
+    public function showBuyer(){
+        $total_buyers = Contractor::get()->groupBy('buyer_name');
+        return view('all_buyers', compact('total_buyers'));
+    }
+
+    public function showSeller(){
+        $total_sellers = Contractor::get()->groupBy('seller_name');
+        return view('all_sellers', compact('total_sellers'));
+    }
+
 }

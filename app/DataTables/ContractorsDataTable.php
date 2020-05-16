@@ -126,55 +126,70 @@ class ContractorsDataTable extends DataTable
 //                'data'=>'id'
 //            ],
             'Date'=>[
-                'data'=>'date'
+                'data'=>'date',
+                'orderable' => false
             ],
             'contract #'=>[
-                'data'=> 'contractor_number'
+                'data'=> 'contractor_number',
+                'orderable' => false
             ],
             'Item'=>[
-                'data' => 'item'
+                'data' => 'item',
+                'orderable' => false
             ],
 
             'Price'=>[
-                'data' => 'price_per_dollar'
+                'data' => 'price_per_dollar',
+                'orderable' => false
             ],
 
             'Qty'=>[
-                'data' => 'qty'
+                'data' => 'qty',
+                'orderable' => false
             ],
 
             'Item2'=>[
-                'data' => 'item_2'
+                'data' => 'item_2',
+                'orderable' => false
             ],
 
             'Item 2 Price'=>[
-                'data' => 'item_2_price_per_dollar'
+                'data' => 'item_2_price_per_dollar',
+                'orderable' => false
             ],
 
             'Item 2 Qty'=>[
-                'data' => 'item_2_qty'
+                'data' => 'item_2_qty',
+                'orderable' => false
             ],
 
             'Seller'=>[
                 'data' => 'seller_name',
+                'orderable' => false
             ],
             'Buyer'=>[
-                'data' => 'buyer_name'
+                'data' => 'buyer_name',
+                'orderable' => false
             ],
             'Lc Opener'=>[
-                'data' => 'lc_opener_name'
+                'data' => 'lc_opener_name',
+                'orderable' => false
             ],
             'Comm'=>[
-                'data'=>'comm_deadline'
+                'data'=>'comm_deadline',
+                'orderable' => false
             ],
             'Cont Status'=>[
-                'data'=>'status'
+                'data'=>'status',
+                'orderable' => false
             ],
             'Comm Status'=>[
-                'data'=>'commission_status'
+                'data'=>'commission_status',
+                'orderable' => false
             ],
-            'action'
-
+            'action' =>[
+            'orderable' => false
+            ]
         ];
     }
 

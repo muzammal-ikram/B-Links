@@ -3,12 +3,17 @@
 @include('_partials.navbar')
 
 <style>
-.card-body{
+.card-body {
     padding: 0rem;
     padding-left: 1.25rem;
     padding-right: 1.25rem;
 }
+ .btn-primary{
+     background-color: lightblue;
+ }
+
 </style>
+
 
 <div class="app-body">
 
