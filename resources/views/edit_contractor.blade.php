@@ -17,6 +17,9 @@
     .display_flex{
         display: flex;
     }
+    .btn-primary{
+        background-color: lightblue;
+    }
 </style>
 <div class="app-body">
 
