@@ -24,28 +24,28 @@ class ContractorsDataTable extends DataTable
         ->addColumn('action', function($con) {
             return view('_partials.contractor_datatable',['con'=>$con]);
         })
-        ->addColumn('seller_name', function ($contractor) {
+        ->editColumn('seller_name', function ($contractor) {
             return view('_partials.contractor_title',compact('contractor'));
         })
-        ->addColumn('buyer_name', function ($contractor) {
+        ->editColumn('buyer_name', function ($contractor) {
             return view('_partials.contractor_buyer',compact('contractor'));
         })
-        ->addColumn('lc_opener_name', function ($contractor) {
+        ->editColumn('lc_opener_name', function ($contractor) {
             return view('_partials.contractor_opener',compact('contractor'));
         })
-        ->addColumn('comm_deadline', function($con) {
+        ->editColumn('comm_deadline', function($con) {
             return $con->comm_deadline ? $con->comm_deadline->format('M-d-Y') : Null;
         })
-        ->addColumn('date', function($con) {
+        ->editColumn('date', function($con) {
             return $con->date ? $con->date->format('M-d-Y') : Null;
         })
-        ->addColumn('etd', function($con) {
+        ->editColumn('etd', function($con) {
             return $con->etd ? $con->etd->format('M-d-Y') : Null;
         })
-        ->addColumn('eta', function($con) {
+        ->editColumn('eta', function($con) {
             return $con->eta ? $con->eta->format('M-d-Y') : Null;
         })
-        ->addColumn('status', function($con) {
+        ->editColumn('status', function($con) {
 
             $nowDate        =  Carbon::now();
             $last7Days      = $con->comm_deadline->subDays(7);
@@ -169,6 +169,7 @@ class ContractorsDataTable extends DataTable
             ],
             'Buyer'=>[
                 'data' => 'buyer_name',
+                'name' => 'buyer_name',
                 'orderable' => false
             ],
             'Lc Opener'=>[
