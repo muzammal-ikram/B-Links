@@ -29,18 +29,6 @@
 
     <!--main contents start-->
     <main class="main-content">
-        <!--page title start-->
-{{--        <div class="page-title">--}}
-{{--            <h4 class="mb-0"> Add Contract--}}
-{{--                <small>basic input examples</small>--}}
-{{--            </h4>--}}
-{{--            <ol class="breadcrumb mb-0 pl-0 pt-1 pb-0">--}}
-{{--                <li class="breadcrumb-item"><a href="#" class="default-color">Dashboard</a></li>--}}
-{{--                <li class="breadcrumb-item active">Add Contract</li>--}}
-{{--            </ol>--}}
-{{--        </div>--}}
-        <!--page title end-->
-
 
 
         <div class="container-fluid">
@@ -81,12 +69,12 @@
                                             {{-- {{ dd($contractor->date)}} --}}
                                             <div class="row">
                                                 <div class="col-md-3 mb-3">
-                                                    <label for="Date">Date</label>
+                                                    <h6>Date</h6>
                                                     <input type="date" name="date" class="form-control" id="Date" value="{{ $contractor->date ? Carbon\Carbon::parse($contractor->date)->format('Y-m-d') : ""}}" autocomplete="off">
                                                   </div>
 
                                                 <div class="col-md-3 mb-3">
-                                                    <label for="contract_number">Contract #</label>
+                                                    <h6>Contract #</h6>
                                                     <input type="text" name="contract_number" class="form-control" value="{{ $contractor->contractor_number}}" autocomplete="off">
                                                     <div class="invalid-feedback">
                                                         Please provide a Contractor Number.
@@ -94,7 +82,7 @@
                                                 </div>
 
                                                 <div class="col-md-2 mb-3">
-                                                    <label for="item">Item</label>
+                                                    <h6>Item</h6>
                                                     <input type="text" name="item" class="form-control" value="{{ $contractor->item }}" autocomplete="off">
                                                     <div class="invalid-feedback">
                                                         Please provide a Count.
@@ -102,7 +90,7 @@
                                                 </div>
 
                                                 <div class="col-md-2 mb-3 {{ ($contractor->item_2 != '') ? 'display_block' : 'display_none'}}" id="item-2-input">
-                                                    <label for="item">Item 2</label>
+                                                    <h6>Item 2</h6>
                                                     <input type="text" name="item_2" class="form-control" id="item_2" value="{{ $contractor->item_2 }}" autocomplete="off">
                                                     <div class="invalid-feedback">
                                                         Please provide a Count.
@@ -130,7 +118,7 @@
                                         <div class="card-body">
                                             <div class="row">
                                                 <div class="col-md-4 mb-3">
-                                                    <label for="validationCustom01">Seller Name</label>
+                                                    <h6>Seller Name</h6>
                                                     <input type="text" name="seller_name" class="form-control" value="{{ $contractor->seller_name }}" autocomplete="off" id="sellers_name">
                                                     <input type="hidden" name="seller_id" id="seller-id">
                                                     <div id='sellersSuggestion'></div>
@@ -139,7 +127,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-md-4 mb-3">
-                                                    <label for="validationCustom01">Buyer Name</label>
+                                                    <h6>Buyer Name</h6>
                                                     <input type="text" name="buyer_name" class="form-control" value="{{ $contractor->buyer_name}}" autocomplete="off" id="buyer_name">
                                                     <input type="hidden" id="buyer-id">
                                                     <div id='buyerSuggestion'></div>
@@ -148,7 +136,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-md-4 mb-3">
-                                                    <label for="validationCustom01">LC Opener Name</label>
+                                                    <h6>LC Opener Name</h6>
                                                     <input type="text" name="lc_opener_name" class="form-control" value="{{ $contractor->lc_opener_name}}" autocomplete="off" id="lc_opener_name">
                                                     <input type="hidden" id="opener-id">
                                                     <div id='openerSuggestion'></div>
@@ -156,20 +144,6 @@
                                                         Please provide a LC Opener Name.
                                                     </div>
                                                 </div>
-                                                {{-- <div class="col-md-4 mb-3">
-                                                    <label for="validationCustom01">Address</label>
-                                                    <input type="text" name="seller_address" class="form-control" value="{{ $contractor->seller_address }}" autocomplete="off">
-                                                    <div class="invalid-feedback">
-                                                        Please provide a Seller Address.
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-4 mb-3">
-                                                    <label for="validationCustom01">Region</label>
-                                                    <input type="text" name="seller_country" class="form-control" value="{{ $contractor->seller_country }}" autocomplete="off">
-                                                    <div class="invalid-feedback">
-                                                        Please provide a Seller Country.
-                                                    </div>
-                                                </div> --}}
 
                                             </div>
                                         </div>
@@ -177,78 +151,13 @@
 
 
                                     <br>
-                                    {{-- <div class="card">
-                                        <h5 class="card-header h5">Buyer</h5>
-                                        <div class="card-body">
-                                            <div class="row">
-                                                <div class="col-md-4 mb-3">
-                                                    <label for="validationCustom01">Name</label>
-                                                    <input type="text" name="buyer_name" class="form-control" value="{{ $contractor->buyer_number}}" autocomplete="off" id="buyer_name">
-                                                    <input type="hidden" id="buyer-id">
-                                                    <div id='buyerSuggestion'></div>
-                                                    <div class="invalid-feedback">
-                                                        Please provide a Buyer Name
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-4 mb-3">
-                                                    <label for="validationCustom01">Address</label>
-                                                    <input type="text" name="buyer_address" class="form-control" value="{{ $contractor->seller_address }}" autocomplete="off">
-                                                    <div class="invalid-feedback">
-                                                        Please provide a Buyer Address.
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-4 mb-3">
-                                                    <label for="validationCustom01">Region</label>
-                                                    <input type="text" name="buyer_country" class="form-control" value="{{ $contractor->seller_region }}" autocomplete="off">
-                                                    <div class="invalid-feedback">
-                                                        Please provide a Buyer Country.
-                                                    </div>
-                                                </div>
 
-                                            </div>
-                                        </div>
-                                      </div>
-                                      <br>
-                                      <div class="card">
-                                          <h5 class="card-header h5">Lc Opener</h5>
-                                          <div class="card-body">
-                                            <div class="row">
-
-                                                <div class="col-md-4 mb-3">
-                                                    <label for="validationCustom01">Name</label>
-                                                    <input type="text" name="lc_opener_name" class="form-control" value="{{ $contractor->lc_opener_name}}" autocomplete="off" id="lc_opener_name">
-                                                    <input type="hidden" id="opener-id">
-                                                    <div id='openerSuggestion'></div>
-                                                    <div class="invalid-feedback">
-                                                        Please provide a LC Opener Name.
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-4 mb-3">
-                                                    <label for="validationCustom01">Address</label>
-                                                    <input type="text" name="lc_opener_address" class="form-control" value="{{ $contractor->lc_opener_address }}" autocomplete="off">
-                                                    <div class="invalid-feedback">
-                                                        Please provide a LC Opener Address.
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-4 mb-3">
-                                                    <label for="validationCustom01">Region</label>
-                                                    <input type="text" name="lc_opener_country" class="form-control"  value="{{ $contractor->lc_opener_country}}" autocomplete="off">
-                                                    <div class="invalid-feedback">
-                                                        Please provide a LC Opener Country.
-                                                    </div>
-                                                </div>
-
-                                            </div>
-                                          </div>
-                                        </div>
-
-                                        <br> --}}
                                         <div class="card">
 {{--                                            <h5 class="card-header h5">Contract Details</h5>--}}
                                             <div class="card-body">
                                                 <div class="row">
                                                     <div class="col-md-2 mb-3">
-                                                        <label for="validationCustom01">FCLS</label>
+                                                        <h6>FCLS</h6>
                                                         <input type="number" step="any" name="fcls" class="form-control" value="{{ $contractor->fcls }}" autocomplete="off">
                                                         <div class="invalid-feedback">
                                                             Please provide a FCLS.
@@ -256,7 +165,7 @@
                                                     </div>
 
                                                     <div class="col-md-2 mb-3 {{ ($contractor->item_2_fcls != '') ? 'display_block' : 'display_none'}}" id="fcls-2-input">
-                                                        <label for="validationCustom01">Item 2 FCLS </label>
+                                                        <h6>Item 2 FCLS </h6>
                                                         <input type="number" step="any" name="item_2_fcls" id="item_2_fcls" class="form-control" value="{{ $contractor->item_2_fcls }}" autocomplete="off">
                                                         <div class="invalid-feedback">
                                                             Please provide a FCLS.
@@ -264,14 +173,14 @@
                                                     </div>
 
                                                     <div class="col-md-3 mb-3">
-                                                        <label for="validationCustom01">LSD</label>
+                                                        <h6>LSD</h6>
                                                         <input type="date" name="lsd" class="form-control" value="{{ $contractor->lsd ? Carbon\Carbon::parse($contractor->lsd)->format('Y-m-d') : null }}" autocomplete="off">
                                                         <div class="invalid-feedback">
                                                             Please provide a LSD.
                                                         </div>
                                                     </div>
                                                     <div class="col-md-2 mb-3">
-                                                        <label for="lc_type">LC Type</label>
+                                                        <h6>LC Type</h6>
                                                         <select class="form-control" id="sel1" name="lc_type">
                                                             <option value="15" {{ ($contractor->lc_type==15) ? "selected" : "" }}>15</option>
                                                             <option value="30" {{ ($contractor->lc_type==30) ? "selected" : "" }}>30</option>
@@ -281,7 +190,7 @@
                                                         </select>
                                                     </div>
                                                     <div class="col-md-3 mb-3">
-                                                        <label for="validationCustom01">LC Number</label>
+                                                        <h6>LC Number</h6>
                                                     <input type="text" name="lc_number" class="form-control" value="{{ $contractor->lc_number }}" autocomplete="off">
                                                         <div class="invalid-feedback">
                                                             Please provide a LC Number.
@@ -297,7 +206,7 @@
                                                   <div class="row">
 
                                                       <div class="col-md-3 mb-3">
-                                                          <label for="price_per_dollar">Price</label>
+                                                          <h6>Price</h6>
                                                           <input type="number" step="any" name="price_per_dollar" class="form-control" id="price_per_dollar" value="{{$contractor->price_per_dollar}}" autocomplete="off">
                                                           <div class="invalid-feedback">
                                                               Please provide a Price Per Kg.
@@ -305,17 +214,17 @@
                                                       </div>
 
                                                       <div class="col-md-3 mb-3">
-                                                        <label for="qty_show">Qty</label>
+                                                        <h6>Qty</h6>
                                                         <input type="number" step="any" class="form-control" name="qty" id="qty_show" value="{{$contractor->qty}}" autocomplete="off" >
 
                                                       </div>
                                                       <div class="col-md-1 mb-3">
-                                                        <label for="qty_show">Total</label>
+                                                        <h6>Total</h6>
                                                         <button class="btn btn-primary form-control" type="button" onclick="totalAmount()">=</button>
                                                       </div>
 
                                                       <div class="col-md-4 mb-3">
-                                                        <label for="validationCustom04">Total Amount</label>
+                                                        <h6>Total Amount</h6>
                                                       <input type="text" class="form-control {{ $errors->has('total_amount') ? ' is-invalid' : '' }}" id="total_amount_show" value="{{$contractor->total_amount}}" autocomplete="off" disabled>
                                                         <input type="text" name="total_amount" id="total_amount_hide" value="{{$contractor->total_amount}}" autocomplete="off" style="display:none;"  >
 
@@ -329,7 +238,7 @@
                                                   <div class="row {{ ($contractor->item_2 != '') ? 'display_flex' : 'display_none'}}" id="payment-2-input">
 
                                                       <div class="col-md-3 mb-3">
-                                                          <label for="price_per_dollar">Item 2 Price</label>
+                                                          <h6>Item 2 Price</h6>
                                                           <input type="number" step="any" name="item_2_price_per_dollar" class="form-control" id="item_2_price_per_dollar" value="{{$contractor->item_2_price_per_dollar}}" autocomplete="off">
                                                           <div class="invalid-feedback">
                                                               Please provide a Price Per Kg.
@@ -337,17 +246,17 @@
                                                       </div>
 
                                                       <div class="col-md-3 mb-3">
-                                                          <label for="qty_show">Item 2 Qty</label>
+                                                          <h6>Item 2 Qty</h6>
                                                           <input type="number" step="any" class="form-control" name="item_2_qty" id="item_2_qty" value="{{$contractor->item_2_qty}}" autocomplete="off" >
 
                                                       </div>
                                                       <div class="col-md-1 mb-3">
-                                                          <label for="qty_show">Total</label>
+                                                          <h6>Total</h6>
                                                           <button class="btn btn-primary form-control" type="button" onclick="item_2_totalAmount()">=</button>
                                                       </div>
 
                                                       <div class="col-md-4 mb-3">
-                                                          <label for="validationCustom04">Item 2 Total Amount</label>
+                                                          <h6>Item 2 Total Amount</h6>
                                                           <input type="text" class="form-control" id="item_2_total_amount_show" value="{{$contractor->item_2_total_amount}}" autocomplete="off" disabled>
                                                           <input type="text" name="item_2_total_amount" id="item_2_total_amount_hide" value="{{$contractor->item_2_total_amount}}" autocomplete="off" style="display:none;">
 
@@ -360,7 +269,7 @@
 
                                                   <div class="row">
                                                       <div class="col-md-3  mb-3">
-                                                          <label for="commission">Commission Type</label>
+                                                          <h6>Commission Type</h6>
                                                           <select class="form-control" id="select-commission" name="commission_type" autocomplete="off">
                                                               <option value="kg" {{ ($contractor->commission_type == "kg") ? "selected" : "" }}>kilogram kg</option>
                                                               <option value="percent" {{ ($contractor->commission_type == "percent") ? "selected" : "" }}>percentage %</option>
@@ -369,7 +278,7 @@
                                                       </div>
 
                                                       <div class="col-md-3 mb-3 {{ ($contractor->commission_type == 'kg') ? 'display_block' : 'display_none'}}" id="kg-input">
-                                                          <label for="validationCustom01">KG's</label>
+                                                          <h6>KG's</h6>
                                                           <input type="number" step="any" class="form-control" name="kg" id="kgs_commission" value="{{ $contractor->kg }}" autocomplete="off">
                                                           <div class="invalid-feedback">
                                                               Please provide a KG's.
@@ -377,7 +286,7 @@
                                                       </div>
 
                                                       <div class="col-md-3 mb-3 {{ ($contractor->commission_type == 'percent') ? 'display_block' : 'display_none'}}" id="percent-input">
-                                                          <label for="validationCustom01">Percent %</label>
+                                                          <h6>Percent %</h6>
                                                           <input type="number" step="any" name="percent" class="form-control" id="percent_commission" value="{{ $contractor->percent }}" autocomplete="off">
                                                           <div class="invalid-feedback">
                                                               Please provide a Percent.
@@ -385,14 +294,14 @@
                                                       </div>
 
                                                       <div class="col-md-2 mb-3 {{ ($contractor->commission_type == 'kg-percent') ? 'display_block' : 'display_none'}}" id="both-kg-input">
-                                                          <label for="validationCustom01">kgs</label>
+                                                          <h6>kgs</h6>
                                                           <input type="number" step="any" name="both_kg" class="form-control" id="both_kg" value="{{ $contractor->both_kg }}" autocomplete="off">
                                                           <div class="invalid-feedback">
                                                               Please provide a kg.
                                                           </div>
                                                       </div>
                                                       <div class="col-md-2 mb-3 {{ ($contractor->commission_type == 'kg-percent') ? 'display_block' : 'display_none'}}" id="both-percent-input">
-                                                          <label for="validationCustom01">Percent</label>
+                                                          <h6>Percent</h6>
                                                           <input type="number" step="any" name="both_percent" class="form-control" id="both_percent" value="{{ $contractor->both_percent }}" autocomplete="off">
                                                           <div class="invalid-feedback">
                                                               Please provide a Percent.
@@ -400,11 +309,11 @@
                                                       </div>
 
                                                       <div class="col-md-1 mb-3">
-                                                        <label for="qty_show">Total</label>
+                                                        <h6>Total</h6>
                                                         <button class="btn btn-primary form-control" type="button" onclick="totalCommission()">=</button>
                                                       </div>
                                                       <div class="col-md-4  mb-3">
-                                                        <label for="commission_amount">Commission</label>
+                                                        <h6>Commission</h6>
                                                         <input type="text" class="form-control {{ $errors->has('commission_amount') ? ' is-invalid' : '' }}" id="commission_amount_show" value="{{ $contractor->commission_amount }}" autocomplete="off" disabled>
                                                         <input type="text" name="commission_amount" id="commission_amount_hide" value="{{ $contractor->commission_amount }}" autocomplete="off" style="display:none;" >
                                                     </div>
@@ -420,7 +329,7 @@
                                                   <div class="row">
 
                                                     <div class="col-md-2 mb-3">
-                                                        <label for="validationCustom04">Invoice Number</label>
+                                                        <h6>Invoice Number</h6>
                                                         <input type="text" name="invoice_number" class="form-control" value="{{ $contractor->invoice_number }}" autocomplete="off">
                                                         <div class="invalid-feedback">
                                                             Please provide a Invoice Number.
@@ -428,48 +337,42 @@
                                                     </div>
 
                                                     <div class="col-md-2 mb-3">
-                                                        <label for="validationCustom01">BL Number</label>
+                                                        <h6>BL Number</h6>
                                                         <input type="text" name="bl_number" class="form-control" value="{{ $contractor->bl_number }}" autocomplete="off">
                                                         <div class="invalid-feedback">
                                                             Please provide a BL Number.
                                                         </div>
                                                     </div>
 
-{{--                                                    <div class="col-md-2 mb-3">--}}
-{{--                                                        <label for="validationCustom01">Containers:</label>--}}
-{{--                                                        <input type="number" step="any" name="invoice_container" class="form-control" value="{{ $contractor->invoice_container }}" autocomplete="off">--}}
-
-{{--                                                    </div>--}}
-
                                                     <div class="col-md-2 mb-3">
-                                                        <label for="validationCustom01">No Of FCLS:</label>
+                                                        <h6>No Of FCLS:</h6>
                                                         <input type="number" step="any" name="invoice_fcls" class="form-control" id="fcls" value="{{ $contractor->invoice_fcls }}" autocomplete="off">
 
                                                     </div>
 
                                                       <div class="col-md-3 mb-3">
-                                                          <label for="validationCustom04">ETD</label>
+                                                          <h6>ETD</h6>
                                                           <input type="date" name="etd" class="form-control {{ $errors->has('etd') ? ' is-invalid' : '' }}" id="validationCustom04" value="{{$contractor->etd ? Carbon\Carbon::parse($contractor->etd)->format('Y-m-d') : null}}" autocomplete="off">
                                                           <div class="invalid-feedback">
                                                               Please provide a ETD.
                                                           </div>
                                                       </div>
                                                       <div class="col-md-3 mb-3">
-                                                          <label for="validationCustom04">ETA</label>
+                                                          <h6>ETA</h6>
                                                           <input type="date" name="eta" class="form-control {{ $errors->has('eta') ? ' is-invalid' : '' }}" id="validationCustom04" value="{{$contractor->eta ? Carbon\Carbon::parse($contractor->eta)->format('Y-m-d') : null}}" autocomplete="off">
                                                           <div class="invalid-feedback">
                                                               Please provide a ETA.
                                                           </div>
                                                       </div>
                                                       <div class="col-md-3 mb-3">
-                                                          <label for="validationCustom04">Date</label>
+                                                          <h6>Date</h6>
                                                           <input type="date" name="invoice_date" class="form-control " value="{{$contractor->invoice_date ? Carbon\Carbon::parse($contractor->invoice_date)->format('Y-m-d') : null}}" autocomplete="off">
                                                           <div class="invalid-feedback">
                                                               Please provide a ETA.
                                                           </div>
                                                       </div>
                                                       <div class="col-md-3 mb-3">
-                                                        <label for="validationCustom04">Amount</label>
+                                                        <h6>Amount</h6>
                                                       <input type="number" step="any" name="invoice_amount" class="form-control " value="{{ str_replace("," , "" ,$contractor->invoice_amount) }}" autocomplete="off">
                                                         <div class="invalid-feedback">
                                                             Please provide a ETA.
@@ -477,7 +380,7 @@
                                                     </div>
 
                                                     <div class="col-md-2 mb-3">
-                                                        <label for="validationCustom01">Add</label>
+                                                        <h6>Add</h6>
                                                         <div class="input-group control-group after-add-more">
                                                             <div class="input-group-btn">
                                                                <button class="btn btn-success" onclick="Clone()" type="button"><i class="glyphicon glyphicon-plus"></i> Add</button>
@@ -506,7 +409,7 @@
                                                                 <div class="row ">
 
                                                                     <div class="col-md-2 mb-3">
-                                                                        <label for="validationCustom04">Invoice Number</label>
+                                                                        <h6>Invoice Number</h6>
                                                                         <input type="text" name="invoice_number_add[]" class="form-control {{ $errors->has('invoice_number') ? ' is-invalid' : '' }}" value="{{ isset($invoice_detail->invoice) ? $invoice_detail->invoice : null }}" autocomplete="off">
                                                                         <div class="invalid-feedback">
                                                                             Please provide a Invoice Number.
@@ -514,7 +417,7 @@
                                                                     </div>
 
                                                                     <div class="col-md-2 mb-3">
-                                                                        <label for="validationCustom01">BL Number</label>
+                                                                        <h6>BL Number</h6>
                                                                         <input type="text" name="bl_number_add[]" class="form-control {{ $errors->has('bl_number') ? ' is-invalid' : '' }}" value="{{ isset($invoice_detail->bl_number) ? $invoice_detail->bl_number : null}}" autocomplete="off">
                                                                         <div class="invalid-feedback">
                                                                             Please provide a BL Number.
@@ -522,34 +425,34 @@
                                                                     </div>
 
                                                                     <div class="col-md-2 mb-3">
-                                                                        <label for="validationCustom01">No Of FCLS:</label>
+                                                                        <h6>No Of FCLS:</h6>
                                                                         <input type="number" step="any" name="invoice_fcls_add[]" class="form-control" value="{{  isset($invoice_detail->fcls) ? $invoice_detail->fcls : null  }}" autocomplete="off">
 
                                                                     </div>
 
                                                                     <div class="col-md-3 mb-3">
-                                                                        <label for="validationCustom04">ETD</label>
+                                                                        <h6>ETD</h6>
                                                                         <input type="date" name="etd_date_add[]" class="form-control {{ $errors->has('etd') ? ' is-invalid' : '' }}" id="validationCustom04" value="{{  isset($invoice_detail->etd_date) ? Carbon\Carbon::parse($invoice_detail->etd_date)->format('Y-m-d')  : null  }}" autocomplete="off">
                                                                         <div class="invalid-feedback">
                                                                             Please provide a ETD.
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-md-3 mb-3">
-                                                                        <label for="validationCustom04">ETA</label>
+                                                                        <h6>ETA</h6>
                                                                         <input type="date" name="eta_date_add[]" class="form-control {{ $errors->has('eta') ? ' is-invalid' : '' }}" id="validationCustom04" value="{{  isset($invoice_detail->eta_date) ? Carbon\Carbon::parse($invoice_detail->eta_date)->format('Y-m-d') : null }}" autocomplete="off">
                                                                         <div class="invalid-feedback">
                                                                             Please provide a ETA.
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-md-3 mb-3">
-                                                                        <label for="validationCustom04">Date</label>
+                                                                        <h6>Date</h6>
                                                                         <input type="date" name="invoice_date_add[]" class="form-control " value="{{  isset($invoice_detail->invoice_date) ? Carbon\Carbon::parse($invoice_detail->invoice_date)->format('Y-m-d') : null }}" autocomplete="off">
                                                                         <div class="invalid-feedback">
                                                                             Please provide a ETA.
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-md-3 mb-3">
-                                                                        <label for="validationCustom04">Amount</label>
+                                                                        <h6>Amount</h6>
                                                                         <input type="number" step="any" name="invoice_amount_add[]" class="form-control " value="{{  isset($invoice_detail->invoice_amount) ? str_replace("," , "" , $invoice_detail->invoice_amount) : null }}" autocomplete="off">
                                                                         <div class="invalid-feedback">
                                                                             Please provide a ETA.
@@ -582,7 +485,7 @@
                                                         <div class="row ">
 
                                                             <div class="col-md-2 mb-3">
-                                                                <label for="validationCustom04">Invoice Number</label>
+                                                                <h6>Invoice Number</h6>
                                                                 <input type="text" name="invoice_number_add[]" class="form-control {{ $errors->has('invoice_number') ? ' is-invalid' : '' }}" id="validationCustom04" value="{{old('invoice_number')}}" autocomplete="off">
                                                                 <div class="invalid-feedback">
                                                                     Please provide a Invoice Number.
@@ -590,20 +493,20 @@
                                                             </div>
 
                                                             <div class="col-md-2 mb-3">
-                                                                <label for="validationCustom01">BL Number</label>
+                                                                <h6>BL Number</h6>
                                                                 <input type="text" name="bl_number_add[]" class="form-control {{ $errors->has('bl_number') ? ' is-invalid' : '' }}" id="validationCustom01" value="{{old('bl_number')}}" autocomplete="off">
                                                                 <div class="invalid-feedback">
                                                                     Please provide a BL Number.
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-2 mb-3">
-                                                                <label for="validationCustom01">No Of FCLS:</label>
+                                                                <h6>No Of FCLS:</h6>
                                                                 <input type="number" step="any" name="invoice_fcls_add[]" class="form-control" value="" autocomplete="off">
 
                                                             </div>
 
                                                             <div class="col-md-3 mb-3">
-                                                                <label for="validationCustom04">ETD</label>
+                                                                <h6>ETD</h6>
                                                                 <input type="date" name="etd_date_add[]" class="form-control {{ $errors->has('etd') ? ' is-invalid' : '' }}" id="validationCustom04" value="" autocomplete="off">
                                                                 <div class="invalid-feedback">
                                                                     Please provide a ETD.
@@ -611,21 +514,21 @@
                                                             </div>
 
                                                             <div class="col-md-3 mb-3">
-                                                                <label for="validationCustom04">ETA</label>
+                                                                <h6>ETA</h6>
                                                                 <input type="date" name="eta_date_add[]" class="form-control {{ $errors->has('eta') ? ' is-invalid' : '' }}" id="validationCustom04" value="{{old('eta')}}" autocomplete="off">
                                                                 <div class="invalid-feedback">
                                                                     Please provide a ETA.
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-3 mb-3">
-                                                                <label for="validationCustom04">Date</label>
+                                                                <h6>Date</h6>
                                                                 <input type="date" name="invoice_date_add[]" class="form-control " value="{{old('invoice_date')}}" autocomplete="off">
                                                                 <div class="invalid-feedback">
                                                                     Please provide a ETA.
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-3 mb-3">
-                                                                <label for="validationCustom04">Amount</label>
+                                                                <h6>Amount</h6>
                                                                 <input type="number" step="any" name="invoice_amount_add[]" class="form-control " autocomplete="off">
                                                                 <div class="invalid-feedback">
                                                                     Please provide a ETA.
@@ -657,7 +560,7 @@
                                                         <div class="row">
 
                                                             <div class="col-md-3 mb-3">
-                                                                <label for="validationCustom05">AWB</label>
+                                                                <h6>AWB</h6>
                                                                 <input type="text" name="awb" class="form-control" value="{{ $contractor->awb }}" autocomplete="off">
                                                                 <div class="invalid-feedback">
                                                                     Please provide a AWB.
@@ -665,7 +568,7 @@
                                                             </div>
 
                                                             <div class="col-md-3 mb-3">
-                                                                <label for="validationCustom05">Document</label>
+                                                                <h6>Document</h6>
 {{--                                                                <input type="text" name="document" class="form-control" value="{{ $contractor->document }}" autocomplete="off">--}}
                                                                 <select class="form-control" id="sel1" name="document">
                                                                     <option value="recieved" {{ ($contractor->document == 'recieved') ? "selected" : "" }}>Recieved</option>
@@ -677,7 +580,7 @@
                                                             </div>
 
                                                             <div class="col-md-3 mb-3">
-                                                                <label for="lc_type">Shipment Status</label>
+                                                                <h6>Shipment Status</h6>
                                                                 <select class="form-control" id="sel1" name="shipment_status">
                                                                     <option value="pending" {{ ($contractor->shipment_status == 'pending') ? "selected" : "" }}>Pending</option>
                                                                     <option value="done" {{ ($contractor->shipment_status == 'done') ? "selected" : "" }}>Done</option>
@@ -688,7 +591,7 @@
                                                             </div>
 
                                                             <div class="col-md-3 mb-3">
-                                                                <label for="lc_type">Commission Status</label>
+                                                                <h6>Commission Status</h6>
                                                                 <select class="form-control" id="commission_status" name="commission_status">
                                                                     <option value="Claimed">Claimed</option>
                                                                     <option value="Recieved">Recieved</option>
