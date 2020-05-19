@@ -18,7 +18,7 @@ class UsersDataTable extends DataTable
      * @return \Yajra\DataTables\DataTableAbstract
      */
     public function dataTable($query)
-    { 
+    {
         return \Datatables::eloquent($query)
         ->addColumn('action', function($user) {
             return view('_partials.user_datatable',['user'=>$user]);
@@ -42,7 +42,7 @@ class UsersDataTable extends DataTable
      * @return \Illuminate\Database\Eloquent\Builder
      */
     public function query(User $model)
-    { 
+    {
         $users = User::where('id', '!=', auth()->user()->id);
         return $users;
     }
@@ -60,7 +60,13 @@ class UsersDataTable extends DataTable
                     ->minifiedAjax()
                     ->dom('Bfrtip')
                     ->orderBy(1)
-            ->parameters([ 'buttons' => ['excel'] ]);
+            ->parameters([
+                'dom'     => 'Bfrtip',
+                'order'   => [[0, 'desc']],
+                'buttons' => [
+                   
+                ],
+            ]);
     }
 
     /**
@@ -71,16 +77,28 @@ class UsersDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            'id',
-            'name',
-            'email',
-            'user_type' => [ 
-                'data'=>'is_admin'
+            'id'=>[
+                'orderable' => false
             ],
-            'created_at',
-            'action'
+            'name'=>[
+                'orderable' => false
+            ],
+            'email'=>[
+                'orderable' => false
+            ],
+            'user_type' => [
+                'data'=>'is_admin',
+                'orderable' => false
+            ],
+            'created_at'=>[
+                'orderable' => false
+            ],
+            'action'=>[
+                'searchable' => false,
+                'orderable' => false
+            ],
         ];
-        
+
     }
 
     /**
