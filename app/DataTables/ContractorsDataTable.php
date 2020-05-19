@@ -52,10 +52,10 @@ class ContractorsDataTable extends DataTable
             $comm_deadline  = $con->comm_deadline;
             if($nowDate >= $last7Days && $nowDate <= $comm_deadline){
                 return "last 7 days";
-            }else if($nowDate > $comm_deadline){
-                return "Overdue";
             }else if($con->commission_status == 'Recieved'){
                 return "Completed";
+            }else if($nowDate > $comm_deadline){
+                return "Overdue";
             }else{
                 return "Pending";
             }
