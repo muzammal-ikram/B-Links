@@ -476,6 +476,64 @@ class ContractorController extends Controller
         return $pdf->download($contract->contractor_number.'-debit_note.pdf');
     }
 
+    public function docx($id){
+        $contract           = Contractor::where('id', $id)->first();
+
+        $date               = $contract->date;
+        $invoice_number     = $contract->invoice_number;
+        $bl_number          = $contract->bl_number;
+        $total_amount       = $contract->total_amount;
+        $invoice_details    = json_decode($contract->invoice_details);
+        $invoice_amount     = $contract->invoice_amount ? $contract->invoice_amount : 0;
+
+        $calculate_amount = 0;
+        foreach($invoice_details as $detail){
+            if($detail->invoice_amount != ""){
+
+                $amount = isset($detail->invoice_amount) ? $detail->invoice_amount : 0;
+                $amount = str_replace(',', '', $amount);
+                $calculate_amount += $amount;
+            }
+        }
+        $invoice_amount = str_replace(',', '', $invoice_amount);
+        $calculate_amount += $invoice_amount;
+        $calculate_amount = number_format($calculate_amount, 2);
+        $calculate_amount = str_replace(',', '', $calculate_amount);
+
+        $numberToWords = new NumberToWords();
+        $numberTransformer = $numberToWords->getNumberTransformer('en');
+
+        $word_amount =  $numberTransformer->toWords($calculate_amount);
+
+        // invoice More details
+        $invoice_details    = json_decode($contract->invoice_details);
+        $invoice_count      = count($invoice_details)+1;
+        $status = 1;
+
+
+        return view('abc');
+    }
+    public function docxfile(Request $request){
+        $html = '<form>
+                    </form>';
+        $doc = new \DOMDocument();
+        $doc->loadHTML($html);
+        $doc->saveHTML();
+        // dd($doc->saveHtml());
+        $phpWord = new \PhpOffice\PhpWord\PhpWord();
+
+        $section = $phpWord->addSection();
+        
+        \PhpOffice\PhpWord\Shared\Html::addHtml($section,$doc->saveHtml() , true);
+
+        header('Content-Type: application/octet-stream');
+        header('Content-Disposition: attachment;filename="test.docx"');
+
+        $objWriter = \PhpOffice\PhpWord\IOFactory::createWriter($phpWord, 'Word2007');
+        $objWriter->save('sasssd.docx');
+
+    }
+
     public function showBuyer(){
         $total_buyers = Contractor::get()->groupBy('buyer_name');
         return view('all_buyers', compact('total_buyers'));

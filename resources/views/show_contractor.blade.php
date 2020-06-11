@@ -186,7 +186,8 @@
 
                                     </tbody>
                                 </table>
-
+                                @if($contractor->invoice_number || $contractor->bl_number || $contractor->invoice_fcls || $contractor->invoice_amount || $contractor->etd || $contractor->eta || $contractor->invoice_date )
+                                
                                 <div class="text-center">
                                     <h3>Invoices</h3>
                                 </div>
@@ -212,11 +213,13 @@
                                         <td>{{$contractor->invoice_date ? Carbon\Carbon::parse($contractor->invoice_date)->format('d/m/y') : ''}}</td>
                                     </tr>
                                 </table>
+                                @endif
 
-                                    @if($contractor->invoice_details)
+                                    @if(!empty(json_decode($contractor->invoice_details)))
+                                    
                                     <table class="table table-bordered table-striped table-responsive-sm">
                                         <tr>
-                                            <th class="text-nowrap" scope="row">Invoice Number</th>
+                                            <th class="text-nowrap" scope="row">Invoice Numberdd</th>
                                             <th class="text-nowrap" scope="row">BL Number</th>
                                             <th class="text-nowrap" scope="row">Invoice FCLS</th>
                                             <th class="text-nowrap" scope="row">Invoice Amount</th>

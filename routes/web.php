@@ -56,6 +56,10 @@ Route::get('opener-info', 'ContractorController@getOpenerInfo')->name('opener-in
 Route::get('/debit-note/{id}/{status}', 'ContractorController@debitNote');
 Route::get('/download-debit-note/{id}/{status}', 'ContractorController@downloadDebitNote');
 
+
+Route::get('/docx/{id}', 'ContractorController@docx');
+Route::post('/docs' , 'ContractorController@docxfile');
+
 Route::get('/save-dollar-rate/{dollar_rate}', 'DollarRateController@saveDollarRate');
 
 Route::get('/show-buyers', 'ContractorController@showBuyer');

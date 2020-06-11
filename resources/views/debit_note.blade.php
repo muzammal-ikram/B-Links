@@ -109,12 +109,15 @@ th, td {
 
                 <td td rowspan="{{$invoice_count}}" style="width:167px;"><i><b>{{$contract->lc_opener_name}}</b></i></td >
                 <td td rowspan="{{$invoice_count}}" style="width:138px;"><i><b>{{$contract->contractor_number}}</b></i></td >
-                <td style="width:138px;"><i>{{ $bl_number }}</i></td >
-                <td style="width:138px;"><i>{{ $invoice_number }}</i></td >
-                <td style="width:138px;"><i>{{ $contract->invoice_date ? Carbon\Carbon::parse($contract->invoice_date)->format('d/m/y') : "" }}</i></td >
-                <td style="width:138px;"><i>{{ $contract->invoice_amount }}</i></td >
-
+            
+                    
+                    <td style="width:138px;"><i>{{ $bl_number }}</i></td >
+                    <td style="width:138px;"><i>{{ $invoice_number }}</i></td >
+                    <td style="width:138px;"><i>{{ $contract->invoice_date ? Carbon\Carbon::parse($contract->invoice_date)->format('d/m/y') : "" }}</i></td >
+                    <td style="width:138px;"><i>{{ $contract->invoice_amount }}</i></td >
+            
             </tr>
+
             @if($invoice_count > 0)
             @foreach($invoice_details as $detail)
                 @if($loop->first)
