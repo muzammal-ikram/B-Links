@@ -10,7 +10,7 @@
     <META NAME="CHANGED" CONTENT="20200305;112100000000000">
     <STYLE TYPE="text/css">
         <!--
-        @page { size: 10.5in 18in; margin-right: 0.52in; margin-top: 0.38in; margin-bottom: 0.06in }
+        @page { size: 21cm 29.7cm;  margin-right: 0.52in; margin-top: 0.38in; margin-bottom: 0.06in }
         P { margin-bottom: 0in; direction: ltr; color: #000000; line-height: 100%; widows: 0; orphans: 0 }
         P.western { font-family: "Calibri", sans-serif; font-size: 12pt; so-language: en-US; font-style: italic }
         P.cjk { font-family: "Calibri", sans-serif; font-size: 12pt; font-style: italic }
@@ -19,6 +19,7 @@
         -->
     </STYLE>
     <style>
+    
 table, th, td {
   border: 1px solid black;
   border-collapse: collapse;
@@ -69,34 +70,34 @@ th, td {
     <FONT FACE="Calibri, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt"><I>
             </I></FONT></FONT></P>
 <P CLASS="western" STYLE="font-style: normal; line-height: 100%; widows: 2; orphans: 2">
-    <BR>
+   
 </P>
 <P LANG="en-US" CLASS="western"><FONT COLOR="#000000"> </FONT>Debit
     #: 04-03-20	DATE: 04<SUP>th</SUP> March, 2020</P>
-<P LANG="en-US" CLASS="western" STYLE="margin-left: 0.49in"><BR>
+<P LANG="en-US" CLASS="western" STYLE="margin-left: 0.49in"> 
 </P>
 
-<P CLASS="western" STYLE="margin-bottom: 0.14in; font-style: normal; line-height: 100%; widows: 2; orphans: 2">
+<P CLASS="western" STYLE=" font-style: normal; line-height: 100%; widows: 2; orphans: 2">
     <FONT SIZE=2 STYLE="font-size: 11pt"><FONT SIZE=3><I><B>CONTRACT #:
                     {{$contract->contractor_number}}</B></I></FONT></FONT></P>
-<P CLASS="western" STYLE="margin-bottom: 0.14in; font-style: normal; line-height: 100%; widows: 2; orphans: 2">
+<P CLASS="western" STYLE=" font-style: normal; line-height: 100%; widows: 2; orphans: 2">
     <FONT SIZE=2 STYLE="font-size: 11pt"><FONT COLOR="#000000"><FONT SIZE=3><I><B>SUBJECT:
                     </B></I></FONT></FONT><FONT COLOR="#000000"><FONT SIZE=3><I><U><B>DEBIT
                             NOTE</B></U></I></FONT></FONT></FONT></P>
 <P STYLE="font-style: normal; line-height: 100%; widows: 2; orphans: 2">
     <FONT FACE="Times New Roman, serif"><FONT FACE="Calibri, sans-serif"><I><B>M/S</B></I></FONT><FONT FACE="Calibri, sans-serif"><I>
             </I></FONT><FONT FACE="Calibri, sans-serif"><I><B>{{ $contract->seller_name}}</B></I></FONT></FONT></P>
-<P STYLE="line-height: 100%; widows: 2; orphans: 2"><BR>
+<P STYLE="line-height: 100%; widows: 2; orphans: 2"> 
 </P>
 
-<P CLASS="western" STYLE="margin-bottom: 0.14in; font-style: normal; line-height: 100%; widows: 2; orphans: 2">
+<P CLASS="western" STYLE=" font-style: normal; line-height: 100%; widows: 2; orphans: 2">
     <FONT SIZE=2 STYLE="font-size: 11pt"><I>Dear Sir ,</I></FONT></P>
-<P CLASS="western" STYLE="margin-bottom: 0.14in; font-style: normal; line-height: 100%; widows: 2; orphans: 2">
-    <FONT SIZE=2 STYLE="font-size: 11pt"><I>Being the amount of
+<P CLASS="western" STYLE=" font-style: normal; line-height: 100%; widows: 2; orphans: 2">
+    <FONT SIZE=2 STYLE="font-size: 11pt;"><I>Being the amount of
             commission towards sales of your yarn as per detail given below and
             debited to your account with us amounting to  </I><FONT COLOR="#ff0000"><I><B>US${{$contract->commission_amount}}/-</B></I></FONT></FONT></P>
 
-            <table style="width:686px">
+            <table style="width:686px;  margin-top:5px;">
             <tr>
                 <th style="width:167px;">LC Opener Name</th>
                 <th style="width:138px;">Contract #</th>
@@ -159,9 +160,7 @@ th, td {
                 <td style="width:138px;color:rgb(255, 0, 0);">
                     <FONT COLOR="#ff0000"><FONT SIZE=4><I><B>${{$contract->commission_amount}}</I></FONT></FONT></td >
             </tr>
-            </table>
-<br>
-
+            </table> 
 <P LANG="en-US" CLASS="western" STYLE="margin-right: 0.53in">Total Amount in words:  <FONT SIZE=2 STYLE="font-size: 11pt"><FONT COLOR="#000000"></FONT><FONT COLOR="#000000"><I><B>{{$word_amount}}</B></I></FONT></FONT>
 </P>
 <P LANG="en-US" CLASS="western"><FONT SIZE=2 STYLE="font-size: 11pt">(*)
@@ -213,7 +212,7 @@ th, td {
 
 {{--<P CLASS="western" STYLE="line-height: 100%; widows: 2; orphans: 2"><BR>--}}
 {{--</P>--}}
-<P CLASS="western" STYLE="line-height: 100%; widows: 2; orphans: 2"><BR>
+<P CLASS="western" STYLE="line-height: 100%; widows: 2; orphans: 2"> 
 </P>
 <P CLASS="western" STYLE="line-height: 100%; widows: 2; orphans: 2"><FONT SIZE=2 STYLE="font-size: 11pt"><I>Thanking
             you,</I></FONT></P>
