@@ -90,8 +90,7 @@
 
 <script>
     $(document).ready(function(){
-        $("#customers-table_wrapper button").css("margin","15px");
-        $("#customers-table").css('margin-left', '-25px');
+        $("#customers-table_wrapper button").css("margin-top","15px");
     })
 </script>
 
