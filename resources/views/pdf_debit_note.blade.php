@@ -72,35 +72,35 @@ ID: sales.blinks@qq.com </I></FONT></FONT></FONT>
     <FONT FACE="Calibri, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt"><I>
             </I></FONT></FONT></P>
 <P CLASS="western" STYLE="font-style: normal; line-height: 100%; widows: 2; orphans: 2">
-    <BR>
+  
 </P>
 <P LANG="en-US" CLASS="western"><FONT COLOR="#000000"> </FONT>Debit
     #: 04-03-20	DATE: 04<SUP>th</SUP> March, 2020</P>
-<P LANG="en-US" CLASS="western" STYLE="margin-left: 0.49in"><BR>
+<P LANG="en-US" CLASS="western" STYLE="margin-left: 0.49in"> 
 </P>
 
-<P CLASS="western" STYLE="margin-bottom: 0.14in; font-style: normal; line-height: 100%; widows: 2; orphans: 2">
+<P CLASS="western" STYLE=" font-style: normal; line-height: 100%; widows: 2; orphans: 2">
     <FONT SIZE=2 STYLE="font-size: 11pt"><FONT SIZE=3><I><B>CONTRACT #:
                     {{$contract->contractor_number}}</B></I></FONT></FONT></P>
-<P CLASS="western" STYLE="margin-bottom: 0.14in; font-style: normal; line-height: 100%; widows: 2; orphans: 2">
+<P CLASS="western" STYLE=" font-style: normal; line-height: 100%; widows: 2; orphans: 2">
     <FONT SIZE=2 STYLE="font-size: 11pt"><FONT COLOR="#000000"><FONT SIZE=3><I><B>SUBJECT:
                     </B></I></FONT></FONT><FONT COLOR="#000000"><FONT SIZE=3><I><U><B>DEBIT
                             NOTE</B></U></I></FONT></FONT></FONT></P>
 <P STYLE="font-style: normal; line-height: 100%; widows: 2; orphans: 2">
     <FONT FACE="Times New Roman, serif"><FONT FACE="Calibri, sans-serif"><I><B>M/S</B></I></FONT><FONT FACE="Calibri, sans-serif"><I>
             </I></FONT><FONT FACE="Calibri, sans-serif"><I><B>{{ $contract->seller_name}}</B></I></FONT></FONT></P>
-<P STYLE="line-height: 100%; widows: 2; orphans: 2"><BR>
+<P STYLE="line-height: 100%; widows: 2; orphans: 2"> 
 </P>
 
-<P CLASS="western" STYLE="margin-bottom: 0.14in; font-style: normal; line-height: 100%; widows: 2; orphans: 2">
+<P CLASS="western" STYLE=" font-style: normal; line-height: 100%; widows: 2; orphans: 2">
     <FONT SIZE=2 STYLE="font-size: 11pt"><I>Dear Sir ,</I></FONT></P>
-<P CLASS="western" STYLE="margin-bottom: 0.14in; font-style: normal; line-height: 100%; widows: 2; orphans: 2">
+<P CLASS="western" STYLE=" font-style: normal; line-height: 100%; widows: 2; orphans: 2">
     <FONT SIZE=2 STYLE="font-size: 11pt"><I>Being the amount of
             commission towards sales of your yarn as per detail given below and
-            debited to your account with us amounting to  </I><FONT COLOR="#ff0000"><I><B>US${{ $contract->commission_amount}}/-</B></I></FONT></FONT></P>
+            debited to your <br> account with us amounting to  </I><FONT COLOR="#ff0000"><I><B>US${{ $contract->commission_amount}}/-</B></I></FONT></FONT></P>
 
 
-            <table style="width:686px">
+            <table style="width:686px; table-layout: fixed; margin-top:5px;">
                 <tr>
                     <th style="width:167px;">LC Opener Name</th>
                     <th style="width:138px;">Contract #</th>
@@ -113,8 +113,8 @@ ID: sales.blinks@qq.com </I></FONT></FONT></FONT>
 
                     <td td rowspan="{{$invoice_count}}" style="width:167px;"><i><b>{{$contract->lc_opener_name}}</b></i></td >
                     <td td rowspan="{{$invoice_count}}" style="width:138px;"><i><b>{{$contract->contractor_number}}</b></i></td >
-                    <td style="width:138px;"><i>{{ $bl_number }}</i></td >
-                    <td style="width:138px;"><i>{{ $invoice_number }}</i></td >
+                    <td style="width:138px;  word-break:break-all; word-wrap:break-word;"><i>{{ $bl_number }}</i></td >
+                    <td style="width:138px;  word-break:break-all; word-wrap:break-word;"><i>{{ $invoice_number }}</i></td >
                     <td style="width:138px;"><i>{{ $contract->invoice_date ? Carbon\Carbon::parse($contract->invoice_date)->format('d/m/y') : "" }}</i></td >
                     <td style="width:138px;"><i>{{ $contract->invoice_amount }}</i></td >
 
@@ -123,16 +123,16 @@ ID: sales.blinks@qq.com </I></FONT></FONT></FONT>
                 @foreach($invoice_details as $detail)
                     @if($loop->first)
                     <tr>
-                        <td style="width:138px;"><i>{{ isset($detail->bl_number) ? $detail->bl_number : "" }}</i></td >
-                        <td style="width:138px;"><i>{{ isset($detail->invoice) ? $detail->invoice : "" }}</i></td >
+                        <td style="width:138px;  word-break:break-all; word-wrap:break-word;"><i>{{ isset($detail->bl_number) ? $detail->bl_number : "" }}</i></td >
+                        <td style="width:138px;  word-break:break-all; word-wrap:break-word;"><i>{{ isset($detail->invoice) ? $detail->invoice : "" }}</i></td >
                         <td style="width:138px;"><i>{{ isset($detail->invoice_date) ? Carbon\Carbon::parse($detail->invoice_date)->format('d/m/y') : "" }}</i></td >
                         <td style="width:138px;"><i>{{ isset($detail->invoice_amount) ? $detail->invoice_amount : "" }}</i></td >
                     </tr>
 
                     @else
                     <tr>
-                        <td style="width:138px;"><i>{{ isset($detail->bl_number) ? $detail->bl_number : "" }}</i></td >
-                        <td style="width:138px;"><i>{{ isset($detail->invoice) ? $detail->invoice : "" }}</i></td >
+                        <td style="width:138px;  word-break:break-all; word-wrap:break-word;"><i>{{ isset($detail->bl_number) ? $detail->bl_number : "" }}</i></td >
+                        <td style="width:138px;  word-break:break-all; word-wrap:break-word;"><i>{{ isset($detail->invoice) ? $detail->invoice : "" }}</i></td >
                         <td style="width:138px;"><i>{{ isset($detail->invoice_date) ? Carbon\Carbon::parse($detail->invoice_date)->format('d/m/y') : "" }}</i></td >
                         <td style="width:138px;"><i>{{ isset($detail->invoice_amount) ? $detail->invoice_amount : "" }}</i></td >
                     </tr>
@@ -164,7 +164,7 @@ ID: sales.blinks@qq.com </I></FONT></FONT></FONT>
                         <FONT COLOR="#ff0000"><FONT SIZE=4><I><B>${{$contract->commission_amount}}</I></FONT></FONT></td >
                 </tr>
                 </table>
-    <br>
+    
 
 
 <P LANG="en-US" CLASS="western" STYLE="margin-right: 0.53in">Total Amount in words:  <FONT SIZE=2 STYLE="font-size: 11pt"><FONT COLOR="#000000"></FONT><FONT COLOR="#000000"><I><B>{{$word_amount}}</B></I></FONT></FONT>
@@ -220,7 +220,7 @@ ID: sales.blinks@qq.com </I></FONT></FONT></FONT>
 
 {{--<P CLASS="western" STYLE="line-height: 100%; widows: 2; orphans: 2"><BR>--}}
 {{--</P>--}}
-<P CLASS="western" STYLE="line-height: 100%; widows: 2; orphans: 2"><BR>
+<P CLASS="western" STYLE="line-height: 100%; widows: 2; orphans: 2"> 
 </P>
 <P CLASS="western" STYLE="line-height: 100%; widows: 2; orphans: 2"><FONT SIZE=2 STYLE="font-size: 11pt"><I>Thanking
             you,</I></FONT></P>
@@ -238,9 +238,9 @@ ID: sales.blinks@qq.com </I></FONT></FONT></FONT>
 {{--</P>--}}
 <P LANG="en-US" CLASS="western" STYLE="line-height: 100%; widows: 2; orphans: 2">
     @if($status == 1)
-        <IMG SRC="{{ public_path('assets/img/debit-note-stamp.png') }}" NAME="Picture 1" ALIGN=LEFT HSPACE=12 WIDTH=220 HEIGHT=104 BORDER=0><BR>
+        <IMG SRC="{{ public_path('assets/img/debit-note-stamp.png') }}" NAME="Picture 1" ALIGN=LEFT HSPACE=12 WIDTH=220 HEIGHT=95 BORDER=0><BR>
     @elseif($status == 0)
-        <IMG SRC="{{ public_path('assets/img/debit-note-chinese-stamp.png') }}" NAME="Picture 1" ALIGN=LEFT HSPACE=12 WIDTH=220 HEIGHT=104 BORDER=0><BR>
+        <IMG SRC="{{ public_path('assets/img/debit-note-chinese-stamp.png') }}" NAME="Picture 1" ALIGN=LEFT HSPACE=12 WIDTH=220 HEIGHT=95 BORDER=0><BR>
     @endif
 
 </P>

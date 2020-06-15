@@ -10,7 +10,7 @@
     <META NAME="CHANGED" CONTENT="20200305;112100000000000">
     <STYLE TYPE="text/css">
         <!--
-        @page { size: 21cm 29.7cm;  margin-right: 0.52in; margin-top: 0.38in; margin-bottom: 0.06in }
+        @page {  margin-top:5px;  margin-right: 0.52in; margin-top: 0.38in; margin-bottom: 0.06in }
         P { margin-bottom: 0in; direction: ltr; color: #000000; line-height: 100%; widows: 0; orphans: 0 }
         P.western { font-family: "Calibri", sans-serif; font-size: 12pt; so-language: en-US; font-style: italic }
         P.cjk { font-family: "Calibri", sans-serif; font-size: 12pt; font-style: italic }
