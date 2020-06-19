@@ -448,7 +448,7 @@
                                                             </div>
                                                             <div class="col-md-3 mb-3">
                                                                 <h6>Amount</h6>
-                                                                <input type="number" name="invoice_amount_add[]" class="form-control " value="{{old('invoice_amount_add')}}" autocomplete="off">
+                                                                <input type="number" step="any" name="invoice_amount_add[]" class="form-control " value="{{old('invoice_amount_add')}}" autocomplete="off">
                                                                 <div class="invalid-feedback">
                                                                     Please provide a ETA.
                                                                 </div>

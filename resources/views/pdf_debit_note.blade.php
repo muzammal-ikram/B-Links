@@ -71,9 +71,7 @@ ID: sales.blinks@qq.com </I></FONT></FONT></FONT>
 <P STYLE="border-top: none; border-bottom: 1.50pt solid #000000; border-left: none; border-right: none; padding-top: 0in; padding-bottom: 0.01in; padding-left: 0in; padding-right: 0in; line-height: 100%; widows: 2; orphans: 2">
     <FONT FACE="Calibri, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt"><I>
             </I></FONT></FONT></P>
-<P CLASS="western" STYLE="font-style: normal; line-height: 100%; widows: 2; orphans: 2">
-  
-</P>
+
 <P LANG="en-US" CLASS="western"><FONT COLOR="#000000"> </FONT>Debit
     #: 04-03-20	DATE: 04<SUP>th</SUP> March, 2020</P>
 <P LANG="en-US" CLASS="western" STYLE="margin-left: 0.49in"> 
@@ -111,8 +109,8 @@ ID: sales.blinks@qq.com </I></FONT></FONT></FONT>
                 </tr>
                 <tr>
 
-                    <td td rowspan="{{$invoice_count}}" style="width:167px;"><i><b>{{$contract->lc_opener_name}}</b></i></td >
-                    <td td rowspan="{{$invoice_count}}" style="width:138px;"><i><b>{{$contract->contractor_number}}</b></i></td >
+                    <td td rowspan="{{$invoice_count}}" style="width:167px;  word-break:break-all; word-wrap:break-word; font-size: 13px;"><i><b>{{$contract->lc_opener_name}}</b></i></td >
+                    <td td rowspan="{{$invoice_count}}" style="width:138px;  word-break:break-all; word-wrap:break-word; font-size: 13px;"><i><b>{{$contract->contractor_number}}</b></i></td >
                     <td style="width:138px;  word-break:break-all; word-wrap:break-word;"><i>{{ $bl_number }}</i></td >
                     <td style="width:138px;  word-break:break-all; word-wrap:break-word;"><i>{{ $invoice_number }}</i></td >
                     <td style="width:138px;"><i>{{ $contract->invoice_date ? Carbon\Carbon::parse($contract->invoice_date)->format('d/m/y') : "" }}</i></td >
