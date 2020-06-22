@@ -10,7 +10,7 @@
     <META NAME="CHANGED" CONTENT="20200305;112100000000000">
     <STYLE TYPE="text/css">
         <!--
-        @page { size: 13.5in 18in; margin-right: 0.52in; margin-top: 0.38in; margin-bottom: 0.06in }
+        @page { margin-right: 0.52in; margin-top: 0.38in; margin-bottom: 0.06in }
         P { margin-bottom: 0in; direction: ltr; color: #000000; line-height: 100%; widows: 0; orphans: 0 }
         P.western { font-family: "Calibri", sans-serif; font-size: 12pt; so-language: en-US; font-style: italic }
         P.cjk { font-family: "Calibri", sans-serif; font-size: 12pt; font-style: italic }
@@ -67,13 +67,13 @@ ID: sales.blinks@qq.com </I></FONT></FONT></FONT>
     <FONT FACE="Times New Roman, serif"><FONT FACE="Calibri, sans-serif"><FONT SIZE=2><I>E-mail ID: info@blinksinternational.net</I></FONT></FONT></FONT>
 </P>
 @endif
-
 <P STYLE="border-top: none; border-bottom: 1.50pt solid #000000; border-left: none; border-right: none; padding-top: 0in; padding-bottom: 0.01in; padding-left: 0in; padding-right: 0in; line-height: 100%; widows: 2; orphans: 2">
     <FONT FACE="Calibri, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt"><I>
             </I></FONT></FONT></P>
 
+            <br>
 <P LANG="en-US" CLASS="western"><FONT COLOR="#000000"> </FONT>Debit
-    #: 04-03-20	DATE: 04<SUP>th</SUP> March, 2020</P>
+    #: {{$contract->date ? $contract->date->format('d-m-Y') : null}}	DATE: {{$contract->date ? $contract->date->format('d M Y') : null}}</P>
 <P LANG="en-US" CLASS="western" STYLE="margin-left: 0.49in"> 
 </P>
 
@@ -109,10 +109,10 @@ ID: sales.blinks@qq.com </I></FONT></FONT></FONT>
                 </tr>
                 <tr>
 
-                    <td td rowspan="{{$invoice_count}}" style="width:167px;  word-break:break-all; word-wrap:break-word; font-size: 13px;"><i><b>{{$contract->lc_opener_name}}</b></i></td >
-                    <td td rowspan="{{$invoice_count}}" style="width:138px;  word-break:break-all; word-wrap:break-word; font-size: 13px;"><i><b>{{$contract->contractor_number}}</b></i></td >
+                    <td td rowspan="{{$invoice_count}}" style="width:167px;  font-size: 13px;"><i><b>{{$contract->lc_opener_name}}</b></i></td >
+                    <td td rowspan="{{$invoice_count}}" style="width:138px;  font-size: 13px;"><i><b>{{$contract->contractor_number}}</b></i></td >
                     <td style="width:138px;  word-break:break-all; word-wrap:break-word;"><i>{{ $bl_number }}</i></td >
-                    <td style="width:138px;  word-break:break-all; word-wrap:break-word;"><i>{{ $invoice_number }}</i></td >
+                    <td style="width:138px; "><i>{{ $invoice_number }}</i></td >
                     <td style="width:138px;"><i>{{ $contract->invoice_date ? Carbon\Carbon::parse($contract->invoice_date)->format('d/m/y') : "" }}</i></td >
                     <td style="width:138px;"><i>{{ $contract->invoice_amount }}</i></td >
 
@@ -121,16 +121,16 @@ ID: sales.blinks@qq.com </I></FONT></FONT></FONT>
                 @foreach($invoice_details as $detail)
                     @if($loop->first)
                     <tr>
-                        <td style="width:138px;  word-break:break-all; word-wrap:break-word;"><i>{{ isset($detail->bl_number) ? $detail->bl_number : "" }}</i></td >
-                        <td style="width:138px;  word-break:break-all; word-wrap:break-word;"><i>{{ isset($detail->invoice) ? $detail->invoice : "" }}</i></td >
+                        <td style="width:138px; word-break:break-all; word-wrap:break-word;"><i>{{ isset($detail->bl_number) ? $detail->bl_number : "" }}</i></td >
+                        <td style="width:138px; "><i>{{ isset($detail->invoice) ? $detail->invoice : "" }}</i></td >
                         <td style="width:138px;"><i>{{ isset($detail->invoice_date) ? Carbon\Carbon::parse($detail->invoice_date)->format('d/m/y') : "" }}</i></td >
                         <td style="width:138px;"><i>{{ isset($detail->invoice_amount) ? $detail->invoice_amount : "" }}</i></td >
                     </tr>
 
                     @else
                     <tr>
-                        <td style="width:138px;  word-break:break-all; word-wrap:break-word;"><i>{{ isset($detail->bl_number) ? $detail->bl_number : "" }}</i></td >
-                        <td style="width:138px;  word-break:break-all; word-wrap:break-word;"><i>{{ isset($detail->invoice) ? $detail->invoice : "" }}</i></td >
+                        <td style="width:138px; "><i>{{ isset($detail->bl_number) ? $detail->bl_number : "" }}</i></td >
+                        <td style="width:138px; "><i>{{ isset($detail->invoice) ? $detail->invoice : "" }}</i></td >
                         <td style="width:138px;"><i>{{ isset($detail->invoice_date) ? Carbon\Carbon::parse($detail->invoice_date)->format('d/m/y') : "" }}</i></td >
                         <td style="width:138px;"><i>{{ isset($detail->invoice_amount) ? $detail->invoice_amount : "" }}</i></td >
                     </tr>
@@ -165,7 +165,16 @@ ID: sales.blinks@qq.com </I></FONT></FONT></FONT>
     
 
 
-<P LANG="en-US" CLASS="western" STYLE="margin-right: 0.53in">Total Amount in words:  <FONT SIZE=2 STYLE="font-size: 11pt"><FONT COLOR="#000000"></FONT><FONT COLOR="#000000"><I><B>{{$word_amount}}</B></I></FONT></FONT>
+<P LANG="en-US" CLASS="western" STYLE="margin-right: 0.53in">
+    Total Amount in words: <div>
+        <FONT SIZE=2 STYLE="font-size: 11pt"><FONT COLOR="#000000"></FONT><FONT COLOR="#000000" style="word-break:break-all; word-wrap:break-word;"><I><B>
+    
+            @php
+            echo preg_replace( '~((?:\S*?\s){6})~', "$1<br>", $word_amount );
+            @endphp
+            
+        </B></I></FONT></FONT>
+    </div> 
 </P>
 <P LANG="en-US" CLASS="western"><FONT SIZE=2 STYLE="font-size: 11pt">(*)
         Kindly arrange to route TT in favor of following account info and
