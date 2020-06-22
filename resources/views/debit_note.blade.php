@@ -72,8 +72,9 @@ th, td {
 <P CLASS="western" STYLE="font-style: normal; line-height: 100%; widows: 2; orphans: 2">
    
 </P>
+
 <P LANG="en-US" CLASS="western"><FONT COLOR="#000000"> </FONT>Debit
-    #: 04-03-20	DATE: 04<SUP>th</SUP> March, 2020</P>
+    #: {{$contract->date ? $contract->date->format('d-m-Y') : null}}	DATE: {{$contract->date ? $contract->date->format('d M Y') : null}}</P>
 <P LANG="en-US" CLASS="western" STYLE="margin-left: 0.49in"> 
 </P>
 
