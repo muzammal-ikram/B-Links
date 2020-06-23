@@ -430,7 +430,7 @@ class ContractorController extends Controller
         $calculate_amount = number_format($calculate_amount, 2);
         $calculate_amount = str_replace(',', '', $calculate_amount);
 
-        $word_amount =  $this->convertNumber($calculate_amount);
+        $word_amount =  $this->convertNumber($contract->commission_amount);
         // invoice More details
         $invoice_details    = json_decode($contract->invoice_details);
         $invoice_count      = count($invoice_details)+1;
@@ -461,8 +461,8 @@ class ContractorController extends Controller
         $calculate_amount += $invoice_amount;
         $calculate_amount = number_format($calculate_amount, 2);
         $calculate_amount = str_replace(',', '', $calculate_amount);
-        $word_amount =  $this->convertNumber($calculate_amount);
-
+        $word_amount =  $this->convertNumber($contract->commission_amount);
+        
         // invoice More details
         $invoice_count      = count($invoice_details)+1;
 
