@@ -39,6 +39,8 @@
         }
     },
     "autoload": {
+        
+        "files": ["app/Helpers/ConvertToString.php"],
         "psr-4": {
             "App\\": "app/"
         },

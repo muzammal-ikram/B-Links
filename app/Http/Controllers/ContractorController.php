@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use DB;
 use Barryvdh\DomPDF\Facade as PDF;
 use NumberToWords\NumberToWords;
+use App\Helpers\ConvertToString;
+
 class ContractorController extends Controller
 {
     /**
@@ -429,8 +431,8 @@ class ContractorController extends Controller
         $calculate_amount += $invoice_amount;
         $calculate_amount = number_format($calculate_amount, 2);
         $calculate_amount = str_replace(',', '', $calculate_amount);
-
-        $word_amount =  $this->convertNumber($contract->commission_amount);
+         
+        $word_amount =  convertNumber($contract->commission_amount);
         // invoice More details
         $invoice_details    = json_decode($contract->invoice_details);
         $invoice_count      = count($invoice_details)+1;
@@ -461,7 +463,7 @@ class ContractorController extends Controller
         $calculate_amount += $invoice_amount;
         $calculate_amount = number_format($calculate_amount, 2);
         $calculate_amount = str_replace(',', '', $calculate_amount);
-        $word_amount =  $this->convertNumber($contract->commission_amount);
+        $word_amount =  convertNumber($contract->commission_amount);
         
         // invoice More details
         $invoice_count      = count($invoice_details)+1;
@@ -479,95 +481,6 @@ class ContractorController extends Controller
         $total_sellers = Contractor::get()->groupBy('seller_name');
         return view('all_sellers', compact('total_sellers'));
     }
-    public function convertNumber($num){
-
-        $ones = array(
-        0 =>"ZERO",
-        1 => "ONE",
-        2 => "TWO",
-        3 => "THREE",
-        4 => "FOUR",
-        5 => "FIVE",
-        6 => "SIX",
-        7 => "SEVEN",
-        8 => "EIGHT",
-        9 => "NINE",
-        10 => "TEN",
-        11 => "ELEVEN",
-        12 => "TWELVE",
-        13 => "THIRTEEN",
-        14 => "FOURTEEN",
-        15 => "FIFTEEN",
-        16 => "SIXTEEN",
-        17 => "SEVENTEEN",
-        18 => "EIGHTEEN",
-        19 => "NINETEEN",
-        "014" => "FOURTEEN"
-        );
-        $tens = array( 
-        0 => "ZERO",
-        1 => "TEN",
-        2 => "TWENTY",
-        3 => "THIRTY", 
-        4 => "FORTY", 
-        5 => "FIFTY", 
-        6 => "SIXTY", 
-        7 => "SEVENTY", 
-        8 => "EIGHTY", 
-        9 => "NINETY" 
-        ); 
-        $hundreds = array( 
-        "HUNDRED", 
-        "THOUSAND", 
-        "MILLION", 
-        "BILLION", 
-        "TRILLION", 
-        "QUARDRILLION" 
-        ); /*limit t quadrillion */
-        $num = number_format($num,2,".",","); 
-        $num_arr = explode(".",$num); 
-        $wholenum = $num_arr[0]; 
-        $decnum = $num_arr[1]; 
-        $whole_arr = array_reverse(explode(",",$wholenum)); 
-        krsort($whole_arr,1); 
-        $rettxt = ""; 
-        foreach($whole_arr as $key => $i){
-            
-        while(substr($i,0,1)=="0")
-                $i=substr($i,1,5);
-        if($i < 20){ 
-        /* echo "getting:".$i; */
-        $rettxt .= $ones[$i]; 
-        }elseif($i < 100){ 
-        if(substr($i,0,1)!="0")  $rettxt .= $tens[substr($i,0,1)]; 
-        if(substr($i,1,1)!="0") $rettxt .= " ".$ones[substr($i,1,1)]; 
-        }else{ 
-        if(substr($i,0,1)!="0") $rettxt .= $ones[substr($i,0,1)]." ".$hundreds[0]; 
-        if(substr($i,1,1)!="0")$rettxt .= " ".$tens[substr($i,1,1)]; 
-        if(substr($i,2,1)!="0")$rettxt .= " ".$ones[substr($i,2,1)]; 
-        } 
-        if($key > 0){ 
-        $rettxt .= " ".$hundreds[$key]." "; 
-        }
-        } 
-        $rettxt .= ' Dollars';
-        if($decnum > 0){
-        $rettxt .= " and ";
-        if($decnum < 20){
-        $rettxt .= $ones[$decnum]. " Cents";
-        }elseif($decnum < 100){
-        $rettxt .= $tens[substr($decnum,0,1)];
-        $rettxt .= " ".$ones[substr($decnum,1,1)].' Cents';
-        }
-        }
-        return $rettxt;
-
-        }
-        // extract($_POST);
-        // if(isset($convert))
-        // {
-        // echo "<p align='center' style='color:blue'>".numberTowords("$num")."</p>";
-        // }
-    // }
-
+  
+    
 }

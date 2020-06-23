@@ -98,6 +98,8 @@ class ContractorsDataTable extends DataTable
         ->minifiedAjax()
         ->dom('Bfrtip')
         ->parameters([
+            'responsive' => true,
+            'autoWidth' => false,
             'buttons' => [
                 [   
                     'extend' => 'pdfHtml5',
@@ -134,8 +136,7 @@ class ContractorsDataTable extends DataTable
 //            'Id'=> [
 //                'data'=>'id'
 //            ],
-            'Date'=>[
-                'data'=>'date',
+            'date'=>[
                 'orderable' => false
             ],
             'contract #'=>[
