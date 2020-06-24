@@ -21,6 +21,7 @@ class ContractorsDataTable extends DataTable
     public function dataTable($query)
     {
         return \Datatables::eloquent($query)
+       
         ->addColumn('action', function($con) {
             return view('_partials.contractor_datatable',['con'=>$con]);
         })
@@ -37,7 +38,7 @@ class ContractorsDataTable extends DataTable
             return $con->comm_deadline ? $con->comm_deadline->format('M-d-Y') : Null;
         })
         ->editColumn('date', function($con) {
-            return $con->date ? $con->date->format('M-d-Y') : Null;
+            return  $con->date ? $con->date->format('m-d-Y') : Null;
         })
         ->editColumn('etd', function($con) {
             return $con->etd ? $con->etd->format('M-d-Y') : Null;
@@ -137,6 +138,7 @@ class ContractorsDataTable extends DataTable
 //                'data'=>'id'
 //            ],
             'date'=>[
+                'name'=>'date',
                 'orderable' => false
             ],
             'contract #'=>[
